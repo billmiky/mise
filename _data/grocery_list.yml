@@ -1,196 +1,395 @@
 week_of: '2026-11-02'
 categories:
+- name: Freezer
+  items:
+  - name: frozen
+    uses:
+    - text: 1 pound frozen, unthawed dumplings, any flavor
+      recipe: One-Pan Dumplings With Greens
 - name: Meat & Fish
   items:
-  - name: ground beef
+  - name: ground turkey
     uses:
-    - text: 1 pound ground beef (round or chuck)
-      recipe: Korean BBQ-Style Meatballs
-  - name: chicken breasts
+    - text: ½ pound ground turkey
+      recipe: Lemony White Bean Soup With Turkey and Greens
+  - name: pork shoulder
     uses:
-    - text: 4 medium boneless, skinless chicken breasts (about 8 ounces each)
-      recipe: Hot Honey Chicken
+    - text: 5 pounds boneless pork shoulder, cut into two or three pieces
+      recipe: Pressure Cooker Spicy Pork Shoulder
+  - name: chicken thighs
+    uses:
+    - text: 2 ½ pounds boneless, skinless chicken thighs
+      recipe: Coconut Chicken Curry
+  - name: salmon fillets
+    uses:
+    - text: 4 skinless salmon fillets
+      recipe: Garlic Butter Baked Salmon
 - name: Dairy & Eggs
   items:
-  - name: Yogurt
+  - name: crumbled feta cheese
     uses:
-    - text: Yogurt, for serving (optional)
-      recipe: Spiced Chickpea Stew With Coconut and Turmeric
-  - name: Parmesan
-    uses:
-    - text: 1/3 cup grated Parmesan
-      recipe: Hot Honey Chicken
+    - text: ¾ cup diced or crumbled feta cheese (about 4 ounces)
+      recipe: Chopped Salad With Chickpeas, Feta and Avocado
   have:
-  - name: eggs
+  - name: butter
     uses:
-    - text: 3 large eggs, beaten
-      recipe: Hot Honey Chicken
+    - text: 1/2 cup unsalted butter (melted )
+      recipe: Garlic Butter Baked Salmon
 - name: Grains & Bread
-  have:
-  - name: crushed Ritz crackers
-    uses:
-    - text: 1/2 cup finely crushed Ritz crackers (12 crackers)
-      recipe: Korean BBQ-Style Meatballs
-  - name: all-purpose flour
-    uses:
-    - text: 1/3 cup all-purpose flour
-      recipe: Hot Honey Chicken
-  - name: Cooked white rice
-    uses:
-    - text: Cooked white rice (optional), for serving
-      recipe: Roasted Cauliflower With Nước Chấm Sauce
   items:
-  - name: pita
+  - name: stale bread
     uses:
-    - text: Toasted pita, lavash or other flatbread, for serving (optional)
-      recipe: Spiced Chickpea Stew With Coconut and Turmeric
-  - name: cornflakes
+    - text: 2 cups small (½-inch) diced stale bread, buns or pita (about 3 to 4 ounces)
+      recipe: Chopped Salad With Chickpeas, Feta and Avocado
+  have:
+  - name: rice noodles
     uses:
-    - text: 6 cups/6 ounces cornflakes
-      recipe: Hot Honey Chicken
+    - text: 10 ounce rice noodles (or sub spaghetti or linguine)
+      recipe: Crispy Broccoli Sweet and Spicy Sesame Tahini Noodles
+  - name: Cooked rice or toasted slider rolls
+    uses:
+    - text: Cooked rice or toasted slider rolls
+      recipe: Pressure Cooker Spicy Pork Shoulder
+  - name: Cooked rice or noodles
+    uses:
+    - text: Cooked rice or noodles, for serving
+      recipe: Coconut Chicken Curry
 - name: Canned & Jarred
   items:
   - name: chickpeas
     uses:
-    - text: 2 (15-ounce) cans chickpeas, drained and rinsed
-      recipe: Spiced Chickpea Stew With Coconut and Turmeric
-  - name: full-fat coconut milk
+    - text: 1 (15-ounce) can chickpeas, rinsed
+      recipe: Chopped Salad With Chickpeas, Feta and Avocado
+  - name: pitted Castelvetrano or other green olives
     uses:
-    - text: 2 (15-ounce) cans full-fat coconut milk
-      recipe: Spiced Chickpea Stew With Coconut and Turmeric
-  - name: vegetable or chicken stock
+    - text: ½ cup pitted Castelvetrano or other green olives, roughly chopped (about 3 ounces)
+      recipe: Chopped Salad With Chickpeas, Feta and Avocado
+  - name: capers
     uses:
-    - text: 2 cups vegetable or chicken stock
-      recipe: Spiced Chickpea Stew With Coconut and Turmeric
+    - text: 1 tablespoon drained capers, roughly chopped
+      recipe: Chopped Salad With Chickpeas, Feta and Avocado
+  - name: tahini
+    uses:
+    - text: ⅓ cup tahini (we use Soom)
+      recipe: Crispy Broccoli Sweet and Spicy Sesame Tahini Noodles
+  - name: chicken stock
+    uses:
+    - text: 1 quart chicken stock
+      recipe: Lemony White Bean Soup With Turkey and Greens
+  - name: white beans
+    uses:
+    - text: 2 (15-ounce) cans white beans, drained and rinsed
+      recipe: Lemony White Bean Soup With Turkey and Greens
+  - name: Kimchi
+    uses:
+    - text: Kimchi (optional)
+      recipe: Pressure Cooker Spicy Pork Shoulder
+  - name: unsweetened coconut milk
+    uses:
+    - text: 1 (13-ounce) can unsweetened coconut milk
+      recipe: Coconut Chicken Curry
+  have:
+  - name: tomato paste
+    uses:
+    - text: 1 tablespoon tomato paste
+      recipe: Lemony White Bean Soup With Turkey and Greens
+  - name: dry white wine
+    uses:
+    - text: 2 tablespoons dry white wine (substitute with 1/4 cup low-sodium chicken broth)
+      recipe: Garlic Butter Baked Salmon
 - name: Pantry & Staples
   have:
-  - name: low-sodium soy sauce
-    uses:
-    - text: 2 tablespoons low-sodium soy sauce
-      recipe: Korean BBQ-Style Meatballs
-  - name: kosher salt
-    uses:
-    - text: 1 teaspoon kosher salt (such as Diamond Crystal)
-      recipe: Korean BBQ-Style Meatballs
-  - name: ground black pepper
-    uses:
-    - text: 1 teaspoon freshly ground black pepper
-      recipe: Korean BBQ-Style Meatballs
   - name: olive oil
     uses:
-    - text: 1/4 cup olive oil, plus more for serving
-      recipe: Spiced Chickpea Stew With Coconut and Turmeric
+    - text: 6 tablespoons olive oil, plus more for drizzling
+      recipe: Chopped Salad With Chickpeas, Feta and Avocado
+    - text: 3 tablespoons olive oil
+      recipe: Lemony White Bean Soup With Turkey and Greens
+    - text: 2 tablespoons olive oil
+      recipe: Garlic Butter Baked Salmon
   - name: Kosher salt and black pepper
     uses:
     - text: Kosher salt and black pepper
-      recipe: Spiced Chickpea Stew With Coconut and Turmeric
-  - name: red-pepper flakes
+      recipe: Chopped Salad With Chickpeas, Feta and Avocado
+  - name: red wine vinegar
     uses:
-    - text: 1 teaspoon red-pepper flakes, plus more for serving
-      recipe: Spiced Chickpea Stew With Coconut and Turmeric
-    - text: 1 tablespoon red-pepper flakes
-      recipe: Hot Honey Chicken
-  - name: apple cider vinegar
+    - text: 2 tablespoons red wine vinegar
+      recipe: Chopped Salad With Chickpeas, Feta and Avocado
+  - name: Dijon mustard
     uses:
-    - text: 1/2 teaspoon apple cider vinegar
-      recipe: Hot Honey Chicken
-  - name: Salt and pepper
+    - text: ¼ teaspoon Dijon mustard
+      recipe: Chopped Salad With Chickpeas, Feta and Avocado
+  - name: low sodium soy sauce
     uses:
-    - text: Salt and pepper
-      recipe: Hot Honey Chicken
-  - name: hot sauce
+    - text: 3 tablespoons low sodium soy sauce
+      recipe: Crispy Broccoli Sweet and Spicy Sesame Tahini Noodles
+    - text: 1 tablespoon low-sodium soy sauce, plus more for serving
+      recipe: One-Pan Dumplings With Greens
+  - name: brown sugar
     uses:
-    - text: 3 tablespoons hot sauce
-      recipe: Hot Honey Chicken
-  - name: neutral oil
-    uses:
-    - text: 4 tablespoons neutral oil (such as vegetable, canola or peanut)
-      recipe: Roasted Cauliflower With Nước Chấm Sauce
+    - text: 2-3 tablespoons brown sugar (or sub coconut sugar or honey)
+      recipe: Crispy Broccoli Sweet and Spicy Sesame Tahini Noodles
+    - text: 2 teaspoons brown sugar
+      recipe: Pressure Cooker Spicy Pork Shoulder
   - name: rice vinegar
     uses:
-    - text: 1/4 cup rice vinegar
-      recipe: Roasted Cauliflower With Nước Chấm Sauce
-  - name: sugar
+    - text: ½ tablespoon rice vinegar
+      recipe: Crispy Broccoli Sweet and Spicy Sesame Tahini Noodles
+    - text: 1 ½ tablespoons rice vinegar
+      recipe: Pressure Cooker Spicy Pork Shoulder
+  - name: ground salt and pepper
     uses:
-    - text: 1 teaspoon sugar
-      recipe: Roasted Cauliflower With Nước Chấm Sauce
+    - text: Freshly ground salt and pepper
+      recipe: Crispy Broccoli Sweet and Spicy Sesame Tahini Noodles
+  - name: Red pepper flakes
+    uses:
+    - text: Red pepper flakes, if you want it extra spicy
+      recipe: Crispy Broccoli Sweet and Spicy Sesame Tahini Noodles
+    - text: ⅛ teaspoon red-pepper flakes, plus more to taste
+      recipe: Lemony White Bean Soup With Turkey and Greens
+  - name: ground cumin
+    uses:
+    - text: ¾ teaspoon ground cumin, plus more to taste
+      recipe: Lemony White Bean Soup With Turkey and Greens
+  - name: kosher salt
+    uses:
+    - text: 1 teaspoon kosher salt, plus more to taste
+      recipe: Lemony White Bean Soup With Turkey and Greens
+    - text: 1 tablespoon kosher salt, more to taste
+      recipe: Pressure Cooker Spicy Pork Shoulder
+    - text: 2 teaspoons kosher salt, plus more as needed
+      recipe: Coconut Chicken Curry
+  - name: brown sugar or honey
+    uses:
+    - text: 2 tablespoons brown sugar or honey
+      recipe: Pressure Cooker Spicy Pork Shoulder
+  - name: Korean chile flakes or other chile flakes
+    uses:
+    - text: 1 tablespoon Korean chile flakes (gochugaru) or other chile flakes (Maras, Aleppo or crushed red pepper)
+      recipe: Pressure Cooker Spicy Pork Shoulder
+  - name: ground black pepper
+    uses:
+    - text: 1 teaspoon ground black pepper
+      recipe: Pressure Cooker Spicy Pork Shoulder
+  - name: peanut oil
+    uses:
+    - text: 1 tablespoon peanut oil
+      recipe: Pressure Cooker Spicy Pork Shoulder
+  - name: soy sauce
+    uses:
+    - text: ¼ cup soy sauce
+      recipe: Pressure Cooker Spicy Pork Shoulder
+  - name: rice wine vinegar
+    uses:
+    - text: 1 tablespoon rice wine vinegar
+      recipe: Pressure Cooker Spicy Pork Shoulder
+  - name: fine sea salt
+    uses:
+    - text: ½ teaspoon fine sea salt
+      recipe: Pressure Cooker Spicy Pork Shoulder
+  - name: avocado or other neutral oil
+    uses:
+    - text: 2 tablespoons avocado or other neutral oil
+      recipe: One-Pan Dumplings With Greens
+  - name: Salt
+    uses:
+    - text: Salt
+      recipe: One-Pan Dumplings With Greens
+    - text: 1 1/2 teaspoons salt (divided)
+      recipe: Garlic Butter Baked Salmon
+  - name: unseasoned rice vinegar
+    uses:
+    - text: 1 tablespoon unseasoned rice vinegar, plus more for serving
+      recipe: One-Pan Dumplings With Greens
+  - name: black pepper
+    uses:
+    - text: 1/2 teaspoon black pepper (cracked, divided)
+      recipe: Garlic Butter Baked Salmon
   items:
-  - name: ground turmeric
+  - name: hot chili paste
     uses:
-    - text: 1 1/2 teaspoons ground turmeric, plus more for serving
-      recipe: Spiced Chickpea Stew With Coconut and Turmeric
+    - text: 1-2 tablespoons hot chili paste (such as sambal oelek)
+      recipe: Crispy Broccoli Sweet and Spicy Sesame Tahini Noodles
+  - name: sesame oil
+    uses:
+    - text: 1 tablespoon sesame oil (preferably toasted sesame oil)
+      recipe: Crispy Broccoli Sweet and Spicy Sesame Tahini Noodles
+    - text: 1 teaspoon sesame oil
+      recipe: Pressure Cooker Spicy Pork Shoulder
+    - text: 2 teaspoons sesame oil
+      recipe: Pressure Cooker Spicy Pork Shoulder
+  - name: sesame seeds
+    uses:
+    - text: Toasted sesame seeds
+      recipe: Crispy Broccoli Sweet and Spicy Sesame Tahini Noodles
+    - text: 2 teaspoons sesame seeds
+      recipe: Pressure Cooker Spicy Pork Shoulder
+    - text: Toasted sesame seeds, cilantro, sliced scallions or chile crisp, or a combination (all optional), for serving
+      recipe: One-Pan Dumplings With Greens
+  - name: gochujang or other chile paste or sauce such as Sriracha
+    uses:
+    - text: ⅓ cup gochujang (Korean chile paste) or other chile paste or sauce such as Sriracha
+      recipe: Pressure Cooker Spicy Pork Shoulder
+  - name: ketchup
+    uses:
+    - text: 2 tablespoons ketchup
+      recipe: Pressure Cooker Spicy Pork Shoulder
+  - name: mirin
+    uses:
+    - text: 2 tablespoons mirin
+      recipe: Pressure Cooker Spicy Pork Shoulder
   - name: honey
     uses:
-    - text: 1/2 cup honey
-      recipe: Hot Honey Chicken
-  - name: ground cayenne
+    - text: 2 tablespoons honey
+      recipe: Pressure Cooker Spicy Pork Shoulder
+  - name: Asian fish sauce
     uses:
-    - text: 1/2 teaspoon ground cayenne
-      recipe: Hot Honey Chicken
-  - name: garlic powder
+    - text: 1 teaspoon Asian fish sauce
+      recipe: Pressure Cooker Spicy Pork Shoulder
+  - name: ground paprika
     uses:
-    - text: 1 1/2 teaspoons garlic powder
-      recipe: Hot Honey Chicken
-  - name: onion powder
+    - text: 1 tablespoon ground paprika
+      recipe: Coconut Chicken Curry
+  - name: ground turmeric
     uses:
-    - text: 1 1/2 teaspoons onion powder
-      recipe: Hot Honey Chicken
-  - name: smoked paprika
+    - text: ½ teaspoon ground turmeric
+      recipe: Coconut Chicken Curry
+  - name: canola oil
     uses:
-    - text: 1 teaspoon smoked paprika
-      recipe: Hot Honey Chicken
+    - text: ⅓ cup canola oil
+      recipe: Coconut Chicken Curry
   - name: fish sauce
     uses:
-    - text: 1/3 cup fish sauce
-      recipe: Roasted Cauliflower With Nước Chấm Sauce
-  - name: crushed roasted peanuts or other nuts
+    - text: 1 ½ tablespoons fish sauce, plus more as needed
+      recipe: Coconut Chicken Curry
+  - name: Madras curry powder
     uses:
-    - text: 2 tablespoons crushed roasted peanuts or other nuts
-      recipe: Roasted Cauliflower With Nước Chấm Sauce
+    - text: 1 teaspoon Madras curry powder
+      recipe: Coconut Chicken Curry
+  - name: ground cayenne
+    uses:
+    - text: ½ teaspoon ground cayenne
+      recipe: Coconut Chicken Curry
 - name: Produce
   items:
+  - name: English cucumber
+    uses:
+    - text: 1 medium (or ½ large) English cucumber, halved lengthwise, seeded and diced
+      recipe: Chopped Salad With Chickpeas, Feta and Avocado
   - name: scallions
     uses:
-    - text: 1/2 cup chopped scallions
-      recipe: Korean BBQ-Style Meatballs
-  - name: garlic
+    - text: ⅓ cup thinly sliced scallions (about 2 scallions)
+      recipe: Chopped Salad With Chickpeas, Feta and Avocado
+  - name: shallots
     uses:
-    - text: 2 tablespoons minced garlic
-      recipe: Korean BBQ-Style Meatballs
-    - text: 4 garlic cloves, chopped
-      recipe: Spiced Chickpea Stew With Coconut and Turmeric
-    - text: 3 garlic cloves (optional), finely chopped
-      recipe: Roasted Cauliflower With Nước Chấm Sauce
-  - name: yellow onion
+    - text: 1 tablespoon minced shallots
+      recipe: Chopped Salad With Chickpeas, Feta and Avocado
+  - name: herbs
     uses:
-    - text: 1 large yellow onion, chopped
-      recipe: Spiced Chickpea Stew With Coconut and Turmeric
+    - text: ¼ cup chopped fresh herbs, such as dill, basil, mint or parsley, plus more for serving
+      recipe: Chopped Salad With Chickpeas, Feta and Avocado
   - name: ginger
     uses:
-    - text: 1 (2-inch) piece ginger, finely chopped
-      recipe: Spiced Chickpea Stew With Coconut and Turmeric
-  - name: mint leaves
+    - text: 1 tablespoon fresh grated ginger
+      recipe: Crispy Broccoli Sweet and Spicy Sesame Tahini Noodles
+    - text: 1 tablespoon finely grated fresh ginger
+      recipe: Lemony White Bean Soup With Turkey and Greens
+    - text: 1 (1-inch) piece ginger, finely chopped
+      recipe: One-Pan Dumplings With Greens
+  - name: garlic
     uses:
-    - text: 1 cup mint leaves, for serving
-      recipe: Spiced Chickpea Stew With Coconut and Turmeric
-  - name: cauliflower
+    - text: 2 cloves garlic, minced
+      recipe: Crispy Broccoli Sweet and Spicy Sesame Tahini Noodles
+    - text: 3 garlic cloves, minced
+      recipe: Lemony White Bean Soup With Turkey and Greens
+    - text: 5 garlic cloves, grated on a Microplane or minced
+      recipe: Pressure Cooker Spicy Pork Shoulder
+    - text: 4 garlic cloves, grated on a Microplane
+      recipe: Pressure Cooker Spicy Pork Shoulder
+    - text: 4 garlic cloves, minced
+      recipe: Coconut Chicken Curry
+    - text: 3 garlic cloves, finely chopped
+      recipe: One-Pan Dumplings With Greens
+    - text: 2 1/2 tablespoons minced garlic (divided)
+      recipe: Garlic Butter Baked Salmon
+  - name: onion
     uses:
-    - text: 2 heads cauliflower, stems removed, sliced vertically about ½-inch thick
-      recipe: Roasted Cauliflower With Nước Chấm Sauce
-  - name: Thai green chiles
+    - text: 1 large onion, diced
+      recipe: Lemony White Bean Soup With Turkey and Greens
+  - name: carrot
     uses:
-    - text: 4 to 6 Thai green chiles, thinly sliced (with or without seeds)
-      recipe: Roasted Cauliflower With Nước Chấm Sauce
-  - name: cilantro
+    - text: 1 large carrot, diced
+      recipe: Lemony White Bean Soup With Turkey and Greens
+  - name: soft herbs
     uses:
-    - text: 2 tablespoons chopped cilantro
-      recipe: Roasted Cauliflower With Nước Chấm Sauce
+    - text: 1 cup chopped fresh, soft herbs, such as parsley, mint, dill, basil, tarragon, chives or a combination
+      recipe: Lemony White Bean Soup With Turkey and Greens
+  - name: lemon juice
+    uses:
+    - text: Fresh lemon juice, to taste
+      recipe: Lemony White Bean Soup With Turkey and Greens
+    - text: 1/3 cup lemon juice (freshly squeezed)
+      recipe: Garlic Butter Baked Salmon
+  - name: ginger root
+    uses:
+    - text: 2 tablespoons grated fresh ginger root
+      recipe: Pressure Cooker Spicy Pork Shoulder
+  - name: Persian cucumbers
+    uses:
+    - text: 6 Persian cucumbers, thinly sliced (or about 4 cups sliced cucumbers)
+      recipe: Pressure Cooker Spicy Pork Shoulder
+  - name: cilantro sprigs
+    uses:
+    - text: 1 cup cilantro sprigs, for serving
+      recipe: Coconut Chicken Curry
+  - name: lime or lemon
+    uses:
+    - text: 1 lime or lemon, cut into wedges, for serving
+      recipe: Coconut Chicken Curry
+  - name: kale
+    uses:
+    - text: 1 bunch kale, thick stems cut off, leaves (with ribs) coarsely chopped
+      recipe: One-Pan Dumplings With Greens
+  - name: parsley
+    uses:
+    - text: 2 tablespoons fresh parsley (chopped )
+      recipe: Garlic Butter Baked Salmon
+  - name: asparagus
+    uses:
+    - text: 3 asparagus (bunches, 18 spears, woody ends removed)
+      recipe: Garlic Butter Baked Salmon
+  - name: lemon
+    uses:
+    - text: 1 lemon (sliced to garnish)
+      recipe: Garlic Butter Baked Salmon
   have:
-  - name: Swiss chard
+  - name: firm-ripe avocado
     uses:
-    - text: 1 bunch Swiss chard, kale or collard greens, stems removed, torn into bite-size pieces
-      recipe: Spiced Chickpea Stew With Coconut and Turmeric
+    - text: 1 firm-ripe avocado, halved, pitted and diced
+      recipe: Chopped Salad With Chickpeas, Feta and Avocado
+  - name: broccoli
+    uses:
+    - text: 1 large head of broccoli, chopped into florets (about 4-5 cups broccoli florets)
+      recipe: Crispy Broccoli Sweet and Spicy Sesame Tahini Noodles
+  - name: sturdy greens
+    uses:
+    - text: 1 bunch sturdy greens, such as kale, broccoli rabe, mustard greens or collard greens
+      recipe: Lemony White Bean Soup With Turkey and Greens
   - name: red onion
     uses:
-    - text: 1/4 small red onion, halved and thinly sliced
-      recipe: Roasted Cauliflower With Nước Chấm Sauce
+    - text: ¼ cup thinly sliced red onion
+      recipe: Pressure Cooker Spicy Pork Shoulder
+  - name: yellow onions
+    uses:
+    - text: 2 yellow onions, finely diced
+      recipe: Coconut Chicken Curry
+  - name: fingerling potatoes
+    uses:
+    - text: 1 pound fingerling potatoes (or Yukon golds or halved white/red baby potatoes, halved)
+      recipe: Garlic Butter Baked Salmon
+- name: Other
+  items:
+  - name: romaine heart
+    uses:
+    - text: 1 romaine heart, quartered lengthwise and sliced crosswise into ½-inch pieces
+      recipe: Chopped Salad With Chickpeas, Feta and Avocado
