@@ -61,7 +61,8 @@ layout: default
          data-rating="{{ post.rating | default: 0 }}"
          data-time="{% if _t %}{{ _t | plus: 0 }}{% else %}0{% endif %}"
          data-difficulty="{{ post.difficulty }}"
-         data-kid="{{ _kid }}">
+         data-kid="{{ _kid }}"
+         data-tags="{{ post.tags | join: '|' | downcase | escape }}">
 
         <div class="card-image-box">
           {% if post.image %}
@@ -385,6 +386,7 @@ layout: default
   var searchBar = input.closest('.search-bar');
   var sortSelect = document.getElementById('sort-select');
   var chips = Array.from(document.querySelectorAll('.chip'));
+  var chipRow = document.querySelector('.chip-row');
   var countEl = document.getElementById('result-count');
   var noResults = document.getElementById('no-results');
   var STALE_DAYS = 30;
@@ -396,6 +398,7 @@ layout: default
     card._rating = parseFloat(d.rating) || 0;
     card._time = parseInt(d.time, 10) || 0;
     card._date = parseInt(d.date, 10) || 0;
+    card._tags = d.tags ? d.tags.split('|') : [];
   });
 
   // Humanize "last made" badges
@@ -436,6 +439,33 @@ layout: default
     title:     function (a, b) { return a.dataset.title.localeCompare(b.dataset.title); },
   };
 
+  // Exact tag filter, set by the tag links on recipe pages (?tag=Dinner). Unlike the search box
+  // it matches only recipes carrying that tag, so "Sheet Pan" doesn't also match "Japan".
+  var activeTag = '';
+  var tagChip = null;
+
+  function setTag(label) {
+    activeTag = label || '';
+    if (tagChip) { tagChip.remove(); tagChip = null; }
+    if (activeTag) {
+      tagChip = document.createElement('button');
+      tagChip.type = 'button';
+      tagChip.className = 'chip';
+      tagChip.setAttribute('aria-pressed', 'true');
+      tagChip.setAttribute('aria-label', 'Remove tag filter ' + activeTag);
+      tagChip.textContent = activeTag + ' \u2715';
+      tagChip.addEventListener('click', function () { setTag(''); render(); });
+      chipRow.insertBefore(tagChip, chipRow.firstChild);
+    }
+    // keep the address bar in step so a reload or a shared link matches what's on screen
+    try {
+      var url = new URL(window.location.href);
+      url.searchParams.delete('tag');
+      if (activeTag) url.searchParams.set('tag', activeTag);
+      history.replaceState(null, '', url);
+    } catch (e) { /* not essential */ }
+  }
+
   function activeFilters() {
     return chips.filter(function (c) { return c.getAttribute('aria-pressed') === 'true'; })
                 .map(function (c) { return c.dataset.filter; });
@@ -444,12 +474,14 @@ layout: default
   function render() {
     var terms = input.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
     var filters = activeFilters();
+    var tag = activeTag.toLowerCase();
     var visible = 0;
 
     cards.forEach(function (card) {
       var hay = card.dataset.search;
       var show = terms.every(function (t) { return hay.indexOf(t) !== -1; }) &&
-                 filters.every(function (f) { return FILTERS[f](card); });
+                 filters.every(function (f) { return FILTERS[f](card); }) &&
+                 (!tag || card._tags.indexOf(tag) !== -1);
       card.hidden = !show;
       if (show) visible++;
     });
@@ -457,7 +489,7 @@ layout: default
     var sorted = cards.slice().sort(SORTS[sortSelect.value] || SORTS.date);
     sorted.forEach(function (card) { grid.insertBefore(card, noResults); });
 
-    var filtered = terms.length || filters.length;
+    var filtered = terms.length || filters.length || tag;
     countEl.textContent = filtered
       ? visible + ' of ' + cards.length + ' recipes'
       : cards.length + ' recipes';
@@ -485,6 +517,12 @@ layout: default
   document.getElementById('reset-filters').addEventListener('click', function () {
     input.value = '';
     chips.forEach(function (c) { c.setAttribute('aria-pressed', 'false'); });
+    setTag('');
+    try { // also drop a stale ?q= so a reload doesn't bring the search back
+      var url = new URL(window.location.href);
+      url.searchParams.delete('q');
+      history.replaceState(null, '', url);
+    } catch (e) { /* not essential */ }
     render();
   });
 
@@ -507,10 +545,12 @@ layout: default
     window.location.href = pick.href;
   });
 
-  // Support ?q= / ?tag= links
+  // Support ?q= (text search) and ?tag= (exact tag) links
   var params = new URLSearchParams(window.location.search);
-  var q = params.get('q') || params.get('tag');
+  var q = params.get('q');
   if (q) input.value = q;
+  var tagParam = params.get('tag');
+  if (tagParam) setTag(tagParam);
 
   render();
 })();

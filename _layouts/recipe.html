@@ -78,7 +78,7 @@ layout: default
       {% if page.tags and page.tags.size > 0 %}
       <div class="recipe-tags">
         {% for tag in page.tags %}
-          <a class="recipe-tag" href="{{ '/' | relative_url }}?q={{ tag | url_encode }}">{{ tag }}</a>
+          <a class="recipe-tag" href="{{ '/recipes/' | relative_url }}?tag={{ tag | url_encode }}">{{ tag }}</a>
         {% endfor %}
       </div>
       {% endif %}
