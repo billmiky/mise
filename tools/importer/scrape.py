@@ -20,6 +20,7 @@ import argparse
 import json
 import re
 import sys
+import unicodedata
 from datetime import date
 from pathlib import Path
 from urllib.parse import urlparse, urljoin
@@ -57,7 +58,8 @@ class ImportError_(Exception):
 # ---------------------------------------------------------------------------
 
 def slugify(text: str) -> str:
-    text = text.lower()
+    # ASCII only: Jekyll fails to build pages whose filenames have accents (bánh mì → banh-mi)
+    text = unicodedata.normalize("NFKD", text).encode("ascii", "ignore").decode().lower()
     text = re.sub(r"[^\w\s-]", "", text)
     text = re.sub(r"[-\s]+", "-", text).strip("-")
     return text
@@ -334,6 +336,8 @@ def sniff_extension(content: bytes) -> str:
         return ".webp"
     if content[:4] == b"GIF8":
         return ".gif"
+    if content[4:12] in (b"ftypavif", b"ftypavis"):
+        return ".avif"
     return ""
 
 
