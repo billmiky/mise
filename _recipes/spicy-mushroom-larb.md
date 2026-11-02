@@ -3,8 +3,8 @@ layout: recipe
 title: Spicy Mushroom Larb
 image: spicy-mushroom-larb.webp
 tags:
-- "Thai"
-- "Side"
+- Side
+- Thai
 ingredients:
 - ¼ cup roasted, skinless peanuts
 - 4 Tbsp. vegetable oil, divided

@@ -2,7 +2,14 @@
 layout: recipe
 title: Vietnamese Vermicelli Noodle Salad with Tofu
 image: vietnamese-vermicelli-noodle-salad-with-tofu.jpg
-tags: []
+tags:
+- Dinner
+- Salad
+- Vietnamese
+- Tofu
+- Noodles
+- Vegetarian
+- Vegan
 ingredients:
 - 3 tbsp rice vinegar
 - 1/4 cup lime juice

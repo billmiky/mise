@@ -3,10 +3,14 @@ layout: recipe
 title: BBQ Sweet Potato Chickpea Tacos
 image: bbq-sweet-potato-chickpea-tacos.jpg
 tags:
-- "Mexican"
-- "Dinner"
-- "Side"
-- "Lunch"
+- Lunch
+- Dinner
+- Side
+- Mexican
+- Beans
+- Vegetarian
+- Vegan
+- Gluten-Free
 ingredients:
 - 1 medium sweet potato, cut into 1/2-inch cubes (1 medium sweet potato is ~400 g or 3/4 lb)
 - 1 (15-oz. / 425 g) can chickpeas, drained and rinsed (or sub ~1 ¾ cups homemade)

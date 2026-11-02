@@ -3,9 +3,11 @@ layout: recipe
 title: Roasted Butternut Squash and Leeks with Orange Tahini Sauce, Walnuts, and Za'atar
 image: roasted-butternut-squash-and-leeks-with-orange-tahini-sauce-walnuts-and-zaatar.jpg
 tags:
-- "Italian"
-- "Dinner"
-- "Side"
+- Dinner
+- Side
+- Italian
+- Vegetarian
+- Vegan
 ingredients:
 - 1 (2 lb) butternut squash (peeled, seeded, and cut into wedges)
 - 5 tablespoons extra virgin olive oil (divided)

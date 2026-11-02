@@ -2,7 +2,10 @@
 layout: recipe
 title: Make-Ahead Lentil Salad
 image: make-ahead-lentil-salad.webp
-tags: []
+tags:
+- Salad
+- Lentils
+- Vegetarian
 ingredients:
 - 1 large bunch Tuscan kale (about 10 oz.)
 - Kosher salt

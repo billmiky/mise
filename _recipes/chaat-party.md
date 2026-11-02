@@ -3,9 +3,11 @@ layout: recipe
 title: Chaat Party
 image: chaat-party.webp
 tags:
-- "Indian"
-- "Snack"
-- "Side"
+- Side
+- Snack
+- Indian
+- Beans
+- Vegetarian
 ingredients:
 - Chakri (chickpea flour crackers)
 - Chekkalu (rice flour crackers)

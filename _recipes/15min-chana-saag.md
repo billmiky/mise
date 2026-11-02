@@ -3,7 +3,16 @@ date_added: 2026-02-01
 layout: recipe
 title: "15 Minute Chana Saag"
 image: 15min-chana-saag.png
-tags: [Vegan, Indian, Curry, 15 Minutes, Gluten-Free]
+tags:
+- Dinner
+- Indian
+- Tofu
+- Beans
+- Vegetarian
+- Vegan
+- Gluten-Free
+- Curry
+- 15 Minutes
 ingredients:
 - 180g baby spinach
 - 1 handful fresh coriander (cilantro)

@@ -3,8 +3,10 @@ layout: recipe
 title: Pork Meatball Rice Bowls
 image: pork-meatball-rice-bowls.webp
 tags:
-- "Vietnamese"
-- "Dinner"
+- Dinner
+- Vietnamese
+- Pork
+- Rice
 ingredients:
 - 2 cups basmati rice (NOT parboiled, converted, or quick-cooking)
 - Kosher salt

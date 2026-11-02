@@ -3,10 +3,13 @@ layout: recipe
 title: Easy Quinoa Sushi Rolls with Miso-Sesame Dipping Sauce
 image: easy-quinoa-sushi-rolls-with-miso-sesame-dipping-sauce.jpg
 tags:
-- "Japanese"
-- "Side"
-- "Lunch"
-- "Dinner"
+- Lunch
+- Dinner
+- Side
+- Japanese
+- Rice
+- Grains
+- Vegetarian
 ingredients:
 - 1 cup quinoa (uncooked, rinsed well)
 - 1 1/2 cups water

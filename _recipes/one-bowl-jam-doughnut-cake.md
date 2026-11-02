@@ -3,7 +3,9 @@ layout: recipe
 title: One-Bowl Jam Doughnut Cake
 image: one-bowl-jam-doughnut-cake.webp
 tags:
-- "Dessert"
+- Dessert
+- Vegetarian
+- Baking
 ingredients:
 - ¼ cup/57 grams unsalted butter, melted
 - ½ cup/100 grams sugar

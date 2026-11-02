@@ -2,7 +2,12 @@
 layout: recipe
 title: Gochujang Shrimp Pasta
 image: gochujang-shrimp-pasta.webp
-tags: []
+tags:
+- Dinner
+- Korean
+- Shrimp
+- Seafood
+- Pasta
 ingredients:
 - Salt and pepper
 - 1 pound large peeled and deveined shrimp, cut crosswise into plump, bite-size pieces

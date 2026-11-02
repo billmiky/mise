@@ -3,7 +3,12 @@ layout: recipe
 title: Ultimate Hummus
 image: ultimate-hummus.webp
 tags:
-- "Side"
+- Side
+- Sauce
+- Middle Eastern
+- Beans
+- Vegetarian
+- Vegan
 ingredients:
 - 1/2 cup dried chickpeas
 - 2 quarts water

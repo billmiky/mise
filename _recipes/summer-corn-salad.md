@@ -3,7 +3,9 @@ layout: recipe
 title: Summer Corn Salad
 image: summer-corn-salad.webp
 tags:
-- "Salad"
+- Salad
+- Italian
+- Vegetarian
 ingredients:
 - ½ cup nuts (such as peanuts, hazelnuts, or pistachios)
 - 6 ears of corn, in husk

@@ -3,9 +3,13 @@ layout: recipe
 title: Corn and Cod Green Curry
 image: corn-and-cod-green-curry.webp
 tags:
-- "Thai"
-- "Soup"
-- "Dinner"
+- Lunch
+- Dinner
+- Soup
+- Thai
+- Fish
+- Seafood
+- Curry
 ingredients:
 - 5 ears of corn (or 5 cups frozen corn kernels)
 - 1 (2-inch) piece of ginger (no need to peel)

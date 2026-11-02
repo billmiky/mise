@@ -3,7 +3,10 @@ layout: recipe
 title: Broccoli Parmesan Casserole
 image: broccoli-parmesan-casserole.jpg
 tags:
-- "Dinner"
+- Dinner
+- Side
+- Italian
+- Vegetarian
 ingredients:
 - 4 bunches broccoli, cut into florets
 - 6 tablespoons butter, divided

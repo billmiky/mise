@@ -3,8 +3,11 @@ layout: recipe
 title: 3-Ingredient Sour Patch Kids
 image: 3-ingredient-sour-patch-kids.jpg
 tags:
-- "Snack"
-- "Dessert"
+- Snack
+- Dessert
+- American
+- Vegetarian
+- Vegan
 ingredients:
 - 6 pieces organic citrus fruit (I used 2 grapefruit, 2 lemons, and 2 oranges or tangerines)
 - 3 cups sugar (divided (organic cane sugar if possible))

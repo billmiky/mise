@@ -2,7 +2,11 @@
 layout: recipe
 title: Kimchi Udon With Scallions
 image: kimchi-udon-with-scallions.webp
-tags: []
+tags:
+- Dinner
+- Japanese
+- Korean
+- Noodles
 ingredients:
 - 5 Tbsp. unsalted butter, divided
 - 1 cup finely chopped kimchi, plus ⅓ cup kimchi juice

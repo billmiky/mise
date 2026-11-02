@@ -4,8 +4,10 @@ layout: recipe
 title: "One-pan Spicy Carrot, Potato and Parsnip Filo Traybake"
 image: one-pan-spicy-carrot-potato-and-parsnip-filo-traybake.webp
 tags:
-- mains
-- vegetarian
+- Dinner
+- Beans
+- Vegetarian
+- One-Pot
 ingredients:
 - 1 tbsp olive oil
 - 1 onion, diced

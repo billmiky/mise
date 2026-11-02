@@ -3,9 +3,11 @@ layout: recipe
 title: Indonesian Chicken Soup With Noodles, Turmeric and Ginger (Soto Ayam)
 image: indonesian-chicken-soup-with-noodles-turmeric-and-ginger-soto-ayam.webp
 tags:
-- "Indonesian"
-- "Dinner"
-- "Soup"
+- Dinner
+- Soup
+- Indonesian
+- Chicken
+- Noodles
 ingredients:
 - 1 free-range chicken, about 3 pounds, quartered
 - 2 stalks fresh lemongrass, bruised with the handle of a heavy knife and tied in a knot

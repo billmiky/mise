@@ -2,7 +2,12 @@
 layout: recipe
 title: Green Falafel Smash Burgers
 image: green-falafel-smash-burgers.jpg
-tags: []
+tags:
+- Dinner
+- Middle Eastern
+- Beans
+- Vegetarian
+- Sandwich
 ingredients:
 - 1 medium red onion, ½ thinly sliced, ½ coarsely chopped
 - 3 Tbsp. white wine vinegar

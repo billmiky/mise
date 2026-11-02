@@ -3,7 +3,14 @@ date_added: 2026-02-01
 layout: recipe
 title: "5 Minute Asian Sesame Dressing"
 image: asian-salad-dressing.jpg
-tags: side-dish chinese dairy-free gluten-free nut-free vegan
+tags:
+- Side
+- Sauce
+- Chinese
+- Vegan
+- Gluten-Free
+- Dairy-Free
+- Nut-Free
 prep_time: 5 minutes
 cook_time: 0 minutes
 yields: 8 servings

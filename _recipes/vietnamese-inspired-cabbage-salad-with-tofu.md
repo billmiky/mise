@@ -2,7 +2,12 @@
 layout: recipe
 title: Vietnamese-Inspired Cabbage Salad With Tofu
 image: vietnamese-inspired-cabbage-salad-with-tofu.webp
-tags: []
+tags:
+- Lunch
+- Dinner
+- Salad
+- Vietnamese
+- Tofu
 ingredients:
 - 3 ½ tablespoons soy sauce
 - 2 teaspoons light brown sugar

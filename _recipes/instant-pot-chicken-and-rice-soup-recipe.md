@@ -3,7 +3,13 @@ layout: recipe
 title: Instant Pot Chicken and Rice Soup
 image: instant-pot-chicken-and-rice-soup-recipe.jpg
 tags:
-- "Dinner"
+- Lunch
+- Dinner
+- Soup
+- American
+- Chicken
+- Rice
+- Instant Pot
 ingredients:
 - 1 1/2 tablespoons olive oil
 - 1 pound boneless chicken breasts (2 large or 3 small)

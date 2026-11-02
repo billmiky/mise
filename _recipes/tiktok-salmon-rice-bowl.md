@@ -3,8 +3,11 @@ layout: recipe
 title: Tiktok Salmon Rice Bowl
 image: tiktok-salmon-rice-bowl.jpg
 tags:
-- "Japanese"
-- "Dinner"
+- Dinner
+- Japanese
+- Fish
+- Seafood
+- Rice
 ingredients:
 - 1/2 filet salmon (cooked, about 2 ounces)
 - 1 cup cooked rice

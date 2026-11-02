@@ -3,7 +3,9 @@ layout: recipe
 title: Lemon-Turmeric Crinkle Cookies
 image: lemon-turmeric-crinkle-cookies.webp
 tags:
-- "Dessert"
+- Dessert
+- Vegetarian
+- Baking
 ingredients:
 - 3 tablespoons olive oil
 - ½ teaspoon ground turmeric

@@ -2,7 +2,11 @@
 layout: recipe
 title: Crispy Garlic-Miso Glazed Salmon
 image: crispy-garlic-miso-glazed-salmon.webp
-tags: []
+tags:
+- Dinner
+- Japanese
+- Fish
+- Seafood
 ingredients:
 - 1 lbs (454 g) salmon fillet, skinless
 - 3 cloves garlic, pressed

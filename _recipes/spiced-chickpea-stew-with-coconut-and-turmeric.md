@@ -3,8 +3,12 @@ layout: recipe
 title: Spiced Chickpea Stew With Coconut and Turmeric
 image: spiced-chickpea-stew-with-coconut-and-turmeric.jpg
 tags:
-- soup
-- stew
+- Lunch
+- Dinner
+- Soup
+- Mediterranean
+- Beans
+- Stew
 ingredients:
 - 1/4 cup olive oil, plus more for serving
 - 4 garlic cloves, chopped

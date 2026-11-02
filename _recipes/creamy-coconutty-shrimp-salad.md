@@ -3,10 +3,12 @@ layout: recipe
 title: Creamy Coconutty Shrimp Salad
 image: creamy-coconutty-shrimp-salad.webp
 tags:
-- "Thai"
-- "Salad"
-- "Dinner"
-- "Side"
+- Dinner
+- Side
+- Salad
+- Thai
+- Shrimp
+- Seafood
 ingredients:
 - 1 large lime
 - 2 garlic cloves, smashed

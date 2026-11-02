@@ -2,7 +2,10 @@
 layout: recipe
 title: Homemade Cabbage Kimchi
 image: homemade-cabbage-kimchi.jpg
-tags: []
+tags:
+- Side
+- Asian
+- Korean
 ingredients:
 - 1 medium head napa cabbage (about 2 pounds)
 - 1/4 cup iodine-free sea salt or kosher salt (see Recipe Notes)

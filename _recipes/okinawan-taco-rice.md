@@ -3,8 +3,10 @@ layout: recipe
 title: Okinawan Taco Rice
 image: okinawan-taco-rice.jpg
 tags:
-- "Japanese"
-- "Dinner"
+- Dinner
+- Japanese
+- Beef
+- Rice
 ingredients:
 - 2 cups sushi rice
 - 3½ cups water, divided

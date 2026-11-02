@@ -3,8 +3,10 @@ layout: recipe
 title: Bisquick Blueberry Muffins
 image: bisquick-blueberry-muffins.jpg
 tags:
-- "Breakfast"
-- "Dessert"
+- Breakfast
+- Dessert
+- Vegetarian
+- Baking
 ingredients:
 - 2 cups Original Bisquick mix
 - 2/3 cup milk

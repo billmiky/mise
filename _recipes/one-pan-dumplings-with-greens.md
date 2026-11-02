@@ -3,7 +3,12 @@ date_added: 2026-05-06
 layout: recipe
 title: One-Pan Dumplings With Greens
 image: one-pan-dumplings-with-greens.jpg
-tags: []
+tags:
+- Dinner
+- Chinese
+- Vegetarian
+- Vegan
+- One-Pot
 ingredients:
 - 2 tablespoons avocado or other neutral oil
 - 1 pound frozen, unthawed dumplings, any flavor

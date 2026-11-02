@@ -2,7 +2,12 @@
 layout: recipe
 title: Korean Chicken Tacos
 image: korean-chicken-tacos.png
-tags: []
+tags:
+- Lunch
+- Dinner
+- American
+- Korean
+- Chicken
 ingredients:
 - ¼ cup Korean red pepper paste (gochujang, available in Korean markets)
 - ¼ cup white vinegar

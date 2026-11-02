@@ -4,7 +4,8 @@ layout: recipe
 title: Hot Honey Chicken
 image: hot-honey-chicken.jpg
 tags:
-- chicken
+- Dinner
+- Chicken
 ingredients:
 - 1/2 cup honey
 - 1 tablespoon red-pepper flakes

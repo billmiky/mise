@@ -3,8 +3,11 @@ layout: recipe
 title: 10 Minute Spicy Gochujang Noodles
 image: 10-minute-spicy-gochujang-noodles.jpg
 tags:
-- "Korean"
-- "Dinner"
+- Dinner
+- Korean
+- Noodles
+- Vegetarian
+- Vegan
 ingredients:
 - 8 oz wide lo mein noodles (boiled as per package instructions)
 - 1 tbsp sesame oil

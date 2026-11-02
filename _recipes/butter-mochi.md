@@ -3,7 +3,9 @@ layout: recipe
 title: Butter Mochi
 image: butter-mochi.jpg
 tags:
-- baking
+- Dessert
+- Vegetarian
+- Baking
 ingredients:
 - 6 tablespoons/84 grams unsalted butter, melted and cooled, plus more for greasing the pan
 - 3 cups/453 grams mochiko (sweet rice flour), like Blue Star brand

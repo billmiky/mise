@@ -3,8 +3,10 @@ layout: recipe
 title: Japanese Carrot Ginger Dressing
 image: japanese-carrot-ginger-dressing.webp
 tags:
-- "Japanese"
-- "Sauce"
+- Sauce
+- Japanese
+- Vegetarian
+- Vegan
 ingredients:
 - 7 ounces carrots, peeled and chopped
 - 4 ounces onion, peeled and finely chopped

@@ -3,10 +3,12 @@ layout: recipe
 title: Pressure Cooker Bo Ssam
 image: pressure-cooker-bo-ssam.webp
 tags:
-- "Korean"
-- "Dinner"
-- "Side"
-- "Snack"
+- Dinner
+- Side
+- Snack
+- Korean
+- Pork
+- Instant Pot
 ingredients:
 - 2 tablespoons doenjang (Korean fermented soybean paste)
 - 1 head garlic, halved crosswise

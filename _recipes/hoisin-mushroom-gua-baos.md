@@ -3,8 +3,14 @@ layout: recipe
 title: Hoisin Mushroom Gua Baos
 image: hoisin-mushroom-gua-baos.webp
 tags:
-- "Side"
-- "Snack"
+- Dinner
+- Side
+- Snack
+- Asian
+- Chinese
+- Seafood
+- Tofu
+- Sandwich
 ingredients:
 - 2 cups + 1 tbsp all-purpose flour (275 g)
 - 1 tbsp corn starch

@@ -3,7 +3,10 @@ layout: recipe
 title: Crispy Rice Salad With Spicy Tahini Dressing
 image: crispy-rice-salad-with-spicy-tahini-dressing.webp
 tags:
-- "Salad"
+- Salad
+- Beans
+- Rice
+- Vegetarian
 ingredients:
 - ¼ cup tahini (such as Seed and Mill)
 - 2 Tbsp. fresh lime juice

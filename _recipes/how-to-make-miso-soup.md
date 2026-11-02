@@ -3,8 +3,11 @@ layout: recipe
 title: How To Make Miso Soup
 image: how-to-make-miso-soup.jpg
 tags:
-- "Japanese"
-- "Soup"
+- Lunch
+- Dinner
+- Soup
+- Japanese
+- Tofu
 ingredients:
 - 4 cups water
 - 1 tsp hondashi powder

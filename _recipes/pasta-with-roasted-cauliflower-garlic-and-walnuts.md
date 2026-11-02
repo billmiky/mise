@@ -3,8 +3,10 @@ layout: recipe
 title: Pasta with Roasted Cauliflower, Garlic, and Walnuts
 image: pasta-with-roasted-cauliflower-garlic-and-walnuts.webp
 tags:
-- "Italian"
-- "Dinner"
+- Dinner
+- Italian
+- Pasta
+- Vegetarian
 ingredients:
 - 2 heads garlic, papery skins removed, top quarter of heads cut off and discarded
 - 6 tablespoons plus 1 teaspoon extra-virgin olive oil

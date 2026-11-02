@@ -3,7 +3,11 @@ layout: recipe
 title: Farro Salad with Leeks, Chickpeas and Currants
 image: farro-salad-with-leeks-chickpeas-and-currants.webp
 tags:
-- "Salad"
+- Salad
+- Beans
+- Grains
+- Vegetarian
+- Vegan
 ingredients:
 - 4 large leeks, halved lengthwise, cleaned and sliced crosswise ¼-inch thick
 - ⅔ cup plus ¼ cup extra-virgin olive oil

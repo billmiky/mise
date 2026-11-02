@@ -3,8 +3,10 @@ layout: recipe
 title: Ridiculously Good Chicken Tacos with Green Sauce
 image: ridiculously-good-chicken-tacos-with-green-sauce.webp
 tags:
-- "Mexican"
-- "Dinner"
+- Dinner
+- Mexican
+- Chicken
+- Air Fryer
 ingredients:
 - 1 lb. boneless skinless chicken thighs
 - 1/2 tablespoon soy sauce

@@ -3,10 +3,14 @@ layout: recipe
 title: Crispy Rice With Salmon and Avocado
 image: crispy-rice-with-salmon-and-avocado.webp
 tags:
-- "Japanese"
-- "Dinner"
-- "Side"
-- "Snack"
+- Lunch
+- Dinner
+- Side
+- Snack
+- Japanese
+- Fish
+- Seafood
+- Rice
 ingredients:
 - 1 ½ cups sushi rice, rinsed well
 - 1 tablespoon unseasoned rice vinegar

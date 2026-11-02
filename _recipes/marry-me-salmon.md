@@ -3,8 +3,10 @@ layout: recipe
 title: Marry Me Salmon
 image: marry-me-salmon.webp
 tags:
-- "American"
-- "Dinner"
+- Dinner
+- American
+- Fish
+- Seafood
 ingredients:
 - 2 salmon fillets, preferably skin-on (10 ounces total)
 - Kosher salt and black pepper

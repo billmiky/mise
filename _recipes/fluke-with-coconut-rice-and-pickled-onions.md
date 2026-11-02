@@ -3,8 +3,11 @@ layout: recipe
 title: Fluke with Coconut Rice and Pickled Onions
 image: fluke-with-coconut-rice-and-pickled-onions.webp
 tags:
-- "Hawaiian"
-- "Dinner"
+- Dinner
+- Hawaiian
+- Fish
+- Seafood
+- Rice
 ingredients:
 - 1 medium red onion, thinly sliced
 - 1 cup unseasoned rice vinegar

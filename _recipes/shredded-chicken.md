@@ -2,7 +2,10 @@
 layout: recipe
 title: Shredded Chicken
 image: shredded-chicken.webp
-tags: []
+tags:
+- Dinner
+- American
+- Chicken
 ingredients:
 - 4 boneless skinless chicken breasts (or thighs)
 - 2 tbsp olive oil

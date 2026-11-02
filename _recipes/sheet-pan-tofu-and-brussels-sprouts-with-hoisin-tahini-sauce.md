@@ -3,9 +3,13 @@ layout: recipe
 title: Sheet-Pan Tofu and Brussels Sprouts With Hoisin-Tahini Sauce
 image: sheet-pan-tofu-and-brussels-sprouts-with-hoisin-tahini-sauce.webp
 tags:
-- "Chinese"
-- "Dinner"
-- "Side"
+- Dinner
+- Side
+- Chinese
+- Tofu
+- Vegetarian
+- Vegan
+- Sheet Pan
 ingredients:
 - 2 pounds brussels sprouts, trimmed and halved
 - Extra virgin olive oil

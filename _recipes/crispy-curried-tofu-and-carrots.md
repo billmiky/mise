@@ -3,7 +3,12 @@ date_added: 2026-05-07
 layout: recipe
 title: Crispy Curried Tofu and Carrots
 image: crispy-curried-tofu-and-carrots.jpg
-tags: []
+tags:
+- Dinner
+- Indian
+- Tofu
+- Vegetarian
+- Vegan
 ingredients:
 - 1 (14-ounce) block extra-firm tofu, drained
 - 1 to 1¼ pounds carrots, scrubbed but not peeled

@@ -2,7 +2,10 @@
 layout: recipe
 title: Dakgalbi
 image: dakgalbi.webp
-tags: []
+tags:
+- Dinner
+- Korean
+- Chicken
 ingredients:
 - ¼ medium white onion
 - 1 1" piece ginger

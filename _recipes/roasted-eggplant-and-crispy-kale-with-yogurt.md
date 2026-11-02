@@ -3,10 +3,11 @@ layout: recipe
 title: Roasted Eggplant and Crispy Kale With Yogurt
 image: roasted-eggplant-and-crispy-kale-with-yogurt.webp
 tags:
-- "Italian"
-- "Indian"
-- "Dinner"
-- "Side"
+- Dinner
+- Side
+- Indian
+- Italian
+- Vegetarian
 ingredients:
 - 2 medium Italian eggplants (about 1½ pounds total), quartered lengthwise, cut crosswise into 1-inch pieces
 - ¼ cup vegetable oil

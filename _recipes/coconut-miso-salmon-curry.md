@@ -3,8 +3,11 @@ layout: recipe
 title: Coconut-Miso Salmon Curry
 image: coconut-miso-salmon-curry.webp
 tags:
-- "Japanese"
-- "Dinner"
+- Dinner
+- Japanese
+- Fish
+- Seafood
+- Curry
 ingredients:
 - 2 tablespoons safflower or canola oil
 - 1 medium red onion, halved and sliced ½-inch thick (about 2 cups)

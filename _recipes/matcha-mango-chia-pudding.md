@@ -3,7 +3,10 @@ layout: recipe
 title: Matcha-Mango Chia Pudding
 image: matcha-mango-chia-pudding.webp
 tags:
-- "Breakfast"
+- Breakfast
+- Dessert
+- Japanese
+- Vegetarian
 ingredients:
 - 3½ cups unsweetened, nut or alternative milk (such as almond or coconut)
 - ¾ cup chia seeds

@@ -3,8 +3,11 @@ layout: recipe
 title: Mango Slaw
 image: mango-slaw.webp
 tags:
-- "Salad"
-- "Side"
+- Lunch
+- Dinner
+- Side
+- Salad
+- Vegetarian
 ingredients:
 - 1 (8-ounce) bag coleslaw (about 3 cups)
 - 2 large, slightly firm mangoes (about 1 ¾ pounds), peeled, pitted and thinly sliced (about 2 cups)

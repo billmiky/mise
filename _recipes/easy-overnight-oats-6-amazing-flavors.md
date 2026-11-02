@@ -3,7 +3,9 @@ layout: recipe
 title: Easy Overnight Oats (6 Amazing Flavors)
 image: easy-overnight-oats-6-amazing-flavors.webp
 tags:
-- "Breakfast"
+- Breakfast
+- American
+- Vegetarian
 ingredients:
 - ½ cup rolled oats
 - ½ cup milk (dairy or dairy-free)

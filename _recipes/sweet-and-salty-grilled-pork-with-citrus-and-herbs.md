@@ -2,7 +2,11 @@
 layout: recipe
 title: Sweet and Salty Grilled Pork With Citrus and Herbs
 image: sweet-and-salty-grilled-pork-with-citrus-and-herbs.jpg
-tags: []
+tags:
+- Dinner
+- Pork
+- Noodles
+- Grill
 ingredients:
 - 1 ½ pounds boneless pork shoulder
 - Kosher salt and black pepper

@@ -2,7 +2,14 @@
 layout: recipe
 title: Coconut Curry Chickpeas With Pumpkin and Lime
 image: coconut-curry-chickpeas-with-pumpkin-and-lime.webp
-tags: []
+tags:
+- Dinner
+- Indian
+- Beans
+- Grains
+- Vegetarian
+- Vegan
+- Curry
 ingredients:
 - 3 tablespoons neutral oil, such as sunflower or canola
 - 1 large onion, chopped

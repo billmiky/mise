@@ -3,7 +3,9 @@ layout: recipe
 title: Jalapeño-Goat-Cheese Hush Puppies
 image: jalapeño-goat-cheese-hush-puppies.jpg
 tags:
-- southern
+- Southern
+- Vegetarian
+- Baking
 ingredients:
 - 1 cup yellow cornmeal
 - 1 1/2 tablespoons all purpose flour

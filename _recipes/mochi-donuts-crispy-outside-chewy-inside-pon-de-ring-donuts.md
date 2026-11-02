@@ -3,9 +3,12 @@ layout: recipe
 title: Mochi Donuts (Crispy Outside, Chewy Inside Pon de Ring Donuts)
 image: mochi-donuts-crispy-outside-chewy-inside-pon-de-ring-donuts.jpg
 tags:
-- "Japanese"
-- "Hawaiian"
-- "Dessert"
+- Snack
+- Dessert
+- Hawaiian
+- Japanese
+- Vegetarian
+- Baking
 ingredients:
 - 150 g mochiko flour
 - 115 g tapioca starch

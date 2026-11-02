@@ -3,9 +3,12 @@ layout: recipe
 title: Lemon-Tahini Slaw
 image: lemon-tahini-slaw.webp
 tags:
-- "Salad"
-- "Side"
-- "Lunch"
+- Lunch
+- Dinner
+- Side
+- Salad
+- Vegetarian
+- Vegan
 ingredients:
 - 2 tablespoons capers
 - 1 tablespoon fresh lemon zest plus 5 tablespoons lemon juice (from 2 to 3 lemons)

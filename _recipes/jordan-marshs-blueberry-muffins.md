@@ -3,7 +3,11 @@ layout: recipe
 title: Jordan Marsh’s Blueberry Muffins
 image: jordan-marshs-blueberry-muffins.webp
 tags:
-- "Dessert"
+- Breakfast
+- Snack
+- Dessert
+- Vegetarian
+- Baking
 ingredients:
 - ½ cup softened butter
 - 1 ¼ cups sugar

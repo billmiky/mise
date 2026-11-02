@@ -3,8 +3,11 @@ layout: recipe
 title: Silken Tofu With Crunchy Lettuce and Fried Shallots
 image: silken-tofu-with-crunchy-lettuce-and-fried-shallots.webp
 tags:
-- "Vietnamese"
-- "Salad"
+- Lunch
+- Dinner
+- Salad
+- Vietnamese
+- Tofu
 ingredients:
 - 1 large shallot, halved and thinly sliced
 - 1 jalapeño or other fresh hot chile, thinly sliced

@@ -3,8 +3,11 @@ layout: recipe
 title: Lemony Cranberry Relish
 image: lemony-cranberry-relish.webp
 tags:
-- "American"
-- "Side"
+- Side
+- Sauce
+- American
+- Vegetarian
+- Vegan
 ingredients:
 - 1 (12-ounce) bag fresh cranberries (3 cups)
 - 1 lemon, preferably thin-skinned, coarsely chopped and seeded

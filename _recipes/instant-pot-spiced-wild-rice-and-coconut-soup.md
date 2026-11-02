@@ -3,8 +3,11 @@ layout: recipe
 title: Instant Pot Spiced Wild Rice and Coconut Soup
 image: instant-pot-spiced-wild-rice-and-coconut-soup.webp
 tags:
-- "Indian"
-- "Dinner"
+- Dinner
+- Soup
+- Indian
+- Rice
+- Instant Pot
 ingredients:
 - 2 tablespoons canola oil
 - 2 onions, chopped fine

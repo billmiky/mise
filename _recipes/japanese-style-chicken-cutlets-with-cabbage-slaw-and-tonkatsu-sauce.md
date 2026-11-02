@@ -3,9 +3,10 @@ layout: recipe
 title: Japanese-Style Chicken Cutlets with Cabbage Slaw and Tonkatsu Sauce
 image: japanese-style-chicken-cutlets-with-cabbage-slaw-and-tonkatsu-sauce.jpg
 tags:
-- "Japanese"
-- "Dinner"
-- "Side"
+- Dinner
+- Side
+- Japanese
+- Chicken
 ingredients:
 - 3 tablespoons unseasoned rice vinegar
 - 1/2 teaspoon oyster sauce

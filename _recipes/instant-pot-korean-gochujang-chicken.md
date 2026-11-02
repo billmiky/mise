@@ -2,7 +2,11 @@
 layout: recipe
 title: Instant Pot Korean Gochujang Chicken
 image: instant-pot-korean-gochujang-chicken.jpg
-tags: []
+tags:
+- Dinner
+- Korean
+- Chicken
+- Instant Pot
 ingredients:
 - 3 pounds boneless, skinless, chicken breasts thawed
 - 3/4 cup light soy sauce, low sodium

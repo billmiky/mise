@@ -3,7 +3,13 @@ date_added: 2026-05-06
 layout: recipe
 title: Cold Sesame Noodles With Cucumber, Corn and Basil
 image: cold-sesame-noodles-with-cucumber-corn-and-basil.jpg
-tags: []
+tags:
+- Lunch
+- Dinner
+- Noodles
+- Rice
+- Vegetarian
+- Vegan
 ingredients:
 - Salt
 - 10 ounces dried thick rice or wheat noodles

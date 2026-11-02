@@ -3,8 +3,11 @@ layout: recipe
 title: Blueberry Biscuits
 image: blueberry-biscuits.webp
 tags:
-- "Southern"
-- "Breakfast"
+- Breakfast
+- Dessert
+- Southern
+- Vegetarian
+- Baking
 ingredients:
 - 11 tablespoons unsalted butter (1 tablespoon, melted; 10 tablespoons [143 grams], cut into ½-inch pieces and chilled)
 - 3 cups (15 ounces/425 grams) all-purpose flour

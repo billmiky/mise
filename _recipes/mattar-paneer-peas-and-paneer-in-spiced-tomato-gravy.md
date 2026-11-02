@@ -3,9 +3,11 @@ layout: recipe
 title: Mattar Paneer (Peas and Paneer in Spiced Tomato Gravy)
 image: mattar-paneer-peas-and-paneer-in-spiced-tomato-gravy.webp
 tags:
-- "Indian"
-- "Dinner"
-- "Side"
+- Dinner
+- Side
+- Indian
+- Tofu
+- Vegetarian
 ingredients:
 - ¼ cup ghee or neutral oil
 - ½ pound paneer or extra-firm tofu, cut into 1-inch cubes and patted very dry

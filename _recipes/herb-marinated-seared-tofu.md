@@ -3,7 +3,12 @@ layout: recipe
 title: Herb-Marinated Seared Tofu
 image: herb-marinated-seared-tofu.webp
 tags:
-- "Side"
+- Lunch
+- Dinner
+- Side
+- Tofu
+- Vegetarian
+- Vegan
 ingredients:
 - 3 tablespoons finely chopped shallot (from 1 small shallot)
 - 2 tablespoons fresh lemon or lime juice or red or white wine vinegar, plus more as needed

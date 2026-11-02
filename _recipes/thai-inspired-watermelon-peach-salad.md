@@ -2,7 +2,11 @@
 layout: recipe
 title: Thai-Inspired Watermelon & Peach Salad
 image: thai-inspired-watermelon-peach-salad.webp
-tags: []
+tags:
+- Side
+- Salad
+- Thai
+- Gluten-Free
 ingredients:
 - 1/4 c. fresh lime juice
 - 1 tbsp. sambal oelek

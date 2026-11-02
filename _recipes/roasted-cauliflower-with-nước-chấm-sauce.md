@@ -2,7 +2,11 @@
 layout: recipe
 title: Roasted Cauliflower With Nước Chấm Sauce
 image: roasted-cauliflower-with-nước-chấm-sauce.jpg
-tags: []
+tags:
+- Lunch
+- Dinner
+- Side
+- Vietnamese
 ingredients:
 - 2 heads cauliflower, stems removed, sliced vertically about ½-inch thick
 - 4 tablespoons neutral oil (such as vegetable, canola or peanut)

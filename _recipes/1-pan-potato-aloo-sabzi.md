@@ -3,8 +3,11 @@ layout: recipe
 title: 1-Pan Potato (Aloo) Sabzi
 image: 1-pan-potato-aloo-sabzi.jpg
 tags:
-- "Indian"
-- "Side"
+- Side
+- Indian
+- Vegetarian
+- Vegan
+- Gluten-Free
 ingredients:
 - 1 Tbsp avocado oil or coconut oil
 - 1/2 cup red onion (finely diced)

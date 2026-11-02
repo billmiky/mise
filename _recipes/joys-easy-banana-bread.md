@@ -3,9 +3,12 @@ layout: recipe
 title: Joy's Easy Banana Bread
 image: joys-easy-banana-bread.jpg
 tags:
-- "Dessert"
-- "Breakfast"
-- "Snack"
+- Breakfast
+- Snack
+- Dessert
+- American
+- Vegetarian
+- Baking
 ingredients:
 - 3 ripe bananas, mashed
 - 1 cup white sugar

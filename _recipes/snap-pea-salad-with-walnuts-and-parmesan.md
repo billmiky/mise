@@ -3,10 +3,12 @@ layout: recipe
 title: Snap Pea Salad With Walnuts and Parmesan
 image: snap-pea-salad-with-walnuts-and-parmesan.webp
 tags:
-- "American"
-- "Salad"
-- "Side"
-- "Lunch"
+- Lunch
+- Dinner
+- Side
+- Salad
+- American
+- Vegetarian
 ingredients:
 - Salt and black pepper
 - Ice, as needed

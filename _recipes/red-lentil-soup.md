@@ -3,8 +3,12 @@ layout: recipe
 title: Red Lentil Soup
 image: red-lentil-soup.webp
 tags:
-- "Dinner"
-- "Side"
+- Lunch
+- Dinner
+- Side
+- Soup
+- Chicken
+- Lentils
 ingredients:
 - 3 tablespoons olive oil, plus more for drizzling
 - 1 large onion, chopped

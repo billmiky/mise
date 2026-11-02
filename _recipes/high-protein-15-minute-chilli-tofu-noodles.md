@@ -3,7 +3,12 @@ layout: recipe
 title: High Protein 15 Minute Chilli Tofu Noodles
 image: high-protein-15-minute-chilli-tofu-noodles.webp
 tags:
-- "Chinese"
+- Dinner
+- Chinese
+- Tofu
+- Noodles
+- Vegetarian
+- Vegan
 ingredients:
 - 120 g extra-firm tofu
 - 1 tsp cornflour

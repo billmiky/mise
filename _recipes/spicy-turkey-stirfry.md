@@ -5,10 +5,13 @@ title: "Spicy Turkey Stir-Fry with Crisp Garlic and Ginger"
 image: spicy-turkey-stirfry.jpg
 
 tags:
-- dinner
-- stir-fry
-- weeknight
-- spicy
+- Dinner
+- Chinese
+- Turkey
+- Noodles
+- Spicy
+- Stir-Fry
+- Weeknight
 
 servings: 4
 prep_time: 10 mins

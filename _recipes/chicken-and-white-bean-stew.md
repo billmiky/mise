@@ -3,12 +3,14 @@ layout: recipe
 title: Chicken and White Bean Stew
 image: chicken-and-white-bean-stew.webp
 tags:
-- "Chicken"
-- "Weeknight"
-- "Crowd Pleaser"
-- "Meal Prep"
-- "Soup"
-- "Dinner"
+- Lunch
+- Dinner
+- Soup
+- Chicken
+- Beans
+- Crowd Pleaser
+- Meal Prep
+- Weeknight
 ingredients:
 - 3 tablespoons unsalted butter
 - 1 yellow onion, finely chopped

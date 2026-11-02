@@ -2,7 +2,9 @@
 layout: recipe
 title: Turkey Shepherd's Pie
 image: turkey-shepherds-pie.webp
-tags: []
+tags:
+- Dinner
+- Turkey
 ingredients:
 - 1 1/2 lb. potatoes, peeled
 - Kosher Salt

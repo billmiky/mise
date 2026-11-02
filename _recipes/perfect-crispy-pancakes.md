@@ -3,9 +3,10 @@ layout: recipe
 title: Perfect, Crispy Pancakes
 image: perfect-crispy-pancakes.jpg
 tags:
-- "Breakfast"
-- "Dessert"
-- "Snack"
+- Breakfast
+- Snack
+- Dessert
+- Vegetarian
 ingredients:
 - 2 cups all-purpose flour
 - 3 tablespoons sugar

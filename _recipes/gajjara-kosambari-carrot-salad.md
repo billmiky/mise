@@ -3,9 +3,13 @@ layout: recipe
 title: Gajjara Kosambari (Carrot Salad)
 image: gajjara-kosambari-carrot-salad.webp
 tags:
-- "Indian"
-- "Salad"
-- "Side"
+- Side
+- Snack
+- Salad
+- Indian
+- Lentils
+- Vegetarian
+- Vegan
 ingredients:
 - 1 tablespoon neutral oil, such as grapeseed or canola
 - 1 green finger chile (or serrano chile), halved lengthwise

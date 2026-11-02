@@ -3,7 +3,9 @@ layout: recipe
 title: 5-Minute Nuoc Cham (Vietnamese Dipping Sauce)
 image: 5-minute-nuoc-cham-vietnamese-dipping-sauce.webp
 tags:
-- "Sauce"
+- Side
+- Sauce
+- Vietnamese
 ingredients:
 - 3 cloves garlic (minced)
 - 3 tbsp fish sauce

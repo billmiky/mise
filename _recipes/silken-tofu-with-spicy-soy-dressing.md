@@ -3,8 +3,13 @@ layout: recipe
 title: Silken Tofu With Spicy Soy Dressing
 image: silken-tofu-with-spicy-soy-dressing.webp
 tags:
-- "Japanese"
-- "Side"
+- Lunch
+- Dinner
+- Side
+- Japanese
+- Tofu
+- Vegetarian
+- Vegan
 ingredients:
 - ¼ cup soy sauce
 - 1 tablespoon rice vinegar

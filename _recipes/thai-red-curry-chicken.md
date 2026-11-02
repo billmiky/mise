@@ -3,8 +3,10 @@ layout: recipe
 title: Thai Red Curry Chicken
 image: thai-red-curry-chicken.jpg
 tags:
-- "Thai"
-- "Dinner"
+- Dinner
+- Thai
+- Chicken
+- Curry
 ingredients:
 - cooking spray
 - 1 1/2 pounds chicken breast, cut into strips

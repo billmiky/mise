@@ -3,7 +3,10 @@ layout: recipe
 title: Roasted Salmon and Brussels Sprouts With Citrus-Soy Sauce
 image: roasted-salmon-and-brussels-sprouts-with-citrus-soy-sauce.webp
 tags:
-- "Asian"
+- Dinner
+- Asian
+- Fish
+- Seafood
 ingredients:
 - 1 pound brussels sprouts, thinly sliced (about 4 ½ cups)
 - 3 to 4 scallions, trimmed, white and green parts thinly sliced (about ½ cup)

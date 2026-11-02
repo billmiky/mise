@@ -2,7 +2,11 @@
 layout: recipe
 title: Cauliflower Shawarma With Spicy Tahini
 image: cauliflower-shawarma-with-spicy-tahini.webp
-tags: []
+tags:
+- Dinner
+- Middle Eastern
+- Vegetarian
+- Vegan
 ingredients:
 - 5 tablespoons extra-virgin olive oil, plus more as needed
 - 1 ¼ teaspoons ground cumin

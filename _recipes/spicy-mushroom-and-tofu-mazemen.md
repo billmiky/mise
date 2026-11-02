@@ -3,10 +3,15 @@ layout: recipe
 title: Spicy Mushroom and Tofu Mazemen
 image: spicy-mushroom-and-tofu-mazemen.webp
 tags:
-- "Taiwanese"
-- "Dinner"
-- "Side"
-- "Snack"
+- Lunch
+- Dinner
+- Side
+- Snack
+- Taiwanese
+- Tofu
+- Noodles
+- Vegetarian
+- Vegan
 ingredients:
 - Canola or vegetable oil
 - 8 ounces mushrooms (such as cremini, button or shiitake), sliced

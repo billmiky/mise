@@ -2,7 +2,10 @@
 layout: recipe
 title: Southwest Corn
 image: southwest-corn.jpg
-tags: []
+tags:
+- Side
+- Mexican
+- Vegetarian
 ingredients:
 - 1 tablespoon butter
 - 3-1/3 cups fresh corn or 1 package (16 ounces) frozen corn

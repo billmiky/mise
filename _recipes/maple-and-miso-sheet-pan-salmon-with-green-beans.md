@@ -3,7 +3,11 @@ layout: recipe
 title: Maple and Miso Sheet-Pan Salmon With Green Beans
 image: maple-and-miso-sheet-pan-salmon-with-green-beans.webp
 tags:
-- "Dinner"
+- Dinner
+- Japanese
+- Fish
+- Seafood
+- Sheet Pan
 ingredients:
 - 4 (6-ounce) skin-on salmon fillets, about 1-inch thick
 - Kosher salt

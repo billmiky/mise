@@ -3,12 +3,13 @@ layout: recipe
 title: Edna Lewis’s Biscuits
 image: edna-lewiss-biscuits.webp
 tags:
-- "Southern"
-- "Vegetarian"
-- "Weeknight"
-- "Side"
-- "Brunch"
-- "Breakfast"
+- Breakfast
+- Brunch
+- Side
+- Southern
+- Vegetarian
+- Baking
+- Weeknight
 ingredients:
 - 3 cups sifted all-purpose flour
 - 1 scant teaspoon salt

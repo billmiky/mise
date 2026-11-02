@@ -3,8 +3,10 @@ layout: recipe
 title: Chocolate Chia Pudding
 image: chocolate-chia-pudding.webp
 tags:
-- "American"
-- "Dessert"
+- Dessert
+- American
+- Vegetarian
+- Vegan
 ingredients:
 - 70 grams (1 cup) Dutch-process cocoa powder
 - 160 grams (1/2 cup) Grade A dark, robust maple syrup

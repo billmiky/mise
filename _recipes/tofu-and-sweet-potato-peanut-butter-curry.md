@@ -3,9 +3,13 @@ layout: recipe
 title: Tofu and Sweet Potato Peanut Butter Curry
 image: tofu-and-sweet-potato-peanut-butter-curry.webp
 tags:
-- "Asian"
-- "Dinner"
-- "Tofu"
+- Lunch
+- Dinner
+- Asian
+- Tofu
+- Vegetarian
+- Vegan
+- Curry
 ingredients:
 - 1 tablespoon vegetable oil
 - 1 yellow onion, finely diced

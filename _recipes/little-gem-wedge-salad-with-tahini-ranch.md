@@ -3,7 +3,8 @@ layout: recipe
 title: Little Gem Wedge Salad with Tahini Ranch
 image: little-gem-wedge-salad-with-tahini-ranch.webp
 tags:
-- "Salad"
+- Salad
+- Vegetarian
 ingredients:
 - 1 small garlic clove, finely grated
 - 1 cup plain whole-milk Greek yogurt

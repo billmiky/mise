@@ -3,9 +3,14 @@ layout: recipe
 title: Crispy Tofu Lettuce Wraps
 image: crispy-tofu-lettuce-wraps.jpg
 tags:
-- "Chinese"
-- "Side"
-- "Snack"
+- Side
+- Snack
+- Salad
+- Chinese
+- Tofu
+- Rice
+- Vegetarian
+- Sheet Pan
 ingredients:
 - 1 14-ounce block of firm tofu
 - 1 tablespoon kosher salt, divided

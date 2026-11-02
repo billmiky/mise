@@ -3,9 +3,11 @@ layout: recipe
 title: Pernil-Style Roasted Chicken Thighs
 image: pernil-style-roasted-chicken-thighs.webp
 tags:
-- "Dinner"
-- "Side"
-- "Snack"
+- Lunch
+- Dinner
+- Side
+- Snack
+- Chicken
 ingredients:
 - ¼ cup neutral oil (such as safflower or canola)
 - 2 tablespoons freshly squeezed orange juice

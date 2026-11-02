@@ -3,8 +3,12 @@ layout: recipe
 title: Sweet Chile Grain Bowl With Tofu
 image: sweet-chile-grain-bowl-with-tofu.webp
 tags:
-- "Asian"
-- "Dinner"
+- Lunch
+- Dinner
+- Asian
+- Tofu
+- Rice
+- Grains
 ingredients:
 - 1 (14- to 16-ounce) package firm or extra-firm tofu
 - ¼ cup neutral oil, such as grapeseed

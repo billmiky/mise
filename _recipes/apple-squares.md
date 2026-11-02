@@ -2,7 +2,11 @@
 layout: recipe
 title: Apple Squares
 image: apple-squares.jpg
-tags: []
+tags:
+- Dessert
+- American
+- Vegetarian
+- Baking
 ingredients:
 - 1 cup sifted all-purpose flour
 - 1 teaspoon baking powder

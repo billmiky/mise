@@ -2,7 +2,10 @@
 layout: recipe
 title: Seared Tofu With Kimchi
 image: seared-tofu-with-kimchi.webp
-tags: []
+tags:
+- Dinner
+- Korean
+- Tofu
 ingredients:
 - 1 (14-ounce) block firm tofu, drained and cut crosswise into 8 equal slices
 - 2 tablespoons sesame oil

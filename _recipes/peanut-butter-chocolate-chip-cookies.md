@@ -3,7 +3,11 @@ layout: recipe
 title: Peanut-Butter Chocolate-Chip Cookies
 image: peanut-butter-chocolate-chip-cookies.webp
 tags:
-- "Dessert"
+- Snack
+- Dessert
+- Vegetarian
+- Vegan
+- Baking
 ingredients:
 - 1 cup/230 grams creamy peanut butter
 - ¾ (packed) cup/150 grams organic light brown sugar

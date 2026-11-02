@@ -3,7 +3,9 @@ layout: recipe
 title: Buffalo Cauliflower
 image: buffalo-cauliflower.jpg
 tags:
-- "Side"
+- Side
+- American
+- Vegetarian
 ingredients:
 - ¾ cup all-purpose flour
 - 1 teaspoon paprika

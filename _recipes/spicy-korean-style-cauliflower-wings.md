@@ -3,10 +3,14 @@ layout: recipe
 title: Spicy Korean Style Cauliflower Wings
 image: spicy-korean-style-cauliflower-wings.jpg
 tags:
-- "Korean"
-- "Lunch"
-- "Dinner"
-- "Side"
+- Lunch
+- Dinner
+- Side
+- Snack
+- Korean
+- Vegetarian
+- Vegan
+- Gluten-Free
 ingredients:
 - 1 large head cauliflower (large stalks removed, cut into bite-size “wings”)
 - 1 1/2 Tbsp avocado, sesame, or melted coconut oil (if avoiding oil, sub gochujang sauce)

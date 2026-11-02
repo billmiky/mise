@@ -4,8 +4,9 @@ layout: recipe
 title: Roasted Fish With Leeks and Olive Salsa Verde
 image: roasted-fish-with-leeks-and-olive-salsa-verde.jpg
 tags:
-- fish
-- seafood
+- Dinner
+- Fish
+- Seafood
 ingredients:
 - 4 thick fillets white fish, such as cod or halibut (about 1 1/2 pounds total)
 - Salt and freshly ground black pepper

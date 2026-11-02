@@ -2,7 +2,13 @@
 layout: recipe
 title: Roasted Tofu Grain Bowls With Miso-Tahini Sauce
 image: roasted-tofu-grain-bowls-with-miso-tahini-sauce.webp
-tags: []
+tags:
+- Dinner
+- Japanese
+- Tofu
+- Rice
+- Grains
+- Vegetarian
 ingredients:
 - 1 cup brown rice, rinsed until water runs mostly clear
 - ¼ cup quinoa

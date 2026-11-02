@@ -3,10 +3,12 @@ layout: recipe
 title: Sheet-Pan Chicken Thighs With Spicy Corn
 image: sheet-pan-chicken-thighs-with-spicy-corn.webp
 tags:
-- "Mexican"
-- "Dinner"
-- "Side"
-- "Snack"
+- Dinner
+- Side
+- Snack
+- Mexican
+- Chicken
+- Sheet Pan
 ingredients:
 - 2 pounds boneless, skinless chicken thighs
 - 1 ¾ teaspoons fine sea or table salt

@@ -3,8 +3,12 @@ layout: recipe
 title: Chicken and Rice Soup With Ginger and Turmeric
 image: chicken-and-rice-soup-with-ginger-and-turmeric.webp
 tags:
-- "Chinese"
-- "Lunch"
+- Lunch
+- Dinner
+- Soup
+- Chinese
+- Chicken
+- Rice
 ingredients:
 - 3 tablespoons neutral oil, such as canola or vegetable oil
 - 5 scallions, thinly sliced crosswise (about ¾ cup), plus 1 to 2 scallions, thinly sliced on an angle, for garnish

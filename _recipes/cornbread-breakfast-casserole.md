@@ -3,7 +3,8 @@ layout: recipe
 title: Cornbread Breakfast Casserole
 image: cornbread-breakfast-casserole.webp
 tags:
-- "Breakfast"
+- Breakfast
+- Baking
 ingredients:
 - Nonstick vegetable oil spray (for pan)
 - 4 oz. bacon (4–6 slices)

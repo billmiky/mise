@@ -3,9 +3,12 @@ layout: recipe
 title: Sesame-Ginger Chicken Noodle Soup
 image: sesame-ginger-chicken-noodle-soup.webp
 tags:
-- "Chinese"
-- "Soup"
-- "Dinner"
+- Dinner
+- Soup
+- Chinese
+- Chicken
+- Noodles
+- Rice
 ingredients:
 - 2 tablespoons toasted sesame oil, plus more for serving
 - 2 bone-in, skin-on chicken breasts (about 1 ½ pounds)

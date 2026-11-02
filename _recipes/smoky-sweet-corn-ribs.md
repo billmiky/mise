@@ -3,8 +3,9 @@ layout: recipe
 title: Smoky Sweet Corn Ribs
 image: smoky-sweet-corn-ribs.webp
 tags:
-- "American"
-- "Side"
+- Side
+- American
+- Vegetarian
 ingredients:
 - 4 ears of corn, husked
 - ¼ cup vegetable oil

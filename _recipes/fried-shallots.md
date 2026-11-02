@@ -3,10 +3,13 @@ layout: recipe
 title: Fried Shallots
 image: fried-shallots.jpg
 tags:
-- "Indonesian"
-- "Vietnamese"
-- "Thai"
-- "Side"
+- Side
+- Sauce
+- Indonesian
+- Thai
+- Vietnamese
+- Vegetarian
+- Vegan
 ingredients:
 - 1 pound (450g) shallots, peeled and sliced into 1/16-inch-thick rounds (see note)
 - 2 cups (475ml) vegetable oil

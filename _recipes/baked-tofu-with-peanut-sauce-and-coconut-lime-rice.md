@@ -2,7 +2,11 @@
 layout: recipe
 title: Baked Tofu With Peanut Sauce and Coconut-Lime Rice
 image: baked-tofu-with-peanut-sauce-and-coconut-lime-rice.webp
-tags: []
+tags:
+- Dinner
+- Tofu
+- Rice
+- Grains
 ingredients:
 - 2 tablespoons peanut or vegetable oil, plus more for brushing the pan and drizzling
 - ⅔ cup lime juice (from about 5 limes), and zest of 1 lime

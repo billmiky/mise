@@ -3,10 +3,14 @@ layout: recipe
 title: Pork Larb (Thai Salad with Pork, Herbs, Chile, and Toasted Rice Powder)
 image: pork-larb-thai-salad-with-pork-herbs-chile-and-toasted-rice-powder.jpg
 tags:
-- "Thai"
-- "Salad"
-- "Side"
-- "Dinner"
+- Dinner
+- Side
+- Snack
+- Salad
+- Thai
+- Chicken
+- Pork
+- Rice
 ingredients:
 - 3/4 pound lean pork or chicken, trimmed of connective tissue and cut into 1-inch cubes
 - 1/2 cup dry glutinous rice (See note)

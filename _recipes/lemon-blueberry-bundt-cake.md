@@ -3,10 +3,12 @@ layout: recipe
 title: Lemon Blueberry Bundt Cake
 image: lemon-blueberry-bundt-cake.webp
 tags:
-- "American"
-- "Dessert"
-- "Snack"
-- "Breakfast"
+- Breakfast
+- Snack
+- Dessert
+- American
+- Vegetarian
+- Baking
 ingredients:
 - 2 3/4 cups flour
 - 1 1/2 teaspoon baking powder

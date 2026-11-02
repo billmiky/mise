@@ -3,8 +3,10 @@ layout: recipe
 title: Gỏi Tôm Bắp Cải
 image: goi-tom-bap-cai.webp
 tags:
-- "Vietnamese"
-- "Salad"
+- Salad
+- Vietnamese
+- Shrimp
+- Seafood
 ingredients:
 - 2 Tbsp. sugar
 - 2 red or green Thai chiles, thinly sliced

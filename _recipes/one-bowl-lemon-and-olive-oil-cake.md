@@ -3,7 +3,9 @@ layout: recipe
 title: One-Bowl Lemon and Olive Oil Cake
 image: one-bowl-lemon-and-olive-oil-cake.webp
 tags:
-- "Dessert"
+- Dessert
+- Vegetarian
+- Baking
 ingredients:
 - ½ cup/105 grams extra-virgin olive oil, plus more for greasing the pan
 - 4 ounces/115 grams white chocolate, chopped or broken into small pieces

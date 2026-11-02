@@ -3,9 +3,11 @@ layout: recipe
 title: BA’s Best Chocolate Chip Cookies
 image: bas-best-chocolate-chip-cookies.webp
 tags:
-- "American"
-- "Dessert"
-- "Snack"
+- Snack
+- Dessert
+- American
+- Vegetarian
+- Baking
 ingredients:
 - 1½ cups plus 1 Tbsp. (200 g) all-purpose flour (spooning into measuring cups, then leveling)
 - 1¼ tsp. (4 g) Diamond Crystal or ¾ tsp. (4 g) Morton kosher salt

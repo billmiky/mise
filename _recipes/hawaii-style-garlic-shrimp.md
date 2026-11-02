@@ -3,9 +3,11 @@ layout: recipe
 title: Hawaii-Style Garlic Shrimp
 image: hawaii-style-garlic-shrimp.webp
 tags:
-- "Hawaiian"
-- "Dinner"
-- "Side"
+- Dinner
+- Side
+- Hawaiian
+- Shrimp
+- Seafood
 ingredients:
 - ¾ pound shell-on jumbo shrimp, deveined
 - 2 tablespoons mochiko (sweet rice flour), such as Blue Star brand (see Tip)

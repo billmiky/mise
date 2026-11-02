@@ -3,7 +3,12 @@ layout: recipe
 title: Crispy Air Fryer Tofu
 image: crispy-air-fryer-tofu.webp
 tags:
-- "Dinner"
+- Dinner
+- American
+- Tofu
+- Vegetarian
+- Vegan
+- Air Fryer
 ingredients:
 - 1 block extra firm tofu (look for one that is vacuum-packed so you don’t have to press it! I get mine at Trader Joe’s but
   Target has it as well. See note 1)

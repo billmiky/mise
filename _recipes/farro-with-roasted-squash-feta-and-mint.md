@@ -2,7 +2,13 @@
 layout: recipe
 title: Farro With Roasted Squash, Feta and Mint
 image: farro-with-roasted-squash-feta-and-mint.webp
-tags: []
+tags:
+- Lunch
+- Dinner
+- Side
+- Salad
+- Grains
+- Vegetarian
 ingredients:
 - 3 tablespoons extra-virgin olive oil
 - 2 teaspoons sugar

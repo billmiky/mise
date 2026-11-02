@@ -3,7 +3,11 @@ date_added: 2026-05-06
 layout: recipe
 title: High Protein Peanut Butter Granola
 image: high-protein-peanut-butter-granola.jpg
-tags: []
+tags:
+- Breakfast
+- Snack
+- American
+- Vegetarian
 ingredients:
 - ¾ cup/210 grams natural peanut butter, well stirred
 - ¾ cup/255 grams mild honey

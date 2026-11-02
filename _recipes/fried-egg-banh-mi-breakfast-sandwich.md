@@ -3,8 +3,10 @@ layout: recipe
 title: Fried Egg Bánh Mì Breakfast Sandwich
 image: fried-egg-banh-mi-breakfast-sandwich.webp
 tags:
-- "Vietnamese"
-- "Breakfast"
+- Breakfast
+- Vietnamese
+- Eggs
+- Sandwich
 ingredients:
 - 1/2 cup mayonnaise
 - 2 tablespoons fish sauce

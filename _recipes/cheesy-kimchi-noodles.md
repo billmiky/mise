@@ -3,8 +3,10 @@ layout: recipe
 title: Cheesy Kimchi Noodles
 image: cheesy-kimchi-noodles.webp
 tags:
-- "Korean"
-- "Dinner"
+- Lunch
+- Dinner
+- Korean
+- Noodles
 ingredients:
 - 6 ounces dried instant noodles (see Tip)
 - 1 ½ tablespoons canola oil, plus more for coating cooked noodles

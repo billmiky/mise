@@ -3,9 +3,11 @@ layout: recipe
 title: Chana Masala
 image: chana-masala.webp
 tags:
-- "Indian"
-- "Dinner"
-- "Side"
+- Dinner
+- Side
+- Indian
+- Chicken
+- Beans
 ingredients:
 - 2 tablespoons ghee or neutral oil
 - 1 tablespoon garlic paste or freshly grated garlic

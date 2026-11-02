@@ -2,7 +2,12 @@
 layout: recipe
 title: Korean BBQ-Style Meatballs
 image: korean-bbq-style-meatballs.jpg
-tags: []
+tags:
+- Lunch
+- Dinner
+- Side
+- Korean
+- Beef
 ingredients:
 - 1 pound ground beef (round or chuck)
 - 1/2 cup finely crushed Ritz crackers (12 crackers)

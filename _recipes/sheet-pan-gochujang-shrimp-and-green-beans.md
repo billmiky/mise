@@ -2,7 +2,13 @@
 layout: recipe
 title: Sheet-Pan Gochujang Shrimp and Green Beans
 image: sheet-pan-gochujang-shrimp-and-green-beans.webp
-tags: []
+tags:
+- Lunch
+- Dinner
+- Korean
+- Shrimp
+- Seafood
+- Sheet Pan
 ingredients:
 - 2 tablespoons plus 2 teaspoons gochujang
 - 2 tablespoons extra-virgin olive oil

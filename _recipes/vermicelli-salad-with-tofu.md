@@ -2,7 +2,14 @@
 layout: recipe
 title: Vermicelli Salad with Tofu
 image: vermicelli-salad-with-tofu.jpg
-tags: []
+tags:
+- Dinner
+- Salad
+- Tofu
+- Noodles
+- Vegetarian
+- Vegan
+- Air Fryer
 ingredients:
 - 16 ounces extra firm tofu (pressed, cut into 3/4-inch pieces (1 16-ounce block))
 - 1 tablespoon tamari (or soy sauce (preferably reduced sodium))

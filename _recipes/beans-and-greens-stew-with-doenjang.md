@@ -3,9 +3,11 @@ layout: recipe
 title: Beans and Greens Stew With Doenjang
 image: beans-and-greens-stew-with-doenjang.webp
 tags:
-- "Korean"
-- "Dinner"
-- "Soup"
+- Dinner
+- Soup
+- Korean
+- Beans
+- Vegetarian
 ingredients:
 - 3 tablespoons olive oil
 - 1 large red onion, halved and thinly sliced

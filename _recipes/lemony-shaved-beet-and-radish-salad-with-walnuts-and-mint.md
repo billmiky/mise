@@ -3,8 +3,10 @@ layout: recipe
 title: Lemony Shaved Beet and Radish Salad with Walnuts and Mint
 image: lemony-shaved-beet-and-radish-salad-with-walnuts-and-mint.png
 tags:
-- "Salad"
-- "Side"
+- Side
+- Salad
+- American
+- Vegetarian
 ingredients:
 - 1 watermelon radish, thinly sliced
 - 1 candy striped beet, thinly sliced

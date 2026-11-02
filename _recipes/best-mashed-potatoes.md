@@ -3,9 +3,10 @@ layout: recipe
 title: Best Mashed Potatoes
 image: best-mashed-potatoes.webp
 tags:
-- "American"
-- "Side"
-- "Dinner"
+- Dinner
+- Side
+- American
+- Vegetarian
 ingredients:
 - Salt
 - 2 ½ pounds potatoes (about 6 large potatoes), preferably a combination of russet (baking) potatoes and large Yukon Golds,

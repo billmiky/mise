@@ -3,10 +3,12 @@ layout: recipe
 title: Peanut Chicken Protein Bowls
 image: peanut-chicken-protein-bowls.webp
 tags:
-- "American"
-- "Lunch"
-- "Dinner"
-- "Side"
+- Lunch
+- Dinner
+- Side
+- American
+- Chicken
+- Rice
 ingredients:
 - 1 large sweet potato, peeled, cut into 1/2" cubes
 - 1 large red onion, finely chopped

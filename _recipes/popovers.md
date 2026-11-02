@@ -2,7 +2,9 @@
 layout: recipe
 title: Popovers
 image: popovers.webp
-tags: []
+tags:
+- Side
+- Vegetarian
 ingredients:
 - 5 tablespoons melted butter
 - 2 eggs

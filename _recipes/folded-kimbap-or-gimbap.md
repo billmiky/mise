@@ -3,9 +3,14 @@ layout: recipe
 title: Folded kimbap (or gimbap)
 image: folded-kimbap-or-gimbap.jpg
 tags:
-- "Korean"
-- "Snack"
-- "Lunch"
+- Lunch
+- Dinner
+- Snack
+- Korean
+- Fish
+- Seafood
+- Tofu
+- Rice
 ingredients:
 - 1/4 cup cooked rice
 - 1/4 teaspoon sesame oil

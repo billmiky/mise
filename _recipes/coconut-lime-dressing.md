@@ -3,9 +3,10 @@ layout: recipe
 title: Coconut-Lime Dressing
 image: coconut-lime-dressing.webp
 tags:
-- "Thai"
-- "Side"
-- "Salad"
+- Side
+- Salad
+- Sauce
+- Thai
 ingredients:
 - 6 tablespoons unsweetened coconut milk
 - 3 tablespoons fresh lime juice

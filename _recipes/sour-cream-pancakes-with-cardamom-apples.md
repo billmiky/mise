@@ -3,12 +3,12 @@ layout: recipe
 title: Sour Cream Pancakes With Cardamom Apples
 image: sour-cream-pancakes-with-cardamom-apples.webp
 tags:
-- "American"
-- "Vegetarian"
-- "Brunch"
-- "Breakfast"
-- "Dessert"
-- "Side"
+- Breakfast
+- Brunch
+- Side
+- Dessert
+- American
+- Vegetarian
 ingredients:
 - 1 cup/128 grams all-purpose flour
 - 1 ½ teaspoons baking powder

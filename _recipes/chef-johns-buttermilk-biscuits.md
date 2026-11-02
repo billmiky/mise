@@ -3,10 +3,12 @@ layout: recipe
 title: Chef John’s Buttermilk Biscuits
 image: chef-johns-buttermilk-biscuits.jpg
 tags:
-- "Southern"
-- "Breakfast"
-- "Side"
-- "Snack"
+- Breakfast
+- Side
+- Snack
+- Southern
+- Vegetarian
+- Baking
 ingredients:
 - 2 cups all-purpose flour
 - 2 teaspoons baking powder

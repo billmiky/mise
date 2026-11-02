@@ -3,10 +3,12 @@ layout: recipe
 title: Chile-Crisp Shrimp and Green Beans
 image: chile-crisp-shrimp-and-green-beans.webp
 tags:
-- "Chinese"
-- "Dinner"
-- "Side"
-- "Snack"
+- Dinner
+- Side
+- Snack
+- Chinese
+- Shrimp
+- Seafood
 ingredients:
 - 1 tablespoon low-sodium soy sauce
 - 1 teaspoon granulated sugar

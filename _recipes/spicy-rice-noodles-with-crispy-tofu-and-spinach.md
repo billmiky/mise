@@ -2,7 +2,13 @@
 layout: recipe
 title: Spicy Rice Noodles With Crispy Tofu and Spinach
 image: spicy-rice-noodles-with-crispy-tofu-and-spinach.webp
-tags: []
+tags:
+- Lunch
+- Dinner
+- Tofu
+- Noodles
+- Vegetarian
+- Vegan
 ingredients:
 - 12 to 14 ounces firm tofu
 - ½ to 1 teaspoon kosher salt

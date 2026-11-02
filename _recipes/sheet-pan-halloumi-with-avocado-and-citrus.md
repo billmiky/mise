@@ -2,7 +2,9 @@
 layout: recipe
 title: Sheet-Pan Halloumi With Avocado and Citrus
 image: sheet-pan-halloumi-with-avocado-and-citrus.webp
-tags: []
+tags:
+- Vegetarian
+- Sheet Pan
 ingredients:
 - 3–4 medium pitas (about 8 oz.), torn into 1½" pieces
 - 2 (8–10-oz.) packages Halloumi cheese, patted dry, torn into 1½" pieces

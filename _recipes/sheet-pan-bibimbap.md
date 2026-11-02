@@ -3,7 +3,11 @@ date_added: 2026-05-06
 layout: recipe
 title: Sheet-Pan Bibimbap
 image: sheet-pan-bibimbap.jpg
-tags: []
+tags:
+- Dinner
+- Korean
+- Rice
+- Sheet Pan
 ingredients:
 - 6 ounces oyster mushrooms, torn into bite-size pieces
 - 1 medium sweet potato (about 6 ounces), scrubbed and thinly sliced into half-moons

@@ -3,10 +3,13 @@ layout: recipe
 title: Tuna Poke
 image: tuna-poke.webp
 tags:
-- "Hawaiian"
-- "Side"
-- "Snack"
-- "Lunch"
+- Lunch
+- Side
+- Snack
+- Hawaiian
+- Fish
+- Seafood
+- Rice
 ingredients:
 - 2 cups short-grain sushi rice
 - 1½ teaspoons kosher salt, plus more

@@ -2,7 +2,11 @@
 layout: recipe
 title: Coconut Rice With Shrimp and Corn
 image: coconut-rice-with-shrimp-and-corn.webp
-tags: []
+tags:
+- Dinner
+- Shrimp
+- Seafood
+- Rice
 ingredients:
 - 2 tablespoons coconut oil
 - 1 small yellow onion, finely chopped

@@ -3,9 +3,13 @@ layout: recipe
 title: Coconut Laksa with Shrimp
 image: coconut-laksa-with-shrimp.jpg
 tags:
-- "Malaysian"
-- "Dinner"
-- "Soup"
+- Dinner
+- Soup
+- Malaysian
+- Shrimp
+- Seafood
+- Noodles
+- Curry
 ingredients:
 - 1 1/2 pounds medium shrimp—shelled and deveined, shells reserved
 - 1 onion, quartered

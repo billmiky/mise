@@ -3,9 +3,12 @@ layout: recipe
 title: Chicken Galbi Noodle Salad
 image: chicken-galbi-noodle-salad.webp
 tags:
-- "Korean"
-- "Salad"
-- "Dinner"
+- Lunch
+- Dinner
+- Salad
+- Korean
+- Chicken
+- Noodles
 ingredients:
 - 12 ounces Korean sweet potato glass noodles
 - 6 tablespoons low-sodium soy sauce

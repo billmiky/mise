@@ -3,7 +3,14 @@ layout: recipe
 title: Crispy Tofu Tikka Masala Tacos with Peppers, Onions, & Chilifire Crema
 image: crispy-tofu-tikka-masala-tacos-with-peppers-onions-chilifire-crema.jpg
 tags:
-- "Dinner"
+- Dinner
+- Indian
+- Mexican
+- Tofu
+- Vegetarian
+- Vegan
+- Gluten-Free
+- Curry
 ingredients:
 - 8 corn tortillas
 - 2 1/2 cup bell peppers (, thinly sliced and halved (combination of green, red, yellow, & orange peppers))

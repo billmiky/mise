@@ -2,7 +2,11 @@
 layout: recipe
 title: Meera Sodha’s Vietnamese Coconut Pancakes (Banh Xeo)
 image: meera-sodhas-vietnamese-coconut-pancakes-banh-xeo.jpg
-tags: []
+tags:
+- Breakfast
+- Dinner
+- Vietnamese
+- Vegetarian
 ingredients:
 - 220 g rice flour
 - ¾ teaspoon salt

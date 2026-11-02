@@ -3,7 +3,8 @@ layout: recipe
 title: Fragrant Coconut Chicken and Sweet Potato
 image: fragrant-coconut-chicken-and-sweet-potato.webp
 tags:
-- "Dinner"
+- Dinner
+- Chicken
 ingredients:
 - 3 tablespoons neutral oil, such as canola or safflower
 - 1 medium sweet potato, peeled and diced into ¼-inch pieces

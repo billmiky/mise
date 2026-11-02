@@ -2,7 +2,11 @@
 layout: recipe
 title: Salt and Pepper Shrimp Rolls
 image: salt-and-pepper-shrimp-rolls.webp
-tags: []
+tags:
+- Lunch
+- Dinner
+- Shrimp
+- Seafood
 ingredients:
 - Vegetable oil, for frying (about 2 ½ cups)
 - ½ cup mayonnaise

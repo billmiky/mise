@@ -4,7 +4,14 @@ layout: recipe
 title: Meera Sodha 18-Carat Laksa Recipe | Vegan Carrot Laksa
 image: meera-sodha-18-carat-laksa-recipe-vegan-carrot-laksa.jpg
 tags:
-- vegan
+- Dinner
+- Thai
+- Tofu
+- Noodles
+- Rice
+- Vegetarian
+- Vegan
+- Curry
 ingredients:
 - 100g bean sprouts
 - 2 tbsp white wine vinegar

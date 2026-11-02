@@ -3,10 +3,11 @@ layout: recipe
 title: Spicy Corn and Coconut Soup
 image: spicy-corn-and-coconut-soup.webp
 tags:
-- "Thai"
-- "Dinner"
-- "Side"
-- "Soup"
+- Lunch
+- Dinner
+- Side
+- Soup
+- Thai
 ingredients:
 - 5 ears yellow or bicolor corn (or 5 cups frozen corn kernels)
 - 2 tablespoons olive oil

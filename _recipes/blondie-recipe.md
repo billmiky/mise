@@ -3,7 +3,10 @@ layout: recipe
 title: Blondie Recipe
 image: blondie-recipe.jpg
 tags:
-- baking
+- Dessert
+- American
+- Vegetarian
+- Baking
 ingredients:
 - Â¾ cup unsalted butter (melted and slightly cooled (170 grams))
 - 1 cup packed light brown sugar ((200 grams) )

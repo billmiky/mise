@@ -2,7 +2,11 @@
 layout: recipe
 title: Watermelon "Poke" Bowl
 image: watermelon-poke-bowl.jpg
-tags: []
+tags:
+- Dinner
+- Japanese
+- Beans
+- Vegetarian
 ingredients:
 - 1 mini watermelon, sliced
 - 6 tablespoons soy sauce

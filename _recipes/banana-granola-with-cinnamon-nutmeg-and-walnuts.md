@@ -3,7 +3,11 @@ layout: recipe
 title: Banana Granola With Cinnamon, Nutmeg and Walnuts
 image: banana-granola-with-cinnamon-nutmeg-and-walnuts.webp
 tags:
-- "Breakfast"
+- Breakfast
+- Snack
+- American
+- Vegetarian
+- Vegan
 ingredients:
 - ½ cup/5 ounces mashed bananas (from about 1 large or 2 small ripe or overripe bananas)
 - ¼ packed cup/55 grams dark brown sugar

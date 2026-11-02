@@ -3,10 +3,13 @@ layout: recipe
 title: White Chicken Chili
 image: white-chicken-chili.webp
 tags:
-- "Mexican"
-- "Dinner"
-- "Side"
-- "Lunch"
+- Lunch
+- Dinner
+- Side
+- Soup
+- Mexican
+- Chicken
+- Beans
 ingredients:
 - 3 Tbsp. unsalted butter
 - 2 Tbsp. extra-virgin olive oil

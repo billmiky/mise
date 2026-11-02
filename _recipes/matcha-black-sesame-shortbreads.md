@@ -3,7 +3,9 @@ layout: recipe
 title: Matcha-Black Sesame Shortbreads
 image: matcha-black-sesame-shortbreads.webp
 tags:
-- "Dessert"
+- Dessert
+- Japanese
+- Vegetarian
 ingredients:
 - 1 ½ cups/192 grams all-purpose flour
 - 2 tablespoons matcha powder

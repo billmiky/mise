@@ -3,8 +3,13 @@ layout: recipe
 title: Creamy Vegan Tofu Noodles
 image: creamy-vegan-tofu-noodles.webp
 tags:
-- "Chinese"
-- "Dinner"
+- Lunch
+- Dinner
+- Chinese
+- Tofu
+- Noodles
+- Vegetarian
+- Vegan
 ingredients:
 - ¾ teaspoon kosher salt, plus more as needed
 - 12 ounces thick Chinese wheat noodles

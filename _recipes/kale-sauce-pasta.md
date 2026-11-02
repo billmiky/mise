@@ -3,8 +3,11 @@ layout: recipe
 title: Kale Sauce Pasta
 image: kale-sauce-pasta.webp
 tags:
-- "Italian"
-- "Dinner"
+- Dinner
+- Side
+- Italian
+- Pasta
+- Vegetarian
 ingredients:
 - Kosher salt (such as Diamond Crystal)
 - ¼ cup extra-virgin olive oil, plus more for serving

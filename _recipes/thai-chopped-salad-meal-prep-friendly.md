@@ -3,7 +3,13 @@ layout: recipe
 title: Thai Chopped Salad (Meal Prep Friendly)
 image: thai-chopped-salad-meal-prep-friendly.jpg
 tags:
-- "Salad"
+- Dinner
+- Side
+- Salad
+- Thai
+- Beans
+- Grains
+- Vegetarian
 ingredients:
 - 1 cup cooked white quinoa (about 1/2 cup dry)
 - 2 cups defrosted frozen edamame beans

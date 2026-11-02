@@ -3,8 +3,14 @@ layout: recipe
 title: Mie Goreng
 image: mie-goreng.webp
 tags:
-- "Indonesian"
-- "Dinner"
+- Lunch
+- Dinner
+- Side
+- Indonesian
+- Chicken
+- Shrimp
+- Seafood
+- Noodles
 ingredients:
 - Vegetable or peanut oil, as needed
 - 2 boneless, skinless chicken thighs, cut into 1-inch cubes, or 8 large peeled, deveined shrimp (about ½ pound), optional

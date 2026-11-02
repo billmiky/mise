@@ -3,10 +3,13 @@ layout: recipe
 title: Crispy Coconut Rice With Tofu
 image: crispy-coconut-rice-with-tofu.webp
 tags:
-- "Thai"
-- "Dinner"
-- "Side"
-- "Snack"
+- Dinner
+- Side
+- Snack
+- Thai
+- Tofu
+- Rice
+- Curry
 ingredients:
 - 4 heaped cups cold cooked white rice
 - 3 to 4 tablespoons red or green Thai curry paste

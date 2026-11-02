@@ -3,9 +3,14 @@ layout: recipe
 title: Instant Pot Chicken Pho
 image: instant-pot-chicken-pho.png
 tags:
-- "Dinner"
-- "Side"
-- "Lunch"
+- Lunch
+- Dinner
+- Side
+- Soup
+- Vietnamese
+- Chicken
+- Noodles
+- Instant Pot
 ingredients:
 - 14 ounces rice noodles
 - 1 Tablespoons olive oil (extra virgin)

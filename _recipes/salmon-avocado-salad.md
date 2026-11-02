@@ -3,7 +3,11 @@ layout: recipe
 title: Salmon Avocado Salad
 image: salmon-avocado-salad.webp
 tags:
-- "Lunch"
+- Lunch
+- Salad
+- American
+- Fish
+- Seafood
 ingredients:
 - 4 cups baby spinach
 - 2 tomatoes (chopped)

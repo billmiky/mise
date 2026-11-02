@@ -3,9 +3,11 @@ layout: recipe
 title: Banana Nut Breakfast Bars
 image: banana-nut-breakfast-bars.webp
 tags:
-- "Breakfast"
-- "Snack"
-- "Dessert"
+- Breakfast
+- Snack
+- Dessert
+- Vegetarian
+- Baking
 ingredients:
 - 2 ripe medium bananas (about 240 grams peeled)
 - 2 large eggs

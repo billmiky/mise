@@ -4,7 +4,9 @@ layout: recipe
 title: Blueberry Corn Muffins
 image: blueberry-corn-muffins.jpg
 tags:
-- baking
+- Breakfast
+- Vegetarian
+- Baking
 ingredients:
 - 1/2 cup/113 grams butter, melted and slightly cooled (8 tablespoons), plus more for greasing
 - 1 cup/about 155 grams (weight will vary by brand) yellow cornmeal (medium- or fine-grain)

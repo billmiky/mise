@@ -3,9 +3,10 @@ layout: recipe
 title: No-Churn Hibiscus Sherbet
 image: no-churn-hibiscus-sherbet.jpg
 tags:
-- "Dessert"
-- "Snack"
-- "Beverage"
+- Snack
+- Dessert
+- Beverage
+- Vegetarian
 ingredients:
 - 2 medium limes
 - 1 (14-ounce) can regular or coconut sweetened condensed milk

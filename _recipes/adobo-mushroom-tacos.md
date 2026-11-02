@@ -3,9 +3,10 @@ layout: recipe
 title: Adobo Mushroom Tacos
 image: adobo-mushroom-tacos.webp
 tags:
-- "Mexican"
-- "Dinner"
-- "Side"
+- Dinner
+- Side
+- Mexican
+- Seafood
 ingredients:
 - 1 lb. mixed mushrooms (such as chanterelle, oyster and/or crimini), coarsely chopped
 - 2 Tbsp. avocado oil or vegetable oil

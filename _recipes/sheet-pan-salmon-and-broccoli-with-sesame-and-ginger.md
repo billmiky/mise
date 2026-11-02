@@ -3,7 +3,11 @@ layout: recipe
 title: Sheet-Pan Salmon and Broccoli With Sesame and Ginger
 image: sheet-pan-salmon-and-broccoli-with-sesame-and-ginger.webp
 tags:
-- "Asian"
+- Dinner
+- Asian
+- Fish
+- Seafood
+- Sheet Pan
 ingredients:
 - 4 tablespoons toasted sesame oil
 - 2 tablespoons soy sauce or tamari

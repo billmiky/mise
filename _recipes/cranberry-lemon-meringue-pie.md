@@ -3,7 +3,9 @@ layout: recipe
 title: Cranberry Lemon Meringue Pie
 image: cranberry-lemon-meringue-pie.webp
 tags:
-- "Dessert"
+- Dessert
+- Vegetarian
+- Baking
 ingredients:
 - 1 disk All-Butter Pie Crust
 - All-purpose flour, for rolling

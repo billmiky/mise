@@ -2,7 +2,9 @@
 layout: recipe
 title: Tonkatsu Sauce (Japanese-Style Barbecue Sauce)
 image: tonkatsu-sauce-japanese-style-barbecue-sauce.jpg
-tags: []
+tags:
+- Sauce
+- Japanese
 ingredients:
 - 1/3 cup ketchup
 - 2 tablespoons Worcestershire sauce

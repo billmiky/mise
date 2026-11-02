@@ -3,7 +3,9 @@ layout: recipe
 title: Perfect Blueberry Muffins
 image: perfect-blueberry-muffins.jpg
 tags:
-- baking
+- Breakfast
+- Vegetarian
+- Baking
 ingredients:
 - 5 tablespoons (70 grams) unsalted butter, cold is fine
 - 1/2 cup (100 grams) sugar

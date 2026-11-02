@@ -2,7 +2,15 @@
 layout: recipe
 title: Cabbage Slaw with Ginger-Tahini Dressing
 image: cabbage-slaw-with-ginger-tahini-dressing.jpg
-tags: []
+tags:
+- Lunch
+- Dinner
+- Side
+- Salad
+- Asian
+- Beans
+- Vegetarian
+- Vegan
 ingredients:
 - 3 scallions, white and light green parts only, minced
 - 1/4 cup low-sodium tamari or soy sauce

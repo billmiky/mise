@@ -2,7 +2,11 @@
 layout: recipe
 title: Summer Shrimp Scampi With Tomatoes and Corn
 image: summer-shrimp-scampi-with-tomatoes-and-corn.webp
-tags: []
+tags:
+- Lunch
+- Dinner
+- Shrimp
+- Seafood
 ingredients:
 - 1 pound large shrimp, peeled and deveined
 - Kosher salt and black pepper

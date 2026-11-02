@@ -3,10 +3,11 @@ layout: recipe
 title: Kimchi-Fried Grains
 image: kimchi-fried-grains.webp
 tags:
-- "Korean"
-- "Dinner"
-- "Side"
-- "Lunch"
+- Lunch
+- Dinner
+- Side
+- Korean
+- Grains
 ingredients:
 - ½ cup kimchi, plus 3 Tbsp. juice from jar
 - 4 scallions

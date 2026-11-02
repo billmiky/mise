@@ -3,10 +3,12 @@ layout: recipe
 title: Sri Lankan Dal With Coconut and Lime Kale
 image: sri-lankan-dal-with-coconut-and-lime-kale.webp
 tags:
-- "Sri Lankan"
-- "Indian"
-- "Dinner"
-- "Side"
+- Dinner
+- Side
+- Indian
+- Sri Lankan
+- Lentils
+- Vegetarian
 ingredients:
 - 1 pound red lentils
 - 3 green cardamom pods
