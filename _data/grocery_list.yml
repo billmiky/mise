@@ -1,2 +1,196 @@
-week_of: '2026-10-29'
-categories: []
+week_of: '2026-11-02'
+categories:
+- name: Meat & Fish
+  items:
+  - name: ground beef
+    uses:
+    - text: 1 pound ground beef (round or chuck)
+      recipe: Korean BBQ-Style Meatballs
+  - name: chicken breasts
+    uses:
+    - text: 4 medium boneless, skinless chicken breasts (about 8 ounces each)
+      recipe: Hot Honey Chicken
+- name: Dairy & Eggs
+  items:
+  - name: Yogurt
+    uses:
+    - text: Yogurt, for serving (optional)
+      recipe: Spiced Chickpea Stew With Coconut and Turmeric
+  - name: Parmesan
+    uses:
+    - text: 1/3 cup grated Parmesan
+      recipe: Hot Honey Chicken
+  have:
+  - name: eggs
+    uses:
+    - text: 3 large eggs, beaten
+      recipe: Hot Honey Chicken
+- name: Grains & Bread
+  have:
+  - name: crushed Ritz crackers
+    uses:
+    - text: 1/2 cup finely crushed Ritz crackers (12 crackers)
+      recipe: Korean BBQ-Style Meatballs
+  - name: all-purpose flour
+    uses:
+    - text: 1/3 cup all-purpose flour
+      recipe: Hot Honey Chicken
+  - name: Cooked white rice
+    uses:
+    - text: Cooked white rice (optional), for serving
+      recipe: Roasted Cauliflower With Nước Chấm Sauce
+  items:
+  - name: pita
+    uses:
+    - text: Toasted pita, lavash or other flatbread, for serving (optional)
+      recipe: Spiced Chickpea Stew With Coconut and Turmeric
+  - name: cornflakes
+    uses:
+    - text: 6 cups/6 ounces cornflakes
+      recipe: Hot Honey Chicken
+- name: Canned & Jarred
+  items:
+  - name: chickpeas
+    uses:
+    - text: 2 (15-ounce) cans chickpeas, drained and rinsed
+      recipe: Spiced Chickpea Stew With Coconut and Turmeric
+  - name: full-fat coconut milk
+    uses:
+    - text: 2 (15-ounce) cans full-fat coconut milk
+      recipe: Spiced Chickpea Stew With Coconut and Turmeric
+  - name: vegetable or chicken stock
+    uses:
+    - text: 2 cups vegetable or chicken stock
+      recipe: Spiced Chickpea Stew With Coconut and Turmeric
+- name: Pantry & Staples
+  have:
+  - name: low-sodium soy sauce
+    uses:
+    - text: 2 tablespoons low-sodium soy sauce
+      recipe: Korean BBQ-Style Meatballs
+  - name: kosher salt
+    uses:
+    - text: 1 teaspoon kosher salt (such as Diamond Crystal)
+      recipe: Korean BBQ-Style Meatballs
+  - name: ground black pepper
+    uses:
+    - text: 1 teaspoon freshly ground black pepper
+      recipe: Korean BBQ-Style Meatballs
+  - name: olive oil
+    uses:
+    - text: 1/4 cup olive oil, plus more for serving
+      recipe: Spiced Chickpea Stew With Coconut and Turmeric
+  - name: Kosher salt and black pepper
+    uses:
+    - text: Kosher salt and black pepper
+      recipe: Spiced Chickpea Stew With Coconut and Turmeric
+  - name: red-pepper flakes
+    uses:
+    - text: 1 teaspoon red-pepper flakes, plus more for serving
+      recipe: Spiced Chickpea Stew With Coconut and Turmeric
+    - text: 1 tablespoon red-pepper flakes
+      recipe: Hot Honey Chicken
+  - name: apple cider vinegar
+    uses:
+    - text: 1/2 teaspoon apple cider vinegar
+      recipe: Hot Honey Chicken
+  - name: Salt and pepper
+    uses:
+    - text: Salt and pepper
+      recipe: Hot Honey Chicken
+  - name: hot sauce
+    uses:
+    - text: 3 tablespoons hot sauce
+      recipe: Hot Honey Chicken
+  - name: neutral oil
+    uses:
+    - text: 4 tablespoons neutral oil (such as vegetable, canola or peanut)
+      recipe: Roasted Cauliflower With Nước Chấm Sauce
+  - name: rice vinegar
+    uses:
+    - text: 1/4 cup rice vinegar
+      recipe: Roasted Cauliflower With Nước Chấm Sauce
+  - name: sugar
+    uses:
+    - text: 1 teaspoon sugar
+      recipe: Roasted Cauliflower With Nước Chấm Sauce
+  items:
+  - name: ground turmeric
+    uses:
+    - text: 1 1/2 teaspoons ground turmeric, plus more for serving
+      recipe: Spiced Chickpea Stew With Coconut and Turmeric
+  - name: honey
+    uses:
+    - text: 1/2 cup honey
+      recipe: Hot Honey Chicken
+  - name: ground cayenne
+    uses:
+    - text: 1/2 teaspoon ground cayenne
+      recipe: Hot Honey Chicken
+  - name: garlic powder
+    uses:
+    - text: 1 1/2 teaspoons garlic powder
+      recipe: Hot Honey Chicken
+  - name: onion powder
+    uses:
+    - text: 1 1/2 teaspoons onion powder
+      recipe: Hot Honey Chicken
+  - name: smoked paprika
+    uses:
+    - text: 1 teaspoon smoked paprika
+      recipe: Hot Honey Chicken
+  - name: fish sauce
+    uses:
+    - text: 1/3 cup fish sauce
+      recipe: Roasted Cauliflower With Nước Chấm Sauce
+  - name: crushed roasted peanuts or other nuts
+    uses:
+    - text: 2 tablespoons crushed roasted peanuts or other nuts
+      recipe: Roasted Cauliflower With Nước Chấm Sauce
+- name: Produce
+  items:
+  - name: scallions
+    uses:
+    - text: 1/2 cup chopped scallions
+      recipe: Korean BBQ-Style Meatballs
+  - name: garlic
+    uses:
+    - text: 2 tablespoons minced garlic
+      recipe: Korean BBQ-Style Meatballs
+    - text: 4 garlic cloves, chopped
+      recipe: Spiced Chickpea Stew With Coconut and Turmeric
+    - text: 3 garlic cloves (optional), finely chopped
+      recipe: Roasted Cauliflower With Nước Chấm Sauce
+  - name: yellow onion
+    uses:
+    - text: 1 large yellow onion, chopped
+      recipe: Spiced Chickpea Stew With Coconut and Turmeric
+  - name: ginger
+    uses:
+    - text: 1 (2-inch) piece ginger, finely chopped
+      recipe: Spiced Chickpea Stew With Coconut and Turmeric
+  - name: mint leaves
+    uses:
+    - text: 1 cup mint leaves, for serving
+      recipe: Spiced Chickpea Stew With Coconut and Turmeric
+  - name: cauliflower
+    uses:
+    - text: 2 heads cauliflower, stems removed, sliced vertically about ½-inch thick
+      recipe: Roasted Cauliflower With Nước Chấm Sauce
+  - name: Thai green chiles
+    uses:
+    - text: 4 to 6 Thai green chiles, thinly sliced (with or without seeds)
+      recipe: Roasted Cauliflower With Nước Chấm Sauce
+  - name: cilantro
+    uses:
+    - text: 2 tablespoons chopped cilantro
+      recipe: Roasted Cauliflower With Nước Chấm Sauce
+  have:
+  - name: Swiss chard
+    uses:
+    - text: 1 bunch Swiss chard, kale or collard greens, stems removed, torn into bite-size pieces
+      recipe: Spiced Chickpea Stew With Coconut and Turmeric
+  - name: red onion
+    uses:
+    - text: 1/4 small red onion, halved and thinly sliced
+      recipe: Roasted Cauliflower With Nước Chấm Sauce
