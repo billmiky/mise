@@ -22,6 +22,8 @@ jobs:
           python tools/validate_recipes.py
       - name: Check grocery list builder
         run: python tools/test_grocery.py
+      - name: Check auto-tagger
+        run: python tools/test_autotag.py
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: "3.3"

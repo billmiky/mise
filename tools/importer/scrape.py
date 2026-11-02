@@ -40,6 +40,8 @@ except ImportError:  # still works for sites that don't block scripts
     browser_requests = None
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent  # tools/importer/scrape.py → repo root
+sys.path.insert(0, str(REPO_ROOT / "tools"))
+import autotag  # noqa: E402
 
 USER_AGENT = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
@@ -91,26 +93,6 @@ def format_instructions(instructions) -> list:
         if step:
             cleaned.append(step)
     return cleaned
-
-
-def guess_tags(title: str) -> list:
-    title_lower = title.lower()
-    tag_map = {
-        "vegetarian": ["vegetarian"], "vegan": ["vegan"],
-        "gluten-free": ["gluten-free"], "chicken": ["chicken"],
-        "beef": ["beef"], "pork": ["pork"], "turkey": ["turkey"],
-        "fish": ["fish", "seafood"], "salmon": ["fish", "seafood"],
-        "shrimp": ["seafood"], "pasta": ["pasta"], "lasagna": ["pasta"],
-        "soup": ["soup"], "stew": ["stew"], "salad": ["salad"],
-        "dessert": ["dessert"], "cake": ["dessert", "baking"],
-        "cookie": ["dessert", "baking"], "bread": ["bread", "baking"],
-        "pizza": ["pizza"], "taco": ["mexican"], "curry": ["curry"],
-    }
-    tags: set = set()
-    for keyword, tag_list in tag_map.items():
-        if keyword in title_lower:
-            tags.update(tag_list)
-    return sorted(list(tags))
 
 
 # ---------------------------------------------------------------------------
@@ -372,8 +354,13 @@ def download_image(image_url: str, source_url: str, images_dir: Path, slug: str)
 def build_markdown(data: dict, image_ref: str, user_tags: list,
                    season: str, rating, difficulty: str, kid_friendly: bool,
                    source_url: str = "") -> str:
-    auto_tags = guess_tags(data["title"])
-    all_tags = sorted(list(set(auto_tags + (user_tags or []))))
+    # tools/autotag.py picks meal type, cuisine, diet etc. so new recipes are tagged like the rest
+    ingredients = format_ingredients(data.get("ingredients", []))
+    suggested = autotag.suggest(
+        data["title"], ingredients, format_instructions(data.get("instructions", [])),
+        category=data.get("category"), cuisine=data.get("cuisine"), existing=user_tags or [],
+    )
+    all_tags = autotag.merge(user_tags or [], suggested)
     season_list = (
         [s.strip() for s in season.replace(",", " ").split() if s.strip()]
         if season and season.strip().lower() != "all"
