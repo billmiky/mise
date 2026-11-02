@@ -3,7 +3,10 @@ layout: recipe
 title: Iced Matcha Latte
 image: iced-matcha-latte.jpg
 tags:
-- "Beverage"
+- Beverage
+- American
+- Japanese
+- Vegetarian
 ingredients:
 - 2 teaspoons matcha powder (sifted)
 - 1 to 2 tablespoons hot water (not boiling)

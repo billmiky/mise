@@ -3,8 +3,14 @@ layout: recipe
 title: Instant Pot Butternut Squash Soup (Thai-Inspired)
 image: instant-pot-butternut-squash-soup-thai-inspired.jpg
 tags:
-- "Thai"
-- "Dinner"
+- Dinner
+- Side
+- Soup
+- Thai
+- Vegetarian
+- Vegan
+- Gluten-Free
+- Instant Pot
 ingredients:
 - 1/4 cup water (or 2 tsp oil)
 - 1 cup diced yellow or white onion (1 small onion yields ~1 cup or 150 g)

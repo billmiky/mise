@@ -2,7 +2,13 @@
 layout: recipe
 title: Easy Chicken Curry
 image: easy-chicken-curry.webp
-tags: []
+tags:
+- Dinner
+- Indian
+- Chicken
+- Shrimp
+- Seafood
+- Curry
 ingredients:
 - 2 tablespoons canola, corn or other neutral oil
 - 2 large onions, peeled and sliced

@@ -3,9 +3,12 @@ layout: recipe
 title: Spicy Tofu with Pickled Shiitake Mushrooms
 image: spicy-tofu-with-pickled-shiitake-mushrooms.webp
 tags:
-- "Chinese"
-- "Dinner"
-- "Side"
+- Dinner
+- Side
+- Chinese
+- Tofu
+- Beans
+- Rice
 ingredients:
 - 6 ounces shiitake mushrooms, stems removed, caps thinly sliced
 - ⅓ cup sugar

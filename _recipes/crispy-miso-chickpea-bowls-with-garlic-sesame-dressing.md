@@ -3,10 +3,17 @@ layout: recipe
 title: Crispy Miso Chickpea Bowls with Garlic Sesame Dressing
 image: crispy-miso-chickpea-bowls-with-garlic-sesame-dressing.jpg
 tags:
-- "Japanese"
-- "Dinner"
-- "Side"
-- "Salad"
+- Dinner
+- Side
+- Salad
+- Japanese
+- Beans
+- Noodles
+- Rice
+- Grains
+- Vegetarian
+- Vegan
+- Gluten-Free
 ingredients:
 - 2 cups cooked brown rice, rice noodles, quinoa, or cauliflower rice
 - 1 (15-ounce) can chickpeas, rinsed, well drained, and towel dried

@@ -3,8 +3,11 @@ layout: recipe
 title: Roasted Mushroom Laab
 image: roasted-mushroom-laab.webp
 tags:
-- "Thai"
-- "Dinner"
+- Dinner
+- Side
+- Thai
+- Seafood
+- Rice
 ingredients:
 - 2 pounds mixed mushrooms, such as button, oyster, and shiitake, trimmed and quartered, or torn into 2-inch pieces if large
 - ¼ cup neutral oil, such as grapeseed or vegetable oil

@@ -2,7 +2,11 @@
 layout: recipe
 title: Honey Garlic Shrimp
 image: honey-garlic-shrimp.webp
-tags: []
+tags:
+- Lunch
+- Dinner
+- Shrimp
+- Seafood
 ingredients:
 - 1 pound extra-large or jumbo shrimp, peeled and deveined (tails on or off)
 - ⅓ cup honey

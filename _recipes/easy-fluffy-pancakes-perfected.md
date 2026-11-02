@@ -2,7 +2,10 @@
 layout: recipe
 title: Easy Fluffy Pancakes (Perfected!)
 image: easy-fluffy-pancakes-perfected.jpg
-tags: []
+tags:
+- Breakfast
+- American
+- Vegetarian
 ingredients:
 - 5 tablespoons (70 g) butter, plus more for serving (European-style, like Kerrygold, is best)
 - 1 ½ cups (195 g) all-purpose flour, spooned and leveled

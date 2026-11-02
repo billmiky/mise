@@ -2,7 +2,11 @@
 layout: recipe
 title: Watermelon, Feta, and Mint Salad
 image: watermelon-feta-and-mint-salad.jpg
-tags: []
+tags:
+- Side
+- Salad
+- American
+- Vegetarian
 ingredients:
 - 3 pounds seedless watermelon (about 1 small or 1/4 large), rind removed, cut into 1-inch chunks (about 2 pounds/1kg chunks
   after rind is discarded)

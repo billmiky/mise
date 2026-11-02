@@ -3,8 +3,10 @@ layout: recipe
 title: Mint Chocolate Chip Cookies
 image: mint-chocolate-chip-cookies.webp
 tags:
-- "American"
-- "Dessert"
+- Dessert
+- American
+- Vegetarian
+- Baking
 ingredients:
 - ½ cup/113 grams unsalted butter, at room temperature, plus more for the pan
 - 1 ½ cups/180 grams powdered sugar

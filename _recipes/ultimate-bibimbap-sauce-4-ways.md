@@ -3,7 +3,11 @@ layout: recipe
 title: Ultimate Bibimbap Sauce, 4 Ways
 image: ultimate-bibimbap-sauce-4-ways.jpg
 tags:
-- sauce
+- Side
+- Sauce
+- Korean
+- Rice
+- Vegetarian
 ingredients:
 - 1/2 cup gochujang (Korean chili paste)
 - 1/4 cup toasted sesame oil

@@ -3,10 +3,12 @@ layout: recipe
 title: Garlic Butter Baked Salmon
 image: garlic-butter-baked-salmon.jpg
 tags:
-- "American"
-- "Italian"
-- "Southern"
-- "Dinner"
+- Dinner
+- American
+- Italian
+- Southern
+- Fish
+- Seafood
 ingredients:
 - 1 pound fingerling potatoes (or Yukon golds or halved white/red baby potatoes, halved)
 - 2 tablespoons olive oil

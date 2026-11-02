@@ -3,8 +3,10 @@ layout: recipe
 title: Easy Berry Cake with Lemon Whipped Cream
 image: easy-berry-cake-with-lemon-whipped-cream.webp
 tags:
-- "Dessert"
-- "Snack"
+- Snack
+- Dessert
+- Vegetarian
+- Baking
 ingredients:
 - 1 1/2 cups (7½ ounces/213 grams) all-purpose flour
 - 1 1/2 teaspoons baking powder

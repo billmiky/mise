@@ -3,8 +3,11 @@ layout: recipe
 title: Blueberry-Lemon Upside-Down Cake
 image: blueberry-lemon-upside-down-cake.webp
 tags:
-- "American"
-- "Dessert"
+- Breakfast
+- Dessert
+- American
+- Vegetarian
+- Baking
 ingredients:
 - 2 c. blueberries
 - 1 tbsp. granulated sugar

@@ -3,7 +3,11 @@ layout: recipe
 title: Instant Pot Chicken Tortilla Soup
 image: instant-pot-chicken-tortilla-soup.webp
 tags:
-- "Dinner"
+- Dinner
+- Soup
+- Chicken
+- Beans
+- Instant Pot
 ingredients:
 - 2 tbsp. extra-virgin olive oil
 - 2 bell peppers, chopped

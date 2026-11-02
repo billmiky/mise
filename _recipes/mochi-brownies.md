@@ -3,8 +3,11 @@ layout: recipe
 title: Mochi Brownies
 image: mochi-brownies.webp
 tags:
-- "Hawaiian"
-- "Dessert"
+- Snack
+- Dessert
+- Hawaiian
+- Vegetarian
+- Baking
 ingredients:
 - Nonstick cooking spray
 - ½ cup/113 grams unsalted butter (1 stick), sliced into ½-inch pieces

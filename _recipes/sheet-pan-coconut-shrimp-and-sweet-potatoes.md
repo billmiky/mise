@@ -3,8 +3,11 @@ layout: recipe
 title: Sheet-Pan Coconut Shrimp and Sweet Potatoes
 image: sheet-pan-coconut-shrimp-and-sweet-potatoes.webp
 tags:
-- "Side"
-- "Dinner"
+- Dinner
+- Side
+- Shrimp
+- Seafood
+- Sheet Pan
 ingredients:
 - 1 cup unsweetened coconut milk, preferably full-fat
 - 1 teaspoon Sriracha, plus more for serving

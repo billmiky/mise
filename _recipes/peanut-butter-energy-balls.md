@@ -3,8 +3,10 @@ layout: recipe
 title: Peanut Butter Energy Balls
 image: peanut-butter-energy-balls.jpg
 tags:
-- "Snack"
-- "Dessert"
+- Snack
+- Dessert
+- American
+- Vegetarian
 ingredients:
 - 2 cups rolled oats (see Tip)
 - 1 cup natural peanut butter or other nut butter

@@ -3,9 +3,12 @@ layout: recipe
 title: Aloo Tikki (Indian Potato Cakes with Green Chutney)
 image: aloo-tikki-indian-potato-cakes-with-green-chutney.jpg
 tags:
-- "Indian"
-- "Side"
-- "Snack"
+- Side
+- Snack
+- Indian
+- Vegetarian
+- Vegan
+- Gluten-Free
 ingredients:
 - 2 pounds yukon gold potatoes (scrubbed clean, peeled + halved)
 - 1-2 Tbsp vegan butter (plus more for cooking // or sub a neutral oil of choice)

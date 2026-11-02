@@ -3,7 +3,10 @@ layout: recipe
 title: Dwaeji Bulgogi (Spicy Pork Bulgogi)
 image: dwaeji-bulgogi-spicy-pork-bulgogi.webp
 tags:
-- pork
+- Lunch
+- Dinner
+- Korean
+- Pork
 ingredients:
 - ½ Asian pear, peeled and cored
 - 1 small yellow onion, peeled

@@ -2,7 +2,11 @@
 layout: recipe
 title: Korean BBQ Hot Dog
 image: korean-bbq-hot-dog.webp
-tags: []
+tags:
+- Dinner
+- Korean
+- Beef
+- Grill
 ingredients:
 - 6 – Jumbo All Beef Hotdogs
 - 6 – Hot Dog Buns

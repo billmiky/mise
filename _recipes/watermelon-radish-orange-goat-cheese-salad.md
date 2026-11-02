@@ -3,8 +3,10 @@ layout: recipe
 title: Watermelon Radish, Orange & Goat Cheese Salad
 image: watermelon-radish-orange-goat-cheese-salad.webp
 tags:
-- "Salad"
-- "Side"
+- Side
+- Salad
+- American
+- Vegetarian
 ingredients:
 - 1 shallot or half of a small red onion
 - 2 to 3 tablespoons white balsamic vinegar

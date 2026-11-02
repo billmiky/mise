@@ -3,8 +3,10 @@ layout: recipe
 title: BA's Best Coconut Cream Pie
 image: bas-best-coconut-cream-pie.webp
 tags:
-- "American"
-- "Dessert"
+- Dessert
+- American
+- Vegetarian
+- Baking
 ingredients:
 - 1¼ cups unsweetened finely shredded coconut
 - 4 oz. graham crackers (about 7), lightly crushed

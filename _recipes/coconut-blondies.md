@@ -3,7 +3,9 @@ layout: recipe
 title: Coconut Blondies
 image: coconut-blondies.png
 tags:
-- "Dessert"
+- Dessert
+- Vegetarian
+- Baking
 ingredients:
 - 1 1/2 sticks (3/4 cup) unsalted butter, softened
 - 1 1/2 cups firmly packed light brown sugar

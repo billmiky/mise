@@ -2,7 +2,12 @@
 layout: recipe
 title: Lemon Potato Salad With Mint
 image: lemon-potato-salad-with-mint.webp
-tags: []
+tags:
+- Lunch
+- Side
+- Salad
+- Vegetarian
+- Vegan
 ingredients:
 - 2 pounds small waxy white or yellow potatoes, roughly about the same size
 - Juice of 1 lemon, more for serving

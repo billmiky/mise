@@ -3,8 +3,10 @@ layout: recipe
 title: Rose Apple Tart
 image: rose-apple-tart.webp
 tags:
-- "American"
-- "Dessert"
+- Dessert
+- American
+- Vegetarian
+- Baking
 ingredients:
 - 1 ½ cups/190 grams all-purpose flour
 - ½ cup/65 grams confectioners’ sugar

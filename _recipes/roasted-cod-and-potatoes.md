@@ -2,7 +2,11 @@
 layout: recipe
 title: Roasted Cod and Potatoes
 image: roasted-cod-and-potatoes.webp
-tags: []
+tags:
+- Dinner
+- American
+- Fish
+- Seafood
 ingredients:
 - 4 or 5 medium potatoes, 2 pounds or more
 - 6 tablespoons extra-virgin olive oil or melted butter

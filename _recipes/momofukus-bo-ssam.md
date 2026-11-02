@@ -3,8 +3,12 @@ layout: recipe
 title: Momofuku’s Bo Ssam
 image: momofukus-bo-ssam.webp
 tags:
-- "Korean"
-- "Dinner"
+- Dinner
+- Korean
+- Pork
+- Seafood
+- Beans
+- Rice
 ingredients:
 - 1 whole bone-in pork butt or picnic ham (8 to 10 pounds)
 - 1 cup white sugar

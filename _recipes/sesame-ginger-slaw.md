@@ -2,7 +2,11 @@
 layout: recipe
 title: Sesame Ginger Slaw
 image: sesame-ginger-slaw.jpg
-tags: []
+tags:
+- Side
+- Salad
+- Asian
+- Vegetarian
 ingredients:
 - 1/3 cup rice vinegar
 - 1 tablespoon honey

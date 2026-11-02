@@ -3,8 +3,11 @@ layout: recipe
 title: Gochujang-Sesame Noodles
 image: gochujang-sesame-noodles.webp
 tags:
-- "Korean"
-- "Dinner"
+- Dinner
+- Korean
+- Noodles
+- Vegetarian
+- Vegan
 ingredients:
 - 8–10 oz. fresh or dried wheat noodles (such as lo mein, udon, or ramen)
 - Kosher salt

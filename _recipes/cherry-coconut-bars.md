@@ -3,8 +3,10 @@ layout: recipe
 title: Cherry coconut bars
 image: cherry-coconut-bars.jpg
 tags:
-- "Dessert"
-- "Snack"
+- Snack
+- Dessert
+- Vegetarian
+- Vegan
 ingredients:
 - 250g (2 cups) cherry’s, fresh (pitted and de-stemmed) or frozen and defrosted (*see notes)
 - 1 Tbsp water

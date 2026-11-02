@@ -3,9 +3,12 @@ layout: recipe
 title: Crispy Baked Tofu Nuggets
 image: crispy-baked-tofu-nuggets.webp
 tags:
-- "American"
-- "Side"
-- "Snack"
+- Side
+- Snack
+- American
+- Tofu
+- Vegetarian
+- Vegan
 ingredients:
 - 2 Tbsp. extra-virgin olive oil, divided, plus more for pan
 - 2 Tbsp. all-purpose flour or rice flour

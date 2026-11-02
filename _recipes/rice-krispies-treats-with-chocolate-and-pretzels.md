@@ -3,9 +3,11 @@ layout: recipe
 title: Rice Krispies Treats With Chocolate and Pretzels
 image: rice-krispies-treats-with-chocolate-and-pretzels.webp
 tags:
-- "Dessert"
-- "Snack"
-- "Side"
+- Side
+- Snack
+- Dessert
+- American
+- Baking
 ingredients:
 - Nonstick cooking spray
 - 6 tablespoons salted butter (¾ stick)

@@ -3,8 +3,11 @@ layout: recipe
 title: Blackened Cauliflower
 image: blackened-cauliflower.webp
 tags:
-- "American"
-- "Dinner"
+- Dinner
+- Side
+- American
+- Vegetarian
+- Vegan
 ingredients:
 - 1 cauliflower head (about 2 pounds), core and leaves removed, head cut into 2-inch pieces
 - 2 tablespoons olive oil

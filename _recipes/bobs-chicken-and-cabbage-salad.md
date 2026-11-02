@@ -2,7 +2,9 @@
 layout: recipe
 title: Bob’s Chicken and Cabbage Salad
 image: bobs-chicken-and-cabbage-salad.webp
-tags: []
+tags:
+- Salad
+- Chicken
 ingredients:
 - 8 garlic cloves, finely chopped
 - 1 2" piece ginger, peeled, finely chopped (about 1 Tbsp.)

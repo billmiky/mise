@@ -3,7 +3,10 @@ layout: recipe
 title: Crispy Ginger Sticky Rice
 image: crispy-ginger-sticky-rice.webp
 tags:
-- "Chinese"
+- Dinner
+- Side
+- Chinese
+- Rice
 ingredients:
 - 2 cups sticky short-grain rice (see Tip)
 - 1 (5-inch) piece fresh ginger

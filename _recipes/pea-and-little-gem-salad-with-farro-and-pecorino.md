@@ -2,7 +2,10 @@
 layout: recipe
 title: Pea and Little Gem Salad with Farro and Pecorino
 image: pea-and-little-gem-salad-with-farro-and-pecorino.webp
-tags: []
+tags:
+- Salad
+- Grains
+- Vegetarian
 ingredients:
 - 1 cup semi-pearled farro
 - Kosher salt

@@ -4,9 +4,10 @@ layout: recipe
 title: Yellowbird Chicken Wings
 image: yellowbird-chicken-wings.jpg
 tags:
-  - mains
-  - meat
-  - spicy
+- Dinner
+- Chicken
+- Meat
+- Spicy
 ingredients:
   - 2lb chicken wings
   - salt/pepper/garlic

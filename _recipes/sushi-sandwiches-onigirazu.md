@@ -2,7 +2,15 @@
 layout: recipe
 title: Sushi Sandwiches (Onigirazu)
 image: sushi-sandwiches-onigirazu.webp
-tags: []
+tags:
+- Lunch
+- Dinner
+- Snack
+- Japanese
+- Fish
+- Seafood
+- Rice
+- Sandwich
 ingredients:
 - 1/2 c. mayonnaise (preferably Kewpie)
 - 1/2 c. sriracha

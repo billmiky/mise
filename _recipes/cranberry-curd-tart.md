@@ -3,8 +3,10 @@ layout: recipe
 title: Cranberry Curd Tart
 image: cranberry-curd-tart.webp
 tags:
-- "American"
-- "Dessert"
+- Dessert
+- American
+- Vegetarian
+- Baking
 ingredients:
 - 1 ¼ cups/180 grams raw hazelnuts
 - 1 cup/125 grams rice flour

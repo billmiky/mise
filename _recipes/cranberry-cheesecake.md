@@ -2,7 +2,9 @@
 layout: recipe
 title: Cranberry Cheesecake
 image: cranberry-cheesecake.jpg
-tags: []
+tags:
+- Dessert
+- Vegetarian
 ingredients:
 - 2 cups graham cracker or shortbread cookie crumbs
 - 1/3 cup butter, melted

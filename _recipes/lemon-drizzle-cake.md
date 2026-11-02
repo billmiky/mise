@@ -3,7 +3,10 @@ layout: recipe
 title: Lemon Drizzle Cake
 image: lemon-drizzle-cake.jpg
 tags:
-- "Dessert"
+- Snack
+- Dessert
+- Vegetarian
+- Baking
 ingredients:
 - Nonstick spray
 - 250g self-rising flour (8 3/4 ounces; about 2 cups), see notes

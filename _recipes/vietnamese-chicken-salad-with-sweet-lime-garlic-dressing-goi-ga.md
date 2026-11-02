@@ -3,10 +3,11 @@ layout: recipe
 title: Vietnamese Chicken Salad with Sweet Lime-Garlic Dressing (Goi Gà)
 image: vietnamese-chicken-salad-with-sweet-lime-garlic-dressing-goi-ga.jpg
 tags:
-- "Vietnamese"
-- "Salad"
-- "Dinner"
-- "Side"
+- Dinner
+- Side
+- Salad
+- Vietnamese
+- Chicken
 ingredients:
 - ⅓ cup lime juice, plus lime wedges, to serve
 - 3½ tablespoons fish sauce

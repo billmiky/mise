@@ -2,7 +2,11 @@
 layout: recipe
 title: Pan-Roasted Fish Fillets With Herb Butter
 image: pan-roasted-fish-fillets-with-herb-butter.webp
-tags: []
+tags:
+- Lunch
+- Dinner
+- Fish
+- Seafood
 ingredients:
 - 2 5- to 6-ounce fish fillets, like black bass, haddock, fluke, striped bass, tilefish, snapper or salmon, ½- to 1-inch thick
 - Salt and ground black pepper

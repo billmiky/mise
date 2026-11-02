@@ -3,10 +3,13 @@ layout: recipe
 title: Rosemary White Beans With Frizzled Onions and Tomato
 image: rosemary-white-beans-with-frizzled-onions-and-tomato.webp
 tags:
-- "Italian"
-- "Dinner"
-- "Side"
-- "Lunch"
+- Lunch
+- Dinner
+- Side
+- Italian
+- Beans
+- Vegetarian
+- Vegan
 ingredients:
 - ½ cup extra-virgin olive oil
 - 1 large white onion, halved and thinly sliced into half moons

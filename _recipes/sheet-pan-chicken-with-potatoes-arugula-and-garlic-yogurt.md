@@ -3,10 +3,13 @@ layout: recipe
 title: Sheet-Pan Chicken With Potatoes, Arugula and Garlic Yogurt
 image: sheet-pan-chicken-with-potatoes-arugula-and-garlic-yogurt.webp
 tags:
-- "Italian"
-- "Dinner"
-- "Side"
-- "Snack"
+- Lunch
+- Dinner
+- Side
+- Snack
+- Italian
+- Chicken
+- Sheet Pan
 ingredients:
 - 1 ½ pounds chicken thighs and drumsticks
 - 1 ¼ pounds small Yukon Gold potatoes, halved and cut into ½-inch slices

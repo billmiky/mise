@@ -3,7 +3,9 @@ layout: recipe
 title: Buttermilk-Brined Turkey Breast
 image: buttermilk-brined-turkey-breast.webp
 tags:
-- "Dinner"
+- Dinner
+- American
+- Turkey
 ingredients:
 - 2 cups buttermilk
 - 33 grams fine sea salt (2 tablespoons)

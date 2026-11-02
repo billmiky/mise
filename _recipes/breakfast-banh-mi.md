@@ -3,7 +3,9 @@ layout: recipe
 title: Breakfast Banh Mi
 image: breakfast-banh-mi.jpg
 tags:
-- "Breakfast"
+- Breakfast
+- Vietnamese
+- Sandwich
 ingredients:
 - 1 medium carrot, cut into fine matchsticks
 - 1 small daikon radish, cut into fine matchsticks

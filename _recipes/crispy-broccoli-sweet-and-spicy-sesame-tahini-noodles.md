@@ -2,7 +2,15 @@
 layout: recipe
 title: Crispy Broccoli Sweet and Spicy Sesame Tahini Noodles
 image: crispy-broccoli-sweet-and-spicy-sesame-tahini-noodles.webp
-tags: []
+tags:
+- Lunch
+- Dinner
+- Asian
+- Pasta
+- Noodles
+- Vegetarian
+- Vegan
+- Gluten-Free
 ingredients:
 - 3 tablespoons low sodium soy sauce
 - ⅓ cup tahini (we use Soom)

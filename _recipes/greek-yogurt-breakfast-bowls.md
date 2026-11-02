@@ -3,7 +3,9 @@ layout: recipe
 title: Greek Yogurt Breakfast Bowls
 image: greek-yogurt-breakfast-bowls.png
 tags:
-- "Breakfast"
+- Breakfast
+- Greek
+- Vegetarian
 ingredients:
 - Apples
 - Peaches

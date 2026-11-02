@@ -3,9 +3,15 @@ layout: recipe
 title: Chilled Tofu With Gochujang Sauce
 image: chilled-tofu-with-gochujang-sauce.webp
 tags:
-- "Korean"
-- "Salad"
-- "Side"
+- Lunch
+- Dinner
+- Side
+- Snack
+- Salad
+- Korean
+- Tofu
+- Vegetarian
+- Vegan
 ingredients:
 - 2 tablespoons gochujang
 - 1 tablespoon distilled white vinegar

@@ -3,7 +3,9 @@ layout: recipe
 title: Chocolate Birthday Cake Butter Mochi
 image: chocolate-birthday-cake-butter-mochi.webp
 tags:
-- "Dessert"
+- Dessert
+- Vegetarian
+- Baking
 ingredients:
 - 12 tablespoons/170 grams salted butter, cut into chunks, plus more for greasing the pan
 - 1 cup/173 grams semisweet chocolate chips

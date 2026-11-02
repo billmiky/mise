@@ -3,7 +3,10 @@ layout: recipe
 title: Sheet-Pan Feta With Tomatoes and Chickpeas
 image: sheet-pan-feta-with-tomatoes-and-chickpeas.webp
 tags:
-- "Dinner"
+- Dinner
+- Beans
+- Vegetarian
+- Sheet Pan
 ingredients:
 - 2 lb. heirloom or other large tomatoes, cored, cut into 1½"-thick wedges
 - Extra-virgin olive oil (for drizzling)

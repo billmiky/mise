@@ -3,10 +3,12 @@ layout: recipe
 title: Pecan Slab Pie
 image: pecan-slab-pie.webp
 tags:
-- "Southern"
-- "Dessert"
-- "Snack"
-- "Side"
+- Side
+- Snack
+- Dessert
+- Southern
+- Vegetarian
+- Baking
 ingredients:
 - 4 ¼ cups/454 grams pecan halves
 - ½ cup/113 grams unsalted butter

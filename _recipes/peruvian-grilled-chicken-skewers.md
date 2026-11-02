@@ -2,7 +2,11 @@
 layout: recipe
 title: Peruvian Grilled Chicken Skewers
 image: peruvian-grilled-chicken-skewers.jpg
-tags: []
+tags:
+- Dinner
+- Peruvian
+- Chicken
+- Grill
 ingredients:
 - 3 medium cloves garlic (finely minced)
 - 1 teaspoon ground cumin

@@ -3,7 +3,9 @@ layout: recipe
 title: Miso-Ginger Dressing
 image: miso-ginger-dressing.webp
 tags:
-- "Sauce"
+- Sauce
+- Japanese
+- Vegetarian
 ingredients:
 - 1 rounded tablespoon white or yellow miso
 - 2 tablespoons seasoned rice vinegar, or 1 tablespoon rice vinegar and 1 tablespoon fresh lime juice

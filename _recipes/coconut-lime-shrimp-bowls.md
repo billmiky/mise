@@ -3,8 +3,12 @@ layout: recipe
 title: Coconut Lime Shrimp Bowls
 image: coconut-lime-shrimp-bowls.webp
 tags:
-- "Thai"
-- "Dinner"
+- Dinner
+- Thai
+- Shrimp
+- Seafood
+- Rice
+- Gluten-Free
 ingredients:
 - 1 (13.66-oz.) can Thai Kitchen coconut milk
 - 1/2 c. chopped pineapple

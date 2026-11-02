@@ -2,7 +2,13 @@
 layout: recipe
 title: White cabbage, peanut butter and gochujang noodles
 image: white-cabbage-peanut-butter-and-gochujang-noodles.webp
-tags: []
+tags:
+- Lunch
+- Dinner
+- Korean
+- Noodles
+- Vegetarian
+- Vegan
 ingredients:
 - 3.0tbsp crunchy peanut butter 50g
 - 2.0tbsp gochujang 40g

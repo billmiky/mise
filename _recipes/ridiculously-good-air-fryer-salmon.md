@@ -2,7 +2,12 @@
 layout: recipe
 title: Ridiculously Good Air Fryer Salmon
 image: ridiculously-good-air-fryer-salmon.webp
-tags: []
+tags:
+- Dinner
+- American
+- Fish
+- Seafood
+- Air Fryer
 ingredients:
 - 1 lb. salmon (see note 1)
 - 1 tablespoon brown sugar

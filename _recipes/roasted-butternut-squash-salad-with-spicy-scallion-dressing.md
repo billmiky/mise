@@ -3,7 +3,12 @@ layout: recipe
 title: Roasted Butternut Squash Salad With Spicy Scallion Dressing
 image: roasted-butternut-squash-salad-with-spicy-scallion-dressing.webp
 tags:
-- "Indian"
+- Lunch
+- Dinner
+- Side
+- Salad
+- Indian
+- Vegetarian
 ingredients:
 - 1 medium butternut squash (about 2 ½ pounds), or other winter squash
 - 5 tablespoons extra-virgin olive oil

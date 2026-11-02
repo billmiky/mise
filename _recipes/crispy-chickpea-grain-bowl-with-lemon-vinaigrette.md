@@ -2,7 +2,13 @@
 layout: recipe
 title: Crispy Chickpea Grain Bowl with Lemon Vinaigrette
 image: crispy-chickpea-grain-bowl-with-lemon-vinaigrette.jpg
-tags: []
+tags:
+- Lunch
+- Dinner
+- American
+- Beans
+- Grains
+- Vegetarian
 ingredients:
 - 0.66666668653488 cup quinoa
 - 1.3333333730698 cups water plus 1 tablespoon, divided

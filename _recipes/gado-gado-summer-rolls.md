@@ -2,7 +2,11 @@
 layout: recipe
 title: Gado-Gado Summer Rolls
 image: gado-gado-summer-rolls.webp
-tags: []
+tags:
+- Dinner
+- Shrimp
+- Seafood
+- Tofu
 ingredients:
 - ¼ cup plus 2 Tbsp. (or more) vegetable oil
 - ⅔ cup unsalted dry-roasted peanuts, preferably skin-on

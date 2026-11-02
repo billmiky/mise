@@ -2,7 +2,13 @@
 layout: recipe
 title: Peanut Butter Noodles
 image: peanut-butter-noodles.webp
-tags: []
+tags:
+- Lunch
+- Dinner
+- Snack
+- Pasta
+- Noodles
+- Vegetarian
 ingredients:
 - Salt
 - 4 ounces spaghetti or 1 individual package instant ramen (seasoning packet saved for another use)

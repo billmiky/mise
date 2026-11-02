@@ -3,8 +3,12 @@ layout: recipe
 title: Easy Banana Bread (Classic Banana Bread)
 image: easy-banana-bread-classic-banana-bread.jpg
 tags:
-- baking
-- bread
+- Breakfast
+- Dessert
+- American
+- Vegetarian
+- Baking
+- Bread
 ingredients:
 - 1 1/2 Cups Mashed Bananas
 - 8 Tablespoons Unsalted Butter (softened)

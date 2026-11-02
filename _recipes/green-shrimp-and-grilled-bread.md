@@ -3,10 +3,13 @@ layout: recipe
 title: Green Shrimp and Grilled Bread
 image: green-shrimp-and-grilled-bread.webp
 tags:
-- "Italian"
-- "Dinner"
-- "Side"
-- "Snack"
+- Dinner
+- Side
+- Snack
+- Italian
+- Shrimp
+- Seafood
+- Grill
 ingredients:
 - 1 baguette, sliced 1" thick on a diagonal
 - 5 Tbsp. extra-virgin olive oil, divided, plus more for drizzling

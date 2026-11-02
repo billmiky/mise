@@ -3,9 +3,12 @@ layout: recipe
 title: Shrimp and Grits
 image: shrimp-and-grits.webp
 tags:
-- "Southern"
-- "Dinner"
-- "Side"
+- Dinner
+- Side
+- Southern
+- Shrimp
+- Seafood
+- Grains
 ingredients:
 - 2 cups whole or reduced-fat milk (see Tip)
 - ¼ cup unsalted butter, cut into 1-inch pieces

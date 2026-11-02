@@ -2,7 +2,10 @@
 layout: recipe
 title: Nutella French Toast Recipe
 image: nutella-french-toast-recipe.jpg
-tags: []
+tags:
+- Breakfast
+- American
+- Vegetarian
 ingredients:
 - 2 large eggs
 - 1/2 cup milk

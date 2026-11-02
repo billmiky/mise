@@ -3,7 +3,10 @@ layout: recipe
 title: Gluten-Free Chocolate Chip Oat Cookies
 image: gluten-free-chocolate-chip-oat-cookies.webp
 tags:
-- "Dessert"
+- Dessert
+- Vegetarian
+- Gluten-Free
+- Baking
 ingredients:
 - 1 cup (100 g) coarsely chopped pecans or walnuts
 - 2¼ cups (225 g) old-fashioned oats, divided

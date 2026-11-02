@@ -2,7 +2,12 @@
 layout: recipe
 title: Ginger Scallion Ramen Noodles
 image: ginger-scallion-ramen-noodles.webp
-tags: []
+tags:
+- Dinner
+- Japanese
+- Noodles
+- Vegetarian
+- Vegan
 ingredients:
 - 1 5-inch piece ginger, peeled, finely chopped (about ⅓ cup)
 - 4 garlic cloves, finely chopped

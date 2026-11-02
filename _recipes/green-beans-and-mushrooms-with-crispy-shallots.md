@@ -3,8 +3,9 @@ layout: recipe
 title: Green Beans and Mushrooms With Crispy Shallots
 image: green-beans-and-mushrooms-with-crispy-shallots.webp
 tags:
-- "Italian"
-- "Side"
+- Side
+- Italian
+- Seafood
 ingredients:
 - 1½ lb. green beans, trimmed
 - 1½ tsp. Diamond Crystal or 1 tsp. Morton kosher salt, plus more

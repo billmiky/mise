@@ -2,7 +2,12 @@
 layout: recipe
 title: Strawberry Drop Biscuits
 image: strawberry-drop-biscuits.webp
-tags: []
+tags:
+- Breakfast
+- Snack
+- American
+- Vegetarian
+- Baking
 ingredients:
 - 1 ½ cups/190 grams all-purpose flour
 - ¼ cup/50 grams granulated sugar

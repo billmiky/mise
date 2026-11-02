@@ -3,9 +3,14 @@ layout: recipe
 title: Poke Bowls
 image: poke-bowls.webp
 tags:
-- "Dinner"
-- "Side"
-- "Lunch"
+- Lunch
+- Dinner
+- Side
+- Japanese
+- Fish
+- Seafood
+- Beans
+- Rice
 ingredients:
 - 1/4 c. low-sodium soy sauce
 - 2 tsp. rice vinegar

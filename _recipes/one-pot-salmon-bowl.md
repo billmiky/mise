@@ -29,4 +29,10 @@ last_made: ~
 rating: 4
 difficulty: easy
 kid_friendly: true
+tags:
+- Salad
+- Fish
+- Seafood
+- Lentils
+- One-Pot
 ---

@@ -3,10 +3,13 @@ layout: recipe
 title: Pulled Mushroom Banh Mi (Vegan Vietnamese Sandwich)
 image: pulled-mushroom-banh-mi-vegan-vietnamese-sandwich.webp
 tags:
-- "Vietnamese"
-- "Lunch"
-- "Dinner"
-- "Side"
+- Lunch
+- Dinner
+- Side
+- Vietnamese
+- Vegetarian
+- Vegan
+- Sandwich
 ingredients:
 - 150 g carrot, sliced into matchsticks
 - 150 g cucumber, sliced into matchsticks

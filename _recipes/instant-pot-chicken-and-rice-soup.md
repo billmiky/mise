@@ -3,8 +3,13 @@ layout: recipe
 title: Instant Pot Chicken and Rice Soup
 image: instant-pot-chicken-and-rice-soup.jpg
 tags:
-- "American"
-- "Dinner"
+- Dinner
+- Side
+- Soup
+- American
+- Chicken
+- Rice
+- Instant Pot
 ingredients:
 - 2 teaspoons olive oil
 - 1 yellow or sweet onion, diced

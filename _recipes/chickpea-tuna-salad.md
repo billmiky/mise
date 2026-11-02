@@ -2,7 +2,12 @@
 layout: recipe
 title: Chickpea "Tuna" Salad
 image: chickpea-tuna-salad.webp
-tags: []
+tags:
+- Lunch
+- Salad
+- Beans
+- Vegetarian
+- Vegan
 ingredients:
 - 1 1/2 c. chickpeas (from 1 15-oz can), drained and rinsed
 - 3 tbsp. vegan mayonnaise

@@ -3,7 +3,9 @@ layout: recipe
 title: Som Tum Thai (Green Papaya Salad)
 image: som-tum-thai-green-papaya-salad.webp
 tags:
-- "Salad"
+- Salad
+- Thai
+- Beans
 ingredients:
 - 5 tablespoons fresh lime juice
 - 3 tablespoons (packed) palm sugar or golden brown sugar

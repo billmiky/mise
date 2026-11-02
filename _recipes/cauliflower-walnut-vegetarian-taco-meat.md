@@ -3,9 +3,11 @@ layout: recipe
 title: Cauliflower Walnut Vegetarian Taco Meat
 image: cauliflower-walnut-vegetarian-taco-meat.webp
 tags:
-- "Mexican"
-- "Dinner"
-- "Side"
+- Dinner
+- Side
+- Mexican
+- Vegetarian
+- Vegan
 ingredients:
 - 3 cups cauliflower florets
 - 2 cups whole walnuts

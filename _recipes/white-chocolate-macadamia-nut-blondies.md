@@ -3,7 +3,10 @@ layout: recipe
 title: White Chocolate Macadamia Nut Blondies
 image: white-chocolate-macadamia-nut-blondies.jpg
 tags:
-- "Dessert"
+- Dessert
+- American
+- Vegetarian
+- Baking
 ingredients:
 - 2 1/2 cups all purpose flour
 - 2 tsp baking powder

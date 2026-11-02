@@ -3,8 +3,10 @@ layout: recipe
 title: Huli Huli Chicken
 image: huli-huli-chicken.webp
 tags:
-- "Hawaiian"
-- "Dinner"
+- Dinner
+- Hawaiian
+- Chicken
+- Grill
 ingredients:
 - ½ cup ketchup
 - ½ cup soy sauce

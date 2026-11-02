@@ -2,7 +2,14 @@
 layout: recipe
 title: Vietnamese Rice Noodles With Lemongrass Shrimp
 image: vietnamese-rice-noodles-with-lemongrass-shrimp.webp
-tags: []
+tags:
+- Lunch
+- Dinner
+- Vietnamese
+- Shrimp
+- Seafood
+- Noodles
+- Rice
 ingredients:
 - 1 cup finely julienned carrot
 - 1 cup finely julienned daikon

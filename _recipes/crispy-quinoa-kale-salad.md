@@ -3,7 +3,11 @@ layout: recipe
 title: Crispy Quinoa Kale Salad
 image: crispy-quinoa-kale-salad.jpg
 tags:
-- "Salad"
+- Salad
+- Beans
+- Grains
+- Vegetarian
+- Vegan
 ingredients:
 - 1/2 cup dry quinoa
 - 1 cup water or vegetable broth

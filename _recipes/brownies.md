@@ -3,11 +3,13 @@ layout: recipe
 title: Brownies
 image: brownies.webp
 tags:
-- "American"
-- "Weeknight"
-- "Crowd Pleaser"
-- "Snack"
-- "Dessert"
+- Snack
+- Dessert
+- American
+- Vegetarian
+- Baking
+- Crowd Pleaser
+- Weeknight
 ingredients:
 - Nonstick cooking spray, for greasing
 - ½ cup /113 grams unsalted butter (1 stick)

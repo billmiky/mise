@@ -3,10 +3,13 @@ layout: recipe
 title: Chopped Salad With Chickpeas, Feta and Avocado
 image: chopped-salad-with-chickpeas-feta-and-avocado.webp
 tags:
-- "American"
-- "Salad"
-- "Lunch"
-- "Dinner"
+- Lunch
+- Dinner
+- Side
+- Salad
+- American
+- Beans
+- Vegetarian
 ingredients:
 - 2 cups small (½-inch) diced stale bread, buns or pita (about 3 to 4 ounces)
 - 6 tablespoons olive oil, plus more for drizzling

@@ -2,7 +2,11 @@
 layout: recipe
 title: Tamarind mushroom instant noodles
 image: tamarind-mushroom-instant-noodles.webp
-tags: []
+tags:
+- Dinner
+- Noodles
+- Rice
+- Vegetarian
 ingredients:
 - 160.0g dried instant noodles (2 x 80g packets) flavour sachets saved for another use
 - 3.0tbsp neutral oil plus extra for tossing

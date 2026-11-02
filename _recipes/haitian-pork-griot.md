@@ -3,9 +3,10 @@ layout: recipe
 title: Haitian Pork Griot
 image: haitian-pork-griot.webp
 tags:
-- "Haitian"
-- "Dinner"
-- "Side"
+- Dinner
+- Side
+- Haitian
+- Pork
 ingredients:
 - 1 small Scotch bonnet or habanero chile
 - 1 medium onion, diced

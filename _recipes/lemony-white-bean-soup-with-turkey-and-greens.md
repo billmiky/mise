@@ -3,7 +3,11 @@ layout: recipe
 title: Lemony White Bean Soup With Turkey and Greens
 image: lemony-white-bean-soup-with-turkey-and-greens.jpg
 tags:
-- soup
+- Lunch
+- Dinner
+- Soup
+- Turkey
+- Beans
 ingredients:
 - 3 tablespoons olive oil
 - 1 large onion, diced

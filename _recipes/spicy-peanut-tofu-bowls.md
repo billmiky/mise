@@ -2,7 +2,12 @@
 layout: recipe
 title: Spicy Peanut Tofu Bowls
 image: spicy-peanut-tofu-bowls.webp
-tags: []
+tags:
+- Dinner
+- Asian
+- Tofu
+- Rice
+- Vegetarian
 ingredients:
 - 2 blocks of extra firm tofu
 - 1-2 tablespoons cornstarch

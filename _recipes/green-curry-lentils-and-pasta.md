@@ -3,8 +3,11 @@ layout: recipe
 title: Green Curry Lentils and Pasta
 image: green-curry-lentils-and-pasta.webp
 tags:
-- "Soup"
-- "Dinner"
+- Dinner
+- Soup
+- Lentils
+- Pasta
+- Curry
 ingredients:
 - 2 Tbsp. vegetable oil
 - 1 large carrot, halved lengthwise, thinly sliced into half-moons

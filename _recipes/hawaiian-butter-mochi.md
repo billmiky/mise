@@ -3,8 +3,12 @@ layout: recipe
 title: Hawaiian Butter Mochi
 image: hawaiian-butter-mochi.jpg
 tags:
-- "Hawaiian"
-- "Dessert"
+- Side
+- Snack
+- Dessert
+- Hawaiian
+- Vegetarian
+- Baking
 ingredients:
 - Unsalted butter or vegetable oil, for coating the pan
 - 1 stick (8 tablespoons) unsalted butter

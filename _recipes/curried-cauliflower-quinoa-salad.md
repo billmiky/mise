@@ -3,7 +3,13 @@ layout: recipe
 title: Curried Cauliflower Quinoa Salad
 image: curried-cauliflower-quinoa-salad.jpg
 tags:
-- "Salad"
+- Lunch
+- Dinner
+- Salad
+- Mediterranean
+- Grains
+- Vegetarian
+- Gluten-Free
 ingredients:
 - 1 small head cauliflower, cut into small florets
 - ⅓ cup extra-virgin olive oil

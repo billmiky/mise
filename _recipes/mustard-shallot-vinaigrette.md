@@ -3,8 +3,10 @@ layout: recipe
 title: Mustard-Shallot Vinaigrette
 image: mustard-shallot-vinaigrette.webp
 tags:
-- "Side"
-- "Sauce"
+- Side
+- Sauce
+- Vegetarian
+- Vegan
 ingredients:
 - 1 shallot, minced
 - 2 tablespoons white wine vinegar

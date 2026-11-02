@@ -3,10 +3,16 @@ layout: recipe
 title: Savory Moong Dal Rice Crepes (Dosa or Cheela)
 image: savory-moong-dal-rice-crepes-dosa-or-cheela.jpg
 tags:
-- "Indian"
-- "Breakfast"
-- "Side"
-- "Snack"
+- Breakfast
+- Side
+- Snack
+- Indian
+- Beans
+- Lentils
+- Rice
+- Vegetarian
+- Vegan
+- Gluten-Free
 ingredients:
 - 1 cup moong dal or red lentils* (not green mung beans)
 - 1 cup dry short grain brown rice*

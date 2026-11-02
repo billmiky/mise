@@ -3,8 +3,11 @@ layout: recipe
 title: Peruvian Chicken, Rice and Cilantro Soup (Aguadito de Pollo)
 image: peruvian-chicken-rice-and-cilantro-soup-aguadito-de-pollo.webp
 tags:
-- "Dinner"
-- "Side"
+- Dinner
+- Side
+- Soup
+- Chicken
+- Rice
 ingredients:
 - 1 tablespoon grapeseed or other neutral oil
 - 4 medium garlic cloves, minced

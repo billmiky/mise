@@ -3,9 +3,12 @@ layout: recipe
 title: Roasted Honey Nut Squash and Chickpeas With Hot Honey
 image: roasted-honey-nut-squash-and-chickpeas-with-hot-honey.webp
 tags:
-- "American"
-- "Dinner"
-- "Side"
+- Dinner
+- Side
+- American
+- Beans
+- Vegetarian
+- Sheet Pan
 ingredients:
 - 2 (14.5-ounce) cans chickpeas (preferably not “no salt added”), drained and rinsed
 - 2 ½ pounds honey nut or butternut squash, peeled, trimmed, seeded and cut into 1-inch cubes (6 cups)

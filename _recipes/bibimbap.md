@@ -3,10 +3,12 @@ layout: recipe
 title: Bibimbap
 image: bibimbap.webp
 tags:
-- "Korean"
-- "Dinner"
-- "Side"
-- "Lunch"
+- Lunch
+- Dinner
+- Side
+- Korean
+- Beef
+- Rice
 ingredients:
 - 12- to 16-ounce strip steak
 - 2 garlic cloves, peeled

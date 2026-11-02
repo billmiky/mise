@@ -3,9 +3,12 @@ layout: recipe
 title: Pressure Cooker Chipotle-Honey Chicken Tacos
 image: pressure-cooker-chipotle-honey-chicken-tacos.jpg
 tags:
-- chicken
-- mexican
-- taco
+- Dinner
+- Mexican
+- Chicken
+- Beans
+- Instant Pot
+- Taco
 ingredients:
 - 1 1/2 pounds boneless, skinless chicken thighs
 - 1 to 4 canned chipotles in adobo, finely chopped, plus 2 tablespoons adobo sauce

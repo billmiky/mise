@@ -7,8 +7,10 @@ image: banana-bread.jpg
 imagecredit: https://flic.kr/p/7HZmzn
 
 tags:
-- breakfast
-- baking
+- Breakfast
+- Dessert
+- Vegetarian
+- Baking
 
 ingredients:
 - 4 bananas

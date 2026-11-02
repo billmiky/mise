@@ -2,7 +2,11 @@
 layout: recipe
 title: The Very Best Homemade Lemonade
 image: the-very-best-homemade-lemonade.webp
-tags: []
+tags:
+- Beverage
+- American
+- Vegetarian
+- Vegan
 ingredients:
 - 3 cups water
 - 1 cup lemon juice (4-6 lemons)

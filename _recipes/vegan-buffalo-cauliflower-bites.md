@@ -3,9 +3,11 @@ layout: recipe
 title: Vegan Buffalo Cauliflower Bites
 image: vegan-buffalo-cauliflower-bites.jpg
 tags:
-- "American"
-- "Side"
-- "Snack"
+- Side
+- Snack
+- American
+- Vegetarian
+- Vegan
 ingredients:
 - 1/4 cup coconut oil
 - 1/2 cup hot sauce

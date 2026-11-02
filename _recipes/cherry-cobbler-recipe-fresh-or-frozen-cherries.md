@@ -2,7 +2,10 @@
 layout: recipe
 title: Cherry Cobbler Recipe (fresh or frozen cherries)
 image: cherry-cobbler-recipe-fresh-or-frozen-cherries.jpg
-tags: []
+tags:
+- Dessert
+- Vegetarian
+- Baking
 ingredients:
 - 1 1/2 pounds of cherries, pitted, fresh or frozen
 - 2 tablespoons lemon juice

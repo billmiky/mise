@@ -3,7 +3,11 @@ layout: recipe
 title: Sticky Miso Salmon Bowl
 image: sticky-miso-salmon-bowl.webp
 tags:
-- "Dinner"
+- Dinner
+- Japanese
+- Fish
+- Seafood
+- Rice
 ingredients:
 - 2 cups sushi rice
 - 3 tablespoons white miso

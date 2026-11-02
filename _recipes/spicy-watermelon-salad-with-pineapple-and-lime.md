@@ -2,7 +2,12 @@
 layout: recipe
 title: Spicy Watermelon Salad With Pineapple and Lime
 image: spicy-watermelon-salad-with-pineapple-and-lime.webp
-tags: []
+tags:
+- Lunch
+- Dinner
+- Side
+- Salad
+- Vegetarian
 ingredients:
 - 3 tablespoons extra-virgin olive oil
 - 2 tablespoons apple cider vinegar

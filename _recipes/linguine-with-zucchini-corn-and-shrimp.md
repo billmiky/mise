@@ -2,7 +2,12 @@
 layout: recipe
 title: Linguine With Zucchini, Corn and Shrimp
 image: linguine-with-zucchini-corn-and-shrimp.webp
-tags: []
+tags:
+- Lunch
+- Dinner
+- Shrimp
+- Seafood
+- Pasta
 ingredients:
 - Kosher salt and black pepper
 - 1 pound linguine or other long pasta

@@ -3,8 +3,11 @@ layout: recipe
 title: Miso-Glazed Eggplant Grain Bowls With Basil
 image: miso-glazed-eggplant-grain-bowls-with-basil.webp
 tags:
-- "Japanese"
-- "Dinner"
+- Dinner
+- Japanese
+- Grains
+- Vegetarian
+- Vegan
 ingredients:
 - 4 small to medium eggplants (about 2 lb.), halved lengthwise
 - 6 Tbsp. extra-virgin olive oil, divided

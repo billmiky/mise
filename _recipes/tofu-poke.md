@@ -3,10 +3,13 @@ layout: recipe
 title: Tofu Poke
 image: tofu-poke.jpg
 tags:
-- "Hawaiian"
-- "Side"
-- "Snack"
-- "Lunch"
+- Lunch
+- Side
+- Snack
+- Hawaiian
+- Tofu
+- Vegetarian
+- Vegan
 ingredients:
 - 12 ounce block of deep-fried tofu
 - 1 ounce ogo, chopped into 1/2-inch pieces

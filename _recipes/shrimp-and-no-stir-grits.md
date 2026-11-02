@@ -3,9 +3,12 @@ layout: recipe
 title: Shrimp and No-Stir Grits
 image: shrimp-and-no-stir-grits.webp
 tags:
-- "Southern"
-- "American"
-- "Dinner"
+- Dinner
+- American
+- Southern
+- Shrimp
+- Seafood
+- Grains
 ingredients:
 - 4 Tbsp. unsalted butter, divided
 - 1 tsp. kosher salt, plus more

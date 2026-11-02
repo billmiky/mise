@@ -2,7 +2,13 @@
 layout: recipe
 title: Grilled Tofu Salad
 image: grilled-tofu-salad.webp
-tags: []
+tags:
+- Lunch
+- Dinner
+- Salad
+- Tofu
+- Vegetarian
+- Grill
 ingredients:
 - Neutral oil, for greasing grates
 - 2 tablespoons lemon juice

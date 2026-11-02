@@ -7,10 +7,12 @@ author: Hetty Lui McKinnon
 source: The New York Times
 published: 2022-11-19
 tags:
-- mains
-- soups
-- vegetarian
-- easy dinners
+- Dinner
+- Soup
+- Rice
+- Vegetarian
+- Vegan
+- Easy Dinners
 yield: "4 to 6 servings"
 total_time: "45 minutes"
 

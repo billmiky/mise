@@ -3,8 +3,11 @@ layout: recipe
 title: Coconut Saag
 image: coconut-saag.webp
 tags:
-- "Indian"
-- "Dinner"
+- Lunch
+- Dinner
+- Indian
+- Tofu
+- Vegetarian
 ingredients:
 - 3 tablespoons vegetable oil
 - 2 tablespoons coriander seeds

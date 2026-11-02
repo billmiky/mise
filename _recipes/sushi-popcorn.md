@@ -2,7 +2,11 @@
 layout: recipe
 title: Sushi Popcorn
 image: sushi-popcorn.webp
-tags: []
+tags:
+- Snack
+- Japanese
+- Rice
+- Vegetarian
 ingredients:
 - 2 sheets nori (dried seaweed)
 - 2 tbsp. toasted sesame seeds

@@ -4,8 +4,10 @@ layout: recipe
 title: Laotian-Style Chicken and Rice Salad
 image: laotian-style-chicken-and-rice-salad.jpg
 tags:
-- chicken
-- salad
+- Salad
+- Thai
+- Chicken
+- Rice
 ingredients:
 - 1 medium red onion, thinly sliced
 - 1 3" piece ginger, peeled, cut into thin matchsticks

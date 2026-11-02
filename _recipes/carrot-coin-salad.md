@@ -2,7 +2,10 @@
 layout: recipe
 title: Carrot Coin Salad
 image: carrot-coin-salad.webp
-tags: []
+tags:
+- Side
+- Salad
+- Vegetarian
 ingredients:
 - 3 tbsp. toasted sesame oil
 - 3 tbsp. unseasoned rice vinegar

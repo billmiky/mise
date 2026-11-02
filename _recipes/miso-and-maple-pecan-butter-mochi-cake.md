@@ -3,8 +3,10 @@ layout: recipe
 title: Miso-and-Maple-Pecan Butter Mochi Cake
 image: miso-and-maple-pecan-butter-mochi-cake.webp
 tags:
-- "Japanese"
-- "Dessert"
+- Dessert
+- Japanese
+- Vegetarian
+- Baking
 ingredients:
 - Vegetable oil (for baking sheet)
 - 8 oz. raw pecans, coarsely chopped (about 2 cups)

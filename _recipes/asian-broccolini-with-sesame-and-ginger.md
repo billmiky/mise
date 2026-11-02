@@ -2,7 +2,10 @@
 layout: recipe
 title: Asian Broccolini With Sesame and Ginger
 image: asian-broccolini-with-sesame-and-ginger.jpg
-tags: []
+tags:
+- Side
+- Asian
+- Vegetarian
 ingredients:
 - 1 pound broccolini (, ends trimmed)
 - 2 tablespoons butter

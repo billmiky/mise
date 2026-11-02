@@ -2,7 +2,10 @@
 layout: recipe
 title: Green Goddess Crunch Sandwich
 image: green-goddess-crunch-sandwich.webp
-tags: []
+tags:
+- Dinner
+- Vegetarian
+- Sandwich
 ingredients:
 - ¼ cup finely chopped chives
 - ¼ cup mayonnaise

@@ -2,7 +2,13 @@
 layout: recipe
 title: Sticky Gochujang Tofu with Peanuts and Herbs
 image: sticky-gochujang-tofu-with-peanuts-and-herbs.jpg
-tags: []
+tags:
+- Dinner
+- Korean
+- Tofu
+- Rice
+- Vegetarian
+- Vegan
 ingredients:
 - 1 16-ounce block extra firm tofu – ideally the kind that comes vacuum-packed
 - 1 tablespoon avocado oil

@@ -3,8 +3,10 @@ layout: recipe
 title: Pad Kee Mao
 image: pad-kee-mao.webp
 tags:
-- "Thai"
-- "Dinner"
+- Dinner
+- Thai
+- Pork
+- Noodles
 ingredients:
 - 4 tablespoons fish sauce
 - 2 tablespoons dark sweet soy sauce (kecap manis)

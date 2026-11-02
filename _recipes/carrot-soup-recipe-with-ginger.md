@@ -3,7 +3,10 @@ layout: recipe
 title: Carrot Soup Recipe with Ginger
 image: carrot-soup-recipe-with-ginger.jpg
 tags:
-- soup
+- Soup
+- American
+- Vegetarian
+- Vegan
 ingredients:
 - 1 tablespoon extra-virgin olive oil
 - ½ medium yellow onion, chopped

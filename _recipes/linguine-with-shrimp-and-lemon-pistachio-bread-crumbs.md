@@ -4,9 +4,14 @@ layout: recipe
 title: Linguine With Shrimp and Lemon-Pistachio Bread Crumbs
 image: linguine-with-shrimp-and-lemon-pistachio-bread-crumbs.jpg
 tags:
-- baking
-- bread
-- seafood
+- Lunch
+- Dinner
+- Italian
+- Shrimp
+- Seafood
+- Pasta
+- Baking
+- Bread
 ingredients:
 - Kosher salt
 - 1 pound linguine

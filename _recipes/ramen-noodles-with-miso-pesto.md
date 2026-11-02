@@ -2,7 +2,12 @@
 layout: recipe
 title: Ramen Noodles With Miso Pesto
 image: ramen-noodles-with-miso-pesto.webp
-tags: []
+tags:
+- Dinner
+- Italian
+- Japanese
+- Noodles
+- Vegetarian
 ingredients:
 - 4 cups baby spinach
 - 2 cups cilantro leaves with tender stems

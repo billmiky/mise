@@ -3,12 +3,14 @@ layout: recipe
 title: One-Pot Cheesy Orecchiette With Cabbage and Paprika
 image: one-pot-cheesy-orecchiette-with-cabbage-and-paprika.webp
 tags:
-- "Italian"
-- "Pasta"
-- "Vegetarian"
-- "Weeknight"
-- "Dinner"
-- "Side"
+- Lunch
+- Dinner
+- Side
+- Italian
+- Pasta
+- Vegetarian
+- One-Pot
+- Weeknight
 ingredients:
 - 3 tablespoons extra-virgin olive oil, more for serving
 - 1 large leek, white and light green parts only, thinly sliced (or use 4 scallions)

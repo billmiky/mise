@@ -3,7 +3,12 @@ layout: recipe
 title: Crispy Lentil Salad with Arugula and Garlic Yogurt Sauce
 image: crispy-lentil-salad-with-arugula-and-garlic-yogurt-sauce.webp
 tags:
-- "Salad"
+- Lunch
+- Dinner
+- Salad
+- Mediterranean
+- Lentils
+- Vegetarian
 ingredients:
 - 3/4 cup mixed lentils or black lentils*
 - 1 bay leaf

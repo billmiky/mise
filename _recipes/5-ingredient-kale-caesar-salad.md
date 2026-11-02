@@ -2,7 +2,10 @@
 layout: recipe
 title: 5-Ingredient Kale Caesar Salad
 image: 5-ingredient-kale-caesar-salad.jpg
-tags: []
+tags:
+- Lunch
+- Salad
+- Vegetarian
 ingredients:
 - 4 ounces country-style bread (about 1/4 of a loaf), torn into bite-sized pieces (about 3 cups)
 - 1/4 cup plus 1 tablespoon olive oil, divided

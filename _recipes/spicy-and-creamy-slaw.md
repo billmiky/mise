@@ -2,7 +2,10 @@
 layout: recipe
 title: Spicy and Creamy Slaw
 image: spicy-and-creamy-slaw.jpg
-tags: []
+tags:
+- Side
+- Salad
+- Vegetarian
 ingredients:
 - ½ small red onion or 1 medium shallot, thinly sliced
 - 3 Tbsp. apple cider vinegar or white wine vinegar

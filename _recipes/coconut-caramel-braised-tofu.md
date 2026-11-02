@@ -3,7 +3,10 @@ layout: recipe
 title: Coconut-Caramel Braised Tofu
 image: coconut-caramel-braised-tofu.webp
 tags:
-- "Dinner"
+- Dinner
+- Tofu
+- Vegetarian
+- Vegan
 ingredients:
 - 3 tablespoons neutral oil, such as safflower or canola
 - 8 ounces green beans, trimmed and cut crosswise into thirds

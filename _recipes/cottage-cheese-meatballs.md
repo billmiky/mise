@@ -2,7 +2,10 @@
 layout: recipe
 title: Cottage Cheese Meatballs
 image: cottage-cheese-meatballs.jpg
-tags: []
+tags:
+- Dinner
+- Italian
+- Turkey
 ingredients:
 - 1 tablespoon extra-virgin olive oil, plus more for greasing
 - 1 pound ground turkey (at least 6-percent fat)

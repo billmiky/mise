@@ -2,7 +2,13 @@
 layout: recipe
 title: Pressure Cooker Spicy Pork Shoulder
 image: pressure-cooker-spicy-pork-shoulder.webp
-tags: []
+tags:
+- Lunch
+- Dinner
+- Korean
+- Pork
+- Rice
+- Instant Pot
 ingredients:
 - 5 garlic cloves, grated on a Microplane or minced
 - 2 tablespoons brown sugar or honey

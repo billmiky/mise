@@ -3,7 +3,11 @@ layout: recipe
 title: Peanut Butter-Banana Bread With Chocolate Chips
 image: peanut-butter-banana-bread-with-chocolate-chips.webp
 tags:
-- "Dessert"
+- Breakfast
+- Snack
+- Dessert
+- Vegetarian
+- Baking
 ingredients:
 - ½ cup canola or vegetable oil, plus more for the pan
 - 1 ½ cups/360 grams mashed bananas (from 3 to 4 very ripe medium bananas)

@@ -3,7 +3,12 @@ layout: recipe
 title: Easy Hummus (Better than Store-Bought)
 image: easy-hummus-better-than-store-bought.jpg
 tags:
-- "Side"
+- Side
+- Sauce
+- Middle Eastern
+- Beans
+- Vegetarian
+- Vegan
 ingredients:
 - 1 (15-ounce) can chickpeas, drained or 1 ½ cups cooked chickpeas (250g)
 - ¼ cup fresh lemon juice, from 1 large lemon (60ml)

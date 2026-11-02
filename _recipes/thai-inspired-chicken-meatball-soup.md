@@ -3,11 +3,12 @@ layout: recipe
 title: Thai-Inspired Chicken Meatball Soup
 image: thai-inspired-chicken-meatball-soup.webp
 tags:
-- "Thai"
-- "Dinner"
-- "Side"
-- "Lunch"
-- "Soup"
+- Lunch
+- Dinner
+- Side
+- Soup
+- Thai
+- Chicken
 ingredients:
 - 1 (4-inch) piece fresh ginger, peeled
 - 6 garlic cloves, peeled

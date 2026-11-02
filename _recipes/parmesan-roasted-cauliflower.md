@@ -3,10 +3,11 @@ layout: recipe
 title: Parmesan-Roasted Cauliflower
 image: parmesan-roasted-cauliflower.webp
 tags:
-- "Italian"
-- "Side"
-- "Snack"
-- "Dinner"
+- Dinner
+- Side
+- Snack
+- Italian
+- Vegetarian
 ingredients:
 - 1 medium head of cauliflower, cut into florets
 - 1 medium onion, sliced

@@ -3,7 +3,8 @@ layout: recipe
 title: Baked Lemon Pudding With Blueberry Jam
 image: baked-lemon-pudding-with-blueberry-jam.webp
 tags:
-- "Dessert"
+- Dessert
+- Vegetarian
 ingredients:
 - 2 tablespoons/28 grams unsalted butter, softened
 - 1 cup/200 grams granulated sugar

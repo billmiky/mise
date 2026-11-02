@@ -2,7 +2,15 @@
 layout: recipe
 title: Snap Pea, Tofu and Herb Salad With Spicy Peanut Sauce
 image: snap-pea-tofu-and-herb-salad-with-spicy-peanut-sauce.webp
-tags: []
+tags:
+- Lunch
+- Dinner
+- Side
+- Salad
+- Thai
+- Tofu
+- Vegetarian
+- Vegan
 ingredients:
 - 1 (14- to 16-ounce) package of extra-firm tofu, drained, patted dry and cut into ½-inch slices
 - Salt and pepper

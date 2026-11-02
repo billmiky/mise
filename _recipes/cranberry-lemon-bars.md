@@ -4,7 +4,9 @@ layout: recipe
 title: "Cranberry Lemon Bars"
 image: cranberry-lemon-bars.jpg
 tags:
-- dessert
+- Dessert
+- Vegetarian
+- Baking
 ingredients:
 - 1/2 cup salted butter, softened
 - 1/4 cup sugar

@@ -3,10 +3,11 @@ layout: recipe
 title: Biscuits and Gravy
 image: biscuits-and-gravy.webp
 tags:
-- "American"
-- "Breakfast"
-- "Side"
-- "Snack"
+- Breakfast
+- Side
+- Snack
+- American
+- Pork
 ingredients:
 - 2 cups (250 g) all-purpose flour, plus more for surface
 - 2 Tbsp. sugar

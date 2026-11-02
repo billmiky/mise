@@ -2,7 +2,10 @@
 layout: recipe
 title: Roasted Sausages With Chickpeas and Spinach
 image: roasted-sausages-with-chickpeas-and-spinach.jpg
-tags: []
+tags:
+- Dinner
+- Pork
+- Beans
 ingredients:
 - 2 (15-ounce) cans chickpeas, drained
 - 2 tablespoons extra-virgin olive oil, divided

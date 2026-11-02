@@ -3,8 +3,10 @@ layout: recipe
 title: Sugar Snap Pea Salad With Radishes, Mint and Ricotta Salata
 image: sugar-snap-pea-salad-with-radishes-mint-and-ricotta-salata.webp
 tags:
-- "Salad"
-- "Side"
+- Side
+- Salad
+- Italian
+- Vegetarian
 ingredients:
 - ¾ cup sliced radishes
 - 4 ounces sugar snap peas, sliced (about 1 ¼ cups)

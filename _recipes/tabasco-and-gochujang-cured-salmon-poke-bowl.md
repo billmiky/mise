@@ -3,11 +3,14 @@ layout: recipe
 title: Tabasco- and Gochujang-Cured Salmon Poké Bowl
 image: tabasco-and-gochujang-cured-salmon-poke-bowl.webp
 tags:
-- "Hawaiian"
-- "Japanese"
-- "Lunch"
-- "Dinner"
-- "Side"
+- Lunch
+- Dinner
+- Side
+- Hawaiian
+- Japanese
+- Fish
+- Seafood
+- Rice
 ingredients:
 - 10 oz. sashimi-grade salmon, cut into 3⁄4" pieces, or smoked salmon cut into 3⁄4" strips
 - 1 Tbsp. Tabasco

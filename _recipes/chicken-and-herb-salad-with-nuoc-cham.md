@@ -3,8 +3,11 @@ layout: recipe
 title: Chicken and Herb Salad With Nuoc Cham
 image: chicken-and-herb-salad-with-nuoc-cham.webp
 tags:
-- "Vietnamese"
-- "Salad"
+- Lunch
+- Dinner
+- Salad
+- Vietnamese
+- Chicken
 ingredients:
 - 2 tablespoons granulated sugar
 - 1 garlic clove, minced

@@ -3,10 +3,14 @@ layout: recipe
 title: Cauliflower Banh Mi
 image: cauliflower-banh-mi.jpg
 tags:
-- "Vietnamese"
-- "Lunch"
-- "Dinner"
-- "Side"
+- Lunch
+- Dinner
+- Side
+- Vietnamese
+- Vegetarian
+- Vegan
+- Gluten-Free
+- Sandwich
 ingredients:
 - 2/3 cup rice wine vinegar (or sub apple cider vinegar)
 - 1/3 cup hot water

@@ -3,9 +3,12 @@ layout: recipe
 title: Pikliz (Haitian Pickled Vegetable Relish)
 image: pikliz-haitian-pickled-vegetable-relish.webp
 tags:
-- "Haitian"
-- "Side"
-- "Snack"
+- Side
+- Snack
+- Sauce
+- Haitian
+- Vegetarian
+- Vegan
 ingredients:
 - 2½ cups thinly sliced cabbage, cut crosswise 2-3 times for shorter shreds (from about ¼ large cabbage)
 - 1 cup julienned or grated carrots (from about 1 medium carrot)

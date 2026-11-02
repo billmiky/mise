@@ -2,7 +2,13 @@
 layout: recipe
 title: Vegan Poke Bowl
 image: vegan-poke-bowl.jpg
-tags: []
+tags:
+- Dinner
+- Japanese
+- Tofu
+- Beans
+- Vegetarian
+- Vegan
 ingredients:
 - ⅛ yellow onion (2 oz, 57 g) 2 57
 - 1 block deep-fried firm tofu cutlet (atsuage) (6.5 oz, 184 g) 6.5 184

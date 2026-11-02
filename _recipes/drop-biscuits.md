@@ -6,9 +6,10 @@ title: "Quick and Easy Drop Biscuits"
 image: drop-biscuit.jpg
 
 tags:
-- sides
-- baking
-- breakfast
+- Breakfast
+- Side
+- Vegetarian
+- Baking
 
 ingredients:
 - 1 1/2 cups all-purpose flour (6.6 ounces; 190 g)

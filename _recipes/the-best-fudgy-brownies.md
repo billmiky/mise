@@ -3,7 +3,10 @@ layout: recipe
 title: The Best Fudgy Brownies
 image: the-best-fudgy-brownies.jpg
 tags:
-- "Dessert"
+- Dessert
+- American
+- Vegetarian
+- Baking
 ingredients:
 - 10 tablespoons unsalted butter (142 g)
 - 1 ¼ cups granulated sugar (250 g)

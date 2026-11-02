@@ -3,7 +3,11 @@ layout: recipe
 title: Homemade Pocky
 image: homemade-pocky.webp
 tags:
-- "Dessert"
+- Snack
+- Dessert
+- American
+- Vegetarian
+- Baking
 ingredients:
 - 1 ¼ cups/160 grams all-purpose flour, plus more for dusting
 - 3 tablespoons granulated sugar

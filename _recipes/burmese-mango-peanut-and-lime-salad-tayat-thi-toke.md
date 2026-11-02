@@ -3,9 +3,14 @@ layout: recipe
 title: Burmese mango, peanut and lime salad (Tayat thi toke)
 image: burmese-mango-peanut-and-lime-salad-tayat-thi-toke.webp
 tags:
-- "Burmese"
-- "Salad"
-- "Side"
+- Lunch
+- Dinner
+- Side
+- Salad
+- Burmese
+- Beans
+- Vegetarian
+- Vegan
 ingredients:
 - 2 cm piece 2 cm piece fresh ginger peeled and julienned
 - 1 red bird’s-eye chilli finely chopped

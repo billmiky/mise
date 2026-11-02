@@ -3,7 +3,9 @@ layout: recipe
 title: Easy Buttermilk Peach Cobbler
 image: easy-buttermilk-peach-cobbler.webp
 tags:
-- "Dessert"
+- Dessert
+- Vegetarian
+- Baking
 ingredients:
 - 2 pounds fresh peaches, pitted and sliced (peeling is optional), or 6 cups frozen peach slices
 - ½ cup/110 grams packed dark brown sugar

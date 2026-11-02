@@ -2,7 +2,11 @@
 layout: recipe
 title: Crispy Tofu Tacos
 image: crispy-tofu-tacos.webp
-tags: []
+tags:
+- Dinner
+- Mexican
+- Tofu
+- Vegetarian
 ingredients:
 - 2 (14- to 16-ounce) blocks firm tofu
 - ¼ cup plus 3 tablespoons olive oil, divided

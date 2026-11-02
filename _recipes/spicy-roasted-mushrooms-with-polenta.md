@@ -3,9 +3,11 @@ layout: recipe
 title: Spicy Roasted Mushrooms With Polenta
 image: spicy-roasted-mushrooms-with-polenta.webp
 tags:
-- "Italian"
-- "Dinner"
-- "Side"
+- Dinner
+- Side
+- Italian
+- Seafood
+- Grains
 ingredients:
 - ½ cup vegetable oil
 - 1 cinnamon stick

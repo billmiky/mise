@@ -3,9 +3,11 @@ layout: recipe
 title: Four-Spice Salmon
 image: four-spice-salmon.webp
 tags:
-- "Asian"
-- "Dinner"
-- "Side"
+- Dinner
+- Side
+- Asian
+- Fish
+- Seafood
 ingredients:
 - 4 6-ounce skinned salmon fillets
 - Salt and black pepper

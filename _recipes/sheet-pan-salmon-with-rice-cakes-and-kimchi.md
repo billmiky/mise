@@ -3,12 +3,14 @@ layout: recipe
 title: Sheet-Pan Salmon With Rice Cakes and Kimchi
 image: sheet-pan-salmon-with-rice-cakes-and-kimchi.webp
 tags:
-- "Korean"
-- "Vegetarian"
-- "Weeknight"
-- "Crowd Pleaser"
-- "Dinner"
-- "Side"
+- Dinner
+- Side
+- Korean
+- Fish
+- Seafood
+- Vegetarian
+- Crowd Pleaser
+- Weeknight
 ingredients:
 - 8 garlic cloves, finely grated
 - 1½ lb. cylindrical Korean rice cakes (about 2½" long), thawed if frozen

@@ -2,7 +2,9 @@
 layout: recipe
 title: Ombré Gratin
 image: ombre-gratin.webp
-tags: []
+tags:
+- Dinner
+- Vegetarian
 ingredients:
 - 3 tablespoons unsalted butter, plus more for greasing the dish
 - 1 ½ cups finely chopped shallots (from 4 large shallots)

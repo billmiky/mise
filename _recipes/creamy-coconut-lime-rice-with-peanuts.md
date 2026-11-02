@@ -3,8 +3,13 @@ layout: recipe
 title: Creamy Coconut-Lime Rice With Peanuts
 image: creamy-coconut-lime-rice-with-peanuts.webp
 tags:
-- "Thai"
-- "Dinner"
+- Lunch
+- Dinner
+- Side
+- Thai
+- Rice
+- Vegetarian
+- Vegan
 ingredients:
 - 1 cup uncooked jasmine rice, rinsed
 - 1 (13- to 14-ounce) can coconut milk

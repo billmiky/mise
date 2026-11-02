@@ -3,7 +3,10 @@ layout: recipe
 title: Cold-Busting Ginger Chicken Noodle Soup
 image: cold-busting-ginger-chicken-noodle-soup.jpg
 tags:
-- "Soup"
+- Soup
+- American
+- Chicken
+- Noodles
 ingredients:
 - 1.5 tablespoons olive oil
 - 3 large chicken breasts

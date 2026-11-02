@@ -3,10 +3,11 @@ layout: recipe
 title: Chicken and Corn Stir-Fry
 image: chicken-and-corn-stir-fry.webp
 tags:
-- "Chinese"
-- "Dinner"
-- "Lunch"
-- "Side"
+- Lunch
+- Dinner
+- Side
+- Chinese
+- Chicken
 ingredients:
 - 3 Tbsp. oyster sauce
 - 1 Tbsp. unseasoned rice vinegar

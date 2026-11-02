@@ -3,7 +3,12 @@ layout: recipe
 title: Summer Grain Salad
 image: summer-grain-salad.webp
 tags:
-- "Salad"
+- Dinner
+- Side
+- Salad
+- American
+- Grains
+- Vegetarian
 ingredients:
 - 1 1/2 cups cooked quinoa
 - 2 cups cooked farro

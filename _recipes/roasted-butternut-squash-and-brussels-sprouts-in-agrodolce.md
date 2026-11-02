@@ -2,7 +2,11 @@
 layout: recipe
 title: Roasted Butternut Squash and Brussels Sprouts in Agrodolce
 image: roasted-butternut-squash-and-brussels-sprouts-in-agrodolce.jpg
-tags: []
+tags:
+- Side
+- American
+- Vegetarian
+- Vegan
 ingredients:
 - 1 large butternut squash (about 2 pounds), peeled, halved lengthwise, seeds removed
 - 7 tablespoons extra virgin olive oil

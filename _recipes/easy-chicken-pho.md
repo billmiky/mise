@@ -3,8 +3,11 @@ layout: recipe
 title: Easy Chicken Pho
 image: easy-chicken-pho.webp
 tags:
-- "Vietnamese"
-- "Soup"
+- Dinner
+- Soup
+- Vietnamese
+- Chicken
+- Noodles
 ingredients:
 - 6-8 cups low-sodium chicken broth
 - 1 1-inch piece ginger, peeled

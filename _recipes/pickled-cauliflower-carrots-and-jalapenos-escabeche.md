@@ -3,8 +3,14 @@ layout: recipe
 title: Pickled Cauliflower, Carrots, and Jalapenos (Escabeche)
 image: pickled-cauliflower-carrots-and-jalapenos-escabeche.jpg
 tags:
-- "Side"
-- "Snack"
+- Lunch
+- Dinner
+- Side
+- Snack
+- Sauce
+- Mexican
+- Vegetarian
+- Vegan
 ingredients:
 - 1 cup small cauliflower florets
 - 1 cup carrots (sliced ​into 1/8-inch-thick coins)

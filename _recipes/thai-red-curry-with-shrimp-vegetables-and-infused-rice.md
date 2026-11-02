@@ -2,7 +2,13 @@
 layout: recipe
 title: Thai Red Curry with Shrimp, Vegetables, and Infused Rice
 image: thai-red-curry-with-shrimp-vegetables-and-infused-rice.jpg
-tags: []
+tags:
+- Dinner
+- Thai
+- Shrimp
+- Seafood
+- Rice
+- Curry
 ingredients:
 - 1 3/4 cups water
 - 1 cup basmati rice

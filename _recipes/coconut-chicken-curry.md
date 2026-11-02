@@ -3,8 +3,11 @@ layout: recipe
 title: Coconut Chicken Curry
 image: coconut-chicken-curry.webp
 tags:
-- "Thai"
-- "Dinner"
+- Dinner
+- Thai
+- Chicken
+- Noodles
+- Curry
 ingredients:
 - 2 ½ pounds boneless, skinless chicken thighs
 - 1 tablespoon ground paprika

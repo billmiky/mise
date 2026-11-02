@@ -3,7 +3,10 @@ layout: recipe
 title: Basic Meal Prep Salad
 image: basic-meal-prep-salad.jpg
 tags:
-- "Salad"
+- Dinner
+- Salad
+- Vegetarian
+- Vegan
 ingredients:
 - 1 head romaine lettuce (can use 4 mini romaine lettuce heads)
 - 10 oz carrots (shredded)

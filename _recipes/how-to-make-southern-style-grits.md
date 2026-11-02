@@ -2,7 +2,12 @@
 layout: recipe
 title: How To Make Southern-Style Grits
 image: how-to-make-southern-style-grits.jpg
-tags: []
+tags:
+- Dinner
+- Side
+- Southern
+- Grains
+- Vegetarian
 ingredients:
 - 4 cups water
 - 1 1/2 cups stone-ground corn grits, such as Anson Mills

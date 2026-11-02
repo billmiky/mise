@@ -3,8 +3,11 @@ layout: recipe
 title: Creamy Butternut Squash and Coconut Noodle Soup
 image: creamy-butternut-squash-and-coconut-noodle-soup.webp
 tags:
-- "Thai"
-- "Soup"
+- Lunch
+- Dinner
+- Soup
+- Thai
+- Noodles
 ingredients:
 - 3 tablespoons vegetable oil
 - 1 to 1¼ pounds peeled butternut squash, cut into 1-inch chunks

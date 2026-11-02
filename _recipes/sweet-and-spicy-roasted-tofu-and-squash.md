@@ -2,7 +2,10 @@
 layout: recipe
 title: Sweet-and-Spicy Roasted Tofu and Squash
 image: sweet-and-spicy-roasted-tofu-and-squash.webp
-tags: []
+tags:
+- Dinner
+- Tofu
+- Vegetarian
 ingredients:
 - 1 (14-ounce) package extra-firm tofu, drained
 - 2 pounds dumpling, delicata or acorn squash, halved and seeded

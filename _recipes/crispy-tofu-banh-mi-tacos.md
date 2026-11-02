@@ -3,8 +3,13 @@ layout: recipe
 title: Crispy Tofu Banh Mi Tacos
 image: crispy-tofu-banh-mi-tacos.jpg
 tags:
-- "Vietnamese"
-- "Dinner"
+- Lunch
+- Dinner
+- Vietnamese
+- Tofu
+- Vegetarian
+- Vegan
+- Sandwich
 ingredients:
 - 14 ounces extra firm tofu (drained and pressed)
 - 1/4 cup cornstarch

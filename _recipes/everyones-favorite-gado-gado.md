@@ -2,7 +2,12 @@
 layout: recipe
 title: Everyone’s Favorite Gado-Gado
 image: everyones-favorite-gado-gado.webp
-tags: []
+tags:
+- Dinner
+- Shrimp
+- Seafood
+- Tofu
+- Noodles
 ingredients:
 - ½ small head of broccoli (about 4 oz.), cut into small florets
 - 1 large carrot, peeled, cut into 3"-long matchsticks
