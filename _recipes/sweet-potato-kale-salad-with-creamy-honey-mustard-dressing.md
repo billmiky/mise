@@ -30,13 +30,11 @@ ingredients:
 - 2 tablespoons lemon juice
 - 2 tablespoons champagne or apple cider vinegar
 directions:
-- Preheat oven to 425° F.2. On a baking sheet, combine the sweet potatoes, chickpeas, olive oil, sesame seeds, chili powder,
-  paprika, onion powded, cumin, salt, and pepper. Toss well to coat. Bake 20 minutes, toss everything, then bake another 20
-  minutes, until the chickpeas are crisp and the sweet potatoes tender.3. Meanwhile, in a salad bowl, combine the kale, herbs,
-  and cucumbers. 4. To make the dressing. Combine all ingredients in a glass jar, whisking until smooth. Taste and season
-  with salt and pepper. Drizzle a few tablespoons over the kale and massage the dressing into the greens. 5. Toss the roasted
-  sweet potatoes and chickpeas in with the salad. Add more dressing and toss to combine. Top the salad with avocado and feta.
-  Enjoy!
+- Preheat oven to 425° F.
+- 2. On a baking sheet, combine the sweet potatoes, chickpeas, olive oil, sesame seeds, chili powder, paprika, onion powded, cumin, salt, and pepper. Toss well to coat. Bake 20 minutes, toss everything, then bake another 20 minutes, until the chickpeas are crisp and the sweet potatoes tender.
+- 3. Meanwhile, in a salad bowl, combine the kale, herbs, and cucumbers.
+- 4. To make the dressing. Combine all ingredients in a glass jar, whisking until smooth. Taste and season with salt and pepper. Drizzle a few tablespoons over the kale and massage the dressing into the greens.
+- 5. Toss the roasted sweet potatoes and chickpeas in with the salad. Add more dressing and toss to combine. Top the salad with avocado and feta. Enjoy!
 date_added: 2026-11-02
 season:
 - all
