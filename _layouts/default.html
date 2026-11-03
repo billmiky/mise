@@ -9,12 +9,39 @@
   <link rel="icon" type="image/png" sizes="32x32" href="{{ '/icons/favicon-32x32.png' | relative_url }}">
   <link rel="apple-touch-icon" sizes="180x180" href="{{ '/icons/apple-touch-icon.png' | relative_url }}">
   <link rel="manifest" href="{{ '/manifest.json' | relative_url }}">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="{{ site.title }}">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ '/assets/css/chowdown.css' | relative_url }}">
   <script src="{{ '/assets/js/chowdown.js' | relative_url }}"></script>
   <script src="{{ '/assets/js/recipe-edits.js' | relative_url }}"></script>
+  <script>
+    // Offline support + "install as app"
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register("{{ '/serviceworker.js' | relative_url }}", { scope: "{{ '/' | relative_url }}" }).catch(function () {});
+      });
+    }
+    // Chrome/Android: offer the install prompt once instead of burying it in the menu
+    window.addEventListener('beforeinstallprompt', function (e) {
+      e.preventDefault();
+      try { if (localStorage.getItem('mise_install_dismissed')) return; } catch (x) {}
+      window.addEventListener('load', function () {
+        var C = window.Chowdown;
+        if (!C) return;
+        var el = C.toast('Install Mise as an app <button type="button" id="cd-install">Install</button>', '', 12000);
+        el.querySelector('#cd-install').addEventListener('click', function () {
+          el.remove();
+          e.prompt();
+          e.userChoice.then(function () { try { localStorage.setItem('mise_install_dismissed', '1'); } catch (x) {} });
+        });
+      });
+    });
+  </script>
 </head>
 <body>
   {{ content }}

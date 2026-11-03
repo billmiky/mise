@@ -1,62 +1,82 @@
-const CACHE = "pwabuilder-offline";
+// Mise service worker.
+//  - Pages and scripts: network first (revalidated, so a new deploy is picked up
+//    right away), falling back to the last copy so recipes open offline.
+//  - Images: cache first.
+//  - Only same-origin GETs are handled. GitHub API calls (token, sync, workflows)
+//    are never touched or cached.
+const VERSION = 'v2';
+const PAGES = 'mise-pages-' + VERSION;
+const IMAGES = 'mise-images-v1';
+const KEEP = [PAGES, IMAGES];
+const MAX_IMAGES = 250;
 
-const offlineFallbackPage = "index.html";
+const scope = self.registration.scope; // e.g. https://billmiky.github.io/mise/
+const OFFLINE = new URL('offline.html', scope).href;
+const SHELL = ['', 'recipes/', 'meal-plan/', 'grocery-list/', 'pantry/', 'offline.html',
+  'assets/css/chowdown.css', 'assets/js/chowdown.js', 'assets/js/recipe-edits.js', 'icons/icon-192.png']
+  .map((p) => new URL(p, scope).href);
 
-// Install stage sets up the index page (home page) in the cache and opens a new cache
-self.addEventListener("install", function (event) {
-  console.log("Install Event processing");
-
+self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE).then(function (cache) {
-      console.log("Cached offline page during install");
-
-      if (offlineFallbackPage === "ToDo-replace-this-name.html") {
-        return cache.add(new Response("Update the value of the offlineFallbackPage constant in the serviceworker."));
-      }
-
-      return cache.add(offlineFallbackPage);
-    })
+    caches.open(PAGES)
+      .then((cache) => Promise.allSettled(SHELL.map((u) => cache.add(u)))) // one 404 must not fail the install
+      .then(() => self.skipWaiting())
   );
 });
 
-// If any fetch fails, it will look for the request in the cache and serve it from there first
-self.addEventListener("fetch", function (event) {
-  if (event.request.method !== "GET") return;
-
-  event.respondWith(
-    fetch(event.request)
-      .then(function (response) {
-        console.log("Add page to offline cache: " + response.url);
-
-        // If request was success, add or update it in the cache
-        event.waitUntil(updateCache(event.request, response.clone()));
-
-        return response;
-      })
-      .catch(function (error) {        
-        console.log("Network request Failed. Serving content from cache: " + error);
-        return fromCache(event.request);
-      })
+self.addEventListener('activate', (event) => {
+  event.waitUntil(
+    caches.keys()
+      .then((keys) => Promise.all(keys.filter((k) => KEEP.indexOf(k) === -1).map((k) => caches.delete(k))))
+      .then(() => self.clients.claim())
   );
 });
 
-function fromCache(request) {
-  // Check to see if you have it in the cache
-  // Return response
-  // If not in the cache, then return error page
-  return caches.open(CACHE).then(function (cache) {
-    return cache.match(request).then(function (matching) {
-      if (!matching || matching.status === 404) {
-        return Promise.reject("no-match");
-      }
-
-      return matching;
-    });
-  });
+async function trim(cache, max) {
+  const keys = await cache.keys();
+  for (let i = 0; i < keys.length - max; i++) await cache.delete(keys[i]);
 }
 
-function updateCache(request, response) {
-  return caches.open(CACHE).then(function (cache) {
-    return cache.put(request, response);
-  });
+async function networkFirst(request, navigate) {
+  const cache = await caches.open(PAGES);
+  try {
+    // 'no-cache' = revalidate with the server instead of trusting the 10-minute Pages cache.
+    // (A navigation request must be passed as-is so redirects keep working.)
+    const response = await fetch(navigate ? request : new Request(request, { cache: 'no-cache' }));
+    if (response.ok) cache.put(request, response.clone());
+    return response;
+  } catch (err) {
+    const hit = await cache.match(request, { ignoreSearch: !navigate });
+    if (hit) return hit;
+    if (navigate) return (await cache.match(OFFLINE)) || Response.error();
+    return Response.error();
+  }
 }
+
+async function cacheFirst(request) {
+  const cache = await caches.open(IMAGES);
+  const hit = await cache.match(request);
+  if (hit) return hit;
+  const response = await fetch(request);
+  if (response.ok) {
+    cache.put(request, response.clone());
+    trim(cache, MAX_IMAGES);
+  }
+  return response;
+}
+
+self.addEventListener('fetch', (event) => {
+  const request = event.request;
+  if (request.method !== 'GET') return;
+  const url = new URL(request.url);
+  if (url.origin !== self.location.origin) return;           // GitHub API, fonts, etc.
+  if (url.pathname.endsWith('/serviceworker.js')) return;
+
+  if (request.mode === 'navigate') {
+    event.respondWith(networkFirst(request, true));
+  } else if (request.destination === 'image') {
+    event.respondWith(cacheFirst(request).catch(() => Response.error()));
+  } else {
+    event.respondWith(networkFirst(request, false));
+  }
+});
