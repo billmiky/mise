@@ -187,6 +187,7 @@
 
     var t = C.token();
     if (!t) throw new Error('No GitHub token — save one on the <a href="' + C.BASE + '/import/">Import page</a>');
+    var BRANCH = C.BRANCH || 'main';
     var base = 'https://api.github.com/repos/' + C.REPO;
     var headers = { 'Authorization': 'token ' + t, 'Accept': 'application/vnd.github+json', 'Content-Type': 'application/json' };
 
@@ -210,7 +211,7 @@
     }
 
     for (var attempt = 0; attempt < 4; attempt++) {
-      var head = (await api('GET', '/git/ref/heads/' + C.BRANCH)).object.sha;
+      var head = (await api('GET', '/git/ref/heads/' + BRANCH)).object.sha;
       var files = [], done = [], failed = [];
 
       for (var i = 0; i < slugs.length; i++) {
@@ -234,7 +235,7 @@
         var message = names.length === 1 ? 'Edit ' + names[0] : 'Edit ' + names.length + ' recipes\n\n' + names.join('\n');
         var created = await api('POST', '/git/commits', { message: message, tree: tree.sha, parents: [head] });
         try {
-          await api('PATCH', '/git/refs/heads/' + C.BRANCH, { sha: created.sha });
+          await api('PATCH', '/git/refs/heads/' + BRANCH, { sha: created.sha });
         } catch (e) {
           if ((e.status === 422 || e.status === 409) && attempt < 3) continue; // main moved — redo on the new head
           throw e;
