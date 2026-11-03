@@ -1,101 +1,20 @@
 staples:
-- olive oil
-- salt
-- black pepper
-- flour
-- sugar
-- butter
-- onions
-- eggs
-- soy sauce
-- rice vinegar
-- chicken broth
-- tomato paste
-- pasta
-- rice
-- hot sauce
-- dijon mustard
-- baking powder
-- cumin
-on_hand:
-- item: provolone cheese
-  source: wholefoods
-  added: '2026-05-13'
-- item: apple
-  source: wholefoods
-  added: '2026-05-13'
-- item: butterbread
-  source: wholefoods
-  added: '2026-05-13'
-- item: peanut butter
-  source: wholefoods
-  added: '2026-05-13'
-- item: red raspberries
-  source: wholefoods
-  added: '2026-05-13'
-- item: baby arugula greens
-  source: wholefoods
-  added: '2026-05-13'
-- item: blackberries
-  source: wholefoods
-  added: '2026-05-13'
-- item: lettuce
-  source: wholefoods
-  added: '2026-05-13'
-- item: peanut chocolate
-  source: wholefoods
-  added: '2026-05-13'
-- item: greens kale green
-  source: wholefoods
-  added: '2026-05-13'
-- item: vanilla with see's candies ice cream
-  source: wholefoods
-  added: '2026-05-13'
-- item: crackers super seed crackers
-  source: wholefoods
-  added: '2026-05-13'
-- item: blueberries
-  source: wholefoods
-  added: '2026-05-13'
-- item: avocado
-  source: wholefoods
-  added: '2026-05-13'
-- item: broccoli
-  source: wholefoods
-  added: '2026-05-14'
-- item: pepper jack cheese
-  source: wholefoods
-  added: '2026-05-14'
-- item: zucchini squash
-  source: wholefoods
-  added: '2026-05-14'
-- item: salted butter
-  source: wholefoods
-  added: '2026-05-14'
-- item: pasta radiatori pasta
-  source: wholefoods
-  added: '2026-05-14'
-- item: crispy green freeze dried strawberry
-  source: wholefoods
-  added: '2026-05-14'
-- item: raspberries
-  source: wholefoods
-  added: '2026-05-14'
-- item: the good crisp company sour cream & onion gluten-free potato chips
-  source: wholefoods
-  added: '2026-05-14'
-- item: preserve
-  source: wholefoods
-  added: '2026-05-14'
-- item: mini cucumbers
-  source: wholefoods
-  added: '2026-05-14'
-- item: ben & jerry's phish food chocolate ice cream
-  source: wholefoods
-  added: '2026-05-14'
-- item: blackberried
-  source: wholefoods
-  added: '2026-05-14'
-- item: late july sea salt tortilla chips
-  source: wholefoods
-  added: '2026-05-14'
+  - olive oil
+  - salt
+  - black pepper
+  - flour
+  - sugar
+  - butter
+  - onions
+  - eggs
+  - soy sauce
+  - rice vinegar
+  - chicken broth
+  - tomato paste
+  - pasta
+  - rice
+  - hot sauce
+  - dijon mustard
+  - baking powder
+  - cumin
+on_hand: []
