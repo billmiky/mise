@@ -6,7 +6,6 @@ tags:
 - Dinner
 - Side
 - Indian
-- Chicken
 - Beans
 ingredients:
 - 2 tablespoons ghee or neutral oil

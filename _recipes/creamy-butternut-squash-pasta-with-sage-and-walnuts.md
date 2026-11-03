@@ -4,7 +4,6 @@ title: Creamy Butternut Squash Pasta With Sage and Walnuts
 image: creamy-butternut-squash-pasta-with-sage-and-walnuts.webp
 tags:
 - Dinner
-- Chicken
 - Pasta
 ingredients:
 - 2 ½ pounds butternut squash, peeled, seeded and cut into ¾-inch pieces

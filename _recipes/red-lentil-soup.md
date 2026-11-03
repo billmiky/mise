@@ -7,7 +7,6 @@ tags:
 - Dinner
 - Side
 - Soup
-- Chicken
 - Lentils
 ingredients:
 - 3 tablespoons olive oil, plus more for drizzling
