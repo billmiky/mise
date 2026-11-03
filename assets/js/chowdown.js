@@ -176,6 +176,7 @@ window.Chowdown = (function () {
 
   return {
     REPO: REPO,
+    BRANCH: BRANCH,
     BASE: BASE,
     load: load,
     save: save,
