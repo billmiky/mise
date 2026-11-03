@@ -59,7 +59,7 @@ test('rejects bad input', () => {
 const store = {};
 globalThis.localStorage = { getItem: (k) => store[k] ?? null, setItem: (k, v) => { store[k] = String(v); }, removeItem: (k) => { delete store[k]; } };
 const E = createRequire(import.meta.url)('../assets/js/recipe-edits.js');
-const C = { REPO: 'o/r', BRANCH: 'main', BASE: '', token: () => 't' };
+const C = { REPO: 'o/r', BRANCH: 'main', BASE: '', token: () => 't', escapeHtml: (s) => String(s) };
 
 function fakeGitHub({ moveOnce = false } = {}) {
   const files = { '_recipes/a.md': SAMPLE, '_recipes/b.md': SAMPLE.replace('Soup', 'Stew') };

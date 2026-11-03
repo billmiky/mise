@@ -195,11 +195,14 @@
       var data = null;
       try { data = await res.json(); } catch (e) {}
       if (!res.ok) {
+        // Say what GitHub actually answered and which step it was, so a permissions
+        // problem can be told apart from a missing repo, a protected branch, etc.
+        var step = method + ' ' + path.split('?')[0].replace(/_recipes\/.*/, '_recipes/…');
+        var why = (data && data.message) || 'HTTP ' + res.status;
         var err = new Error(res.status === 401
           ? 'GitHub token was rejected — update it on the <a href="' + C.BASE + '/import/">Import page</a>'
-          : res.status === 403 || res.status === 404
-            ? 'GitHub token needs <em>Contents: Read and write</em> on ' + C.REPO
-            : (data && data.message) || ('HTTP ' + res.status));
+          : 'GitHub said “' + C.escapeHtml(why) + '” (' + res.status + ') on ' + C.escapeHtml(step) +
+            (res.status === 403 || res.status === 404 ? '. Check the token has <em>Contents: Read and write</em> and includes ' + C.REPO + '.' : ''));
         err.status = res.status;
         throw err;
       }
