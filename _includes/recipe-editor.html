@@ -1,6 +1,7 @@
 {%- comment -%}
-  Edit form for a recipe page. Saves through the update-recipe.yml workflow
-  (tools/update_recipe.py), so only the fields listed there can be changed.
+  Edit form for a recipe page. Saving queues the edit on this device
+  (assets/js/recipe-edits.js); the "Sync" button then commits every queued edit
+  in one go. Only the fields listed in FIELDS there can be changed.
 {%- endcomment -%}
 {% assign _edit_slug = page.path | remove: "_recipes/" | remove: ".md" %}
 
@@ -174,7 +175,7 @@
 (function () {
   var C = window.Chowdown;
   var SLUG = {{ _edit_slug | jsonify }};
-  var WORKFLOW = 'update-recipe.yml';
+  var E = C.edits;
 
   var ORIGINAL = {
     title: {{ page.title | jsonify }},
@@ -239,21 +240,24 @@
 
   function fill() {
     var f = form.elements;
-    f.title.value = str(ORIGINAL.title);
-    f.ingredients.value = asList(ORIGINAL.ingredients).join('\n');
-    f.directions.value = asList(ORIGINAL.directions).join('\n');
-    f.prep_time.value = str(ORIGINAL.prep_time);
-    f.cook_time.value = str(ORIGINAL.cook_time);
-    f.total_time.value = str(ORIGINAL.total_time);
-    f.yield.value = str(ORIGINAL.yield);
-    f.difficulty.value = str(ORIGINAL.difficulty);
-    f.kid_friendly.checked = ORIGINAL.kid_friendly === true || ORIGINAL.kid_friendly === 'true';
-    var seasons = asList(ORIGINAL.season);
+    // Edits queued on this device but not synced yet show up here again
+    var pend = E.pendingFor(SLUG), cur = {};
+    Object.keys(ORIGINAL).forEach(function (k) { cur[k] = k in pend ? pend[k] : ORIGINAL[k]; });
+    f.title.value = str(cur.title);
+    f.ingredients.value = asList(cur.ingredients).join('\n');
+    f.directions.value = asList(cur.directions).join('\n');
+    f.prep_time.value = str(cur.prep_time);
+    f.cook_time.value = str(cur.cook_time);
+    f.total_time.value = str(cur.total_time);
+    f.yield.value = str(cur.yield);
+    f.difficulty.value = str(cur.difficulty);
+    f.kid_friendly.checked = cur.kid_friendly === true || cur.kid_friendly === 'true';
+    var seasons = asList(cur.season);
     if (!seasons.length) seasons = ['all'];
     seasonBoxes().forEach(function (b) { b.checked = seasons.indexOf(b.value) !== -1; });
-    f.tags.value = asList(ORIGINAL.tags).map(function (t) { return t.trim(); }).join(', ');
-    f.category.value = str(ORIGINAL.category);
-    f.cuisine.value = str(ORIGINAL.cuisine);
+    f.tags.value = asList(cur.tags).map(function (t) { return t.trim(); }).join(', ');
+    f.category.value = str(cur.category);
+    f.cuisine.value = str(cur.cuisine);
     initial = read();
   }
 
@@ -303,58 +307,24 @@
     return '';
   }
 
-  var link = function (href, text) { return '<a href="' + href + '" target="_blank" rel="noopener">' + text + '</a>'; };
-
-  // Follow the run so a rejected edit is reported here instead of silently
-  async function watchRun(startedAt) {
-    var base = 'https://api.github.com/repos/' + C.REPO + '/actions/workflows/' + WORKFLOW + '/runs';
-    var runsUrl = 'https://github.com/' + C.REPO + '/actions/workflows/' + WORKFLOW;
-    try {
-      for (var i = 0; i < 30; i++) {                       // ~2.5 minutes
-        await new Promise(function (r) { setTimeout(r, i < 3 ? 3000 : 5000); });
-        var resp = await fetch(base + '?event=workflow_dispatch&per_page=10', {
-          headers: { 'Authorization': 'token ' + C.token(), 'Accept': 'application/vnd.github.v3+json' }
-        });
-        if (!resp.ok) break;
-        var runs = (await resp.json()).workflow_runs || [];
-        var run = runs.filter(function (r) { return new Date(r.created_at).getTime() >= startedAt; })
-                      .sort(function (a, b) { return new Date(a.created_at) - new Date(b.created_at); })[0];
-        if (!run) continue;
-        if (run.status !== 'completed') { status('Saving… ' + link(run.html_url, 'watch live')); continue; }
-        return { ok: run.conclusion === 'success', url: run.html_url };
-      }
-    } catch (e) { /* fall through */ }
-    return { ok: null, url: runsUrl };
-  }
-
-  form.addEventListener('submit', async function (e) {
+  // Saved on this device only; nothing is sent to GitHub until Sync
+  form.addEventListener('submit', function (e) {
     e.preventDefault();
     var c = changes();
     if (!Object.keys(c).length) { status('Nothing changed.'); return; }
     var p = problem(c);
     if (p) { status(p, 'err'); return; }
-
-    saveBtn.disabled = true;
-    status('Saving…');
-    var startedAt = Date.now() - 5000;
     try {
-      await C.triggerWorkflow(WORKFLOW, { slug: SLUG, changes: JSON.stringify(c) });
+      // Same checks the sync will run, so a bad value is caught here
+      E.applyChanges('---\ntitle: x\n---\n', c);
     } catch (err) {
       status(err.message, 'err');
-      saveBtn.disabled = false;
       return;
     }
-
-    var run = await watchRun(startedAt);
-    if (run.ok === false) {
-      status('✗ Couldn’t save — ' + link(run.url, 'see why') + '. Your edits are still here.', 'err');
-      saveBtn.disabled = false;
-      return;
-    }
+    E.queueEdit(SLUG, c);
     close();
-    C.toast(run.ok
-      ? '✓ Saved — the site rebuilds in about a minute. Reload to see your changes.'
-      : 'Edit sent — ' + link(run.url, 'check progress on GitHub'), 'ok', 7000);
+    var n = E.pendingCount();
+    C.toast('✓ Saved on this device — ' + n + ' recipe' + (n === 1 ? '' : 's') + ' waiting. Tap <b>Sync</b> when you’re done editing.', 'ok', 6000);
   });
 })();
 </script>
