@@ -30,6 +30,7 @@ last_made: ~
 rating: 5
 difficulty: easy
 kid_friendly: true
+source: https://www.seriouseats.com/quick-easy-drop-biscuits-recipe
 ---
 
 notes:

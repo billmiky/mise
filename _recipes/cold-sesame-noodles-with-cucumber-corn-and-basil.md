@@ -36,4 +36,5 @@ last_made: 2026-05-08
 rating: 4
 difficulty: easy
 kid_friendly: true
+source: https://cooking.nytimes.com/recipes/1024544-cold-sesame-noodles-with-cucumber-corn-and-basil
 ---

@@ -38,4 +38,5 @@ cook_time: '25'
 total_time: '50'
 category: Dessert
 cuisine: American
+source: https://www.allrecipes.com/recipe/15067/apple-squares/
 ---

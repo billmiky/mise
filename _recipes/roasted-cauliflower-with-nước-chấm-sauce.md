@@ -40,4 +40,5 @@ prep_time: '10'
 cook_time: '30'
 total_time: '40'
 category: dinner, easy, lunch, quick, weeknight, vegetables, appetizer, main course, side dish
+source: https://cooking.nytimes.com/recipes/1026478-roasted-cauliflower-with-n-c-ch-m-sauce
 ---

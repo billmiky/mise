@@ -36,6 +36,7 @@ last_made: ~
 rating: 4
 difficulty: easy
 kid_friendly: false
+source: https://cooking.nytimes.com/recipes/1025253-spicy-skillet-ground-turkey-and-snap-peas
 ---
 
 Inspired by the bright, zesty flavors of Thai larb, this one-pan dinner uses fish sauce and lime juice to completely transform unassuming ground turkey. Don't skip the fresh herbs—they are essential to the dish's vibrant flavor.

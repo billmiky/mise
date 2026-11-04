@@ -47,4 +47,5 @@ last_made: ~
 rating: 4
 difficulty: medium
 kid_friendly: false
+source: https://www.bonappetit.com/recipe/laotian-style-chicken-and-rice-salad-recipe
 ---

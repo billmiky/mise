@@ -40,4 +40,5 @@ last_made: ~
 rating: 4
 difficulty: easy
 kid_friendly: true
+source: https://cooking.nytimes.com/recipes/768942904-peanut-butter-protein-granola
 ---

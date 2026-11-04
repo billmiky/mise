@@ -44,4 +44,5 @@ kid_friendly: false
 yield: 1 cake
 total_time: '120'
 category: cakes, dessert
+source: https://cooking.nytimes.com/recipes/1022347-butter-mochi
 ---

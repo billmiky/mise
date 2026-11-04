@@ -39,6 +39,7 @@ last_made: ~
 rating: 5
 difficulty: easy
 kid_friendly: false
+source: https://www.wearesovegan.com/15-minute-chana-saag/
 ---
 
 A speedy, 15-minute vegan version of the classic Indian curry, Chana Saag (chickpeas and leafy greens). This recipe uses silken tofu for creaminess and mango chutney for a touch of sweetness.

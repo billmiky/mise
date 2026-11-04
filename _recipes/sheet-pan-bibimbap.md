@@ -44,4 +44,5 @@ last_made: ~
 rating: 4
 difficulty: medium
 kid_friendly: true
+source: https://cooking.nytimes.com/recipes/1022131-sheet-pan-bibimbap
 ---

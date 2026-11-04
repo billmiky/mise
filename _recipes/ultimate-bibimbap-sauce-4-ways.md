@@ -41,4 +41,5 @@ prep_time: '5'
 total_time: '5'
 category: Side dishes
 cuisine: Korean
+source: https://mykoreankitchen.com/bibimbap-sauce/
 ---

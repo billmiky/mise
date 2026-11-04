@@ -60,4 +60,5 @@ last_made: ~
 rating: 4
 difficulty: medium
 kid_friendly: false
+source: https://thehappyfoodie.co.uk/recipes/meera-sodhas-18-carat-laksa/
 ---

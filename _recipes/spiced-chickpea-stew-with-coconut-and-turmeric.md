@@ -53,4 +53,5 @@ yield: 6 servings
 total_time: '55'
 category: dinner, lunch, weeknight, main course
 cuisine: mediterranean
+source: https://cooking.nytimes.com/recipes/1019772-spiced-chickpea-stew-with-coconut-and-turmeric
 ---

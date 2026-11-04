@@ -53,4 +53,5 @@ cook_time: '30'
 total_time: '40'
 category: Dinner
 cuisine: Korean-Inspired
+source: https://pinchofyum.com/sticky-gochujang-tofu-with-herbs-and-peanuts
 ---

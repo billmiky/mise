@@ -31,4 +31,5 @@ yield: 4 servings
 total_time: '20'
 category: dinner, easy, lunch, quick, weeknight, barbecues, meatballs, appetizer, main course
 cuisine: korean
+source: https://cooking.nytimes.com/recipes/1019763-korean-bbq-style-meatballs
 ---

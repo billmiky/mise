@@ -47,6 +47,7 @@ last_made: ~
 rating: 4
 difficulty: easy
 kid_friendly: false
+source: https://cooking.nytimes.com/recipes/1020222-spicy-turkey-stir-fry-with-crisp-garlic-and-ginger
 ---
 
 notes:
