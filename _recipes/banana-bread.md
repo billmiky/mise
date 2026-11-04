@@ -30,7 +30,7 @@ directions:
 - Bake until brown/cracked, toothpick comes out clean
 season: [all]
 last_made: ~
-rating: 5
+rating: 1
 difficulty: easy
 kid_friendly: true
 ---
