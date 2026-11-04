@@ -61,6 +61,19 @@ layout: default
             <span class="meta-chip-value">{{ page.season | join: ", " }}</span>
           </div>
         {% endif %}
+        {% assign _src = page.source | strip %}
+        {% if _src != "" %}
+          <div class="meta-chip source-chip">
+            <span class="meta-chip-label">Source</span>
+            {% assign _scheme = _src | slice: 0, 4 %}
+            {% if _scheme == "http" %}
+              {% assign _host = _src | split: "://" | last | split: "/" | first | remove_first: "www." %}
+              <a class="meta-chip-value source-link" href="{{ _src | escape }}" target="_blank" rel="noopener noreferrer" title="{{ _src | escape }}">{{ _host }} ↗</a>
+            {% else %}
+              <span class="meta-chip-value">{{ _src }}</span>
+            {% endif %}
+          </div>
+        {% endif %}
         <div class="meta-chip rating">
           <span class="meta-chip-label" id="rating-label">{% if _rating > 0 %}Rating{% else %}Rate this{% endif %}</span>
           <span class="star-widget" id="star-widget" role="group" aria-labelledby="rating-label" data-current="{{ _rating }}">
@@ -302,6 +315,10 @@ layout: default
   .meta-chip.kid         { border-color: var(--blue); }
   .meta-chip.kid .meta-chip-value { color: var(--blue); }
   .meta-chip.last-made-chip .meta-chip-value { text-transform: none; }
+  .meta-chip.source-chip { max-width: 100%; }
+  .meta-chip.source-chip .meta-chip-value { text-transform: none; overflow-wrap: anywhere; }
+  .source-link { color: var(--red); text-decoration: underline; text-underline-offset: 3px; }
+  .source-link:hover { color: var(--ink); }
 
   .recipe-tags {
     display: flex;
