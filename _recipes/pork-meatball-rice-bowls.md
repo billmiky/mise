@@ -51,7 +51,7 @@ date_added: 2024-03-07
 season:
 - all
 last_made: null
-rating: null
+rating: 4
 difficulty: easy
 kid_friendly: false
 yield: 4 servings
