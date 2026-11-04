@@ -34,4 +34,5 @@ difficulty: easy
 kid_friendly: false
 yield: 18 items
 prep_time: '30'
+source: https://www.bonappetit.com/recipe/jalape-o-goat-cheese-hush-puppies
 ---

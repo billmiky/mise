@@ -33,4 +33,5 @@ difficulty: easy
 kid_friendly: false
 yield: 9 muffins
 total_time: '40'
+source: https://smittenkitchen.com/2010/08/perfect-blueberry-muffins/
 ---

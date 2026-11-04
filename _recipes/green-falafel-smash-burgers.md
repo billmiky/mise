@@ -57,4 +57,5 @@ rating: null
 difficulty: easy
 kid_friendly: false
 yield: 4 items
+source: https://www.bonappetit.com/recipe/green-falafel-smash-burgers
 ---

@@ -48,4 +48,5 @@ kid_friendly: false
 yield: 4 servings
 total_time: '45'
 category: Dinner, Lunch, Main Course, Soup
+source: https://cooking.nytimes.com/recipes/1021776-lemony-white-bean-soup-with-turkey-and-greens
 ---

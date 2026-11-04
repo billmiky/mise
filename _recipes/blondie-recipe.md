@@ -39,4 +39,5 @@ cook_time: '30'
 total_time: '45'
 category: Dessert
 cuisine: American
+source: https://www.livewellbakeoften.com/blondie-recipe/
 ---

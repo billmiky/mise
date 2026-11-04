@@ -48,4 +48,5 @@ cook_time: '70'
 total_time: '80'
 category: Appetizer,Breakfast,Dessert,Dinner,Lunch,Snack
 cuisine: American
+source: https://breaddad.com/easy-banana-bread-recipe/
 ---

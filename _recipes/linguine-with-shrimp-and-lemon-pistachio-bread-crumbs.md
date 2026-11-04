@@ -46,4 +46,5 @@ yield: 6 servings
 total_time: '25'
 category: dinner, lunch, quick, weeknight, pastas, main course
 cuisine: italian
+source: https://cooking.nytimes.com/recipes/1019876-linguine-with-shrimp-and-lemon-pistachio-bread-crumbs
 ---
