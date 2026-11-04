@@ -1,0 +1,72 @@
+{
+  "packageId": "io.github.billmiky.mise",
+  "host": "billmiky.github.io",
+  "name": "Mise",
+  "launcherName": "Mise",
+  "display": "standalone",
+  "themeColor": "#111111",
+  "themeColorDark": "#000000",
+  "navigationColor": "#000000",
+  "navigationColorDark": "#000000",
+  "navigationDividerColor": "#000000",
+  "navigationDividerColorDark": "#000000",
+  "backgroundColor": "#F5F3EE",
+  "enableNotifications": false,
+  "startUrl": "/mise/",
+  "iconUrl": "https://billmiky.github.io/mise/icons/favicon-512x512.png",
+  "maskableIconUrl": "https://billmiky.github.io/mise/icons/icon-maskable-512.png",
+  "splashScreenFadeOutDuration": 300,
+  "signingKey": {
+    "path": "./mise.keystore",
+    "alias": "mise"
+  },
+  "appVersionName": "1.0.0",
+  "appVersionCode": 1,
+  "shortcuts": [
+    {
+      "name": "Recipes",
+      "shortName": "Recipes",
+      "url": "https://billmiky.github.io/mise/recipes/",
+      "chosenIconUrl": "https://billmiky.github.io/mise/icons/icon-192.png"
+    },
+    {
+      "name": "Meal plan",
+      "shortName": "Meal plan",
+      "url": "https://billmiky.github.io/mise/meal-plan/",
+      "chosenIconUrl": "https://billmiky.github.io/mise/icons/icon-192.png"
+    },
+    {
+      "name": "Grocery list",
+      "shortName": "Grocery list",
+      "url": "https://billmiky.github.io/mise/grocery-list/",
+      "chosenIconUrl": "https://billmiky.github.io/mise/icons/icon-192.png"
+    },
+    {
+      "name": "Pantry",
+      "shortName": "Pantry",
+      "url": "https://billmiky.github.io/mise/pantry/",
+      "chosenIconUrl": "https://billmiky.github.io/mise/icons/icon-192.png"
+    }
+  ],
+  "generatorApp": "unknown",
+  "webManifestUrl": "https://billmiky.github.io/mise/manifest.json",
+  "fallbackType": "customtabs",
+  "features": {},
+  "alphaDependencies": {
+    "enabled": false
+  },
+  "enableSiteSettingsShortcut": true,
+  "isChromeOSOnly": false,
+  "isMetaQuest": false,
+  "fullScopeUrl": "https://billmiky.github.io/mise/",
+  "minSdkVersion": 21,
+  "orientation": "any",
+  "fingerprints": [],
+  "additionalTrustedOrigins": [],
+  "retainedBundles": [],
+  "protocolHandlers": [],
+  "fileHandlers": [],
+  "launchHandlerClientMode": "",
+  "displayOverride": [],
+  "appVersion": "1.0.0"
+}
