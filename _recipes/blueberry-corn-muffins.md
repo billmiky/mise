@@ -32,7 +32,7 @@ directions:
 season:
 - all
 last_made: null
-rating: null
+rating: 5
 difficulty: easy
 kid_friendly: true
 yield: 12 muffins
