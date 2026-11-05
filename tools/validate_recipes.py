@@ -75,6 +75,14 @@ def check(path):
     if last_made is not None and not isinstance(last_made, (date, datetime)):
         errors.append("'last_made' must be a YYYY-MM-DD date or null")
 
+    pin = fm.get("matrix")
+    if pin is not None:
+        ok = isinstance(pin, dict) and set(pin) == {"x", "y"} and all(
+            isinstance(pin[k], (int, float)) and not isinstance(pin[k], bool) and -5 <= pin[k] <= 5 for k in ("x", "y")
+        )
+        if not ok:
+            errors.append(f"'matrix' must be {{x: <-5..5>, y: <-5..5>}} (the recipe map spot), got {pin!r}")
+
     if not fm.get("tags"):
         warnings.append("no 'tags'")
     if not (fm.get("yield") or fm.get("yields") or fm.get("servings")):

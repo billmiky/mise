@@ -13,7 +13,7 @@ const MAX_IMAGES = 250;
 const scope = self.registration.scope; // e.g. https://billmiky.github.io/mise/
 const OFFLINE = new URL('offline.html', scope).href;
 const SHELL = ['', 'recipes/', 'meal-plan/', 'grocery-list/', 'pantry/', 'offline.html',
-  'assets/css/chowdown.css', 'assets/js/chowdown.js', 'assets/js/recipe-edits.js', 'icons/icon-192.png']
+  'assets/css/chowdown.css', 'assets/js/chowdown.js', 'assets/js/recipe-edits.js', 'assets/js/recipe-matrix.js', 'icons/icon-192.png']
   .map((p) => new URL(p, scope).href);
 
 self.addEventListener('install', (event) => {

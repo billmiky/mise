@@ -24,6 +24,8 @@ jobs:
         run: python tools/test_grocery.py
       - name: Check auto-tagger
         run: python tools/test_autotag.py
+      - name: Check recipe map placement
+        run: node --test tools/test_recipe_matrix.mjs
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: "3.3"

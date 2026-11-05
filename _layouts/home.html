@@ -20,6 +20,58 @@ layout: default
       </div>
     </div>
 
+    {% comment %}
+      The recipe map: every recipe on one plane (assets/js/recipe-matrix.js places them).
+      Tap the map, drag the pin or pick a quadrant, and the closest recipes are listed.
+      It follows the search box and filter chips below.
+    {% endcomment %}
+    <section class="matrix matrix--loading" id="matrix" aria-labelledby="matrix-heading">
+      <div class="matrix__head">
+        <h2 class="matrix__title" id="matrix-heading">Recipe map</h2>
+        <span class="matrix__count" id="matrix-count"></span>
+        <button class="bauhaus-btn ghost small matrix__toggle" id="matrix-toggle" type="button" aria-expanded="true" aria-controls="matrix-body">Hide map</button>
+      </div>
+      <div class="matrix__layout" id="matrix-body">
+        <div class="matrix__map">
+          <div class="matrix__plane" id="matrix-plane" tabindex="0" role="group" aria-roledescription="recipe map" aria-label="Recipe map. Use the arrow keys to move the pin; the closest recipes are listed next to it." aria-describedby="matrix-where">
+            <div class="matrix__hood matrix__hood--market-day" data-hood="market-day"></div>
+            <div class="matrix__hood matrix__hood--sunday-supper" data-hood="sunday-supper"></div>
+            <div class="matrix__hood matrix__hood--fast-fresh" data-hood="fast-fresh"></div>
+            <div class="matrix__hood matrix__hood--cozy-weeknight" data-hood="cozy-weeknight"></div>
+            <span class="matrix__label matrix__label--market-day" data-hood="market-day" aria-hidden="true">Market Day</span>
+            <span class="matrix__label matrix__label--sunday-supper" data-hood="sunday-supper" aria-hidden="true">Sunday Supper</span>
+            <span class="matrix__label matrix__label--fast-fresh" data-hood="fast-fresh" aria-hidden="true">Fast &amp; Fresh</span>
+            <span class="matrix__label matrix__label--cozy-weeknight" data-hood="cozy-weeknight" aria-hidden="true">Cozy Weeknight</span>
+            <span class="matrix__axis matrix__axis--x" aria-hidden="true"></span>
+            <span class="matrix__axis matrix__axis--y" aria-hidden="true"></span>
+            <span class="matrix__end matrix__end--top">slow · involved</span>
+            <span class="matrix__end matrix__end--bottom">quick · easy</span>
+            <span class="matrix__end matrix__end--left">fresh · light</span>
+            <span class="matrix__end matrix__end--right">rich · hearty</span>
+            <div class="matrix__dots" id="matrix-dots" aria-hidden="true"></div>
+            <span class="matrix__ring" id="matrix-ring" aria-hidden="true"></span>
+            <span class="matrix__pin" id="matrix-pin" aria-hidden="true"></span>
+            <span class="matrix__tip" id="matrix-tip" aria-hidden="true" hidden></span>
+          </div>
+          <div class="matrix__legend" id="matrix-legend" role="group" aria-label="Show or hide a course"></div>
+        </div>
+        <div class="matrix__panel">
+          <div class="matrix__hoods" role="group" aria-label="Jump to a quadrant">
+            <button type="button" class="matrix__hood-btn" data-hood="market-day">Market Day</button>
+            <button type="button" class="matrix__hood-btn" data-hood="sunday-supper">Sunday Supper</button>
+            <button type="button" class="matrix__hood-btn" data-hood="fast-fresh">Fast &amp; Fresh</button>
+            <button type="button" class="matrix__hood-btn" data-hood="cozy-weeknight">Cozy Weeknight</button>
+          </div>
+          <div class="matrix__here" aria-live="polite">
+            <p class="matrix__where" id="matrix-where">&nbsp;</p>
+            <p class="matrix__blurb" id="matrix-blurb">&nbsp;</p>
+          </div>
+          <ol class="matrix__list" id="matrix-list"></ol>
+          <button type="button" class="bauhaus-btn ghost small matrix__more" id="matrix-more" hidden>More nearby</button>
+        </div>
+      </div>
+    </section>
+
     <div class="toolbar">
       <div class="search-bar">
         <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg>
@@ -62,7 +114,10 @@ layout: default
          data-time="{% if _t %}{{ _t | plus: 0 }}{% else %}0{% endif %}"
          data-difficulty="{{ post.difficulty }}"
          data-kid="{{ _kid }}"
-         data-tags="{{ post.tags | join: '|' | downcase | escape }}">
+         data-tags="{{ post.tags | join: '|' | downcase | escape }}"
+         data-n="{{ post.ingredients | size }}"
+         data-steps="{{ post.directions | size }}"{% if post.matrix %}
+         data-matrix="{{ post.matrix.x }},{{ post.matrix.y }}"{% endif %}>
 
         <div class="card-image-box">
           {% if post.image %}
@@ -497,6 +552,8 @@ layout: default
     searchBar.classList.toggle('has-value', input.value.length > 0);
 
     C.save('home-view', { sort: sortSelect.value, filters: filters });
+    // the recipe map shows only what the search and filters leave visible
+    document.dispatchEvent(new CustomEvent('recipes:filtered'));
   }
 
   input.addEventListener('input', render);
@@ -553,5 +610,671 @@ layout: default
   if (tagParam) setTag(tagParam);
 
   render();
+})();
+</script>
+
+<style>
+  /* ---- Recipe map (top of the Recipes tab) ---- */
+  .matrix {
+    margin-bottom: 36px;
+    --c-main: var(--red);
+    --c-side: var(--teal);
+    --c-breakfast: var(--blue);
+    --c-dessert: var(--yellow);
+    --c-other: var(--muted);
+  }
+
+  .matrix__head {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    margin-bottom: 14px;
+  }
+
+  .matrix__title {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .matrix__count {
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+  }
+
+  .matrix__toggle { margin-left: auto; }
+  .matrix.is-collapsed .matrix__layout { display: none; }
+  .matrix.is-collapsed { margin-bottom: 24px; }
+
+  .matrix__layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 28px;
+    align-items: start;
+  }
+
+  .matrix__map { min-width: 0; }
+
+  .matrix__plane {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    max-height: 560px;
+    margin: 0 auto;
+    overflow: hidden;
+    border: var(--border-heavy);
+    background:
+      linear-gradient(rgba(17, 17, 17, 0.06) 1px, transparent 1px) 0 0 / 10% 10%,
+      linear-gradient(90deg, rgba(17, 17, 17, 0.06) 1px, transparent 1px) 0 0 / 10% 10%,
+      var(--card);
+    cursor: crosshair;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  .matrix__plane.is-over-dot { cursor: pointer; }
+
+  /* quadrants: a flat Bauhaus tint, stronger where the pin is */
+  .matrix__hood {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    pointer-events: none;
+    opacity: 0.1;
+    transition: opacity 0.2s;
+  }
+
+
+  .matrix__hood.is-here { opacity: 0.22; }
+
+  .matrix__hood--market-day { left: 0; top: 0; background: var(--teal); }
+  .matrix__hood--sunday-supper { right: 0; top: 0; background: var(--red); }
+  .matrix__hood--fast-fresh { left: 0; bottom: 0; background: var(--yellow); }
+  .matrix__hood--cozy-weeknight { right: 0; bottom: 0; background: var(--blue); }
+
+  .matrix__label {
+    position: absolute;
+    z-index: 1;
+    font-size: clamp(0.66rem, 1.9vw, 0.9rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    color: var(--ink);
+    opacity: 0.45;
+    pointer-events: none;
+    transition: opacity 0.2s;
+  }
+
+  .matrix__label.is-here { opacity: 0.9; }
+  .matrix__label--market-day { left: 3%; top: 2.6em; }
+  .matrix__label--sunday-supper { right: 3%; top: 2.6em; text-align: right; }
+  .matrix__label--fast-fresh { left: 3%; bottom: 2.6em; }
+  .matrix__label--cozy-weeknight { right: 3%; bottom: 2.6em; text-align: right; }
+
+  .matrix__axis {
+    position: absolute;
+    pointer-events: none;
+    background: var(--ink);
+    opacity: 0.35;
+  }
+
+  .matrix__axis--x { left: 0; right: 0; top: 50%; height: 2px; margin-top: -1px; }
+  .matrix__axis--y { top: 0; bottom: 0; left: 50%; width: 2px; margin-left: -1px; }
+
+  .matrix__end {
+    position: absolute;
+    z-index: 1;
+    max-width: 46%;
+    padding: 2px 6px;
+    background: var(--ink);
+    color: #fff;
+    font-size: clamp(0.58rem, 1.6vw, 0.7rem);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    pointer-events: none;
+  }
+
+  .matrix__end--top { top: 6px; left: 50%; transform: translateX(-50%); }
+  .matrix__end--bottom { bottom: 6px; left: 50%; transform: translateX(-50%); }
+  .matrix__end--left { left: 6px; top: 50%; transform: translateY(-50%); }
+  .matrix__end--right { right: 6px; top: 50%; transform: translateY(-50%); }
+
+  .matrix__dots { position: absolute; inset: 0; pointer-events: none; }
+
+  .matrix__dot {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    margin: -4px 0 0 -4px;
+    border-radius: 50%;
+    background: var(--dot);
+    opacity: 0.55;
+    transition: transform 0.2s, opacity 0.2s;
+  }
+
+  .matrix__dot.is-near {
+    z-index: 2;
+    opacity: 1;
+    box-shadow: 0 0 0 2px var(--card);
+    transform: scale(1.6);
+  }
+
+  .matrix__dot.is-hot {
+    z-index: 3;
+    opacity: 1;
+    box-shadow: 0 0 0 2px var(--ink);
+    transform: scale(2.2);
+  }
+
+  .matrix__dot.is-off { display: none; }
+
+  .matrix--loading .matrix__ring,
+  .matrix--loading .matrix__pin { display: none; }
+
+  .matrix__ring {
+    position: absolute;
+    z-index: 1;
+    border: 2px dashed var(--ink);
+    border-radius: 50%;
+    opacity: 0.4;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s, height 0.2s;
+  }
+
+  .matrix__pin {
+    position: absolute;
+    z-index: 4;
+    /* a finger-sized handle around a small visible pin */
+    width: 44px;
+    height: 44px;
+    margin: -22px 0 0 -22px;
+    cursor: grab;
+    touch-action: none;
+  }
+
+  .matrix__pin::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 18px;
+    height: 18px;
+    margin: -9px 0 0 -9px;
+    border: 4px solid var(--ink);
+    border-radius: 50%;
+    background: var(--red);
+    box-shadow: 3px 3px 0 0 var(--ink);
+    transition: transform 0.15s;
+  }
+
+  .matrix.is-dragging .matrix__pin { cursor: grabbing; }
+  .matrix.is-dragging .matrix__pin::before { transform: scale(1.25); }
+
+  .matrix__tip {
+    position: absolute;
+    z-index: 5;
+    padding: 3px 8px;
+    background: var(--ink);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    pointer-events: none;
+    transform: translate(-50%, calc(-100% - 10px));
+  }
+
+  .matrix__tip.is-low { transform: translate(-50%, 10px); }
+  .matrix__tip.is-left { transform: translate(-6px, calc(-100% - 10px)); }
+  .matrix__tip.is-right { transform: translate(calc(-100% + 6px), calc(-100% - 10px)); }
+  .matrix__tip.is-low.is-left { transform: translate(-6px, 10px); }
+  .matrix__tip.is-low.is-right { transform: translate(calc(-100% + 6px), 10px); }
+
+  .matrix__legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .matrix__course {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 36px;
+    padding: 4px 12px;
+    border: 2px solid var(--ink);
+    background: var(--card);
+    color: var(--ink);
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    cursor: pointer;
+  }
+
+  .matrix__course::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--dot);
+    box-shadow: 0 0 0 2px var(--dot);
+  }
+
+  .matrix__course[aria-pressed="false"] {
+    color: var(--faint);
+    border-color: var(--line);
+    text-decoration: line-through;
+  }
+
+  .matrix__course[aria-pressed="false"]::before { background: transparent; }
+
+  .matrix__panel {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-width: 0;
+  }
+
+  .matrix__hoods {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .matrix__hood-btn {
+    min-height: 40px;
+    padding: 6px 8px;
+    border: 2px solid var(--ink);
+    background: var(--card);
+    color: var(--ink);
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    cursor: pointer;
+    transition: background 0.12s, color 0.12s;
+  }
+
+  .matrix__hood-btn:hover { background: var(--ink); color: #fff; }
+
+  .matrix__hood-btn[aria-pressed="true"] {
+    background: var(--red);
+    border-color: var(--red);
+    color: #fff;
+  }
+
+  .matrix__where {
+    margin: 0;
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 1.05;
+  }
+
+  .matrix__blurb {
+    margin: 4px 0 0;
+    font-size: 0.95rem;
+    color: var(--muted);
+  }
+
+  .matrix__list {
+    display: grid;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .matrix__card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 6px 12px 6px 6px;
+    border: 2px solid var(--ink);
+    border-left: 8px solid var(--dot, var(--ink));
+    background: var(--card);
+    color: var(--ink);
+    text-decoration: none;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+
+  .matrix__card:hover,
+  .matrix__card:focus-visible {
+    transform: translate(-3px, -3px);
+    box-shadow: 5px 5px 0 0 var(--ink);
+  }
+
+  .matrix__thumb {
+    flex: none;
+    width: 52px;
+    height: 52px;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 30% 40%, var(--red) 0 18%, transparent 18.5%),
+      linear-gradient(0deg, var(--teal) 0 22%, transparent 22%),
+      #f0ebe1;
+  }
+
+  .matrix__thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+  .matrix__text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+
+  .matrix__name {
+    font-size: 0.95rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 1.12;
+    overflow-wrap: anywhere;
+  }
+
+  .matrix__meta {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--muted);
+  }
+
+  .matrix__empty {
+    font-weight: 800;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+  }
+
+  .matrix__more { align-self: flex-start; }
+
+  @media (max-width: 900px) {
+    .matrix__layout { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+  }
+
+  @media (max-width: 560px) {
+    .matrix__dot { width: 7px; height: 7px; margin: -3.5px 0 0 -3.5px; }
+    .matrix__end { letter-spacing: 0.04em; }
+  }
+</style>
+
+<script src="{{ '/assets/js/recipe-matrix.js' | relative_url }}"></script>
+<script>
+(function () {
+  var section = document.getElementById('matrix');
+  if (!section || !window.MiseMatrix) return;
+  var C = window.Chowdown, MM = window.MiseMatrix;
+  var $ = function (id) { return document.getElementById(id); };
+  var plane = $('matrix-plane'), dotsBox = $('matrix-dots'), pin = $('matrix-pin'), ring = $('matrix-ring');
+  var tip = $('matrix-tip'), list = $('matrix-list'), more = $('matrix-more'), legend = $('matrix-legend');
+  var toggle = $('matrix-toggle');
+  var PAGE = 6, STORE = 'recipe-map';
+  var points = [], hidden = {}, here = { x: 0, y: 0 }, shown = PAGE, near = [];
+  var saved = C.load(STORE, null) || {};
+
+  function el(tag, cls, text) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text) e.textContent = text;
+    return e;
+  }
+  function pct(x, y) { return { left: (x + 5) * 10 + '%', top: (5 - y) * 10 + '%' }; }
+  function persist() { C.save(STORE, { x: here.x, y: here.y, hidden: hidden, collapsed: section.classList.contains('is-collapsed') }); }
+
+  /* course chips */
+  MM.COURSES.forEach(function (c) {
+    var b = el('button', 'matrix__course', c.name);
+    b.type = 'button';
+    b.setAttribute('data-course', c.id);
+    b.style.setProperty('--dot', 'var(--c-' + c.id + ')');
+    b.setAttribute('aria-pressed', 'true');
+    legend.appendChild(b);
+  });
+
+  /* one recipe per card already on the page */
+  var cards = Array.from(document.querySelectorAll('.recipe-grid .recipe-card'));
+  var recipes = cards.map(function (card) {
+    var d = card.dataset, img = card.querySelector('.card-image'), time = card.querySelector('.card-badge.time');
+    var m = d.matrix ? d.matrix.split(',') : null;
+    return {
+      card: card,
+      t: card.querySelector('.card-title').textContent.trim(),
+      u: card.href,
+      i: img ? img.getAttribute('src') : '',
+      tg: d.tags ? d.tags.split('|') : [],
+      g: d.search,
+      n: parseInt(d.n, 10) || 0,
+      s: parseInt(d.steps, 10) || 0,
+      time: parseInt(d.time, 10) || 0,
+      timeLabel: time ? time.textContent.trim() : '',
+      d: d.difficulty,
+      m: m && m.length === 2 ? m : null
+    };
+  });
+
+  function visible(p) { return !hidden[p.course] && !p.recipe.card.hidden; }
+
+  /* plane coordinates from a pointer event */
+  function fromEvent(e) {
+    var r = plane.getBoundingClientRect();
+    return {
+      x: Math.max(-5, Math.min(5, ((e.clientX - r.left) / r.width) * 10 - 5)),
+      y: Math.max(-5, Math.min(5, 5 - ((e.clientY - r.top) / r.height) * 10)),
+      px: r.width / 10
+    };
+  }
+  /* the visible recipe under the pointer, within a finger's width */
+  function hit(c, radiusPx) {
+    var best = null, bestD = Infinity, lim = radiusPx / c.px;
+    points.forEach(function (p) {
+      if (!visible(p)) return;
+      var d = Math.hypot(p.x - c.x, p.y - c.y);
+      if (d < bestD) { bestD = d; best = p; }
+    });
+    return bestD <= lim ? best : null;
+  }
+
+  function courseName(id) {
+    for (var i = 0; i < MM.COURSES.length; i++) if (MM.COURSES[i].id === id) return MM.COURSES[i].name;
+    return '';
+  }
+
+  function render() {
+    var pos = pct(here.x, here.y);
+    pin.style.left = ring.style.left = pos.left;
+    pin.style.top = ring.style.top = pos.top;
+
+    var hood = MM.neighbourhood(here.x, here.y);
+    $('matrix-where').textContent = hood.name;
+    $('matrix-blurb').textContent = hood.blurb;
+    Array.from(section.querySelectorAll('[data-hood]')).forEach(function (b) {
+      var on = b.getAttribute('data-hood') === hood.id;
+      if (b.tagName === 'BUTTON') b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      else b.classList.toggle('is-here', on);
+    });
+
+    var shownPts = points.filter(visible);
+    points.forEach(function (p) { p.dot.classList.toggle('is-off', !visible(p)); });
+    $('matrix-count').textContent = shownPts.length === points.length
+      ? points.length + ' recipes'
+      : shownPts.length + ' of ' + points.length + ' recipes';
+
+    near.forEach(function (p) { p.dot.classList.remove('is-near'); });
+    near = MM.nearest(shownPts, here.x, here.y, shown);
+    near.forEach(function (p) { p.dot.classList.add('is-near'); });
+    /* the ring reaches the farthest listed recipe */
+    var last = near[near.length - 1];
+    var far = last ? Math.hypot(last.x - here.x, last.y - here.y) : 0;
+    ring.style.width = ring.style.height = Math.min(20, far * 2 + 0.6) * 10 + '%';
+
+    list.textContent = '';
+    near.forEach(function (p) {
+      var r = p.recipe;
+      var li = el('li');
+      var a = el('a', 'matrix__card');
+      a.href = r.u;
+      a.style.setProperty('--dot', 'var(--c-' + p.course + ')');
+      var ph = el('span', 'matrix__thumb');
+      if (r.i) {
+        var img = el('img');
+        img.loading = 'lazy';
+        img.decoding = 'async';
+        img.alt = '';
+        img.src = r.i;
+        ph.appendChild(img);
+      }
+      a.appendChild(ph);
+      var body = el('span', 'matrix__text');
+      body.appendChild(el('span', 'matrix__name', r.t));
+      body.appendChild(el('span', 'matrix__meta', [courseName(p.course), r.timeLabel, r.d].filter(Boolean).join(' · ')));
+      a.appendChild(body);
+      a.addEventListener('mouseenter', function () { p.dot.classList.add('is-hot'); });
+      a.addEventListener('mouseleave', function () { p.dot.classList.remove('is-hot'); });
+      a.addEventListener('focus', function () { p.dot.classList.add('is-hot'); });
+      a.addEventListener('blur', function () { p.dot.classList.remove('is-hot'); });
+      li.appendChild(a);
+      list.appendChild(li);
+    });
+    if (!near.length) list.appendChild(el('li', 'matrix__empty', 'No recipes here with this search and these filters.'));
+    more.hidden = near.length >= shownPts.length || shown >= 30;
+  }
+
+  function moveTo(x, y, keepCount) {
+    here = { x: Math.round(Math.max(-5, Math.min(5, x)) * 10) / 10, y: Math.round(Math.max(-5, Math.min(5, y)) * 10) / 10 };
+    if (!keepCount) shown = PAGE;
+    render();
+    persist();
+  }
+
+  /* place every recipe */
+  points = MM.layout(recipes);
+  var frag = document.createDocumentFragment();
+  points.forEach(function (p) {
+    var d = el('span', 'matrix__dot');
+    var pos = pct(p.x, p.y);
+    d.style.left = pos.left;
+    d.style.top = pos.top;
+    d.style.setProperty('--dot', 'var(--c-' + p.course + ')');
+    p.dot = d;
+    frag.appendChild(d);
+  });
+  dotsBox.appendChild(frag);
+
+  if (saved.hidden) hidden = saved.hidden;
+  Array.from(legend.querySelectorAll('.matrix__course')).forEach(function (b) {
+    b.setAttribute('aria-pressed', hidden[b.getAttribute('data-course')] ? 'false' : 'true');
+  });
+  if (saved.collapsed) {
+    section.classList.add('is-collapsed');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.textContent = 'Show map';
+  }
+  section.classList.remove('matrix--loading');
+  if (isFinite(saved.x) && isFinite(saved.y) && saved.x !== null && saved.y !== null) moveTo(saved.x, saved.y);
+  else if (points.length) {
+    /* first visit: start on a recipe, a different one each day */
+    var now = new Date(), day = Math.floor((now.getTime() - now.getTimezoneOffset() * 60000) / 86400000);
+    var start = points[(day * 4111) % points.length];
+    moveTo(start.x, start.y);
+  } else render();
+
+  /* tap or click: move the pin there, or onto the recipe you tapped */
+  var dragging = false, dragged = false;
+  plane.addEventListener('click', function (e) {
+    if (dragged) { dragged = false; return; }
+    var c = fromEvent(e);
+    var p = hit(c, e.pointerType === 'mouse' ? 8 : 14);
+    if (p) moveTo(p.x, p.y); else moveTo(c.x, c.y);
+  });
+
+  /* drag the pin (touch scrolling elsewhere on the map still scrolls the page) */
+  pin.addEventListener('pointerdown', function (e) {
+    dragging = true; dragged = false;
+    pin.setPointerCapture(e.pointerId);
+    section.classList.add('is-dragging');
+    e.preventDefault();
+  });
+  pin.addEventListener('pointermove', function (e) {
+    if (!dragging) return;
+    dragged = true;
+    var c = fromEvent(e);
+    moveTo(c.x, c.y);
+  });
+  function endDrag() { dragging = false; section.classList.remove('is-dragging'); }
+  pin.addEventListener('pointerup', endDrag);
+  pin.addEventListener('pointercancel', endDrag);
+
+  /* hover names on devices with a mouse */
+  plane.addEventListener('pointermove', function (e) {
+    if (e.pointerType !== 'mouse' || dragging || !points.length) return;
+    var c = fromEvent(e), p = hit(c, 8);
+    plane.classList.toggle('is-over-dot', !!p);
+    if (!p) { tip.hidden = true; return; }
+    var pos = pct(p.x, p.y);
+    tip.textContent = p.recipe.t;
+    tip.style.left = pos.left;
+    tip.style.top = pos.top;
+    tip.classList.toggle('is-low', p.y > 3.5);
+    tip.classList.toggle('is-left', p.x < -2.5);
+    tip.classList.toggle('is-right', p.x > 2.5);
+    tip.hidden = false;
+  });
+  plane.addEventListener('pointerleave', function () { tip.hidden = true; });
+
+  plane.addEventListener('keydown', function (e) {
+    var step = e.shiftKey ? 1.5 : 0.5, dx = 0, dy = 0;
+    if (e.key === 'ArrowLeft') dx = -step;
+    else if (e.key === 'ArrowRight') dx = step;
+    else if (e.key === 'ArrowUp') dy = step;
+    else if (e.key === 'ArrowDown') dy = -step;
+    else return;
+    e.preventDefault();
+    moveTo(here.x + dx, here.y + dy);
+  });
+
+  Array.from(section.querySelectorAll('.matrix__hood-btn')).forEach(function (b) {
+    b.addEventListener('click', function () {
+      var id = b.getAttribute('data-hood');
+      MM.NEIGHBOURHOODS.forEach(function (h) { if (h.id === id) moveTo(h.x, h.y); });
+    });
+  });
+
+  Array.from(legend.querySelectorAll('.matrix__course')).forEach(function (b) {
+    b.addEventListener('click', function () {
+      var id = b.getAttribute('data-course');
+      var off = b.getAttribute('aria-pressed') === 'true';
+      b.setAttribute('aria-pressed', off ? 'false' : 'true');
+      if (off) hidden[id] = true; else delete hidden[id];
+      render();
+      persist();
+    });
+  });
+
+  more.addEventListener('click', function () { shown += PAGE; render(); });
+
+  toggle.addEventListener('click', function () {
+    var collapse = !section.classList.contains('is-collapsed');
+    section.classList.toggle('is-collapsed', collapse);
+    toggle.setAttribute('aria-expanded', collapse ? 'false' : 'true');
+    toggle.textContent = collapse ? 'Show map' : 'Hide map';
+    persist();
+  });
+
+  /* the search box and filter chips narrow the map too */
+  document.addEventListener('recipes:filtered', function () { shown = PAGE; render(); });
 })();
 </script>
