@@ -47,6 +47,12 @@ python3 tools/autotag.py --write    # apply it
 
 It only ever adds tags and keeps yours, and the importer runs it for new recipes. Vegetarian/Vegan are only added when nothing in the ingredient list is doubtful, and Gluten-Free is never guessed, only copied when a recipe says so. These come from ingredient text, so check the list if it matters.
 
+# Recipe map
+
+The top of the Recipes tab is a map with every recipe on one plane: left to right from fresh, bright & light to rich, hearty & comforting, bottom to top from quick & easy to slow & involved. The four quadrants are Market Day (fresh, worth the effort), Sunday Supper (rich and slow), Fast & Fresh and Cozy Weeknight. Tap the map, drag the pin or pick a quadrant to list the closest recipes; the course chips (mains, sides & salads, breakfast, sweets, snacks & sauces) hide or show a course, and the search box and filter chips narrow the map too. **Hide map** folds it away and the page remembers that.
+
+Spots are worked out in the browser by `assets/js/recipe-matrix.js` from the title, tags, ingredients, total time, difficulty and the number of ingredients and steps (tested by `node --test tools/test_recipe_matrix.mjs`). If a recipe lands somewhere wrong, pin it in its front matter with `matrix: {x: 2.5, y: -3}` (each from -5 to 5); `tools/validate_recipes.py` checks the value.
+
 # Writing a component recipe
 
 A component recipe is a special recipe made up of other recipes. To make a new component recipe:
