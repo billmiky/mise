@@ -21,6 +21,10 @@ Clone or download this repo. Navigate to the folder in terminal (or iTerm, etc),
 
 With default settings, you should be able to view the site locally at `http://127.0.0.1:4000/`
 
+# Deploying
+
+The site is built and published by `.github/workflows/deploy.yml` (in the repo's Settings → Pages, set **Source** to **GitHub Actions**). It runs on every push to `main`, and also after the site's own workflows (imports, plan, grocery, pantry...) save something. Those workflows push with the built-in token, which can't start another workflow, so `deploy.yml` lists them under `workflow_run`. If you add a workflow that pushes to `main`, add its name there too; `tools/check_deploy_triggers.py` fails the checks if you forget.
+
 # Writing a Recipe
 
 The recipes are stored in the collection "Recipes" (the folder /_recipes).
