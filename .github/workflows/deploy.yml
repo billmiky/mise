@@ -9,6 +9,27 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+  # Commits made by the site's own workflows (imports, plan, grocery, pantry...) are pushed with
+  # GITHUB_TOKEN, and GitHub doesn't start other workflows for those pushes. So deploy when one
+  # of them finishes instead. Add any new workflow that pushes to main here;
+  # tools/check_deploy_triggers.py (run by validate.yml) fails if one is missing.
+  workflow_run:
+    workflows:
+      - Add to Grocery List
+      - Rebuild Grocery List
+      - Import Recipe
+      - Remove from Pantry and Add to Grocery
+      - Update Pantry
+      - Parse Receipt Email
+      - Save Recipe From Photo
+      - Add Recipe to Plan
+      - Remove Recipe from Plan
+      - Save Meal Plan
+      - Update Last Made
+      - Update Rating
+      - Update Recipe
+    types: [completed]
+
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
@@ -24,10 +45,17 @@ concurrency:
 jobs:
   # Build job
   build:
+    # After a workflow_run, only deploy if that workflow succeeded and ran on main
+    if: >-
+      github.event_name != 'workflow_run' ||
+      (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # workflow_run starts from the commit that was current when the run began; build what's on main now
+          ref: main
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
