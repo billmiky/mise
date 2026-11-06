@@ -60,6 +60,10 @@ The Import page has a **From a photo** tab: choose (or take, or paste) up to 4 p
 
 Either way you review everything in a form (including the book title, author and page, which Claude reads from the page headers when it can; *Same book* re-fills the last one for a batch from one book) and pick the recipe picture: the cropped dish photo, a whole page, or a photo of your own) before **Save Recipe** runs `photo-save.yml`, which writes `_recipes/<slug>.md` and `images/<slug>.jpg` to main (auto-tagged like URL imports) and clears the scratch folder. The `photo-imports` branch never deploys and is safe to delete.
 
+# Typing a recipe in
+
+The Import page's **Type it in** tab opens the same review form blank, for sites the link importer can't read or anything else you want to add by hand: title, ingredients (one per line), steps (a blank line between them), times, a dish photo you choose or take, and optionally a link or credit under **Source**, plus the cookbook fields. It saves through the same `photo-save.yml` workflow, so the recipe is auto-tagged and checked like the others, and the form stays open and blank for the next one.
+
 Tests: `python3 tools/test_photo_import.py` and `node --test tools/test_photo_import.mjs`.
 
 # Tags

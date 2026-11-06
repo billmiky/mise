@@ -234,6 +234,7 @@ permalink: /import/
       <div class="mode-tabs" role="tablist" aria-label="Import from">
         <button class="mode-tab" type="button" role="tab" id="tab-link" aria-controls="import-form" aria-selected="true">From a link</button>
         <button class="mode-tab" type="button" role="tab" id="tab-photo" aria-controls="photo-panel" aria-selected="false">From a photo</button>
+        <button class="mode-tab" type="button" role="tab" id="tab-manual" aria-controls="photo-panel" aria-selected="false">Type it in</button>
       </div>
 
       <form class="import-form" id="import-form" role="tabpanel" aria-labelledby="tab-link">
@@ -560,23 +561,30 @@ permalink: /import/
 
 
   /* ================= Link / photo switch ================= */
-  var tabs = { link: document.getElementById('tab-link'), photo: document.getElementById('tab-photo') };
+  // "Type it in" reuses the photo tab's review form, opened blank (for sites that won't import, or anything else)
+  var tabs = { link: document.getElementById('tab-link'), photo: document.getElementById('tab-photo'), manual: document.getElementById('tab-manual') };
   var panels = { link: document.getElementById('import-form'), photo: document.getElementById('photo-panel') };
   var metaFields = document.getElementById('meta-fields');
   var metaSlots = { link: document.getElementById('link-meta-slot'), photo: document.getElementById('photo-meta-slot') };
 
   function showMode(mode) {
-    Object.keys(tabs).forEach(function (k) {
-      tabs[k].setAttribute('aria-selected', String(k === mode));
-      panels[k].hidden = k !== mode;
-    });
-    metaSlots[mode].appendChild(metaFields);   // one set of difficulty / rating / tags fields, shared
-    if (location.hash !== (mode === 'photo' ? '#photo' : '')) {
-      history.replaceState(null, '', mode === 'photo' ? '#photo' : location.pathname + location.search);
-    }
+    Object.keys(tabs).forEach(function (k) { tabs[k].setAttribute('aria-selected', String(k === mode)); });
+    panels.link.hidden = mode !== 'link';
+    panels.photo.hidden = mode === 'link';
+    metaSlots[mode === 'link' ? 'link' : 'photo'].appendChild(metaFields);   // one set of difficulty / rating / tags fields, shared
+    var hash = mode === 'link' ? '' : '#' + mode;
+    if (location.hash !== hash) history.replaceState(null, '', hash || location.pathname + location.search);
+    applyPhotoMode(mode);
   }
   tabs.link.addEventListener('click', function () { showMode('link'); });
-  tabs.photo.addEventListener('click', function () { showMode('photo'); });
+  tabs.photo.addEventListener('click', function () {
+    if (manualActive && manualDirty() && !confirm('Leave the recipe you’re typing? It won’t be saved.')) return;
+    showMode('photo');
+  });
+  tabs.manual.addEventListener('click', function () {
+    if (!manualActive && !review.hidden && !confirm('Discard the photo import you’re in the middle of?')) return;
+    showMode('manual');
+  });
 
   /* ================= From a photo ================= */
   var P = window.MisePhoto;
@@ -591,6 +599,7 @@ permalink: /import/
   var coverIndex = 0;
   var importId = null;
   var busy = false;
+  var manualActive = false;   // the review form was opened blank from the "Type it in" tab
 
   var el = function (id) { return document.getElementById(id); };
   var photoStatus = el('photo-status');
@@ -772,6 +781,22 @@ permalink: /import/
   }
   deviceBtn.addEventListener('click', function () { readOnDevice(false); });
 
+  function manualDirty() {
+    return !!(el('r-title').value.trim() || el('r-ingredients').value.trim() || el('r-directions').value.trim());
+  }
+
+  function applyPhotoMode(mode) {
+    if (mode === 'manual' && !manualActive) {
+      if (busy) return;
+      resetPhoto();                 // drops any half-done photo import
+      manualActive = true;
+      showReview({}, null, 'manual');
+    } else if (mode === 'photo' && manualActive) {
+      manualActive = false;
+      resetPhoto();
+    }
+  }
+
   /* ---- Review ---- */
   async function addCover(blob, label, select) {
     covers.push({ blob: blob, url: URL.createObjectURL(blob), label: label });
@@ -819,6 +844,7 @@ permalink: /import/
     for (var i = 0; i < pages.length; i++) {
       await addCover(await P.toJpeg(pages[i].blob, COVER_EDGE), 'Page ' + (i + 1), false);
     }
+    renderCovers();   // shows "+ Add a dish photo" even when there are no photos yet (Type it in)
 
     el('r-title').value = r.title || '';
     el('r-yield').value = r.yield || '';
@@ -828,6 +854,7 @@ permalink: /import/
     el('r-ingredients').value = (r.ingredients || []).join('\n');
     el('r-directions').value = (r.directions || []).join('\n\n');
     el('r-source').value = r.source || '';
+    el('r-source').placeholder = via === 'manual' ? 'https://… or Bon Appétit, March 2024' : 'Bon Appétit, March 2024';
     el('r-book').value = r.cookbook || '';
     el('r-author').value = r.cookbook_author || '';
     el('r-page').value = r.cookbook_page || '';
@@ -838,7 +865,11 @@ permalink: /import/
     el('r-notes').value = r.notes || '';
 
     var banner = el('review-banner');
-    if (via === 'claude') {
+    if (via === 'manual') {
+      banner.className = 'review-banner';
+      banner.innerHTML = 'Type or paste the recipe — one ingredient per line, a blank line between steps. ' +
+        'Add a dish photo, and a link or credit under Source if it came from a website.';
+    } else if (via === 'claude') {
       banner.className = 'review-banner';
       banner.innerHTML = 'Claude read <strong>' + C.escapeHtml(r.title || 'the recipe') + '</strong> — ' +
         (r.ingredients || []).length + ' ingredients, ' + (r.directions || []).length + ' steps. ' +
@@ -850,8 +881,10 @@ permalink: /import/
     }
     pick.hidden = true;
     review.hidden = false;
-    el('r-title').focus();
-    review.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (via !== 'manual') {
+      el('r-title').focus();
+      review.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }
 
   function resetPhoto() {
@@ -869,6 +902,7 @@ permalink: /import/
     if (!review.hidden && !confirm('Discard this recipe and start over?')) return;
     resetPhoto();
     status(el('photo-save-status'), '');
+    if (manualActive) showReview({}, null, 'manual');
   });
 
   el('same-book-btn').addEventListener('click', function () {
@@ -931,9 +965,14 @@ permalink: /import/
         if (recipe.cookbook) C.save('mise_last_cookbook', { title: recipe.cookbook, author: recipe.cookbook_author });
         var done = saveStatus.innerHTML;
         resetPhoto();
-        status(photoStatus, done, 'ok');
-        status(saveStatus, '');
-        pick.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (manualActive) {         // stay on a blank form for the next one
+          await showReview({}, null, 'manual');
+          status(el('photo-save-status'), done, 'ok');
+        } else {
+          status(photoStatus, done, 'ok');
+          status(saveStatus, '');
+          pick.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
       }
     } catch (err) {
       status(saveStatus, '✗ ' + err.message, 'err');
@@ -942,7 +981,7 @@ permalink: /import/
     busy = false;
   });
 
-  showMode(location.hash === '#photo' ? 'photo' : 'link');
+  showMode(location.hash === '#photo' ? 'photo' : location.hash === '#manual' ? 'manual' : 'link');
   renderThumbs();
 
   refreshTokenState();
