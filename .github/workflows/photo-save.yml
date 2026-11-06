@@ -1,0 +1,96 @@
+name: Save Recipe From Photo
+
+# Step 2 of a photo import (import.html → "From a photo"): the page uploads the chosen recipe
+# picture to the photo-imports branch as <id>/cover.jpg and sends the reviewed recipe here.
+# This writes _recipes/<slug>.md + images/<slug>.jpg to main, then clears <id>/ from the
+# photo-imports branch.
+
+on:
+  workflow_dispatch:
+    inputs:
+      id:
+        description: "Import id (folder on the photo-imports branch)"
+        required: true
+      recipe:
+        description: "Reviewed recipe as JSON (see tools/importer/photo.py)"
+        required: true
+
+jobs:
+  save:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install pyyaml requests
+
+      - name: Check the import id
+        run: |
+          if ! [[ "$IMPORT_ID" =~ ^[a-z0-9-]{6,40}$ ]]; then
+            echo "Bad import id: $IMPORT_ID"; exit 1
+          fi
+        env:
+          IMPORT_ID: ${{ inputs.id }}
+
+      - name: Fetch the recipe picture
+        run: |
+          git fetch --depth=1 origin photo-imports
+          git worktree add /tmp/stage FETCH_HEAD
+          printf '%s' "$RECIPE" > /tmp/recipe.json
+        env:
+          IMPORT_ID: ${{ inputs.id }}
+          RECIPE: ${{ inputs.recipe }}
+
+      # Runs can overlap, so write the recipe on top of the latest main and retry if another run pushed first
+      - name: Write recipe and push
+        run: |
+          set -e
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for attempt in 1 2 3 4 5 6; do
+            git fetch origin main
+            git reset -q --hard origin/main
+            git clean -fdq _recipes images
+            python tools/importer/photo.py save --recipe /tmp/recipe.json \
+              --cover "/tmp/stage/$IMPORT_ID/cover.jpg" --slug-file /tmp/slug
+            SLUG=$(cat /tmp/slug)
+            python tools/validate_recipes.py "_recipes/$SLUG.md"
+            git add "_recipes/$SLUG.md" images/
+            git commit -q -m "Import recipe from photo: $SLUG"
+            if git push -q origin HEAD:main; then
+              echo "Saved _recipes/$SLUG.md"
+              exit 0
+            fi
+            echo "Push rejected (another run pushed first), retrying on the latest main"
+            sleep $((RANDOM % 5 + 2))
+          done
+          echo "Could not push after several attempts"
+          exit 1
+        env:
+          IMPORT_ID: ${{ inputs.id }}
+
+      - name: Clear the staged photos
+        if: success()
+        working-directory: /tmp/stage
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for attempt in 1 2 3; do
+            git fetch --depth=1 origin photo-imports
+            git checkout -q --detach FETCH_HEAD
+            [ -d "$IMPORT_ID" ] || exit 0
+            git rm -rq "$IMPORT_ID"
+            git commit -q -m "Clear $IMPORT_ID"
+            git push -q origin HEAD:photo-imports && exit 0
+            sleep $((RANDOM % 5 + 2))
+          done
+          echo "::warning::Couldn't clear $IMPORT_ID from photo-imports (harmless)"
+        env:
+          IMPORT_ID: ${{ inputs.id }}
