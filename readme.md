@@ -35,6 +35,17 @@ They are written in Markdown and contain a few special sections:
 
 If you need help with Markdown, here's a [handy cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
 
+# Importing from a cookbook photo
+
+The Import page has a **From a photo** tab: choose (or take, or paste) up to 4 photos or screenshots of a recipe, in page order, then:
+
+- **Read with Claude**: the photos go to the `photo-imports` scratch branch and the `photo-extract.yml` workflow sends them to Claude, which transcribes the title, ingredients, steps, times, yield and the book/page, and finds the photo of the finished dish. It needs an `ANTHROPIC_API_KEY` secret (repo Settings → Secrets and variables → Actions); each recipe costs roughly 1–3¢.
+- **Read on this device**: free, with no key. Tesseract.js reads the text in the browser and `assets/js/photo-import.js` guesses which lines are ingredients and which are steps. It's rougher, so expect to tidy the lines. If no key is set up, *Read with Claude* switches to this on its own.
+
+Either way you review everything in a form (and pick the recipe picture: the cropped dish photo, a whole page, or a photo of your own) before **Save Recipe** runs `photo-save.yml`, which writes `_recipes/<slug>.md` and `images/<slug>.jpg` to main (auto-tagged like URL imports) and clears the scratch folder. The `photo-imports` branch never deploys and is safe to delete.
+
+Tests: `python3 tools/test_photo_import.py` and `node --test tools/test_photo_import.mjs`.
+
 # Tags
 
 Tags make recipes findable (the home page search matches them, and each tag on a recipe page links to that search). `tools/autotag.py` suggests them from a recipe's title, ingredients and directions: meal type (Dinner, Dessert...), cuisine, main ingredient (Chicken, Seafood, Beans, Pasta...), diet (Vegetarian, Vegan) and cooking style (Instant Pot, Sheet Pan...).

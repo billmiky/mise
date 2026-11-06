@@ -1,0 +1,76 @@
+name: Read Recipe Photo
+
+# Step 1 of a photo import (import.html → "From a photo").
+# The page uploads the photos to the photo-imports branch as <id>/page-N.jpg and starts this
+# run; it reads them with Claude and writes <id>/result.json there, which the page picks up
+# for review. Nothing touches main. Needs the ANTHROPIC_API_KEY repository secret; without
+# it the result says "no_key" and the page reads the photo on the device instead.
+
+on:
+  workflow_dispatch:
+    inputs:
+      id:
+        description: "Import id (folder on the photo-imports branch)"
+        required: true
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install anthropic pyyaml requests
+
+      - name: Check the import id
+        run: |
+          if ! [[ "$IMPORT_ID" =~ ^[a-z0-9-]{6,40}$ ]]; then
+            echo "Bad import id: $IMPORT_ID"; exit 1
+          fi
+        env:
+          IMPORT_ID: ${{ inputs.id }}
+
+      - name: Fetch the photos
+        run: |
+          git fetch --depth=1 origin photo-imports
+          git worktree add /tmp/stage FETCH_HEAD
+          ls -la "/tmp/stage/$IMPORT_ID"
+        env:
+          IMPORT_ID: ${{ inputs.id }}
+
+      - name: Read them with Claude
+        run: |
+          shopt -s nullglob
+          python tools/importer/photo.py extract --out /tmp/result.json /tmp/stage/"$IMPORT_ID"/page-*.*
+        env:
+          IMPORT_ID: ${{ inputs.id }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+
+      # Other imports may push to the branch at the same time, so retry on the latest copy
+      - name: Publish the result
+        working-directory: /tmp/stage
+        run: |
+          set -e
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for attempt in 1 2 3 4 5 6; do
+            git fetch --depth=1 origin photo-imports
+            git checkout -q --detach FETCH_HEAD
+            mkdir -p "$IMPORT_ID"
+            cp /tmp/result.json "$IMPORT_ID/result.json"
+            git add "$IMPORT_ID/result.json"
+            git commit -q -m "Read photos for $IMPORT_ID"
+            if git push -q origin HEAD:photo-imports; then exit 0; fi
+            echo "Push rejected, retrying"
+            sleep $((RANDOM % 5 + 2))
+          done
+          exit 1
+        env:
+          IMPORT_ID: ${{ inputs.id }}

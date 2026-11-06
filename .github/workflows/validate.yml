@@ -3,7 +3,7 @@ name: Validate recipes
 on:
   pull_request:
   push:
-    branches-ignore: ["main", "master"]
+    branches-ignore: ["main", "master", "photo-imports"]
 
 permissions:
   contents: read
@@ -26,6 +26,11 @@ jobs:
         run: python tools/test_autotag.py
       - name: Check recipe map placement
         run: node --test tools/test_recipe_matrix.mjs
+      - name: Check photo importer
+        run: |
+          pip install requests
+          python tools/test_photo_import.py
+          node --test tools/test_photo_import.mjs
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: "3.3"

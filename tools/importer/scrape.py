@@ -30,9 +30,8 @@ import yaml
 
 try:
     from recipe_scrapers import scrape_html
-except ImportError:
-    print("recipe-scrapers not installed", file=sys.stderr)
-    sys.exit(1)
+except ImportError:  # only needed for URL imports; photo.py reuses the writer below without it
+    scrape_html = None
 
 try:
     from curl_cffi import requests as browser_requests
@@ -234,6 +233,8 @@ def parse_json_ld(html: str):
 
 
 def parse_with_scrapers(html: str, url: str):
+    if scrape_html is None:
+        raise RuntimeError("recipe-scrapers not installed")
     scraper = scrape_html(html, url, supported_only=False)
     data: dict = {
         "title": scraper.title(),

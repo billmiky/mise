@@ -18,6 +18,7 @@ permalink: /import/
   .field-group { display: flex; flex-direction: column; gap: 6px; }
 
   .import-form label,
+  .import-form .group-label,
   .pat-section label {
     font-size: 0.7rem;
     font-weight: 900;
@@ -25,7 +26,8 @@ permalink: /import/
     letter-spacing: 0.1em;
   }
 
-  label .hint {
+  .group-label { margin: 0; }
+  label .hint, .group-label .hint {
     font-weight: 500;
     color: var(--faint);
     text-transform: none;
@@ -125,6 +127,70 @@ permalink: /import/
     .row-2, .row-3 { grid-template-columns: 1fr; }
     #import-btn { width: 100%; }
   }
+  /* ---- Link / photo switch ---- */
+  .mode-tabs { display: flex; border: var(--border); margin-bottom: 28px; }
+  .mode-tab {
+    flex: 1; min-height: 48px; border: 0; background: var(--card); color: var(--ink); cursor: pointer;
+    font-size: 0.75rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.1em;
+  }
+  .mode-tab + .mode-tab { border-left: var(--border); }
+  .mode-tab[aria-selected="true"] { background: var(--ink); color: #fff; }
+
+  /* ---- Photo import ---- */
+  .photo-drop {
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+    min-height: 140px; padding: 20px; text-align: center; cursor: pointer;
+    border: 2px dashed var(--ink); background: var(--card);
+  }
+  .photo-drop.drag { background: var(--line); }
+  .photo-drop strong { font-size: 0.95rem; }
+  .photo-drop span { font-size: 0.82rem; color: var(--muted); }
+  .photo-pick-row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .thumbs { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 10px; }
+  .thumb { position: relative; border: var(--border); background: var(--card); aspect-ratio: 3 / 4; overflow: hidden; }
+  .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .thumb .num {
+    position: absolute; left: 0; top: 0; background: var(--ink); color: #fff;
+    font-size: 0.7rem; font-weight: 900; padding: 2px 7px;
+  }
+  .thumb .remove {
+    position: absolute; right: 0; top: 0; width: 32px; height: 32px; border: 0; cursor: pointer;
+    background: var(--card); color: var(--ink); font-size: 1.1rem; line-height: 1;
+  }
+  .read-row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .photo-note { font-size: 0.82rem; color: var(--muted); margin: 0; }
+
+  .cover-choices { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 10px; }
+  .cover-choice {
+    position: relative; padding: 0; border: var(--border); background: var(--card); cursor: pointer;
+    aspect-ratio: 4 / 3; overflow: hidden;
+  }
+  .cover-choice img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .cover-choice[aria-pressed="true"] { box-shadow: 0 0 0 4px var(--red); }
+  .cover-choice .tag {
+    position: absolute; left: 0; bottom: 0; right: 0; background: rgba(0,0,0,0.7); color: #fff;
+    font-size: 0.68rem; font-weight: 800; padding: 3px 6px; text-align: left;
+  }
+  .cover-add {
+    display: flex; align-items: center; justify-content: center; text-align: center; padding: 8px;
+    font-size: 0.72rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.06em;
+    border: 2px dashed var(--ink); background: var(--card); cursor: pointer; aspect-ratio: 4 / 3;
+  }
+
+  .import-form textarea {
+    font: inherit; font-size: 0.95rem; line-height: 1.5; padding: 12px 14px; width: 100%;
+    border: var(--border); border-radius: 0; background: var(--card); color: var(--ink); outline: none; resize: vertical;
+  }
+  .import-form textarea:focus { box-shadow: 4px 4px 0 0 var(--red); }
+  .row-4 { display: grid; gap: 20px; grid-template-columns: 2fr 1fr 1fr 1fr; }
+  .review-banner { border: var(--border); background: var(--card); padding: 14px 16px; font-size: 0.88rem; }
+  .review-banner.warn { border-color: var(--red); }
+
+  @media (max-width: 860px) {
+    .row-4 { grid-template-columns: 1fr 1fr; }
+    .row-4 > :first-child { grid-column: 1 / -1; }
+    .read-row .bauhaus-btn, #photo-save-btn { width: 100%; }
+  }
 </style>
 
 <div class="bauhaus-home-layout">
@@ -137,7 +203,7 @@ permalink: /import/
           <h1 class="section-header">Import Recipe</h1>
         </div>
       </div>
-      <p class="page-sub-text">Paste a recipe URL. A GitHub Actions workflow scrapes it and commits it to the repo; it shows up in about a minute.</p>
+      <p class="page-sub-text">Paste a recipe link, or snap a cookbook page. A GitHub Actions workflow saves it to the repo; it shows up in about a minute.</p>
 
       <details class="pat-section" id="pat-section">
         <summary>
@@ -160,7 +226,12 @@ permalink: /import/
         </div>
       </details>
 
-      <form class="import-form" id="import-form">
+      <div class="mode-tabs" role="tablist" aria-label="Import from">
+        <button class="mode-tab" type="button" role="tab" id="tab-link" aria-controls="import-form" aria-selected="true">From a link</button>
+        <button class="mode-tab" type="button" role="tab" id="tab-photo" aria-controls="photo-panel" aria-selected="false">From a photo</button>
+      </div>
+
+      <form class="import-form" id="import-form" role="tabpanel" aria-labelledby="tab-link">
         <div class="field-group">
           <label for="url">Recipe URL <span class="hint">required</span></label>
           <div class="url-row">
@@ -169,6 +240,7 @@ permalink: /import/
           </div>
         </div>
 
+        <div class="import-form" id="meta-fields">
         <div class="row-2">
           <div class="field-group">
             <label for="difficulty">Difficulty</label>
@@ -216,6 +288,9 @@ permalink: /import/
             <input type="text" id="tags" name="tags" placeholder="quick weeknight" autocapitalize="none" />
           </div>
         </div>
+        </div>
+
+        <div id="link-meta-slot"></div>
 
         <div class="submit-row">
           <button type="submit" class="bauhaus-btn" id="import-btn">Import Recipe</button>
@@ -223,15 +298,106 @@ permalink: /import/
         </div>
       </form>
 
+
+      <div id="photo-panel" role="tabpanel" aria-labelledby="tab-photo" hidden>
+        <div class="import-form" id="photo-pick">
+          <div class="field-group">
+            <label for="photo-files">Recipe photos <span class="hint">up to 4, in page order</span></label>
+            <label class="photo-drop" id="photo-drop" for="photo-files">
+              <strong>Choose photos or screenshots</strong>
+              <span>Straight-on and in focus works best. Drop files here on a computer.</span>
+            </label>
+            <input type="file" id="photo-files" accept="image/*" multiple class="sr-only" />
+            <input type="file" id="photo-camera" accept="image/*" capture="environment" class="sr-only" />
+            <div class="photo-pick-row">
+              <button class="bauhaus-btn ghost small" type="button" id="photo-camera-btn">Take a photo</button>
+            </div>
+          </div>
+          <div class="thumbs" id="photo-thumbs" aria-live="polite"></div>
+          <div class="read-row">
+            <button class="bauhaus-btn" type="button" id="read-claude-btn" disabled>Read with Claude</button>
+            <button class="bauhaus-btn ghost" type="button" id="read-device-btn" disabled>Read on this device</button>
+          </div>
+          <p class="photo-note">
+            <strong>Claude</strong> handles columns, fractions and handwriting, and finds the dish photo (needs an
+            <code>ANTHROPIC_API_KEY</code> repo secret, about 1–3¢ a recipe).
+            <strong>On this device</strong> is free and private but rougher — expect to tidy the lines.
+            Either way you check everything before it’s saved.
+          </p>
+          <span class="action-status" id="photo-status" role="status"></span>
+        </div>
+
+        <form class="import-form" id="photo-review" hidden novalidate>
+          <div class="review-banner" id="review-banner"></div>
+
+          <div class="field-group">
+            <p class="group-label" id="cover-label">Recipe picture <span class="hint">tap one</span></p>
+            <div class="cover-choices" id="cover-choices" role="group" aria-labelledby="cover-label"></div>
+            <input type="file" id="cover-file" accept="image/*" class="sr-only" />
+          </div>
+
+          <div class="row-4">
+            <div class="field-group">
+              <label for="r-title">Title <span class="hint">required</span></label>
+              <input type="text" id="r-title" required />
+            </div>
+            <div class="field-group">
+              <label for="r-yield">Yield</label>
+              <input type="text" id="r-yield" placeholder="Serves 4" />
+            </div>
+            <div class="field-group">
+              <label for="r-prep">Prep <span class="hint">min</span></label>
+              <input type="text" id="r-prep" inputmode="numeric" />
+            </div>
+            <div class="field-group">
+              <label for="r-cook">Cook <span class="hint">min</span></label>
+              <input type="text" id="r-cook" inputmode="numeric" />
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label for="r-ingredients">Ingredients <span class="hint">one per line</span></label>
+            <textarea id="r-ingredients" rows="10" required></textarea>
+          </div>
+          <div class="field-group">
+            <label for="r-directions">Directions <span class="hint">blank line between steps</span></label>
+            <textarea id="r-directions" rows="12" required></textarea>
+          </div>
+          <div class="row-2">
+            <div class="field-group">
+              <label for="r-source">Source <span class="hint">book &amp; page</span></label>
+              <input type="text" id="r-source" placeholder="Salt Fat Acid Heat, p. 112" />
+            </div>
+            <div class="field-group">
+              <label for="r-total">Total time <span class="hint">min, if different</span></label>
+              <input type="text" id="r-total" inputmode="numeric" />
+            </div>
+          </div>
+          <div class="field-group">
+            <label for="r-notes">Notes <span class="hint">optional, shown under the recipe</span></label>
+            <textarea id="r-notes" rows="3"></textarea>
+          </div>
+
+          <div id="photo-meta-slot"></div>
+
+          <div class="submit-row">
+            <button type="submit" class="bauhaus-btn" id="photo-save-btn">Save Recipe</button>
+            <button type="button" class="bauhaus-btn ghost" id="photo-restart-btn">Start over</button>
+            <span class="action-status" id="photo-save-status" role="status"></span>
+          </div>
+        </form>
+      </div>
+
       <div class="workflow-note">
         Imports run as
-        <a href="https://github.com/billmiky/mise/actions/workflows/import-recipe.yml" target="_blank" rel="noopener">GitHub Actions</a>
+        <a href="https://github.com/billmiky/mise/actions" target="_blank" rel="noopener">GitHub Actions</a>
         — watch progress there. The site rebuilds automatically once the recipe is committed.
       </div>
     </div>
   </main>
 </div>
 
+<script src="{{ '/assets/js/photo-import.js' | relative_url }}"></script>
 <script>
 (function () {
   var C = window.Chowdown;
@@ -321,7 +487,10 @@ permalink: /import/
     try {
       await C.triggerWorkflow('import-recipe.yml', inputs);
       form.reset();
-      watchRun(startedAt, importStatus, btn);
+      watchRun('import-recipe.yml', startedAt, importStatus, btn, {
+        ok: '✓ Imported — the site rebuilds in about a minute.',
+        fail: 'Sites that block automated access can’t be imported.',
+      });
       return;
     } catch (err) {
       status(importStatus, '✗ ' + err.message, 'err');
@@ -331,9 +500,9 @@ permalink: /import/
   });
 
   // Follow the workflow run so a failed import is reported here instead of silently
-  async function watchRun(startedAt, el, btn) {
-    var base = 'https://api.github.com/repos/' + C.REPO + '/actions/workflows/import-recipe.yml/runs';
-    var runsUrl = 'https://github.com/' + C.REPO + '/actions/workflows/import-recipe.yml';
+  async function watchRun(workflow, startedAt, el, btn, msgs) {
+    var base = 'https://api.github.com/repos/' + C.REPO + '/actions/workflows/' + workflow + '/runs';
+    var runsUrl = 'https://github.com/' + C.REPO + '/actions/workflows/' + workflow;
     var link = function (href, text) { return '<a href="' + href + '" target="_blank" rel="noopener">' + text + '</a>'; };
     status(el, 'Import started — checking progress…');
     try {
@@ -347,20 +516,387 @@ permalink: /import/
         var run = runs.filter(function (r) { return new Date(r.created_at).getTime() >= startedAt; })
                       .sort(function (a, b) { return new Date(a.created_at) - new Date(b.created_at); })[0];
         if (!run) continue;
-        if (run.status !== 'completed') { status(el, 'Importing… ' + link(run.html_url, 'watch live')); continue; }
+        if (run.status !== 'completed') { status(el, 'Saving… ' + link(run.html_url, 'watch live')); continue; }
         if (run.conclusion === 'success') {
-          status(el, '✓ Imported — the site rebuilds in about a minute. ' + link(C.BASE + '/recipes/', 'Open recipes'), 'ok');
+          status(el, msgs.ok + ' ' + link(C.BASE + '/recipes/', 'Open recipes'), 'ok');
         } else {
-          status(el, '✗ Import failed — ' + link(run.html_url, 'see why') +
-            '. Sites that block automated access can’t be imported.', 'err');
+          status(el, '✗ Import failed — ' + link(run.html_url, 'see why') + '. ' + (msgs.fail || ''), 'err');
         }
         btn.disabled = false;
-        return;
+        return run.conclusion === 'success';
       }
     } catch (e) { /* fall through to the generic message */ }
     status(el, 'Import started — ' + link(runsUrl, 'check progress on GitHub'), 'ok');
     btn.disabled = false;
+    return null;
   }
+
+
+  /* ================= Link / photo switch ================= */
+  var tabs = { link: document.getElementById('tab-link'), photo: document.getElementById('tab-photo') };
+  var panels = { link: document.getElementById('import-form'), photo: document.getElementById('photo-panel') };
+  var metaFields = document.getElementById('meta-fields');
+  var metaSlots = { link: document.getElementById('link-meta-slot'), photo: document.getElementById('photo-meta-slot') };
+
+  function showMode(mode) {
+    Object.keys(tabs).forEach(function (k) {
+      tabs[k].setAttribute('aria-selected', String(k === mode));
+      panels[k].hidden = k !== mode;
+    });
+    metaSlots[mode].appendChild(metaFields);   // one set of difficulty / rating / tags fields, shared
+    if (location.hash !== (mode === 'photo' ? '#photo' : '')) {
+      history.replaceState(null, '', mode === 'photo' ? '#photo' : location.pathname + location.search);
+    }
+  }
+  tabs.link.addEventListener('click', function () { showMode('link'); });
+  tabs.photo.addEventListener('click', function () { showMode('photo'); });
+
+  /* ================= From a photo ================= */
+  var P = window.MisePhoto;
+  var stage = P.Stage(C);
+  var MAX_PAGES = 4;
+  var PAGE_EDGE = 1568;   // Claude reads images up to about this size; bigger only costs upload time
+  var COVER_EDGE = 1200;
+  var TESSERACT = 'https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js';
+
+  var pages = [];          // {blob, url}
+  var covers = [];         // {blob, url, label}
+  var coverIndex = 0;
+  var importId = null;
+  var busy = false;
+
+  var el = function (id) { return document.getElementById(id); };
+  var photoStatus = el('photo-status');
+  var claudeBtn = el('read-claude-btn'), deviceBtn = el('read-device-btn');
+  var review = el('photo-review'), pick = el('photo-pick');
+
+  function preferDevice(on) {
+    // After a "no key" answer, make the free reader the main button so nobody waits on Claude again
+    claudeBtn.classList.toggle('ghost', on);
+    deviceBtn.classList.toggle('ghost', !on);
+    if (on) claudeBtn.parentNode.insertBefore(deviceBtn, claudeBtn);
+    else claudeBtn.parentNode.insertBefore(claudeBtn, deviceBtn);
+  }
+  preferDevice(C.load('mise_photo_reader', '') === 'device');
+
+  function setBusy(on) {
+    busy = on;
+    claudeBtn.disabled = deviceBtn.disabled = on || !pages.length;
+  }
+
+  function renderThumbs() {
+    var wrap = el('photo-thumbs');
+    wrap.innerHTML = '';
+    pages.forEach(function (p, i) {
+      var div = document.createElement('div');
+      div.className = 'thumb';
+      div.innerHTML = '<img alt="Page ' + (i + 1) + '"><span class="num">' + (i + 1) + '</span>' +
+        '<button type="button" class="remove" aria-label="Remove page ' + (i + 1) + '">×</button>';
+      div.querySelector('img').src = p.url;
+      div.querySelector('.remove').addEventListener('click', function () {
+        if (busy) return;
+        URL.revokeObjectURL(p.url);
+        pages.splice(i, 1);
+        renderThumbs();
+      });
+      wrap.appendChild(div);
+    });
+    setBusy(busy);
+  }
+
+  async function addFiles(fileList) {
+    var files = Array.prototype.filter.call(fileList || [], function (f) { return /^image\//.test(f.type) || !f.type; });
+    if (!files.length) return;
+    if (pages.length + files.length > MAX_PAGES) {
+      C.toast('Up to ' + MAX_PAGES + ' photos per recipe — using the first ones', 'err');
+      files = files.slice(0, MAX_PAGES - pages.length);
+    }
+    status(photoStatus, 'Preparing photos…');
+    for (var i = 0; i < files.length; i++) {
+      try {
+        var blob = await P.toJpeg(files[i], PAGE_EDGE);
+        pages.push({ blob: blob, url: URL.createObjectURL(blob) });
+      } catch (e) {
+        C.toast(C.escapeHtml(e.message), 'err');
+      }
+    }
+    status(photoStatus, '');
+    renderThumbs();
+  }
+
+  el('photo-files').addEventListener('change', function () { addFiles(this.files); this.value = ''; });
+  el('photo-camera').addEventListener('change', function () { addFiles(this.files); this.value = ''; });
+  el('photo-camera-btn').addEventListener('click', function () { el('photo-camera').click(); });
+  var drop = el('photo-drop');
+  ['dragenter', 'dragover'].forEach(function (t) {
+    drop.addEventListener(t, function (e) { e.preventDefault(); drop.classList.add('drag'); });
+  });
+  ['dragleave', 'drop'].forEach(function (t) {
+    drop.addEventListener(t, function (e) { e.preventDefault(); drop.classList.remove('drag'); });
+  });
+  drop.addEventListener('drop', function (e) { addFiles(e.dataTransfer && e.dataTransfer.files); });
+  // Pasting a screenshot (Cmd/Ctrl+V) while on the photo tab adds it
+  document.addEventListener('paste', function (e) {
+    if (panels.photo.hidden || !pick.offsetParent || !e.clipboardData) return;
+    var files = Array.prototype.filter.call(e.clipboardData.files || [], function (f) { return /^image\//.test(f.type); });
+    if (files.length) { e.preventDefault(); addFiles(files); }
+  });
+
+  var sleep = function (ms) { return new Promise(function (r) { setTimeout(r, ms); }); };
+  var link = function (href, text) { return '<a href="' + href + '" target="_blank" rel="noopener">' + text + '</a>'; };
+
+  /* ---- Read with Claude (photo-extract workflow) ---- */
+  claudeBtn.addEventListener('click', async function () {
+    if (!pages.length || busy) return;
+    if (!C.token()) { status(photoStatus, '✗ Save a GitHub token above first', 'err'); section.open = true; return; }
+    setBusy(true);
+    importId = P.newId();
+    try {
+      status(photoStatus, 'Uploading photos…');
+      await stage.ensureBranch();
+      for (var i = 0; i < pages.length; i++) {
+        status(photoStatus, 'Uploading photo ' + (i + 1) + ' of ' + pages.length + '…');
+        await stage.put(importId + '/page-' + (i + 1) + '.jpg', pages[i].blob, 'Photo import ' + importId + ': page ' + (i + 1));
+      }
+      var startedAt = Date.now() - 15000;   // clock skew between this device and GitHub
+      await C.triggerWorkflow('photo-extract.yml', { id: importId });
+      status(photoStatus, 'Claude is reading the recipe… (usually under a minute)');
+
+      var result = null, run = null;
+      for (var n = 0; n < 60 && !result; n++) {             // ~4 minutes
+        await sleep(n < 3 ? 6000 : 4000);
+        result = await stage.result(importId);
+        if (result || n % 3 !== 2) continue;
+        run = await stage.latestRun('photo-extract.yml', startedAt);
+        if (run && run.status !== 'completed') {
+          status(photoStatus, 'Claude is reading the recipe… ' + link(run.html_url, 'watch live'));
+        } else if (run && run.conclusion !== 'success') {
+          result = await stage.result(importId);           // it may have landed just now
+          if (!result) throw new Error('The reading step failed — ' + link(run.html_url, 'see why'));
+        }
+      }
+      if (!result) throw new Error('No answer yet — ' + link('https://github.com/' + C.REPO + '/actions/workflows/photo-extract.yml', 'check on GitHub') + ', or read on this device');
+
+      if (result.status === 'no_key') {
+        C.save('mise_photo_reader', 'device');
+        preferDevice(true);
+        status(photoStatus, 'No <code>ANTHROPIC_API_KEY</code> secret is set up, so reading on this device instead…');
+        setBusy(false);
+        return readOnDevice(true);
+      }
+      if (result.status !== 'ok') throw new Error(C.escapeHtml(result.message || 'Claude couldn’t read that'));
+      C.save('mise_photo_reader', 'claude');
+      status(photoStatus, '');
+      await showReview(result.recipe, result.cover, 'claude');
+    } catch (e) {
+      status(photoStatus, '✗ ' + e.message, 'err');
+    }
+    setBusy(false);
+  });
+
+  /* ---- Read on this device (Tesseract.js, no key) ---- */
+  var tesseractLoading = null;
+  function loadTesseract() {
+    if (window.Tesseract) return Promise.resolve();
+    if (!tesseractLoading) {
+      tesseractLoading = new Promise(function (resolve, reject) {
+        var s = document.createElement('script');
+        s.src = TESSERACT;
+        s.onload = resolve;
+        s.onerror = function () { tesseractLoading = null; reject(new Error('Couldn’t load the text reader — are you online?')); };
+        document.head.appendChild(s);
+      });
+    }
+    return tesseractLoading;
+  }
+
+  async function readOnDevice(fromFallback) {
+    if (!pages.length || busy) return;
+    setBusy(true);
+    var worker = null;
+    try {
+      status(photoStatus, (fromFallback ? 'No Claude key — ' : '') + 'Loading the text reader…');
+      await loadTesseract();
+      var current = 0;
+      worker = await window.Tesseract.createWorker('eng', 1, {
+        logger: function (m) {
+          if (m.status === 'recognizing text') {
+            status(photoStatus, 'Reading photo ' + (current + 1) + ' of ' + pages.length + '… ' + Math.round(m.progress * 100) + '%');
+          }
+        },
+      });
+      var text = '';
+      for (current = 0; current < pages.length; current++) {
+        var res = await worker.recognize(pages[current].blob);
+        text += res.data.text + '\n\n';
+      }
+      var recipe = P.splitText(text);
+      if (!recipe.ingredients.length && !recipe.directions.length) {
+        throw new Error('Couldn’t make out any recipe text. Try a sharper, straight-on photo with good light.');
+      }
+      status(photoStatus, '');
+      await showReview(recipe, null, 'device');
+    } catch (e) {
+      status(photoStatus, '✗ ' + C.escapeHtml(e.message || String(e)), 'err');
+    } finally {
+      if (worker) worker.terminate().catch(function () {});
+      setBusy(false);
+    }
+  }
+  deviceBtn.addEventListener('click', function () { readOnDevice(false); });
+
+  /* ---- Review ---- */
+  async function addCover(blob, label, select) {
+    covers.push({ blob: blob, url: URL.createObjectURL(blob), label: label });
+    if (select) coverIndex = covers.length - 1;
+    renderCovers();
+  }
+
+  function renderCovers() {
+    var wrap = el('cover-choices');
+    wrap.innerHTML = '';
+    covers.forEach(function (c, i) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'cover-choice';
+      b.setAttribute('aria-pressed', String(i === coverIndex));
+      b.innerHTML = '<img alt=""><span class="tag"></span>';
+      b.querySelector('img').src = c.url;
+      b.querySelector('.tag').textContent = c.label;
+      b.addEventListener('click', function () { coverIndex = i; renderCovers(); });
+      wrap.appendChild(b);
+    });
+    var add = document.createElement('button');
+    add.type = 'button';
+    add.className = 'cover-add';
+    add.textContent = '+ Add a dish photo';
+    add.addEventListener('click', function () { el('cover-file').click(); });
+    wrap.appendChild(add);
+  }
+
+  el('cover-file').addEventListener('change', async function () {
+    var f = this.files && this.files[0];
+    this.value = '';
+    if (!f) return;
+    try { await addCover(await P.toJpeg(f, COVER_EDGE), 'Your photo', true); }
+    catch (e) { C.toast(C.escapeHtml(e.message), 'err'); }
+  });
+
+  async function showReview(r, cover, via) {
+    covers.forEach(function (c) { URL.revokeObjectURL(c.url); });
+    covers = [];
+    coverIndex = 0;
+    if (cover && pages[cover.image]) {
+      try { await addCover(await P.toJpeg(pages[cover.image].blob, COVER_EDGE, cover.box), 'Dish photo', true); } catch (e) {}
+    }
+    for (var i = 0; i < pages.length; i++) {
+      await addCover(await P.toJpeg(pages[i].blob, COVER_EDGE), 'Page ' + (i + 1), false);
+    }
+
+    el('r-title').value = r.title || '';
+    el('r-yield').value = r.yield || '';
+    el('r-prep').value = r.prep_time || '';
+    el('r-cook').value = r.cook_time || '';
+    el('r-total').value = r.total_time && r.total_time !== String(+(r.prep_time || 0) + +(r.cook_time || 0)) ? r.total_time : '';
+    el('r-ingredients').value = (r.ingredients || []).join('\n');
+    el('r-directions').value = (r.directions || []).join('\n\n');
+    el('r-source').value = r.source || '';
+    el('r-notes').value = r.notes || '';
+
+    var banner = el('review-banner');
+    if (via === 'claude') {
+      banner.className = 'review-banner';
+      banner.innerHTML = 'Claude read <strong>' + C.escapeHtml(r.title || 'the recipe') + '</strong> — ' +
+        (r.ingredients || []).length + ' ingredients, ' + (r.directions || []).length + ' steps. ' +
+        'Check the quantities, then pick a picture and save.';
+    } else {
+      banner.className = 'review-banner warn';
+      banner.innerHTML = 'Read on this device. The split into ingredients and steps is a guess — ' +
+        'fix the lines (and the title) before saving.';
+    }
+    pick.hidden = true;
+    review.hidden = false;
+    el('r-title').focus();
+    review.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function resetPhoto() {
+    pages.forEach(function (p) { URL.revokeObjectURL(p.url); });
+    covers.forEach(function (c) { URL.revokeObjectURL(c.url); });
+    pages = []; covers = []; coverIndex = 0; importId = null;
+    review.reset();
+    review.hidden = true;
+    pick.hidden = false;
+    status(photoStatus, '');
+    renderThumbs();
+  }
+  el('photo-restart-btn').addEventListener('click', function () {
+    if (busy) return;
+    if (!review.hidden && !confirm('Discard this recipe and start over?')) return;
+    resetPhoto();
+    status(el('photo-save-status'), '');
+  });
+
+  var splitLines = function (s) { return s.split('\n').map(function (l) { return l.trim(); }).filter(Boolean); };
+
+  review.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    if (busy) return;
+    var saveStatus = el('photo-save-status'), btn = el('photo-save-btn');
+    var recipe = {
+      title:        el('r-title').value.trim(),
+      yield:        el('r-yield').value.trim(),
+      prep_time:    el('r-prep').value.trim(),
+      cook_time:    el('r-cook').value.trim(),
+      total_time:   el('r-total').value.trim(),
+      ingredients:  splitLines(el('r-ingredients').value),
+      directions:   el('r-directions').value.split(/\n\s*\n/).map(function (s) { return s.replace(/\s*\n\s*/g, ' ').trim(); }).filter(Boolean),
+      source:       el('r-source').value.trim(),
+      notes:        el('r-notes').value.trim(),
+      tags:         document.getElementById('tags').value.trim(),
+      season:       document.getElementById('season').value,
+      rating:       document.getElementById('rating').value,
+      difficulty:   document.getElementById('difficulty').value,
+      kid_friendly: document.getElementById('kid_friendly').value,
+    };
+    if (!recipe.title) { status(saveStatus, '✗ Give it a title', 'err'); el('r-title').focus(); return; }
+    if (!recipe.ingredients.length) { status(saveStatus, '✗ Add at least one ingredient', 'err'); return; }
+    if (!recipe.directions.length) { status(saveStatus, '✗ Add at least one step', 'err'); return; }
+    if (!covers[coverIndex]) { status(saveStatus, '✗ Pick a recipe picture', 'err'); return; }
+    var json = JSON.stringify(recipe);
+    if (json.length > 60000) { status(saveStatus, '✗ That’s too long to send in one go — trim the notes', 'err'); return; }
+    if (!C.token()) { status(saveStatus, '✗ Save a GitHub token above first', 'err'); section.open = true; return; }
+
+    busy = true;
+    btn.disabled = true;
+    try {
+      importId = importId || P.newId();
+      status(saveStatus, 'Uploading the picture…');
+      await stage.ensureBranch();
+      await stage.put(importId + '/cover.jpg', covers[coverIndex].blob, 'Photo import ' + importId + ': picture');
+      var startedAt = Date.now() - 15000;
+      await C.triggerWorkflow('photo-save.yml', { id: importId, recipe: json });
+      status(saveStatus, 'Saving…');
+      var ok = await watchRun('photo-save.yml', startedAt, saveStatus, btn, {
+        ok: '✓ Saved “' + C.escapeHtml(recipe.title) + '” — the site rebuilds in about a minute.',
+        fail: 'Your edits are still here; try saving again.',
+      });
+      if (ok) {
+        var done = saveStatus.innerHTML;
+        resetPhoto();
+        status(photoStatus, done, 'ok');
+        status(saveStatus, '');
+        pick.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    } catch (err) {
+      status(saveStatus, '✗ ' + err.message, 'err');
+      btn.disabled = false;
+    }
+    busy = false;
+  });
+
+  showMode(location.hash === '#photo' ? 'photo' : 'link');
+  renderThumbs();
 
   refreshTokenState();
 })();
