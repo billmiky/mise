@@ -43,6 +43,8 @@ rating: null
 difficulty: easy
 kid_friendly: false
 yield: Serves 2 as a main dish
+cookbook: Salad Freak
+cookbook_author: Jess Damuck
 ---
 
 A deceptively simple salad that turns out to be a really flavorful and super-satisfying vegan meal. Styling tip: slice the avocado widthwise for a different look.
