@@ -83,6 +83,14 @@ def check(path):
         if not ok:
             errors.append(f"'matrix' must be {{x: <-5..5>, y: <-5..5>}} (the recipe map spot), got {pin!r}")
 
+    for key in ("source", "cookbook", "cookbook_author", "cookbook_page"):
+        val = fm.get(key)
+        if val is not None and (isinstance(val, bool) or not isinstance(val, (str, int))):
+            errors.append(f"'{key}' must be text")
+    if fm.get("cookbook_author") or fm.get("cookbook_page"):
+        if not fm.get("cookbook"):
+            warnings.append("'cookbook_author'/'cookbook_page' without a 'cookbook' title aren't shown")
+
     if not fm.get("tags"):
         warnings.append("no 'tags'")
     if not (fm.get("yield") or fm.get("yields") or fm.get("servings")):

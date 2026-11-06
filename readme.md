@@ -35,6 +35,18 @@ They are written in Markdown and contain a few special sections:
 
 If you need help with Markdown, here's a [handy cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
 
+# Cookbook recipes
+
+For a recipe from a book, add these to its front matter (or fill in **Cookbook** in the recipe's Edit form):
+
+```yaml
+cookbook: Salt Fat Acid Heat
+cookbook_author: Samin Nosrat
+cookbook_page: 112
+```
+
+The recipe page then shows a **From the cookbook** card with the title, author and page. When more than one recipe shares the same `cookbook`, the card links to `/recipes/?book=…`, which lists just that book's recipes. Book titles and authors are searchable from the Recipes tab too. The edit form and the photo importer suggest books you've already used, so the spelling stays the same. `source:` stays for websites (shown as a link) and other credits like a magazine.
+
 # Importing from a cookbook photo
 
 The Import page has a **From a photo** tab: choose (or take, or paste) up to 4 photos or screenshots of a recipe, in page order, then:
@@ -42,7 +54,7 @@ The Import page has a **From a photo** tab: choose (or take, or paste) up to 4 p
 - **Read with Claude**: the photos go to the `photo-imports` scratch branch and the `photo-extract.yml` workflow sends them to Claude, which transcribes the title, ingredients, steps, times, yield and the book/page, and finds the photo of the finished dish. It needs an `ANTHROPIC_API_KEY` secret (repo Settings → Secrets and variables → Actions); each recipe costs roughly 1–3¢.
 - **Read on this device**: free, with no key. Tesseract.js reads the text in the browser and `assets/js/photo-import.js` guesses which lines are ingredients and which are steps. It's rougher, so expect to tidy the lines. If no key is set up, *Read with Claude* switches to this on its own.
 
-Either way you review everything in a form (and pick the recipe picture: the cropped dish photo, a whole page, or a photo of your own) before **Save Recipe** runs `photo-save.yml`, which writes `_recipes/<slug>.md` and `images/<slug>.jpg` to main (auto-tagged like URL imports) and clears the scratch folder. The `photo-imports` branch never deploys and is safe to delete.
+Either way you review everything in a form (including the book title, author and page, which Claude reads from the page headers when it can; *Same book* re-fills the last one for a batch from one book) and pick the recipe picture: the cropped dish photo, a whole page, or a photo of your own) before **Save Recipe** runs `photo-save.yml`, which writes `_recipes/<slug>.md` and `images/<slug>.jpg` to main (auto-tagged like URL imports) and clears the scratch folder. The `photo-imports` branch never deploys and is safe to delete.
 
 Tests: `python3 tools/test_photo_import.py` and `node --test tools/test_photo_import.mjs`.
 

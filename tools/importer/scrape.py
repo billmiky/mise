@@ -354,7 +354,7 @@ def download_image(image_url: str, source_url: str, images_dir: Path, slug: str)
 
 def build_markdown(data: dict, image_ref: str, user_tags: list,
                    season: str, rating, difficulty: str, kid_friendly: bool,
-                   source_url: str = "") -> str:
+                   source_url: str = "", extra: dict = None) -> str:
     # tools/autotag.py picks meal type, cuisine, diet etc. so new recipes are tagged like the rest
     ingredients = format_ingredients(data.get("ingredients", []))
     suggested = autotag.suggest(
@@ -386,6 +386,7 @@ def build_markdown(data: dict, image_ref: str, user_tags: list,
             fm[key] = data[key]
     if source_url:
         fm["source"] = source_url
+    fm.update(extra or {})  # e.g. cookbook / cookbook_author / cookbook_page from a photo import
     yaml_content = yaml.dump(fm, default_flow_style=False, sort_keys=False, allow_unicode=True, width=120)
     return f"---\n{yaml_content}---\n"
 

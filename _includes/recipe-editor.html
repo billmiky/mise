@@ -42,6 +42,21 @@
         <label class="ef"><span class="ef-label">Cuisine</span><input type="text" name="cuisine" autocomplete="off"></label>
       </div>
 
+      <fieldset class="ef book">
+        <legend class="ef-label">Cookbook <small>if it’s from a book</small></legend>
+        <div class="ef-row book-row">
+          <label class="ef"><span class="ef-label">Book title</span><input type="text" name="cookbook" list="cookbook-titles" autocomplete="off"></label>
+          <label class="ef"><span class="ef-label">Author</span><input type="text" name="cookbook_author" list="cookbook-authors" autocomplete="off"></label>
+          <label class="ef"><span class="ef-label">Page</span><input type="text" name="cookbook_page" inputmode="numeric" autocomplete="off"></label>
+        </div>
+      </fieldset>
+      {% include cookbook-lists.html %}
+
+      <label class="ef">
+        <span class="ef-label">Source <small>website link or other credit</small></span>
+        <input type="text" name="source" autocomplete="off">
+      </label>
+
       <label class="ef">
         <span class="ef-label">Tags <small>separate with commas</small></span>
         <input type="text" name="tags" autocomplete="off">
@@ -123,6 +138,8 @@
   .ef { display: flex; flex-direction: column; gap: 6px; min-width: 0; border: 0; padding: 0; margin: 0; }
   .ef-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
   .ef-row.three { grid-template-columns: repeat(3, 1fr); }
+  .ef-row.book-row { grid-template-columns: 2fr 1.4fr 0.6fr; margin-top: 4px; }
+  @media (max-width: 560px) { .ef-row.book-row { grid-template-columns: 1fr 1fr; } .ef-row.book-row > :first-child { grid-column: 1 / -1; } }
 
   .ef-label {
     font-size: 0.68rem;
@@ -190,7 +207,11 @@
     season: {{ page.season | jsonify }},
     tags: {{ page.tags | jsonify }},
     category: {{ page.category | jsonify }},
-    cuisine: {{ page.cuisine | jsonify }}
+    cuisine: {{ page.cuisine | jsonify }},
+    source: {{ page.source | jsonify }},
+    cookbook: {{ page.cookbook | jsonify }},
+    cookbook_author: {{ page.cookbook_author | jsonify }},
+    cookbook_page: {{ page.cookbook_page | jsonify }}
   };
 
   var dialog = document.getElementById('recipe-editor');
@@ -234,7 +255,11 @@
       season: seasonBoxes().filter(function (b) { return b.checked; }).map(function (b) { return b.value; }),
       tags: f.tags.value.split(',').map(function (t) { return t.trim(); }).filter(Boolean),
       category: f.category.value.trim(),
-      cuisine: f.cuisine.value.trim()
+      cuisine: f.cuisine.value.trim(),
+      source: f.source.value.trim(),
+      cookbook: f.cookbook.value.trim(),
+      cookbook_author: f.cookbook_author.value.trim(),
+      cookbook_page: f.cookbook_page.value.trim()
     };
   }
 
@@ -258,6 +283,10 @@
     f.tags.value = asList(cur.tags).map(function (t) { return t.trim(); }).join(', ');
     f.category.value = str(cur.category);
     f.cuisine.value = str(cur.cuisine);
+    f.source.value = str(cur.source);
+    f.cookbook.value = str(cur.cookbook);
+    f.cookbook_author.value = str(cur.cookbook_author);
+    f.cookbook_page.value = str(cur.cookbook_page);
     initial = read();
   }
 

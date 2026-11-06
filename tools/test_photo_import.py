@@ -25,7 +25,10 @@ CLAUDE_ANSWER = {
     "ingredients": ["1 cup red lentils", "", "For the tadka:", "2 Tbsp ghee"],
     "directions": ["1. Rinse the lentils.", "Step 2: Simmer until soft.", "  "],
     "notes": "A pantry staple.",
-    "source": "Some Cookbook, p. 42",
+    "cookbook_title": "Some Cookbook",
+    "cookbook_author": "A. Cook",
+    "cookbook_page": "p. 42",
+    "source": "",
     "dish_photo": {"present": True, "image": 1, "left": 0.1, "top": -0.2, "right": 0.9, "bottom": 0.6},
 }
 
@@ -59,6 +62,27 @@ class NormalizeTest(unittest.TestCase):
                                            "right": 0.55, "bottom": 0.9}, 1), "too narrow")
 
 
+class CookbookFieldsTest(unittest.TestCase):
+    def test_page_prefixes_are_dropped(self):
+        for raw in ("p. 112", "Page 112", "pp. 112-113", "112"):
+            self.assertRegex(photo.cookbook_fields({"cookbook_page": raw})["cookbook_page"], r"^112")
+
+    def test_editor_can_change_cookbook_fields(self):
+        sys.path.insert(0, str(Path(__file__).resolve().parent))
+        import update_recipe
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            (root / "_recipes").mkdir()
+            (root / "_recipes" / "x.md").write_text("---\ntitle: X\nsource: old\n---\nBody\n")
+            with mock.patch.object(update_recipe, "ROOT", root):
+                update_recipe.apply("x", {"cookbook": " Jerusalem ", "cookbook_page": "88", "source": ""})
+            text = (root / "_recipes" / "x.md").read_text()
+            self.assertIn("cookbook: Jerusalem\n", text)
+            self.assertIn("cookbook_page: '88'\n", text)
+            self.assertNotIn("source", text)
+            self.assertTrue(text.endswith("Body\n"))
+
+
 class ExtractTest(unittest.TestCase):
     def run_extract(self, env, images):
         with tempfile.TemporaryDirectory() as d, mock.patch.dict("os.environ", env, clear=True):
@@ -81,7 +105,10 @@ class ExtractTest(unittest.TestCase):
         res = photo.result_from_claude(CLAUDE_ANSWER, 2)
         self.assertEqual(res["status"], "ok")
         self.assertEqual(res["recipe"]["directions"], ["Rinse the lentils.", "Simmer until soft."])
-        self.assertEqual(res["recipe"]["source"], "Some Cookbook, p. 42")
+        self.assertEqual(res["recipe"]["cookbook"], "Some Cookbook")
+        self.assertEqual(res["recipe"]["cookbook_author"], "A. Cook")
+        self.assertEqual(res["recipe"]["cookbook_page"], "42")
+        self.assertEqual(res["recipe"]["source"], "")
         self.assertEqual(res["cover"]["image"], 1)
 
     def test_not_a_recipe(self):
@@ -96,7 +123,8 @@ class SaveTest(unittest.TestCase):
             (root / "_recipes" / "weeknight-dal.md").write_text("---\n---\n")  # name already taken
             cover = root / "cover.jpg"
             cover.write_bytes(JPEG)
-            form = {**CLAUDE_ANSWER, "tags": "quick lentils", "season": "fall winter", "rating": "4",
+            form = {**CLAUDE_ANSWER, "cookbook": "Some Cookbook", "cookbook_author": "A. Cook",
+                    "cookbook_page": "Page 42", "tags": "quick lentils", "season": "fall winter", "rating": "4",
                     "difficulty": "medium", "kid_friendly": "true"}
             (root / "r.json").write_text(json.dumps(form))
             with mock.patch.object(photo, "REPO_ROOT", root):
@@ -110,7 +138,9 @@ class SaveTest(unittest.TestCase):
             import yaml
             fm = yaml.safe_load(md.split("---\n")[1])
             self.assertEqual(fm["image"], "weeknight-dal-2.jpg")
-            self.assertEqual(fm["source"], "Some Cookbook, p. 42")
+            self.assertEqual((fm["cookbook"], fm["cookbook_author"], fm["cookbook_page"]),
+                             ("Some Cookbook", "A. Cook", "42"))
+            self.assertNotIn("source", fm, "empty source isn't written")
             self.assertEqual(fm["season"], ["fall", "winter"])
             self.assertEqual((fm["rating"], fm["difficulty"], fm["kid_friendly"]), (4, "medium", True))
             self.assertIn("Quick", fm["tags"])

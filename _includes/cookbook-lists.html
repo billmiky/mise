@@ -1,0 +1,8 @@
+{%- comment -%}
+  Suggestions for the cookbook fields (recipe editor, photo import), so a book is spelled
+  the same way on every recipe and "More from this book" finds them all.
+{%- endcomment -%}
+{%- assign _books = site.recipes | map: "cookbook" | compact | uniq | sort_natural -%}
+{%- assign _authors = site.recipes | map: "cookbook_author" | compact | uniq | sort_natural -%}
+<datalist id="cookbook-titles">{% for b in _books %}<option value="{{ b | escape }}">{% endfor %}</datalist>
+<datalist id="cookbook-authors">{% for a in _authors %}<option value="{{ a | escape }}">{% endfor %}</datalist>

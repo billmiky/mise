@@ -35,6 +35,10 @@ FIELDS = {
     "tags": ("lines", True),
     "category": ("text", True),
     "cuisine": ("text", True),
+    "source": ("text", True),
+    "cookbook": ("text", True),
+    "cookbook_author": ("text", True),
+    "cookbook_page": ("text", True),
 }
 
 

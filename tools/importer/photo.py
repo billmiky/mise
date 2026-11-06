@@ -13,7 +13,8 @@ Two steps, so a person can check the recipe between them (import.html, "From a p
   save     Write the reviewed recipe to _recipes/<slug>.md (and the picture to images/):
              python tools/importer/photo.py save --recipe recipe.json [--cover cover.jpg]
            recipe.json is what the review form sends: title, ingredients, directions, yield,
-           prep_time, cook_time, total_time, source, tags, season, rating, difficulty, kid_friendly.
+           prep_time, cook_time, total_time, cookbook, cookbook_author, cookbook_page, source,
+           notes, tags, season, rating, difficulty, kid_friendly.
 """
 import argparse
 import base64
@@ -43,6 +44,9 @@ RECIPE_SCHEMA = {
         "ingredients": {"type": "array", "items": {"type": "string"}},
         "directions": {"type": "array", "items": {"type": "string"}},
         "notes": {"type": "string"},
+        "cookbook_title": {"type": "string"},
+        "cookbook_author": {"type": "string"},
+        "cookbook_page": {"type": "string"},
         "source": {"type": "string"},
         "dish_photo": {
             "type": "object",
@@ -59,7 +63,8 @@ RECIPE_SCHEMA = {
         },
     },
     "required": ["is_recipe", "title", "yield", "prep_time", "cook_time", "total_time",
-                 "ingredients", "directions", "notes", "source", "dish_photo"],
+                 "ingredients", "directions", "notes", "cookbook_title", "cookbook_author",
+                 "cookbook_page", "source", "dish_photo"],
     "additionalProperties": False,
 }
 
@@ -76,7 +81,11 @@ anything that belongs to a different recipe on the same page.
 - Times are whole minutes as plain numbers ("1 hour 15 minutes" -> "75"); empty string if the \
 page doesn't say. Yield as printed ("Serves 4", "12 muffins"), or empty.
 - notes: the headnote or tips, briefly, or empty.
-- source: the book title and page if visible (e.g. "Salt Fat Acid Heat, p. 112"), else empty.
+- cookbook_title / cookbook_author / cookbook_page: the book this is from, its author, and the \
+page number, as far as the images show them (running headers and footers often name the book or \
+chapter and carry the page number). Title in normal title case, page as just the number(s) ("112" \
+or "112-113"). Empty strings for anything not visible; don't guess.
+- source: only if it's not from a book, the magazine, newspaper or person it credits; else empty.
 - dish_photo: if an image contains a photo of the finished dish, give that image's 0-based index \
 and the photo's edges as fractions (0-1) of the image width/height; otherwise present=false and zeros.
 - If the images don't contain a recipe, set is_recipe=false and leave the rest empty."""
@@ -128,6 +137,16 @@ def normalize_recipe(data: dict) -> dict:
         recipe["total_time"] = str(int(recipe["prep_time"]) + int(recipe["cook_time"]))
     recipe["instructions"] = [s for s in recipe["instructions"] if s]
     return recipe
+
+
+def cookbook_fields(data: dict) -> dict:
+    """cookbook / cookbook_author / cookbook_page from a dict, cleaned; missing ones are ''."""
+    out = {}
+    for key in ("cookbook", "cookbook_author", "cookbook_page"):
+        out[key] = scrape.clean_text(data.get(key) or "")
+    # "p. 112", "Page 112" -> "112"
+    out["cookbook_page"] = re.sub(r"^(?:pages?|pp?)\.?\s*", "", out["cookbook_page"], flags=re.I)
+    return out
 
 
 def cover_box(dish_photo, n_images: int):
@@ -216,6 +235,9 @@ def result_from_claude(data: dict, n_images: int) -> dict:
     recipe["directions"] = recipe.pop("instructions")
     recipe["notes"] = scrape.clean_text(data.get("notes") or "")
     recipe["source"] = scrape.clean_text(data.get("source") or "")
+    recipe.update(cookbook_fields({
+        "cookbook": data.get("cookbook_title"), "cookbook_author": data.get("cookbook_author"),
+        "cookbook_page": data.get("cookbook_page")}))
     return {"status": "ok", "recipe": recipe, "cover": cover_box(data.get("dish_photo"), n_images)}
 
 
@@ -274,6 +296,7 @@ def cmd_save(args) -> int:
         season=str(data.get("season") or "all"), rating=rating, difficulty=difficulty,
         kid_friendly=str(data.get("kid_friendly")).lower() in ("true", "1", "yes", "on"),
         source_url=scrape.clean_text(data.get("source") or ""),
+        extra={k: v for k, v in cookbook_fields(data).items() if v},
     )
     out = recipes_dir / f"{slug}.md"
     out.write_text(md + body_text(data.get("notes")), encoding="utf-8")

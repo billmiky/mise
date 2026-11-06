@@ -107,7 +107,8 @@ layout: default
       {% assign _kid = false %}{% if post.kid_friendly == true or post.kid_friendly == "true" %}{% assign _kid = true %}{% endif %}
       <a href="{{ post.url | relative_url }}" class="recipe-card"
          data-title="{{ post.title | downcase | escape }}"
-         data-search="{{ post.title | append: ' ' | append: post.category | downcase | escape }} {{ post.tags | join: ' ' | downcase | escape }} {{ post.ingredients | join: ' ' | downcase | escape }}"
+         data-search="{{ post.title | append: ' ' | append: post.category | downcase | escape }} {{ post.tags | join: ' ' | downcase | escape }} {{ post.ingredients | join: ' ' | downcase | escape }} {{ post.cookbook | downcase | escape }} {{ post.cookbook_author | downcase | escape }}"
+         data-book="{{ post.cookbook | strip | downcase | escape }}"
          data-date="{{ post.date_added | date: '%s' }}"
          data-last-made="{{ post.last_made }}"
          data-rating="{{ post.rating | default: 0 }}"
@@ -498,6 +499,30 @@ layout: default
   // it matches only recipes carrying that tag, so "Sheet Pan" doesn't also match "Japan".
   var activeTag = '';
   var tagChip = null;
+  // Same idea for a cookbook (?book=…, from "All N recipes from this book" on a recipe page)
+  var activeBook = '';
+  var bookChip = null;
+
+  function setBook(title) {
+    activeBook = (title || '').trim();
+    if (bookChip) { bookChip.remove(); bookChip = null; }
+    if (activeBook) {
+      bookChip = document.createElement('button');
+      bookChip.type = 'button';
+      bookChip.className = 'chip';
+      bookChip.setAttribute('aria-pressed', 'true');
+      bookChip.setAttribute('aria-label', 'Remove cookbook filter ' + activeBook);
+      bookChip.textContent = '\uD83D\uDCD6 ' + activeBook + ' \u2715';
+      bookChip.addEventListener('click', function () { setBook(''); render(); });
+      chipRow.insertBefore(bookChip, chipRow.firstChild);
+    }
+    try {
+      var url = new URL(window.location.href);
+      url.searchParams.delete('book');
+      if (activeBook) url.searchParams.set('book', activeBook);
+      history.replaceState(null, '', url);
+    } catch (e) { /* not essential */ }
+  }
 
   function setTag(label) {
     activeTag = label || '';
@@ -530,13 +555,15 @@ layout: default
     var terms = input.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
     var filters = activeFilters();
     var tag = activeTag.toLowerCase();
+    var book = activeBook.toLowerCase();
     var visible = 0;
 
     cards.forEach(function (card) {
       var hay = card.dataset.search;
       var show = terms.every(function (t) { return hay.indexOf(t) !== -1; }) &&
                  filters.every(function (f) { return FILTERS[f](card); }) &&
-                 (!tag || card._tags.indexOf(tag) !== -1);
+                 (!tag || card._tags.indexOf(tag) !== -1) &&
+                 (!book || card.dataset.book === book);
       card.hidden = !show;
       if (show) visible++;
     });
@@ -544,7 +571,7 @@ layout: default
     var sorted = cards.slice().sort(SORTS[sortSelect.value] || SORTS.date);
     sorted.forEach(function (card) { grid.insertBefore(card, noResults); });
 
-    var filtered = terms.length || filters.length || tag;
+    var filtered = terms.length || filters.length || tag || book;
     countEl.textContent = filtered
       ? visible + ' of ' + cards.length + ' recipes'
       : cards.length + ' recipes';
@@ -575,6 +602,7 @@ layout: default
     input.value = '';
     chips.forEach(function (c) { c.setAttribute('aria-pressed', 'false'); });
     setTag('');
+    setBook('');
     try { // also drop a stale ?q= so a reload doesn't bring the search back
       var url = new URL(window.location.href);
       url.searchParams.delete('q');
@@ -608,6 +636,8 @@ layout: default
   if (q) input.value = q;
   var tagParam = params.get('tag');
   if (tagParam) setTag(tagParam);
+  var bookParam = params.get('book');
+  if (bookParam) setBook(bookParam);
 
   render();
 })();
