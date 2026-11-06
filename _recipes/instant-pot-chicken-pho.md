@@ -1,7 +1,7 @@
 ---
 layout: recipe
 title: Instant Pot Chicken Pho
-image: instant-pot-chicken-pho.png
+image: instant-pot-chicken-pho.jpg
 tags:
 - Lunch
 - Dinner

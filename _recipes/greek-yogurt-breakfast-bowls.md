@@ -1,7 +1,7 @@
 ---
 layout: recipe
 title: Greek Yogurt Breakfast Bowls
-image: greek-yogurt-breakfast-bowls.png
+image: greek-yogurt-breakfast-bowls.jpg
 tags:
 - Breakfast
 - Greek

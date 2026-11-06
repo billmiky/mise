@@ -1,7 +1,7 @@
 ---
 layout: recipe
 title: Korean Chicken Tacos
-image: korean-chicken-tacos.png
+image: korean-chicken-tacos.jpg
 tags:
 - Lunch
 - Dinner

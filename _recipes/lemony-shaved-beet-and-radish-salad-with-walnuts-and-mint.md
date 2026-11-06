@@ -1,7 +1,7 @@
 ---
 layout: recipe
 title: Lemony Shaved Beet and Radish Salad with Walnuts and Mint
-image: lemony-shaved-beet-and-radish-salad-with-walnuts-and-mint.png
+image: lemony-shaved-beet-and-radish-salad-with-walnuts-and-mint.jpg
 tags:
 - Side
 - Salad
