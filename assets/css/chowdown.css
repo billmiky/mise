@@ -136,10 +136,9 @@ button, input, select, textarea { font-family: inherit; }
 
 .week-of-label,
 .page-sub {
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0;
   color: var(--muted);
   margin: 0;
 }
