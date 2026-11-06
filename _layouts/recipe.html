@@ -96,6 +96,30 @@ layout: default
       </div>
       {% endif %}
 
+      {% assign _book = page.cookbook | strip %}
+      {% if _book != "" %}
+        {% assign _book_author = page.cookbook_author | strip %}
+        {% assign _book_page = page.cookbook_page | append: "" | strip | remove_first: "p. " | remove_first: "p." | remove_first: "page " | remove_first: "Page " %}
+        {% assign _book_count = site.recipes | where: "cookbook", page.cookbook | size %}
+        <aside class="cookbook-card" aria-label="Cookbook">
+          <div class="cookbook-spine" aria-hidden="true"></div>
+          <div class="cookbook-text">
+            <span class="cookbook-label">From the cookbook</span>
+            <span class="cookbook-title">{{ _book }}</span>
+            {% if _book_author != "" or _book_page != "" %}
+            <span class="cookbook-sub">
+              {%- if _book_author != "" %}by {{ _book_author }}{% endif -%}
+              {%- if _book_author != "" and _book_page != "" %} · {% endif -%}
+              {%- if _book_page != "" %}page {{ _book_page }}{% endif -%}
+            </span>
+            {% endif %}
+            {% if _book_count > 1 %}
+            <a class="cookbook-more" href="{{ '/recipes/' | relative_url }}?book={{ page.cookbook | url_encode }}">All {{ _book_count }} recipes from this book →</a>
+            {% endif %}
+          </div>
+        </aside>
+      {% endif %}
+
       {% assign _intro = content | strip %}
       {% if _intro != "" %}
       <div class="recipe-intro">
@@ -315,6 +339,38 @@ layout: default
   .meta-chip.kid         { border-color: var(--blue); }
   .meta-chip.kid .meta-chip-value { color: var(--blue); }
   .meta-chip.last-made-chip .meta-chip-value { text-transform: none; }
+  /* ---- Cookbook credit (cookbook / cookbook_author / cookbook_page front matter) ---- */
+  .cookbook-card {
+    display: flex;
+    align-items: stretch;
+    margin: 0 0 28px;
+    border: var(--border);
+    background: var(--card);
+    box-shadow: 4px 4px 0 0 var(--ink);
+    max-width: 520px;
+  }
+  .cookbook-spine {
+    flex: 0 0 18px;
+    background: var(--red);
+    border-right: var(--border);
+    background-image: linear-gradient(var(--ink), var(--ink)), linear-gradient(var(--ink), var(--ink));
+    background-size: 100% 3px;
+    background-position: 0 14px, 0 calc(100% - 14px);
+    background-repeat: no-repeat;
+  }
+  .cookbook-text { display: flex; flex-direction: column; gap: 3px; padding: 12px 16px 14px; min-width: 0; }
+  .cookbook-label {
+    font-size: 0.66rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.14em; color: var(--muted);
+  }
+  .cookbook-title { font-size: 1.15rem; font-weight: 800; line-height: 1.25; font-style: italic; overflow-wrap: anywhere; }
+  .cookbook-sub { font-size: 0.9rem; color: var(--muted); }
+  .cookbook-more {
+    margin-top: 6px; align-self: flex-start;
+    font-size: 0.75rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--red); text-decoration: underline; text-underline-offset: 3px;
+  }
+  .cookbook-more:hover { color: var(--ink); }
+
   .meta-chip.source-chip { max-width: 100%; }
   .meta-chip.source-chip .meta-chip-value { text-transform: none; overflow-wrap: anywhere; }
   .source-link { color: var(--red); text-decoration: underline; text-underline-offset: 3px; }

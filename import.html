@@ -183,12 +183,17 @@ permalink: /import/
   }
   .import-form textarea:focus { box-shadow: 4px 4px 0 0 var(--red); }
   .row-4 { display: grid; gap: 20px; grid-template-columns: 2fr 1fr 1fr 1fr; }
+  .row-book { display: grid; gap: 20px; grid-template-columns: 2fr 1.4fr 0.7fr; }
+  .book-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  #same-book-btn { text-transform: none; letter-spacing: 0; }
   .review-banner { border: var(--border); background: var(--card); padding: 14px 16px; font-size: 0.88rem; }
   .review-banner.warn { border-color: var(--red); }
 
   @media (max-width: 860px) {
     .row-4 { grid-template-columns: 1fr 1fr; }
     .row-4 > :first-child { grid-column: 1 / -1; }
+    .row-book { grid-template-columns: 1fr 1fr; }
+    .row-book > :first-child { grid-column: 1 / -1; }
     .read-row .bauhaus-btn, #photo-save-btn { width: 100%; }
   }
 </style>
@@ -363,10 +368,32 @@ permalink: /import/
             <label for="r-directions">Directions <span class="hint">blank line between steps</span></label>
             <textarea id="r-directions" rows="12" required></textarea>
           </div>
+          <div class="field-group">
+            <div class="book-head">
+              <p class="group-label" id="book-label">Cookbook <span class="hint">shown on the recipe page</span></p>
+              <button type="button" class="bauhaus-btn ghost small" id="same-book-btn" hidden></button>
+            </div>
+            <div class="row-book" role="group" aria-labelledby="book-label">
+              <div class="field-group">
+                <label for="r-book">Book title</label>
+                <input type="text" id="r-book" list="cookbook-titles" placeholder="Salt Fat Acid Heat" autocomplete="off" />
+              </div>
+              <div class="field-group">
+                <label for="r-author">Author</label>
+                <input type="text" id="r-author" list="cookbook-authors" placeholder="Samin Nosrat" autocomplete="off" />
+              </div>
+              <div class="field-group">
+                <label for="r-page">Page</label>
+                <input type="text" id="r-page" inputmode="numeric" placeholder="112" autocomplete="off" />
+              </div>
+            </div>
+            {% include cookbook-lists.html %}
+          </div>
+
           <div class="row-2">
             <div class="field-group">
-              <label for="r-source">Source <span class="hint">book &amp; page</span></label>
-              <input type="text" id="r-source" placeholder="Salt Fat Acid Heat, p. 112" />
+              <label for="r-source">Other source <span class="hint">if not a book</span></label>
+              <input type="text" id="r-source" placeholder="Bon Appétit, March 2024" />
             </div>
             <div class="field-group">
               <label for="r-total">Total time <span class="hint">min, if different</span></label>
@@ -801,6 +828,13 @@ permalink: /import/
     el('r-ingredients').value = (r.ingredients || []).join('\n');
     el('r-directions').value = (r.directions || []).join('\n\n');
     el('r-source').value = r.source || '';
+    el('r-book').value = r.cookbook || '';
+    el('r-author').value = r.cookbook_author || '';
+    el('r-page').value = r.cookbook_page || '';
+    // Importing a batch from one book: offer the last book in one tap instead of retyping it
+    var last = C.load('mise_last_cookbook', null), same = el('same-book-btn');
+    same.hidden = !(last && last.title && last.title !== el('r-book').value);
+    if (!same.hidden) same.textContent = 'Same book: ' + last.title;
     el('r-notes').value = r.notes || '';
 
     var banner = el('review-banner');
@@ -837,6 +871,15 @@ permalink: /import/
     status(el('photo-save-status'), '');
   });
 
+  el('same-book-btn').addEventListener('click', function () {
+    var last = C.load('mise_last_cookbook', null);
+    if (!last) return;
+    el('r-book').value = last.title || '';
+    if (last.author) el('r-author').value = last.author;
+    this.hidden = true;
+    el('r-page').focus();
+  });
+
   var splitLines = function (s) { return s.split('\n').map(function (l) { return l.trim(); }).filter(Boolean); };
 
   review.addEventListener('submit', async function (e) {
@@ -852,6 +895,9 @@ permalink: /import/
       ingredients:  splitLines(el('r-ingredients').value),
       directions:   el('r-directions').value.split(/\n\s*\n/).map(function (s) { return s.replace(/\s*\n\s*/g, ' ').trim(); }).filter(Boolean),
       source:       el('r-source').value.trim(),
+      cookbook:        el('r-book').value.trim(),
+      cookbook_author: el('r-author').value.trim(),
+      cookbook_page:   el('r-page').value.trim(),
       notes:        el('r-notes').value.trim(),
       tags:         document.getElementById('tags').value.trim(),
       season:       document.getElementById('season').value,
@@ -882,6 +928,7 @@ permalink: /import/
         fail: 'Your edits are still here; try saving again.',
       });
       if (ok) {
+        if (recipe.cookbook) C.save('mise_last_cookbook', { title: recipe.cookbook, author: recipe.cookbook_author });
         var done = saveStatus.innerHTML;
         resetPhoto();
         status(photoStatus, done, 'ok');

@@ -26,7 +26,11 @@
     season: ['seasons', false],
     tags: ['lines', true],
     category: ['text', true],
-    cuisine: ['text', true]
+    cuisine: ['text', true],
+    source: ['text', true],
+    cookbook: ['text', true],
+    cookbook_author: ['text', true],
+    cookbook_page: ['text', true]
   };
 
   /* ---- Validation (mirrors clean() in update_recipe.py) ---- */
