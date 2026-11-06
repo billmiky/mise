@@ -1,0 +1,11 @@
+# Netlify branch/preview deploys. The live site is still GitHub Pages (deploy.yml),
+# which builds under /mise; Netlify serves from the root, so build with an empty baseurl.
+[build]
+  command = "bundle exec jekyll build --baseurl ''"
+  publish = "_site"
+
+[build.environment]
+  RUBY_VERSION = "3.3.6"
+  LANG = "C.UTF-8"
+  LC_ALL = "C.UTF-8"
+  JEKYLL_ENV = "production"
