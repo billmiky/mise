@@ -7,7 +7,8 @@
   publish = "_site"
 
 [build.environment]
-  RUBY_VERSION = "3.3.6"
+  # Ruby comes from the Netlify site settings (same as production builds); pinning
+  # one here made every rebuild after the first fail.
   LANG = "C.UTF-8"
   LC_ALL = "C.UTF-8"
   # Some recipe file names have accents (jalapeño, nước chấm). Without a UTF-8 locale
