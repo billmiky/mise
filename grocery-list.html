@@ -24,28 +24,30 @@ permalink: /grocery-list/
   }
 
   .progress-text {
-    font-size: 0.8rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--muted);
     white-space: nowrap;
   }
 
   .progress-bar {
     flex: 1 1 160px;
-    height: 12px;
-    border: 3px solid var(--ink);
-    background: var(--card);
+    height: 8px;
+    border: 0;
+    border-radius: 999px;
+    overflow: hidden;
+    background: var(--card-2);
   }
 
   .progress-fill {
     height: 100%;
     width: 0;
     background: var(--red);
+    border-radius: 999px;
     transition: width 0.25s;
   }
 
-  .grocery-progress.complete .progress-fill { background: var(--teal); }
+  .grocery-progress.complete .progress-fill { background: var(--easy); }
 
   .progress-actions { display: flex; gap: 8px; }
 
@@ -55,34 +57,32 @@ permalink: /grocery-list/
     align-items: center;
     gap: 10px;
     margin: 32px 0 0;
-    padding-bottom: 6px;
-    border-bottom: 3px solid var(--ink);
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--line);
   }
 
   .category-name {
-    font-weight: 900;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
+    font-weight: 800;
+    font-size: 1.05rem;
+    letter-spacing: -0.01em;
   }
 
   .category-count {
     font-weight: 800;
-    font-size: 0.62rem;
-    letter-spacing: 0.08em;
+    font-size: 0.72rem;
     color: var(--muted);
-    background: #ebe7df;
-    padding: 2px 7px;
+    background: var(--card-2);
+    border-radius: 999px;
+    padding: 2px 9px;
   }
 
   .category-have-count {
     font-weight: 800;
-    font-size: 0.62rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
+    font-size: 0.72rem;
     color: var(--easy);
-    background: #e6f4eb;
-    padding: 2px 7px;
+    background: rgba(127, 214, 164, 0.14);
+    border-radius: 999px;
+    padding: 2px 9px;
   }
 
   .category-header.all-done .category-name { color: var(--faint); text-decoration: line-through; }
@@ -113,8 +113,9 @@ permalink: /grocery-list/
     width: 26px;
     height: 26px;
     margin: 0;
-    border: 3px solid var(--ink);
-    background: var(--card);
+    border: 2px solid #5A605A;
+    border-radius: 8px;
+    background: transparent;
     flex-shrink: 0;
     display: grid;
     place-content: center;
@@ -125,8 +126,8 @@ permalink: /grocery-list/
     content: "";
     width: 12px;
     height: 6px;
-    border-left: 3px solid #fff;
-    border-bottom: 3px solid #fff;
+    border-left: 3px solid var(--on-accent);
+    border-bottom: 3px solid var(--on-accent);
     transform: rotate(-45deg) translate(1px, -1px);
     opacity: 0;
   }
@@ -134,7 +135,7 @@ permalink: /grocery-list/
   .grocery-list input[type="checkbox"]:checked { background: var(--red); border-color: var(--red); }
   .grocery-list input[type="checkbox"]:checked::after { opacity: 1; }
 
-  .grocery-list li.checked .item-text { text-decoration: line-through; color: #b0aaa0; }
+  .grocery-list li.checked .item-text { text-decoration: line-through; color: var(--faint); }
 
   .on-hand-list li {
     display: flex;
@@ -150,15 +151,13 @@ permalink: /grocery-list/
     width: 26px;
     text-align: center;
     color: var(--easy);
-    font-weight: 900;
+    font-weight: 800;
     flex-shrink: 0;
   }
 
   .on-hand-note {
-    font-size: 0.65rem;
-    font-weight: 800;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+    font-size: 0.75rem;
+    font-weight: 700;
     color: var(--easy);
     margin-left: auto;
   }
@@ -177,14 +176,16 @@ permalink: /grocery-list/
     font: inherit;
     font-size: 1rem;
     font-weight: 500;
-    padding: 10px 14px;
+    padding: 10px 16px;
+    min-height: 44px;
     border: var(--border);
     background: var(--card);
     color: var(--ink);
-    border-radius: 0;
+    border-radius: 999px;
   }
 
-  .add-item input:focus { outline: 3px solid var(--red); outline-offset: 0; }
+  .add-item input::placeholder { color: var(--faint); }
+  .add-item input:focus { outline: 2px solid var(--red); outline-offset: 0; border-color: var(--red); }
 
   /* ---- Item rows ---- */
   .grocery-list li { display: flex; align-items: center; gap: 6px; }
@@ -203,32 +204,32 @@ permalink: /grocery-list/
   .item-uses span { display: block; }
   .item-uses em { font-style: normal; color: var(--faint); }
 
-  .grocery-list li.checked .item-uses { color: #c4beb4; }
+  .grocery-list li.checked .item-uses { color: #6E6B64; }
 
   .item-x, .need-btn {
     flex-shrink: 0;
     background: none;
-    border: 2px solid transparent;
+    border: 0;
+    border-radius: 999px;
     color: var(--faint);
     cursor: pointer;
     font: inherit;
   }
 
-  .item-x { width: 36px; height: 36px; font-size: 0.85rem; font-weight: 900; }
-  .item-x:hover { color: var(--hard); border-color: currentColor; }
+  .item-x { width: 40px; height: 40px; font-size: 0.85rem; font-weight: 800; }
+  .item-x:hover { color: var(--hard); background: var(--card-2); }
 
   .need-btn {
-    font-size: 0.62rem;
-    font-weight: 900;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: 700;
     color: var(--ink);
-    border-color: var(--ink);
-    padding: 4px 8px;
+    background: var(--card-2);
+    padding: 6px 12px;
+    min-height: 32px;
     margin-left: auto;
   }
 
-  .need-btn:hover { background: var(--ink); color: #fff; }
+  .need-btn:hover { background: var(--red); color: var(--on-accent); }
 
   .on-hand-list li > .item-body { flex: 1; }
 </style>
