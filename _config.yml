@@ -20,7 +20,7 @@ collections:
   recipes:
     output: true
 
-exclude: ['Gemfile', 'Gemfile.lock', 'Rakefile', 'README.md', 'android']
+exclude: ['Gemfile', 'Gemfile.lock', 'Rakefile', 'README.md', 'android', 'netlify.toml', 'vendor']
 
 # Recipe actions (plan, import) now use GitHub Actions directly via the GitHub API.
 # No server URL needed.

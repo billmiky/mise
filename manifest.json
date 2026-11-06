@@ -10,8 +10,8 @@ layout: none
   "scope": "{{ '/' | relative_url }}",
   "display": "standalone",
   "orientation": "any",
-  "theme_color": "#111111",
-  "background_color": "#f5f3ee",
+  "theme_color": "#141614",
+  "background_color": "#141614",
   "categories": ["food", "lifestyle"],
   "icons": [
     { "src": "{{ '/icons/icon-192.png' | relative_url }}", "sizes": "192x192", "type": "image/png", "purpose": "any" },

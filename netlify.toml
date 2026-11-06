@@ -1,0 +1,17 @@
+# Netlify branch/preview deploys. The live site is still GitHub Pages (deploy.yml),
+# which builds under /mise; Netlify serves from the root, so build with an empty baseurl.
+[build]
+  # Start from a clean slate each time (Netlify restores caches between builds),
+  # and print the full error if Jekyll fails.
+  command = "rm -rf _site .jekyll-cache .jekyll-metadata && bundle exec jekyll build --baseurl '' --trace"
+  publish = "_site"
+
+[build.environment]
+  # Ruby comes from the Netlify site settings (same as production builds); pinning
+  # one here made every rebuild after the first fail.
+  LANG = "C.UTF-8"
+  LC_ALL = "C.UTF-8"
+  # Some recipe file names have accents (jalapeño, nước chấm). Without a UTF-8 locale
+  # Jekyll crashes on them, so force Ruby to UTF-8 instead of relying on the locale.
+  RUBYOPT = "-E UTF-8:UTF-8"
+  JEKYLL_ENV = "production"
