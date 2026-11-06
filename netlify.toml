@@ -1,7 +1,9 @@
 # Netlify branch/preview deploys. The live site is still GitHub Pages (deploy.yml),
 # which builds under /mise; Netlify serves from the root, so build with an empty baseurl.
 [build]
-  command = "bundle exec jekyll build --baseurl ''"
+  # Start from a clean slate each time (Netlify restores caches between builds),
+  # and print the full error if Jekyll fails.
+  command = "rm -rf _site .jekyll-cache .jekyll-metadata && bundle exec jekyll build --baseurl '' --trace"
   publish = "_site"
 
 [build.environment]
