@@ -6,4 +6,5 @@ pyyaml
 python-multipart
 curl-cffi
 beautifulsoup4
+Pillow
 openai

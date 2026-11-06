@@ -2,7 +2,7 @@
 date_added: 2026-02-01
 layout: recipe
 title: "15 Minute Chana Saag"
-image: 15min-chana-saag.png
+image: 15min-chana-saag.webp
 tags:
 - Dinner
 - Indian

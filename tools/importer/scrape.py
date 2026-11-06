@@ -324,6 +324,49 @@ def sniff_extension(content: bytes) -> str:
     return ""
 
 
+MAX_IMAGE_EDGE = 1200   # same as the photo importer's COVER_EDGE in import.html
+SMALL_ENOUGH = 300_000   # bytes; a photo already this small is kept untouched
+
+
+def shrink_image(content: bytes, ext: str) -> tuple:
+    """Return (bytes, ext) for a web-sized copy of the photo.
+
+    Recipe sites often serve 2-4 MB originals, and every byte in images/ slows the
+    Pages deploy. Photos wider than MAX_IMAGE_EDGE are scaled down; opaque ones are
+    saved as JPEG, ones with real transparency as WebP. GIFs (maybe animated) and
+    anything Pillow can't read are kept as downloaded, as is a result that isn't smaller.
+    """
+    if ext == ".gif":
+        return content, ext
+    try:
+        from io import BytesIO
+        from PIL import Image, ImageOps
+    except ImportError:
+        return content, ext
+    try:
+        im = Image.open(BytesIO(content))
+        im = ImageOps.exif_transpose(im)
+        if max(im.size) <= MAX_IMAGE_EDGE and len(content) <= SMALL_ENOUGH:
+            return content, ext
+        im.thumbnail((MAX_IMAGE_EDGE, MAX_IMAGE_EDGE), Image.LANCZOS)
+        has_alpha = im.mode in ("RGBA", "LA", "PA") or "transparency" in im.info
+        if has_alpha:
+            im = im.convert("RGBA")
+            has_alpha = im.getchannel("A").getextrema()[0] < 255
+        out = BytesIO()
+        if has_alpha:
+            im.save(out, "WEBP", quality=82, method=6)
+            new_ext = ".webp"
+        else:
+            im.convert("RGB").save(out, "JPEG", quality=82, optimize=True, progressive=True)
+            new_ext = ".jpg"
+        small = out.getvalue()
+        return (small, new_ext) if len(small) < len(content) else (content, ext)
+    except Exception as e:
+        print(f"Couldn't shrink image, keeping the original: {e}", file=sys.stderr)
+        return content, ext
+
+
 def download_image(image_url: str, source_url: str, images_dir: Path, slug: str) -> str:
     """Save the image as images/<slug>.<real ext>. Returns the filename, or '' on failure."""
     if not image_url:
@@ -339,6 +382,7 @@ def download_image(image_url: str, source_url: str, images_dir: Path, slug: str)
         if not ext or len(content) < 1024:
             print("Image download failed: response was not an image", file=sys.stderr)
             return ""
+        content, ext = shrink_image(content, ext)
         images_dir.mkdir(parents=True, exist_ok=True)
         name = f"{slug}{ext}"
         (images_dir / name).write_bytes(content)

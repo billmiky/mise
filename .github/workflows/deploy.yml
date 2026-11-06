@@ -85,3 +85,8 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          # GitHub's side of a deploy is sometimes slow (it took 4-10 minutes during the
+          # Nov 2026 Pages incidents). The default 10-minute limit failed one deploy that
+          # would have finished, leaving the site stale until the next save.
+          timeout: 1200000
