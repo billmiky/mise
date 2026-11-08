@@ -2,7 +2,8 @@
   /* ===== SIDEBAR (desktop) / TOP BAR + BOTTOM TABS (mobile) ===== */
   .home-sidebar {
     width: var(--sidebar-w);
-    background: var(--ink);
+    background: var(--paper);
+    border-right: 1px solid var(--line);
     position: fixed;
     height: 100vh;
     top: 0; left: 0;
@@ -12,34 +13,28 @@
     overflow: hidden;
   }
 
-  .sidebar-accent-bar {
-    height: 6px;
-    background: linear-gradient(90deg, var(--red) 0%, var(--red-dark) 100%);
-    flex-shrink: 0;
-  }
+  .sidebar-accent-bar { display: none; }
 
   .sidebar-content {
     display: flex;
     flex-direction: column;
     height: 100%;
-    padding: 32px 24px 24px;
+    padding: 32px 20px 24px;
   }
 
   .site-title {
     display: block;
     text-decoration: none;
-    margin-bottom: 36px;
-    padding: 0 4px 20px;
-    border-bottom: 1px solid #2a2a2a;
+    margin-bottom: 32px;
+    padding: 0 12px;
   }
 
   .site-title .title-owner {
     display: block;
-    font-weight: 900;
-    font-size: 1.45rem;
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
+    font-weight: 800;
+    font-size: 1.6rem;
+    color: var(--ink);
+    letter-spacing: -0.03em;
     line-height: 1;
   }
 
@@ -47,33 +42,29 @@
 
   .site-title .title-sub {
     display: block;
-    font-weight: 500;
-    font-size: 0.65rem;
-    color: #8a8a8a;
-    text-transform: uppercase;
-    letter-spacing: 0.22em;
-    margin-top: 8px;
+    font-weight: 600;
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-top: 6px;
   }
 
   .main-nav {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 4px;
   }
 
   .nav-item {
     display: flex;
     align-items: center;
     gap: 12px;
-    font-size: 0.82rem;
-    font-weight: 700;
-    color: #9a9a9a;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--muted);
     text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
     padding: 11px 14px;
-    border-left: 3px solid transparent;
-    transition: color 0.15s, border-color 0.15s, background 0.15s;
+    border-radius: 12px;
+    transition: color 0.15s, background 0.15s;
   }
 
   .nav-icon {
@@ -83,43 +74,37 @@
   }
 
   .nav-item:hover {
-    color: #fff;
-    border-left-color: var(--red);
-    background: rgba(255,255,255,0.05);
+    color: var(--ink);
+    background: var(--card);
   }
 
   .nav-item.active {
-    color: #fff;
-    border-left-color: var(--red);
-    background: rgba(230,57,70,0.14);
+    color: var(--ink);
+    background: var(--card);
   }
 
   .nav-item.active .nav-icon { color: var(--red); }
 
   .sidebar-footer {
     margin-top: auto;
-    padding-top: 20px;
-    border-top: 1px solid #222;
+    padding: 20px 12px 0;
     display: flex;
-    gap: 6px;
+    gap: 8px;
     align-items: center;
   }
 
   .sidebar-footer-dots { display: flex; gap: 5px; }
 
   .sidebar-footer-dots span {
-    width: 9px;
-    height: 9px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
   }
 
   .sidebar-footer-label {
-    font-size: 0.6rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    color: #555;
-    margin-left: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--faint);
   }
 
   @media (max-width: 900px) {
@@ -127,14 +112,13 @@
       width: 100%;
       height: auto;
       position: relative;
+      border-right: 0;
     }
-
-    .sidebar-accent-bar { height: 4px; }
 
     .sidebar-content { padding: 14px 16px; }
 
-    .site-title { margin: 0; padding: 0; border-bottom: none; }
-    .site-title .title-owner { font-size: 1.2rem; }
+    .site-title { margin: 0; padding: 0; }
+    .site-title .title-owner { font-size: 1.35rem; }
     .site-title .title-sub { display: none; }
     .sidebar-footer { display: none; }
 
@@ -145,8 +129,8 @@
       z-index: 60;
       flex-direction: row;
       gap: 0;
-      background: var(--ink);
-      border-top: 4px solid var(--red);
+      background: var(--paper);
+      border-top: 1px solid var(--line);
       padding-bottom: env(safe-area-inset-bottom);
     }
 
@@ -157,18 +141,15 @@
       gap: 3px;
       height: var(--bottom-nav-h);
       padding: 6px 2px;
-      font-size: 0.6rem;
-      letter-spacing: 0.06em;
-      border-left: none;
-      border-top: 3px solid transparent;
-      margin-top: -4px;
+      font-size: 0.68rem;
+      border-radius: 0;
     }
 
-    .nav-item:hover { border-left: none; background: none; }
+    .nav-item:hover { background: none; }
 
     .nav-item.active {
-      border-top-color: #fff;
-      background: rgba(230,57,70,0.18);
+      color: var(--red);
+      background: none;
     }
 
     .nav-icon { width: 22px; height: 22px; }
@@ -179,8 +160,8 @@
   <div class="sidebar-accent-bar"></div>
   <div class="sidebar-content">
     <a href="{{ '/' | relative_url }}" class="site-title">
-      <span class="title-owner"><span>billmiky</span>'s</span>
-      <span class="title-sub">Recipe Collection</span>
+      <span class="title-owner">mise<span>.</span></span>
+      <span class="title-sub">billmiky's kitchen</span>
     </a>
     <nav class="main-nav" aria-label="Main">
       {% assign _tonight = false %}{% if page.url == "/" or page.url == "/index.html" %}{% assign _tonight = true %}{% endif %}
@@ -213,10 +194,8 @@
     <div class="sidebar-footer">
       <div class="sidebar-footer-dots">
         <span style="background:var(--red);"></span>
-        <span style="background:var(--yellow);"></span>
-        <span style="background:var(--teal);"></span>
       </div>
-      <span class="sidebar-footer-label">Bauhaus Edition</span>
+      <span class="sidebar-footer-label">Night kitchen</span>
     </div>
   </div>
 </aside>

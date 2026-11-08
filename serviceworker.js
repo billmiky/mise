@@ -4,7 +4,7 @@
 //  - Images: cache first.
 //  - Only same-origin GETs are handled. GitHub API calls (token, sync, workflows)
 //    are never touched or cached.
-const VERSION = 'v2';
+const VERSION = 'v3';
 const PAGES = 'mise-pages-' + VERSION;
 const IMAGES = 'mise-images-v1';
 const KEEP = [PAGES, IMAGES];
