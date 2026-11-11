@@ -41,7 +41,7 @@ jobs:
           python-version: "3.11"
 
       - name: Install dependencies
-        run: pip install recipe-scrapers requests pyyaml curl_cffi Pillow
+        run: pip install recipe-scrapers requests pyyaml curl_cffi Pillow beautifulsoup4
 
       - name: Scrape and write recipe
         run: |

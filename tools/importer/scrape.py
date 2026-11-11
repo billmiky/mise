@@ -14,7 +14,9 @@ Fetching: many recipe sites (The Kitchn, Serious Eats, Allrecipes, …) answer
 plain `requests` calls from datacenter IPs with 403/402, so pages are fetched
 with curl_cffi, which presents a real browser's TLS fingerprint. Parsing uses
 recipe-scrapers (works on any site that publishes schema.org Recipe data), with
-a small JSON-LD reader as a fallback.
+a small JSON-LD reader as a fallback. Pages with no structured data at all get a
+best-effort read of the plain HTML (known recipe-plugin markup, microdata, then
+"Ingredients" / "Directions" headings).
 """
 import argparse
 import json
@@ -32,6 +34,11 @@ try:
     from recipe_scrapers import scrape_html
 except ImportError:  # only needed for URL imports; photo.py reuses the writer below without it
     scrape_html = None
+
+try:
+    from bs4 import BeautifulSoup
+except ImportError:  # only the plain-HTML fallback needs it (it ships with recipe-scrapers)
+    BeautifulSoup = None
 
 try:
     from curl_cffi import requests as browser_requests
@@ -232,6 +239,146 @@ def parse_json_ld(html: str):
     return None
 
 
+# --- Plain-HTML fallback ----------------------------------------------------
+# For pages with no schema.org Recipe data. Best effort: the result is only used
+# when it finds both ingredients and directions.
+
+_ING_HEADING = re.compile(r"^\W*ingredients?\b.{0,30}$", re.I)
+_DIR_HEADING = re.compile(r"^\W*(directions?|instructions?|method|steps?|preparation|procedure|how to make\b.*)\W*$", re.I)
+_STOP_HEADING = re.compile(r"^\W*(notes?|tips?|nutrition|equipment|related|comments?|you (may|might) also|more recipes|share|reviews?)\b", re.I)
+
+# (ingredient selector, direction selector) for common recipe plugins and microdata
+_PLUGIN_SELECTORS = [
+    (".wprm-recipe-ingredient", ".wprm-recipe-instruction-text"),
+    (".tasty-recipes-ingredients li", ".tasty-recipes-instructions li"),
+    (".mv-create-ingredients li", ".mv-create-instructions li"),
+    (".recipe-callout li[itemprop=recipeIngredient], [itemprop=recipeIngredient], [itemprop=ingredients]",
+     "[itemprop=recipeInstructions] li, [itemprop=recipeInstructions] p, [itemprop=recipeInstructions]"),
+]
+
+
+def _texts(nodes) -> list:
+    """Clean text of each node; <br>-separated lines inside one block become separate entries."""
+    out, seen = [], []
+    for n in nodes:
+        if any(n in prev.descendants for prev in seen):  # nested selector matches
+            continue
+        seen.append(n)
+        for br in n.find_all("br"):
+            br.replace_with("\n")
+        for line in n.get_text(" ").split("\n"):
+            line = re.sub(r"\s+([,.;:)])", r"\1", clean_text(line))
+            if line:
+                out.append(line)
+    return out
+
+
+_SKIP_BLOCK = re.compile(r"comment|share|related|sidebar|newsletter|subscribe|nutrition", re.I)
+
+
+def _section_after(heading) -> list:
+    """List items (or paragraphs) after a heading, up to the next heading of the same or higher rank.
+
+    Only the heading's following siblings are read, so the scan can't wander into
+    the comments or footer. Lower-rank sub-headings ("For the glaze:") are skipped
+    over; "Notes"/"Nutrition"-style ones end the section.
+    """
+    rank = int(heading.name[1])
+    nodes = []
+    for sib in heading.find_next_siblings():
+        if re.fullmatch(r"h[1-6]", sib.name or ""):
+            if int(sib.name[1]) <= rank or _STOP_HEADING.match(sib.get_text(" ", strip=True)):
+                break
+            continue
+        if _SKIP_BLOCK.search(" ".join(sib.get("class", [])) + " " + (sib.get("id") or "")):
+            break
+        if sib.name in ("ul", "ol"):
+            nodes.extend(sib.find_all("li"))
+        elif sib.name == "p":
+            nodes.append(sib)
+        else:
+            inner = sib.find_all("li") or sib.find_all("p")
+            nodes.extend(inner)
+    lis = [n for n in nodes if n.name == "li"]
+    return _texts(lis or nodes)  # a real list beats stray paragraphs
+
+
+def _find_heading(soup, pattern):
+    """The <h1>-<h6> whose text matches; failing that, a bold label or short paragraph that does."""
+    for names in (["h1", "h2", "h3", "h4", "h5", "h6"], ["strong", "b", "p"]):
+        for tag in soup.find_all(names):
+            text = tag.get_text(" ", strip=True)
+            if len(text) > 60 or not pattern.search(text):
+                continue
+            if tag.name in ("strong", "b") and tag.parent is not None and tag.parent.name == "p":
+                tag = tag.parent  # <p><strong>Ingredients</strong></p>
+            return tag
+    return None
+
+
+def _after_pseudo_heading(tag) -> list:
+    """Like _section_after for a bold/paragraph label: take the next list, or paragraphs up to the next label."""
+    for sib in tag.find_all_next():
+        if sib is tag:
+            continue
+        if sib.name in ("ul", "ol"):
+            return _texts(sib.find_all("li", recursive=False) or sib.find_all("li"))
+        if re.fullmatch(r"h[1-6]", sib.name or ""):
+            break
+    return []
+
+
+def parse_plain_html(html: str):
+    """Best-effort recipe from pages with no structured data. Returns a dict or None."""
+    if BeautifulSoup is None:
+        return None
+    soup = BeautifulSoup(html, "html.parser")
+    for t in soup(["script", "style", "noscript", "nav", "footer", "form", "aside"]):
+        t.decompose()
+
+    ingredients, steps = [], []
+
+    for ing_sel, dir_sel in _PLUGIN_SELECTORS:
+        ing, dirs = _texts(soup.select(ing_sel)), _texts(soup.select(dir_sel))
+        if ing and dirs:
+            ingredients, steps = ing, dirs
+            break
+
+    if not (ingredients and steps):
+        ing_h, dir_h = _find_heading(soup, _ING_HEADING), _find_heading(soup, _DIR_HEADING)
+        if ing_h is not None and dir_h is not None:
+            def grab(h):
+                if re.fullmatch(r"h[1-6]", h.name):
+                    return _section_after(h)
+                return _after_pseudo_heading(h)
+            ingredients, steps = grab(ing_h), grab(dir_h)
+            # drop trailing "Notes"-style lines that slipped in as list items
+            steps = [s for s in steps if not _STOP_HEADING.match(s)]
+
+    if not (ingredients and steps):
+        return None
+
+    title = ""
+    og = soup.find("meta", property="og:title")
+    if og and og.get("content"):
+        title = og["content"]
+    if not title:
+        h1 = soup.find("h1")
+        title = h1.get_text(" ", strip=True) if h1 else ""
+    if not title and soup.title:
+        title = soup.title.get_text(" ", strip=True)
+    # "Homemade No-Rise Donuts | The Science of Baking" → keep the part before the site name
+    title = re.split(r"\s+[|–—]\s+|\s+-\s+(?=[A-Z][^-]*$)", clean_text(title))[0].strip()
+    if not title:
+        return None
+
+    image = ""
+    ogi = soup.find("meta", property="og:image")
+    if ogi and ogi.get("content"):
+        image = ogi["content"]
+    return {"title": title, "ingredients": ingredients, "instructions": steps, "image_url": image}
+
+
 def parse_with_scrapers(html: str, url: str):
     if scrape_html is None:
         raise RuntimeError("recipe-scrapers not installed")
@@ -283,6 +430,13 @@ def fetch_recipe(url: str) -> dict:
             data = fallback
         elif fallback and not data:
             data = fallback
+
+    if not usable(data):
+        plain = parse_plain_html(html)
+        if usable(plain):
+            print("No structured recipe data on the page — read it from the plain HTML instead "
+                  "(worth a quick check of the result).")
+            data = plain
 
     if not data or not data.get("title"):
         raise ImportError_(
