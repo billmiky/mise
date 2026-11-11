@@ -33,6 +33,10 @@ jobs:
           pip install requests
           python tools/test_photo_import.py
           node --test tools/test_photo_import.mjs
+      - name: Check plain-HTML recipe import fallback
+        run: |
+          pip install requests pyyaml beautifulsoup4
+          python tools/test_plain_html_import.py
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: "3.3"
