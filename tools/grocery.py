@@ -28,7 +28,7 @@ import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
 DAYS = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
-EXTRA_SECTIONS = ["Extras", "Pantry Needs"]
+EXTRA_SECTIONS = ["Extras", "Pantry Needs", "Salad"]  # Salad: added by the Salad Maker
 CATCHALL = "Other"
 
 HERBS = ["basil", "thyme", "rosemary", "sage", "dill", "oregano", "mint", "parsley",

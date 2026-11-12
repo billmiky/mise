@@ -1,0 +1,698 @@
+---
+layout: default
+title: Salad Maker
+permalink: /salad-maker/
+---
+
+{% assign salads = site.data.salads %}
+{% assign pantry = site.data.pantry %}
+
+<style>
+  .salad-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 340px;
+    gap: 28px;
+    align-items: start;
+    margin-bottom: 56px;
+  }
+
+  /* ---- Slots ---- */
+  .slot-list { display: flex; flex-direction: column; gap: 16px; }
+
+  .slot {
+    background: var(--card);
+    border: var(--border-heavy);
+  }
+
+  .slot-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    background: var(--ink);
+    color: #fff;
+  }
+
+  .slot-num {
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--teal);
+    font-size: 0.8rem;
+    font-weight: 900;
+  }
+
+  .slot.filled .slot-num { background: var(--red); }
+
+  .slot-name {
+    font-size: 0.85rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .slot-hint {
+    font-size: 0.78rem;
+    color: #a9a59d;
+    flex: 1;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .slot-reroll {
+    flex-shrink: 0;
+    background: none;
+    border: 2px solid #555;
+    color: #fff;
+    width: 30px;
+    height: 30px;
+    font: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+  .slot-reroll:hover { border-color: var(--red); color: var(--red); }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 14px;
+  }
+
+  .chip {
+    position: relative;
+    font: inherit;
+    font-size: 0.88rem;
+    font-weight: 600;
+    padding: 7px 13px;
+    background: var(--paper);
+    color: var(--ink);
+    border: 2px solid var(--line);
+    cursor: pointer;
+    transition: border-color 0.12s, background 0.12s, transform 0.12s;
+  }
+
+  .chip:hover { border-color: var(--ink); }
+
+  .chip[aria-pressed="true"] {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: #fff;
+  }
+
+  .chip.custom { border-style: dashed; }
+
+  /* In the pantry: a small teal dot */
+  .chip.in-pantry::after {
+    content: '';
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--teal);
+    border: 2px solid var(--card);
+  }
+
+  .chip-add {
+    display: inline-flex;
+    border: 2px dashed var(--line);
+  }
+
+  .chip-add input {
+    font: inherit;
+    font-size: 0.85rem;
+    border: none;
+    background: none;
+    padding: 7px 10px;
+    width: 9.5em;
+    min-width: 0;
+    color: var(--ink);
+  }
+
+  .chip-add input:focus { outline: none; }
+  .chip-add:focus-within { border-color: var(--ink); }
+
+  /* ---- Bowl ---- */
+  .bowl {
+    position: sticky;
+    top: 24px;
+    background: var(--card);
+    border: var(--border-heavy);
+    box-shadow: var(--shadow-red);
+  }
+
+  .bowl-top {
+    padding: 14px 16px;
+    background: var(--red);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .bowl-body { padding: 16px; }
+
+  .bowl-name {
+    width: 100%;
+    font: inherit;
+    font-size: 1.25rem;
+    font-weight: 800;
+    border: none;
+    border-bottom: 3px solid var(--ink);
+    padding: 4px 0 6px;
+    margin-bottom: 14px;
+    background: none;
+    color: var(--ink);
+  }
+
+  .bowl-name:focus { outline: none; border-bottom-color: var(--red); }
+
+  .bowl-layers { list-style: none; margin: 0 0 14px; padding: 0; }
+
+  .bowl-layers li {
+    display: grid;
+    grid-template-columns: 84px 1fr;
+    gap: 8px;
+    padding: 7px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.9rem;
+  }
+
+  .bowl-layers .layer-name {
+    font-size: 0.62rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    padding-top: 3px;
+  }
+
+  .bowl-layers .layer-empty { color: var(--faint); }
+
+  .bowl-recipes { margin: 0 0 14px; font-size: 0.85rem; }
+  .bowl-recipes a { color: var(--ink); font-weight: 700; text-decoration: none; border-bottom: 2px solid var(--red); }
+  .bowl-recipes a:hover { color: var(--red); }
+  .bowl-recipes p { margin: 0 0 6px; }
+
+  .bowl-actions { display: flex; flex-direction: column; gap: 8px; }
+  .bowl-actions .bauhaus-btn { width: 100%; }
+
+  .bowl-match {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #fff;
+    opacity: 0.85;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+
+  .pantry-key { font-size: 0.75rem; color: var(--muted); margin: 10px 0 0; }
+  .pantry-key i {
+    display: inline-block; width: 9px; height: 9px; border-radius: 50%;
+    background: var(--teal); margin-right: 4px; vertical-align: 0;
+  }
+
+  /* ---- Saved salads ---- */
+  .saved-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  .saved-card {
+    background: var(--card);
+    border: var(--border);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+
+  .saved-card:hover { transform: translate(-3px, -3px); box-shadow: var(--shadow); }
+  .saved-card.current { border-color: var(--red); box-shadow: var(--shadow-red); }
+
+  .saved-load {
+    flex: 1;
+    text-align: left;
+    font: inherit;
+    background: none;
+    border: none;
+    padding: 14px 14px 10px;
+    cursor: pointer;
+    color: var(--ink);
+  }
+
+  .saved-title { font-size: 1.05rem; font-weight: 800; margin: 0 0 8px; }
+
+  .saved-summary { font-size: 0.82rem; color: var(--muted); margin: 0; line-height: 1.45; }
+  .saved-summary b { color: var(--ink); font-weight: 600; }
+
+  .saved-foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 14px;
+    border-top: 2px solid var(--line);
+  }
+
+  .saved-dressing {
+    font-size: 0.62rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--teal);
+  }
+
+  .saved-delete {
+    background: none;
+    border: none;
+    font: inherit;
+    color: var(--faint);
+    cursor: pointer;
+    font-size: 0.95rem;
+    padding: 2px 4px;
+  }
+
+  .saved-delete:hover { color: var(--red); }
+
+  .saved-empty { color: var(--muted); }
+
+  @media (max-width: 1100px) {
+    .salad-layout { grid-template-columns: 1fr; }
+    .bowl { position: static; }
+  }
+
+  @media (max-width: 700px) {
+    .slot-hint { display: none; }
+    .slot-name { flex: 1; }
+    .chips { padding: 12px; gap: 7px; }
+    .chip { font-size: 0.85rem; padding: 7px 11px; }
+  }
+</style>
+
+<div class="bauhaus-home-layout">
+
+  {% include sidebar.html %}
+
+  <main class="bauhaus-page-content">
+
+    <div class="page-header-row">
+      <div class="header-left">
+        <h1 class="section-header">Salad Maker</h1>
+        <span class="week-of-label">Base · Leaves · Veggies · Protein · Crunch · Dressing</span>
+      </div>
+      <div class="header-actions">
+        <button class="bauhaus-btn ghost" id="clear-btn" type="button">Start Over</button>
+        <button class="bauhaus-btn" id="surprise-btn" type="button">Surprise Me</button>
+      </div>
+    </div>
+
+    <div class="salad-layout">
+      <div class="slot-list" id="slots"></div>
+
+      <aside class="bowl" aria-label="Your bowl">
+        <div class="bowl-top"><span>Your Bowl</span><span class="bowl-match" id="bowl-match"></span></div>
+        <div class="bowl-body">
+          <input class="bowl-name" id="bowl-name" type="text" placeholder="Name this salad" aria-label="Salad name" autocomplete="off" maxlength="60">
+          <ul class="bowl-layers" id="bowl-layers"></ul>
+          <div class="bowl-recipes" id="bowl-recipes"></div>
+          <div class="bowl-actions">
+            <button class="bauhaus-btn" id="save-btn" type="button">Save Salad</button>
+            <button class="bauhaus-btn ghost" id="grocery-btn" type="button">Add to Grocery List</button>
+          </div>
+          <p class="action-status" id="bowl-status" role="status"></p>
+          <p class="pantry-key"><i></i>already in your pantry, so it's left off the grocery list</p>
+        </div>
+      </aside>
+    </div>
+
+    <div class="page-header-row">
+      <div class="header-left">
+        <h2 class="section-header">Saved Salads</h2>
+        <span class="week-of-label">Tap one to load it into the bowl</span>
+      </div>
+    </div>
+    <div class="saved-grid" id="saved"></div>
+
+    <p class="edit-hint">Saving writes to <code>_data/salads.yml</code>, where you can also add or rename ingredients (and link one to a recipe with <code>recipe:</code>). Grocery items go in a <strong>Salad</strong> section that survives a list rebuild.</p>
+
+  </main>
+</div>
+
+{%- comment -%} Titles and links for the recipes that options point to {%- endcomment -%}
+{%- assign linked = "" | split: "" -%}
+{%- for slot in salads.slots -%}{%- for o in slot.options -%}{%- if o.recipe -%}{%- assign linked = linked | push: o.recipe -%}{%- endif -%}{%- endfor -%}{%- endfor -%}
+<script type="application/json" id="salad-data">{{ salads | jsonify }}</script>
+<script type="application/json" id="salad-recipes">{
+{%- assign first = true -%}
+{%- for r in site.recipes -%}
+  {%- assign r_slug = r.path | remove: "_recipes/" | remove: ".md" -%}
+  {%- if linked contains r_slug -%}
+    {%- unless first %},{% endunless -%}
+    {{ r_slug | jsonify }}: {"title": {{ r.title | jsonify }}, "url": {{ r.url | relative_url | jsonify }}}
+    {%- assign first = false -%}
+  {%- endif -%}
+{%- endfor -%}
+}</script>
+<script type="application/json" id="pantry-data">{"staples": {{ pantry.staples | jsonify }}, "on_hand": {{ pantry.on_hand | jsonify }}}</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+<script src="{{ '/assets/js/pantry-match.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/salad-maker.js' | relative_url }}"></script>
+<script>
+(function () {
+  var C = window.Chowdown;
+  var SM = window.SaladMaker;
+  var SALADS_PATH = '_data/salads.yml';
+  var GROCERY_PATH = '_data/grocery_list.yml';
+  var GROCERY_SECTION = 'Salad';
+  var DRAFT_KEY = 'salad-draft';
+
+  function json(id) {
+    try { return JSON.parse(document.getElementById(id).textContent) || {}; } catch (e) { return {}; }
+  }
+
+  var data = json('salad-data');
+  var SLOTS = data.slots || [];
+  var saved = data.saved || [];
+  var RECIPES = json('salad-recipes');
+
+  var draft = C.load(DRAFT_KEY, null);
+  var bowl = (draft && draft.bowl) ? SM.fromSaved(SLOTS, draft.bowl) : SM.emptyBowl(SLOTS);
+  var nameInput = document.getElementById('bowl-name');
+  nameInput.value = (draft && draft.name) || '';
+  var nameTouched = !!nameInput.value;
+
+  function esc(s) { return C.escapeHtml(String(s == null ? '' : s)); }
+
+  /* ---- Pantry ---- */
+  var pantryKeys = (function () {
+    var p = json('pantry-data'), keys = [];
+    function push(raw) { var k = PantryMatch.matchKey(raw || ''); if (k && keys.indexOf(k) === -1) keys.push(k); }
+    (p.staples || []).forEach(push);
+    (p.on_hand || []).forEach(function (e) { push(typeof e === 'string' ? e : e.item); });
+    return keys;
+  })();
+
+  /* Stricter than the recipe matcher: the pantry item has to cover every word of what
+     we'd buy ("carrots" ~ "organic carrots"), so "sugar" doesn't stock "sugar snap peas"
+     and "rice" doesn't stock "brown rice" or "rice vermicelli noodles". */
+  function inPantry(text) {
+    var k = PantryMatch.matchKey(text);
+    if (!k) return false;
+    var words = k.split(/\s+/);
+    return pantryKeys.some(function (p) {
+      if (!PantryMatch.matches(k, p)) return false;
+      var pw = p.split(/\s+/);
+      return pw[pw.length - 1] === words[words.length - 1] &&
+        words.every(function (w) { return pw.indexOf(w) !== -1; });
+    });
+  }
+
+  // An option counts as on hand when everything it buys is
+  function optionInPantry(slot, name) {
+    var g = SM.groceryItems([slot], (function () { var b = {}; b[slot.key] = [name]; return b; })(), inPantry);
+    return g.buy.length === 0 && g.have.length > 0;
+  }
+
+  /* ---- Rendering ---- */
+  function chipHtml(slot, name, custom) {
+    var on = (bowl[slot.key] || []).some(function (n) { return n.toLowerCase() === name.toLowerCase(); });
+    var cls = 'chip' + (custom ? ' custom' : '') + (optionInPantry(slot, name) ? ' in-pantry' : '');
+    return '<button type="button" class="' + cls + '" aria-pressed="' + on + '" data-slot="' + esc(slot.key) +
+      '" data-name="' + esc(name) + '">' + esc(name) + '</button>';
+  }
+
+  function renderSlots() {
+    document.getElementById('slots').innerHTML = SLOTS.map(function (slot, i) {
+      var names = (slot.options || []).map(function (o) { return o.name; });
+      var lower = names.map(function (n) { return n.toLowerCase(); });
+      var custom = (bowl[slot.key] || []).filter(function (n) { return lower.indexOf(n.toLowerCase()) === -1; });
+      var filled = (bowl[slot.key] || []).length > 0;
+      return '<section class="slot' + (filled ? ' filled' : '') + '">' +
+        '<div class="slot-top"><span class="slot-num">' + (i + 1) + '</span>' +
+        '<span class="slot-name">' + esc(slot.name) + '</span>' +
+        '<span class="slot-hint">' + esc(slot.hint || '') + '</span>' +
+        '<button type="button" class="slot-reroll" data-reroll="' + esc(slot.key) + '" title="Shuffle ' + esc(slot.name) + '" aria-label="Shuffle ' + esc(slot.name) + '">↻</button></div>' +
+        '<div class="chips">' +
+        names.map(function (n) { return chipHtml(slot, n, false); }).join('') +
+        custom.map(function (n) { return chipHtml(slot, n, true); }).join('') +
+        '<form class="chip-add" data-add="' + esc(slot.key) + '"><input type="text" placeholder="+ your own" aria-label="Add your own ' + esc(slot.name.toLowerCase()) + '" maxlength="40"></form>' +
+        '</div></section>';
+    }).join('');
+  }
+
+  function renderBowl() {
+    document.getElementById('bowl-layers').innerHTML = SLOTS.map(function (slot) {
+      var picks = bowl[slot.key] || [];
+      return '<li><span class="layer-name">' + esc(slot.name) + '</span>' +
+        (picks.length ? '<span>' + picks.map(esc).join(', ') + '</span>' : '<span class="layer-empty">—</span>') + '</li>';
+    }).join('');
+
+    var links = SM.linkedRecipes(SLOTS, bowl).filter(function (l) { return RECIPES[l.recipe]; });
+    document.getElementById('bowl-recipes').innerHTML = links.map(function (l) {
+      var r = RECIPES[l.recipe];
+      return '<p>Make the ' + esc(l.name) + ': <a href="' + esc(r.url) + '">' + esc(r.title) + ' →</a></p>';
+    }).join('');
+
+    var match = SM.matchSaved(SLOTS, saved, bowl);
+    document.getElementById('bowl-match').textContent = match ? 'Saved as ' + match.name : '';
+    if (!nameTouched) nameInput.placeholder = SM.isEmpty(bowl) ? 'Name this salad' : SM.suggestName(bowl);
+
+    var empty = SM.isEmpty(bowl);
+    document.getElementById('save-btn').disabled = empty;
+    document.getElementById('grocery-btn').disabled = empty;
+  }
+
+  function renderSaved() {
+    var match = SM.matchSaved(SLOTS, saved, bowl);
+    var el = document.getElementById('saved');
+    if (!saved.length) { el.innerHTML = '<p class="saved-empty">No saved salads yet. Build one and press Save Salad.</p>'; return; }
+    el.innerHTML = saved.map(function (s, i) {
+      var b = SM.fromSaved(SLOTS, s);
+      var parts = SLOTS.filter(function (sl) { return sl.key !== 'dressing' && b[sl.key].length; })
+        .map(function (sl) { return '<b>' + b[sl.key].map(esc).join(', ') + '</b>'; });
+      var dressing = (b.dressing && b.dressing[0]) || 'No dressing';
+      return '<article class="saved-card' + (match === s ? ' current' : '') + '">' +
+        '<button type="button" class="saved-load" data-load="' + i + '">' +
+        '<p class="saved-title">' + esc(s.name) + '</p>' +
+        '<p class="saved-summary">' + parts.join(' · ') + '</p></button>' +
+        '<div class="saved-foot"><span class="saved-dressing">' + esc(dressing) + '</span>' +
+        '<button type="button" class="saved-delete" data-delete="' + i + '" title="Delete ' + esc(s.name) + '" aria-label="Delete ' + esc(s.name) + '">✕</button></div>' +
+        '</article>';
+    }).join('');
+  }
+
+  function persistDraft() { C.save(DRAFT_KEY, { bowl: bowl, name: nameTouched ? nameInput.value : '' }); }
+
+  function render() { renderSlots(); renderBowl(); renderSaved(); persistDraft(); }
+
+  function setBowl(next, name) {
+    bowl = next;
+    if (name !== undefined) { nameInput.value = name; nameTouched = !!name; }
+    render();
+  }
+
+  var statusEl = document.getElementById('bowl-status');
+  function status(html, cls) { statusEl.innerHTML = html; statusEl.className = 'action-status' + (cls ? ' ' + cls : ''); }
+
+  /* ---- Building ---- */
+  var slotsEl = document.getElementById('slots');
+  slotsEl.addEventListener('click', function (e) {
+    var chip = e.target.closest('.chip');
+    var re = e.target.closest('[data-reroll]');
+    if (chip) setBowl(SM.toggle(SLOTS, bowl, chip.dataset.slot, chip.dataset.name));
+    else if (re) setBowl(SM.reroll(SLOTS, bowl, re.dataset.reroll));
+    status('');
+  });
+
+  slotsEl.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var form = e.target.closest('[data-add]');
+    var input = form && form.querySelector('input');
+    var text = input ? input.value.trim().replace(/\s+/g, ' ') : '';
+    if (!text) return;
+    var key = form.dataset.add;
+    var already = (bowl[key] || []).some(function (n) { return n.toLowerCase() === text.toLowerCase(); });
+    // Typing an existing option just picks it, with the option's own spelling
+    var slot = SLOTS.filter(function (s) { return s.key === key; })[0];
+    var known = (slot.options || []).filter(function (o) { return o.name.toLowerCase() === text.toLowerCase(); })[0];
+    if (!already) setBowl(SM.toggle(SLOTS, bowl, key, known ? known.name : text));
+    var again = slotsEl.querySelector('[data-add="' + key + '"] input');
+    if (again) again.focus();
+  });
+
+  nameInput.addEventListener('input', function () { nameTouched = !!nameInput.value.trim(); persistDraft(); });
+
+  document.getElementById('surprise-btn').addEventListener('click', function () {
+    setBowl(SM.surprise(SLOTS, Math.random, bowl), '');
+    status('');
+  });
+
+  document.getElementById('clear-btn').addEventListener('click', function () {
+    setBowl(SM.emptyBowl(SLOTS), '');
+    status('');
+  });
+
+  document.getElementById('saved').addEventListener('click', function (e) {
+    var load = e.target.closest('[data-load]');
+    var del = e.target.closest('[data-delete]');
+    if (load) {
+      var s = saved[+load.dataset.load];
+      setBowl(SM.fromSaved(SLOTS, s), s.name);
+      status('');
+      if (window.matchMedia('(max-width: 1100px)').matches) document.getElementById('slots').scrollIntoView({ behavior: 'smooth' });
+      else window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else if (del) {
+      deleteSaved(saved[+del.dataset.delete]);
+    }
+  });
+
+  /* ---- Saving to _data/salads.yml ----
+     Only the `saved:` list at the end of the file is rewritten; the slots and comments
+     above it are kept as written. The write is tied to the file's sha, so a change made
+     elsewhere in between is never overwritten: we re-read and try again. */
+  function dumpSaved(list) {
+    if (!list.length) return 'saved: []\n';
+    return jsyaml.dump({ saved: list }, { flowLevel: 3, lineWidth: -1, noRefs: true });
+  }
+
+  async function editSaved(change, message) {
+    for (var attempt = 0; ; attempt++) {
+      var file = await C.getFile(SALADS_PATH);
+      var parsed = jsyaml.load(file.text) || {};
+      var next = change(parsed.saved || []);
+      var m = /^saved:/m.exec(file.text);
+      var head = m ? file.text.slice(0, m.index) : file.text.replace(/\s*$/, '\n\n');
+      var text = head + dumpSaved(next);
+      try {
+        await C.putFile(SALADS_PATH, text, file.sha, message);
+        if (parsed.slots) SLOTS = parsed.slots;
+        return next;
+      } catch (e) {
+        if (attempt >= 2 || !/changed on GitHub/.test(e.message)) throw e;
+      }
+    }
+  }
+
+  document.getElementById('save-btn').addEventListener('click', async function () {
+    var btn = this;
+    var name = nameInput.value.trim() || SM.suggestName(bowl);
+    var entry = SM.toSaved(SLOTS, name, bowl);
+    var replacing = saved.some(function (s) { return s.name.toLowerCase() === name.toLowerCase(); });
+    if (replacing && !confirm('Replace your saved "' + name + '" salad with this bowl?')) return;
+    btn.disabled = true;
+    status('Saving…');
+    try {
+      saved = await editSaved(function (list) { return SM.upsert(list, entry); }, 'Salad Maker: save ' + name);
+      nameInput.value = name;
+      nameTouched = true;
+      render();
+      status('✓ Saved "' + esc(name) + '"', 'ok');
+    } catch (e) {
+      status('✗ ' + e.message, 'err');
+    } finally {
+      btn.disabled = SM.isEmpty(bowl);
+    }
+  });
+
+  async function deleteSaved(entry) {
+    if (!entry || !confirm('Delete the "' + entry.name + '" salad?')) return;
+    status('Deleting…');
+    try {
+      saved = await editSaved(function (list) { return SM.remove(list, entry.name); }, 'Salad Maker: delete ' + entry.name);
+      render();
+      status('✓ Deleted "' + esc(entry.name) + '"', 'ok');
+    } catch (e) {
+      status('✗ ' + e.message, 'err');
+    }
+  }
+
+  /* ---- Grocery list ---- */
+  function normalizeGrocery(d) {
+    d = d || {};
+    if (!d.categories && d.recipes) {
+      d.categories = d.recipes.map(function (g) { return { name: g.recipe, items: g.items }; });
+      delete d.recipes;
+    } else if (!d.categories && d.items) {
+      d.categories = [{ name: 'Items', items: d.items }];
+      delete d.items;
+    }
+    d.categories = d.categories || [];
+    if (d.week_of instanceof Date) d.week_of = d.week_of.toISOString().slice(0, 10);
+    return d;
+  }
+
+  function itemName(x) { return typeof x === 'string' ? x : (x.name || ''); }
+
+  // Add each item to the Salad section, or note this salad on an item that's already there
+  function addItems(section, kind, texts, saladName) {
+    var list = section[kind] = section[kind] || [];
+    var added = 0;
+    texts.forEach(function (text) {
+      var hit = list.filter(function (x) { return itemName(x).toLowerCase() === text.toLowerCase(); })[0];
+      if (!hit) { list.push({ name: text, uses: [{ text: text, recipe: saladName }] }); added++; return; }
+      if (typeof hit === 'string') return;
+      hit.uses = hit.uses || [];
+      if (!hit.uses.some(function (u) { return u.recipe === saladName; })) hit.uses.push({ text: text, recipe: saladName });
+    });
+    if (!list.length) delete section[kind];
+    return added;
+  }
+
+  document.getElementById('grocery-btn').addEventListener('click', async function () {
+    var btn = this;
+    var name = nameInput.value.trim() || SM.suggestName(bowl);
+    var g = SM.groceryItems(SLOTS, bowl, inPantry);
+    btn.disabled = true;
+    status('Adding to the grocery list…');
+    try {
+      var added = 0;
+      for (var attempt = 0; ; attempt++) {
+        var file = await C.getFile(GROCERY_PATH);
+        var d = normalizeGrocery(jsyaml.load(file.text));
+        var section = d.categories.filter(function (c) { return c.name === GROCERY_SECTION; })[0];
+        if (!section) { section = { name: GROCERY_SECTION }; d.categories.push(section); }
+        added = addItems(section, 'items', g.buy, name);
+        addItems(section, 'have', g.have, name);
+        if (!section.items && !section.have) d.categories.splice(d.categories.indexOf(section), 1);
+        try {
+          await C.putFile(GROCERY_PATH, jsyaml.dump(d, { lineWidth: -1, noRefs: true }), file.sha, 'Grocery: add ' + name);
+          break;
+        } catch (e) {
+          if (attempt >= 2 || !/changed on GitHub/.test(e.message)) throw e;
+        }
+      }
+      var msg = added ? '✓ Added ' + added + ' item' + (added === 1 ? '' : 's') : '✓ Everything was already on the list';
+      if (g.have.length) msg += ' (' + g.have.length + ' already in the pantry)';
+      status(msg + ' — <a href="' + C.BASE + '/grocery-list/">view grocery list</a>', 'ok');
+    } catch (e) {
+      status('✗ ' + e.message, 'err');
+    } finally {
+      btn.disabled = SM.isEmpty(bowl);
+    }
+  });
+
+  render();
+
+  // The page shows salads as of the last deploy; pick up anything saved since (needs a token)
+  if (C.token()) {
+    C.getFile(SALADS_PATH).then(function (file) {
+      var fresh = (jsyaml.load(file.text) || {}).saved || [];
+      if (JSON.stringify(fresh) !== JSON.stringify(saved)) { saved = fresh; renderBowl(); renderSaved(); }
+    }).catch(function () {});
+  }
+})();
+</script>

@@ -84,6 +84,18 @@ The top of the Recipes tab is a map with every recipe on one plane: left to righ
 
 Spots are worked out in the browser by `assets/js/recipe-matrix.js` from the title, tags, ingredients, total time, difficulty and the number of ingredients and steps (tested by `node --test tools/test_recipe_matrix.mjs`). If a recipe lands somewhere wrong, pin it in its front matter with `matrix: {x: 2.5, y: -3}` (each from -5 to 5); `tools/validate_recipes.py` checks the value.
 
+# Salad Maker
+
+The **Salads** tab (`/salad-maker/`) builds a grain-bowl salad one layer at a time: **Base**, **Light Leaves**, **Veggies**, **Protein**, **Crunch** and **Dressing**. Tap chips to fill the bowl, type your own into any slot, press ↻ to reshuffle one layer, or **Surprise Me** for a whole bowl. Your bowl is kept on the device until you start over.
+
+- **Save Salad** names the bowl and adds it to **Saved Salads** (tap one to load it). Saving a name that already exists asks before replacing it.
+- **Add to Grocery List** puts what the bowl needs in a **Salad** section of the grocery list (a rebuild keeps it). Anything the pantry already has goes under *on hand*; a teal dot on a chip means you have it.
+- Dressings and crunches that are recipes in Mise (Nuoc Cham, Bibimbap sauce, Fried Shallots, Japanese Carrot Ginger…) link to them from the bowl.
+
+Everything lives in `_data/salads.yml`: the slots and their options (with an optional `recipe:` slug to link and `buy:` list for the grocery list), and the saved salads, which started from the Notion *Salad Planner*. Edit it by hand to add or rename options. Saving and grocery adds use the same GitHub token as the rest of the site.
+
+Tests: `python3 tools/test_salads.py` (checks the data file) and `node --test tools/test_salad_maker.mjs`.
+
 # Writing a component recipe
 
 A component recipe is a special recipe made up of other recipes. To make a new component recipe:

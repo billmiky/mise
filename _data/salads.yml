@@ -1,0 +1,189 @@
+# Salad Maker (/salad-maker/): build a bowl from one pick per slot.
+#
+# slots:  the layers of a bowl, in the order they're built.
+#   key       id used by saved salads below
+#   name      shown on the page
+#   hint      one line under the name
+#   pick      [min, max] for "Surprise me"; single: true means only one at a time
+#   options   name, plus optional:
+#               recipe  slug of a recipe in _recipes/ (shown as a "make it" link)
+#               buy     what goes on the grocery list (default: the name, lowercased)
+#
+# saved:  named salads; each lists option names per slot key. Anything not in
+#         the slot's options is still allowed (typed in on the page).
+#
+# The page edits this file through the GitHub API when you save or delete a salad.
+# tools/test_salads.py checks it.
+
+slots:
+  - key: base
+    name: Base
+    hint: Something hearty to build on
+    pick: [1, 1]
+    options:
+      - name: Farro
+      - name: Quinoa
+      - name: Brown Rice
+      - name: Millet
+      - name: Pearled Barley
+      - name: Rice vermicelli
+        buy: [rice vermicelli noodles]
+      - name: Torn-up Rye Bread
+        buy: [rye bread]
+
+  - key: leaves
+    name: Light Leaves
+    hint: Greens to lighten it up
+    pick: [1, 2]
+    options:
+      - name: Arugula
+      - name: Spinach
+      - name: Kale
+      - name: Romaine Lettuce
+        buy: [romaine]
+      - name: Greens
+        buy: [mixed greens]
+      - name: Shredded Cabbage
+        buy: [cabbage]
+      - name: Pea shoots
+
+  - key: veggies
+    name: Veggies
+    hint: Colour, crunch and freshness
+    pick: [2, 3]
+    options:
+      - name: Cucumber
+      - name: Carrots
+      - name: Tomatoes
+      - name: Bell Peppers
+      - name: Radishes
+      - name: Avocado
+      - name: Sugar Snap Peas
+        buy: [sugar snap peas]
+      - name: Edamame
+        buy: [frozen edamame]
+      - name: Raw Corn
+        buy: [corn]
+      - name: Roasted Root Vegetables
+        buy: [beets, sweet potatoes]
+      - name: Kimchi
+      - name: Pickled Ginger
+
+  - key: protein
+    name: Protein
+    hint: To make it a meal
+    pick: [1, 1]
+    options:
+      - name: Tofu
+        buy: [extra-firm tofu]
+      - name: Chickpeas
+        buy: [canned chickpeas]
+      - name: Feta
+
+  - key: crunch
+    name: Crunch
+    hint: The best part
+    pick: [1, 2]
+    options:
+      - name: Toasted Almonds
+        buy: [sliced almonds]
+      - name: Walnuts
+      - name: Spicy Pecans
+        buy: [pecans]
+      - name: Pumpkin Seeds
+      - name: Sesame Seeds
+      - name: Crushed Peanuts
+        buy: [roasted peanuts]
+      - name: Fried Shallots
+        recipe: fried-shallots
+        buy: [shallots]
+      - name: Crispy Quinoa
+        buy: [quinoa]
+      - name: Toasted Bread Crumbs
+        buy: [panko]
+      - name: Seaweed
+        buy: [roasted seaweed snacks]
+      - name: Sprouts
+
+  - key: dressing
+    name: Dressing
+    hint: Pick one to tie it together
+    pick: [1, 1]
+    single: true
+    options:
+      - name: Everyday Salad Dressing
+        buy: [lemons, dijon mustard]
+      - name: Lemon Tahini Dressing
+        buy: [lemons, tahini]
+      - name: Chive Sage Dressing
+        buy: [chives, sage]
+      - name: Nuoc Cham
+        recipe: 5-minute-nuoc-cham-vietnamese-dipping-sauce
+        buy: [fish sauce, limes, garlic]
+      - name: Bibimbap sauce
+        recipe: ultimate-bibimbap-sauce-4-ways
+        buy: [gochujang, toasted sesame oil]
+      - name: Japanese Carrot Ginger Dressing
+        recipe: japanese-carrot-ginger-dressing
+        buy: [carrots, ginger, miso]
+      - name: Miso-Ginger Dressing
+        recipe: miso-ginger-dressing
+        buy: [miso, ginger]
+      - name: Asian Sesame Dressing
+        recipe: sesame-dressing
+        buy: [toasted sesame oil, rice vinegar]
+      - name: Coconut-Lime Dressing
+        recipe: coconut-lime-dressing
+        buy: [coconut milk, limes]
+      - name: Mustard-Shallot Vinaigrette
+        recipe: mustard-shallot-vinaigrette
+        buy: [shallots, dijon mustard]
+      - name: Zesty Lime-Chile Vinaigrette
+        recipe: zesty-lime-chile-vinaigrette
+        buy: [limes, fresh chiles]
+      - name: Via Carota House Dressing
+        recipe: via-carota-house-dressing
+
+saved:
+  - name: Golden Beet Farro
+    base: [Farro]
+    leaves: [Kale]
+    veggies: [Roasted Root Vegetables]
+    protein: [Feta]
+    crunch: [Spicy Pecans]
+    dressing: [Chive Sage Dressing]
+  - name: Japanese
+    base: [Brown Rice]
+    leaves: [Spinach]
+    veggies: [Pickled Ginger, Carrots, Edamame]
+    protein: [Tofu]
+    crunch: [Seaweed]
+    dressing: []
+  - name: Korean
+    base: [Brown Rice]
+    leaves: [Spinach, Shredded Cabbage]
+    veggies: [Carrots, Kimchi]
+    protein: [Tofu]
+    crunch: [Sesame Seeds, Seaweed]
+    dressing: [Bibimbap sauce]
+  - name: Classic
+    base: [Quinoa]
+    leaves: [Arugula]
+    veggies: []
+    protein: []
+    crunch: [Spicy Pecans]
+    dressing: [Everyday Salad Dressing]
+  - name: Mediterranean
+    base: [Quinoa]
+    leaves: [Spinach]
+    veggies: [Cucumber, Bell Peppers]
+    protein: [Chickpeas, Feta]
+    crunch: [Toasted Almonds, Walnuts]
+    dressing: [Lemon Tahini Dressing]
+  - name: Thai
+    base: [Rice vermicelli]
+    leaves: [Shredded Cabbage]
+    veggies: [Carrots]
+    protein: [Tofu]
+    crunch: [Crushed Peanuts, Fried Shallots]
+    dressing: [Nuoc Cham]

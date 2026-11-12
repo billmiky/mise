@@ -4,7 +4,7 @@
 //  - Images: cache first.
 //  - Only same-origin GETs are handled. GitHub API calls (token, sync, workflows)
 //    are never touched or cached.
-const VERSION = 'v2';
+const VERSION = 'v3';
 const PAGES = 'mise-pages-' + VERSION;
 const IMAGES = 'mise-images-v1';
 const KEEP = [PAGES, IMAGES];
@@ -12,7 +12,7 @@ const MAX_IMAGES = 250;
 
 const scope = self.registration.scope; // e.g. https://billmiky.github.io/mise/
 const OFFLINE = new URL('offline.html', scope).href;
-const SHELL = ['', 'recipes/', 'meal-plan/', 'grocery-list/', 'pantry/', 'offline.html',
+const SHELL = ['', 'recipes/', 'meal-plan/', 'grocery-list/', 'pantry/', 'salad-maker/', 'offline.html',
   'assets/css/chowdown.css', 'assets/js/chowdown.js', 'assets/js/recipe-edits.js', 'assets/js/recipe-matrix.js', 'icons/icon-192.png']
   .map((p) => new URL(p, scope).href);
 
