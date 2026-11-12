@@ -24,7 +24,7 @@ date_added: 2026-05-18
 season:
 - all
 last_made: 2026-10-27
-rating: null
+rating: 5
 difficulty: easy
 kid_friendly: false
 yield: 4 servings
