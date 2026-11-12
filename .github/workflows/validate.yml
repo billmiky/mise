@@ -26,6 +26,10 @@ jobs:
         run: python tools/test_autotag.py
       - name: Check recipe map placement
         run: node --test tools/test_recipe_matrix.mjs
+      - name: Check Salad Maker
+        run: |
+          python tools/test_salads.py
+          node --test tools/test_salad_maker.mjs
       - name: Check every workflow that pushes to main also deploys
         run: python tools/check_deploy_triggers.py
       - name: Check photo importer

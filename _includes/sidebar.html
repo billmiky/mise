@@ -197,6 +197,10 @@
         <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="3" y="5" width="18" height="16"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
         <span>Plan</span>
       </a>
+      <a href="{{ '/salad-maker/' | relative_url }}" class="nav-item{% if page.url contains 'salad-maker' %} active{% endif %}"{% if page.url contains 'salad-maker' %} aria-current="page"{% endif %}>
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M3 11h18a9 9 0 0 1-18 0z"/><path d="M8 11c0-2.5 1.5-4.5 4-5M13 11c.5-2.5 2.5-4 5-4M7.5 7.5 10 11"/></svg>
+        <span>Salads</span>
+      </a>
       <a href="{{ '/grocery-list/' | relative_url }}" class="nav-item{% if page.url contains 'grocery-list' %} active{% endif %}"{% if page.url contains 'grocery-list' %} aria-current="page"{% endif %}>
         <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M3 4h2.5l2.2 11h11l2-8H6.5"/><circle cx="9" cy="19.5" r="1.5"/><circle cx="17" cy="19.5" r="1.5"/></svg>
         <span>Grocery</span>
