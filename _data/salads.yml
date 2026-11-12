@@ -187,3 +187,10 @@ saved:
     protein: [Tofu]
     crunch: [Crushed Peanuts, Fried Shallots]
     dressing: [Nuoc Cham]
+  - name: Zesty Lime-Chile Vinaigrette & Mint Salad
+    base: []
+    leaves: [Mint]
+    veggies: [Carrots, Beets]
+    protein: []
+    crunch: [Crushed Peanuts]
+    dressing: [Zesty Lime-Chile Vinaigrette]
