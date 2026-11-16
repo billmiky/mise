@@ -159,7 +159,7 @@ layout: default
             </li>
           {% endfor %}
         </ul>
-        <p class="scale-note" id="scale-note" hidden>Amounts mentioned inside the directions aren't scaled.</p>
+        <p class="scale-note" id="scale-note" hidden>Measured amounts inside the directions are scaled in Cooking Mode.</p>
       </section>
       {% endif %}
 
@@ -180,6 +180,27 @@ layout: default
           {% endfor %}
         </ol>
       </section>
+      {% endif %}
+
+      {% if page.directions %}
+      <div class="cook-view" id="cook-view" role="dialog" aria-modal="true" aria-label="Cooking mode" hidden>
+        <header class="ck-head">
+          <button type="button" class="ck-icon ck-close" id="ck-close" aria-label="Exit cooking mode">×</button>
+          <div class="ck-title">
+            <span class="ck-recipe">{{ page.title }}</span>
+            <span class="ck-count" id="ck-count"></span>
+          </div>
+          <button type="button" class="ck-icon" id="ck-speak" aria-pressed="false" hidden>Read</button>
+          <button type="button" class="ck-icon" id="ck-list" aria-pressed="false">All steps</button>
+        </header>
+        <div class="ck-progress" id="ck-progress"></div>
+        <div class="ck-body" id="ck-body"></div>
+        <div class="ck-timers" id="ck-timers" aria-label="Timers"></div>
+        <nav class="ck-nav">
+          <button type="button" id="ck-prev">← Back</button>
+          <button type="button" id="ck-next">Next →</button>
+        </nav>
+      </div>
       {% endif %}
 
       <div class="planner-actions">
@@ -586,35 +607,167 @@ layout: default
 
   .steps li.done .step-num { color: #c9c4ba; }
 
-  /* ---- Cooking mode ---- */
-  .cooking .steps label { font-size: 1.3rem; line-height: 1.6; padding: 20px 0; }
-  .cooking .steps li { transition: background 0.2s; }
-  .cooking .steps li.current {
-    background: #fff8e9;
-    box-shadow: -16px 0 0 0 #fff8e9, 16px 0 0 0 #fff8e9;
-    border-left: 0;
-  }
-  .cooking .steps li.current .step-num { color: var(--ink); }
+  /* ---- Cooking mode: full-screen, one step at a time ---- */
+  body.cooking { overflow: hidden; }
 
-  .cooking-ingredient {
-    background: var(--red-tint);
-    color: inherit;
-    padding: 0 3px;
-    border-bottom: 2px solid var(--red);
-    font-weight: 600;
+  .cook-view {
+    position: fixed;
+    inset: 0;
+    z-index: 900;
+    display: flex;
+    flex-direction: column;
+    background: var(--paper);
+    color: var(--ink);
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  }
+  .cook-view[hidden] { display: none; }
+
+  .ck-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px 8px;
+    background: var(--card);
   }
 
-  .ci-qty {
+  .ck-icon {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0 10px;
+    border: 2px solid var(--ink);
+    background: var(--card);
+    color: var(--ink);
+    font: 900 0.65rem/1 var(--font);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+  }
+  .ck-icon[aria-pressed="true"] { background: var(--ink); color: #fff; }
+  .ck-close { font-size: 1.7rem; font-weight: 400; padding: 0; }
+
+  .ck-title { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+  .ck-recipe { font-weight: 800; font-size: 0.95rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .ck-count { font-size: 0.62rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.12em; color: var(--red); }
+
+  .ck-progress {
+    display: flex;
+    gap: 3px;
+    padding: 0 16px 10px;
+    background: var(--card);
+    border-bottom: var(--border);
+  }
+  .ck-seg { flex: 1; height: 8px; padding: 0; border: 0; background: var(--line); cursor: pointer; }
+  .ck-seg.done { background: var(--ink); }
+  .ck-seg.current { background: var(--red); }
+
+  .ck-body {
+    flex: 1;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    padding: 24px 16px 32px;
+  }
+  .ck-inner { max-width: 760px; margin: 0 auto; }
+
+  .ck-section {
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 4px 8px;
+    background: var(--ink);
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  .ck-stepnum { font-size: clamp(3rem, 12vw, 5rem); font-weight: 900; line-height: 0.85; color: var(--red); }
+
+  .ck-gather {
+    margin: 18px 0 4px;
+    padding: 12px 16px;
+    background: var(--card);
+    border: var(--border);
+    box-shadow: 4px 4px 0 0 var(--ink);
+  }
+  .ck-label {
+    display: block;
+    font-size: 0.6rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+  }
+  .ck-gather ul { list-style: none; margin: 4px 0 0; padding: 0; }
+  .ck-gather li { padding: 7px 0; border-top: 1px solid var(--line); font-size: 1.05rem; line-height: 1.35; }
+  .ck-gather li:first-child { border-top: 0; }
+  .ck-gather .qty { font-weight: 800; color: var(--red); }
+
+  .ck-text { margin: 18px 0 0; font-size: clamp(1.3rem, 1rem + 1.5vw, 1.95rem); line-height: 1.5; font-weight: 500; }
+
+  .ck-ing { padding: 0 3px; background: var(--red-tint); border-bottom: 2px solid var(--red); font-weight: 600; }
+  .ck-badge {
     display: inline-block;
     margin-left: 4px;
     padding: 0 5px;
     background: var(--red);
     color: #fff;
-    font-size: 0.72em;
+    font-size: 0.68em;
     font-weight: 800;
-    vertical-align: 0.12em;
+    vertical-align: 0.14em;
     white-space: nowrap;
   }
+  .ck-nowrap { white-space: nowrap; }
+  .ck-amt { font-weight: 800; white-space: nowrap; }
+  .ck-amt.scaled { color: var(--red); }
+  .ck-temp { padding: 0 4px; background: #fdeedd; border-bottom: 2px solid var(--yellow); font-weight: 800; white-space: nowrap; }
+  .ck-timer-btn {
+    padding: 0 6px;
+    border: 2px solid var(--teal);
+    border-radius: 0;
+    background: #e2f3f0;
+    color: var(--ink);
+    font: inherit;
+    font-weight: 800;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+  .ck-timer-btn::before { content: '⏱ '; }
+  .ck-timer-btn:hover, .ck-timer-btn.running { background: var(--teal); color: #fff; }
+
+  .ck-upnext { margin-top: 36px; padding-top: 14px; border-top: 2px dashed var(--line); color: var(--muted); font-size: 0.95rem; line-height: 1.45; }
+
+  .ck-all { list-style: none; margin: 0; padding: 0; }
+  .ck-all li { display: flex; gap: 14px; padding: 16px 8px; border-bottom: 2px solid var(--line); cursor: pointer; font-size: 1.1rem; line-height: 1.5; }
+  .ck-all li:hover { background: var(--card); }
+  .ck-all li.current { background: #fff8e9; }
+  .ck-all li.done { color: var(--faint); }
+  .ck-all .ck-n { font-weight: 900; font-size: 1.3rem; color: var(--red); min-width: 1.4em; }
+  .ck-all li.done .ck-n { color: var(--faint); }
+
+  .ck-finish { text-align: center; padding-top: 8vh; }
+  .ck-finish h2 { font-size: clamp(2rem, 8vw, 3.2rem); font-weight: 900; text-transform: uppercase; margin: 0 0 10px; }
+  .ck-finish p { color: var(--muted); margin: 0 0 28px; }
+  .ck-finish .bauhaus-btn { margin: 6px; }
+
+  .ck-timers { display: flex; gap: 8px; overflow-x: auto; padding: 8px 16px; background: var(--ink); }
+  .ck-timers:empty { display: none; }
+  .ck-tmr { flex: 0 0 auto; display: flex; align-items: center; gap: 8px; padding: 4px 4px 4px 10px; background: var(--card); color: var(--ink); }
+  .ck-tmr-txt { display: flex; flex-direction: column; line-height: 1.1; }
+  .ck-tmr-time { font-size: 1.2rem; font-weight: 900; font-variant-numeric: tabular-nums; }
+  .ck-tmr-label { font-size: 0.58rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+  .ck-tmr button { min-width: 38px; min-height: 38px; border: 2px solid currentColor; background: transparent; color: inherit; font: 800 0.75rem var(--font); cursor: pointer; }
+  .ck-tmr.done { background: var(--red); color: #fff; animation: ck-pulse 1s ease-in-out infinite; }
+  .ck-tmr.done .ck-tmr-label { color: #fff; }
+  @keyframes ck-pulse { 50% { opacity: 0.6; } }
+
+  .ck-nav { display: grid; grid-template-columns: 1fr 2fr; gap: 10px; padding: 12px 16px; background: var(--card); border-top: var(--border); }
+  .ck-nav button { min-height: 60px; border: var(--border); font: 900 1rem var(--font); text-transform: uppercase; letter-spacing: 0.08em; cursor: pointer; }
+  #ck-prev { background: var(--card); color: var(--ink); }
+  #ck-next { background: var(--ink); color: #fff; box-shadow: 4px 4px 0 0 var(--red); }
+  .ck-nav button:disabled { opacity: 0.3; cursor: default; }
+
+  @media (prefers-reduced-motion: reduce) { .ck-tmr.done { animation: none; } }
 
   /* ---- Planner ---- */
   .planner-actions {
@@ -785,7 +938,7 @@ layout: default
     document.getElementById('scale-note').hidden = factor === 1;
     servingsEl.querySelector('[data-step="-1"]').disabled = factor <= nextFactor(-1, true);
     servingsEl.querySelector('[data-step="1"]').disabled = factor >= nextFactor(1, true);
-    if (cooking) highlightDirections();
+    if (cooking) { buildSteps(); render(); }
   }
 
   // Small yields step one serving at a time; big batches (12 muffins) and unknown yields step through MULTS
@@ -860,63 +1013,305 @@ layout: default
     if (saved.factor && (stepByOne || MULTS.indexOf(saved.factor) !== -1)) factor = saved.factor;
   }
 
-  /* ---------- Cooking mode ---------- */
+  /* ---------- Cooking mode: full-screen, one step at a time, amounts inline ---------- */
   var cooking = false;
   var wakeLock = null;
   var cookBtn = document.getElementById('cooking-mode-btn');
-  var directionSpans = Array.from(document.querySelectorAll('.direction-text'));
-  directionSpans.forEach(function (s) { s.dataset.orig = s.textContent; });
+  var cookView = document.getElementById('cook-view');
+  var ckBody = document.getElementById('ck-body');
+  var ckCount = document.getElementById('ck-count');
+  var ckProgress = document.getElementById('ck-progress');
+  var ckPrev = document.getElementById('ck-prev');
+  var ckNext = document.getElementById('ck-next');
+  var ckList = document.getElementById('ck-list');
+  var ckSpeak = document.getElementById('ck-speak');
+  var ckTimersEl = document.getElementById('ck-timers');
+  var directionRaw = Array.from(document.querySelectorAll('.direction-text')).map(function (s) { return s.textContent.trim(); });
+  var steps = [];
+  var cur = 0;
+  var listView = false;
 
-  var STOP = new Set(['optional', 'divided', 'taste', 'more', 'plus', 'fresh', 'freshly', 'large', 'small', 'medium',
-    'chopped', 'minced', 'sliced', 'diced', 'grated', 'finely', 'thinly', 'roughly', 'whole', 'leaves', 'cut',
-    'pieces', 'about', 'into', 'needed', 'serving', 'such', 'packed', 'peeled', 'trimmed', 'room', 'temperature']);
-  var UNIT_RE = /^(?:cups?|c\.|tbsps?|tablespoons?|tsps?|teaspoons?|fl\.? oz|oz|ounces?|lbs?|pounds?|grams?|g|kg|ml|l|liters?|litres?|pinch(?:es)?|dash(?:es)?|handfuls?|cloves?|cans?|jars?|slices?|bunch(?:es)?|heads?|pieces?|sprigs?|stalks?|sticks?|inch(?:es)?|packages?|pkgs?|quarts?|pints?)\b\.?\s*/i;
+  var STOP = new Set(('optional divided taste more plus fresh freshly large small medium chopped minced sliced diced grated ' +
+    'finely thinly roughly coarsely whole leaves cut pieces about into needed serving such packed peeled trimmed room ' +
+    'temperature and the with your some extra good quality shop bought store homemade preferably very lightly well cold ' +
+    'warm hot softened melted beaten drained rinsed halved quartered crushed ground dried frozen canned kosher sea ' +
+    'unsalted salted extra-virgin virgin flavourless flavorless neutral light dark plain boneless skinless ripe ' +
+    'shredded cubed deseeded seeded rough fine organic good-quality high-quality healthy generous').split(' '));
+  // A lone first word that's a fine shorthand for the ingredient ("chicken" for "chicken thighs")
+  var HEAD_NOUNS = new Set('chicken pork beef lamb turkey salmon shrimp prawn tofu fish duck sausage bacon'.split(' '));
+  var UNIT_RE = /^(?:cups?|c\.|tbsps?|tablespoons?|tsps?|teaspoons?|fl\.? oz|oz|ounces?|lbs?|pounds?|grams?|g|kg|ml|l|liters?|litres?|(?:(?:healthy|generous|good|big|large|small)\s+)?(?:pinch(?:es)?|dash(?:es)?|handfuls?)|cloves?|cans?|jars?|slices?|sheets?|bunch(?:es)?|heads?|pieces?|sprigs?|stalks?|sticks?|inch(?:es)?|packages?|pkgs?|quarts?|pints?)\b\.?\s*/i;
+  var MEASURE = '(?:cups?|tbsps?|tablespoons?|tsps?|teaspoons?|fl\\.?\\s?oz|oz|ounces?|lbs?|pounds?|grams?|g|kg|ml|millilit(?:re|er)s?|l|lit(?:re|er)s?)';
+  var PRE = '(?<![\\w.\\/])';
+  var RANGE = '\\s*(?:-|–|to|or)\\s*';
 
-  // Pull searchable names out of "1 (24-ounce) jar marinara sauce, warmed" → ["marinara sauce", "sauce"…]
+  function singular(w) {
+    if (w.length > 4 && /ies$/.test(w)) return w.slice(0, -3) + 'y';
+    if (w.length > 4 && /(?:ch|sh|ss|x|z|o)es$/.test(w)) return w.slice(0, -2);
+    if (w.length > 3 && /[^su]s$/.test(w)) return w.slice(0, -1);
+    return w;
+  }
+  function normKey(s) {
+    return s.toLowerCase().split(/[\s-]+/).filter(Boolean).map(singular).join(' ');
+  }
+  function escRe(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+
+  // "1 (24-ounce) jar marinara sauce, warmed" → ["marinara sauce", "sauce"] (singular forms)
   function ingredientTerms(text) {
     var m = text.match(QTY_RE);
     var rest = m ? text.slice(m[0].length) : text;
     rest = rest.replace(/\([^)]*\)/g, ' ').trim().replace(UNIT_RE, '').replace(/^of\s+/i, '');
-    rest = rest.split(/,|;| or | for | plus /i)[0].toLowerCase().replace(/[^a-zÀ-ɏḀ-ỿ' -]/g, ' ');
-    var words = rest.split(/\s+/).filter(function (w) { return w && !STOP.has(w); });
+    var clean = function (str) {
+      return str.toLowerCase().replace(/[^a-zÀ-ɏḀ-ỿ' -]/g, ' ').split(/\s+/).filter(function (w) { return w && !STOP.has(w); }).map(singular);
+    };
+    var phrase = rest.split(/,|;| for | plus | to /i)[0];
+    var words = clean(phrase.split(/ or /i)[0]);
+    var full = clean(phrase.replace(/ or /gi, ' '));
     var terms = [];
     if (words.length) terms.push(words.join(' '));
     if (words.length > 2) terms.push(words.slice(-2).join(' '));
-    if (words.length > 1 && words[words.length - 1].length > 3) terms.push(words[words.length - 1]);
-    return terms.filter(function (t) { return t.length > 2; });
+    if (words.length > 1 && words[words.length - 1].length >= 3) terms.push(words[words.length - 1]);
+    if (words.length > 1 && HEAD_NOUNS.has(words[0])) terms.push(words[0]);
+    if (full.length > words.length && full[full.length - 1].length >= 3) terms.push(full[full.length - 1]);
+    return terms.filter(function (t, i, a) { return t.length >= 3 && a.indexOf(t) === i; });
   }
 
-  function highlightDirections() {
-    var termMap = {};
-    ingredientSpans.forEach(function (span, i) {
-      ingredientTerms(span.dataset.orig).forEach(function (t) { if (!(t in termMap)) termMap[t] = i; });
-    });
-    var terms = Object.keys(termMap).sort(function (a, b) { return b.length - a.length; });
-    if (!terms.length) return;
-    var re = new RegExp('\\b(' + terms.map(function (t) {
-      return t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    }).join('|') + ')(?:e?s)?\\b', 'gi');
+  // A word pattern that matches both "tomato" and "tomatoes", "berry" and "berries"
+  function termPattern(key) {
+    return key.split(' ').map(function (w) {
+      return /y$/.test(w) ? escRe(w.slice(0, -1)) + '(?:y|ies)' : escRe(w) + '(?:e?s)?';
+    }).join('[\\s-]+');
+  }
 
-    var shown = {};
-    directionSpans.forEach(function (span) {
-      // Single pass over escaped text, so a later match can never land inside an earlier <mark>
-      span.innerHTML = C.escapeHtml(span.dataset.orig).replace(re, function (match, term) {
-        var idx = termMap[term.toLowerCase()];
-        var orig = ingredientSpans[idx].dataset.orig;
-        var qty = '';
-        if (!shown[idx]) {
-          shown[idx] = true;
-          var scaled = scaleIngredient(orig, factor).qty;
-          var unit = orig.slice((orig.match(QTY_RE) || [''])[0].length).replace(/\([^)]*\)/g, ' ').trim().match(UNIT_RE);
-          if (scaled) qty = '<span class="ci-qty">' + C.escapeHtml(scaled + (unit ? ' ' + unit[0].trim() : '')) + '</span>';
+  /* Ingredients: headers ("Homemade Chicken Katsu:") start a section, everything else gets match terms */
+  var ING = (function () {
+    var section = '';
+    return ingredientSpans.map(function (span, i) {
+      var orig = span.dataset.orig.trim();
+      var header = /:\s*$/.test(orig) && orig.length < 60 && !QTY_RE.test(orig);
+      if (header) section = normKey(orig.replace(/:\s*$/, ''));
+      return { i: i, orig: orig, header: header, section: section, terms: header ? [] : ingredientTerms(orig) };
+    });
+  })();
+  var termMap = {};
+  ING.forEach(function (ing) {
+    ing.terms.forEach(function (t) { (termMap[t] = termMap[t] || []).push(ing.i); });
+  });
+  var termKeys = Object.keys(termMap).sort(function (a, b) { return b.length - a.length; });
+  var sectionNames = ING.filter(function (x) { return x.header; }).map(function (x) { return x.section; });
+
+  // One pass over each step, in priority order: temperatures, timers, measured amounts, ingredient names
+  var TOKEN_RE = new RegExp(
+    '(?<temp>(?<![\\w.])\\d{2,3}\\s?(?:°\\s?[CF]?|º\\s?[CF]?|degrees(?:\\s?[CF]\\b|\\s(?:fahrenheit|celsius))?|[CF]\\b)(?:\\s?fan)?)' +
+    '|(?<dur>' + PRE + '(?<d1>' + NUM + ')(?:' + RANGE + '(?<d2>' + NUM + '))?[\\s-]*(?:(?:more|additional|extra|further)\\s+)?(?<du>seconds?|secs?|minutes?|mins?|hours?|hrs?)\\b' +
+      '(?:,?\\s*(?:and\\s*)?(?<d3>\\d+)\\s*(?:minutes?|mins?)\\b)?)' +
+    '|(?<qty>' + PRE + '(?<qa>' + NUM + ')(?:(?<qs>' + RANGE + ')(?<qb>' + NUM + '))?(?<qu>\\s*' + MEASURE + ')\\b\\.?)' +
+    '|(?<ing>\\b(?:' + (termKeys.length ? termKeys.map(termPattern).join('|') : '(?!)') + ')\\b)',
+    'gi');
+  var LEAD_QTY_RE = new RegExp('(?:' + NUM + ')\\s*(?:' + MEASURE + '|cloves?|cans?|jars?|slices?|pieces?|handfuls?|pinch(?:es)?)?\\.?\\s+(?:of\\s+)?(?:[a-z]+\\s+)?$', 'i');
+
+  function durSeconds(g) {
+    var mult = /^h/i.test(g.du) ? 3600 : /^m/i.test(g.du) ? 60 : 1;
+    return Math.round(parseNum(g.d1) * mult + (g.d3 ? +g.d3 * 60 : 0));
+  }
+
+  function scaleAmount(g) {
+    var a = parseNum(g.qa) * factor, b = g.qb ? parseNum(g.qb) * factor : 0;
+    var unit = g.qu.trim().replace(/\.$/, '');
+    var metric = /^(?:g|grams?|kg|ml|millilit)/i.test(unit);
+    var fmt = function (x) { return metric && x >= 1 ? String(Math.round(x)) : formatNum(x); };
+    var word = unit.match(/^(cup|tablespoon|teaspoon|ounce|pound|gram|millilit(?:re|er)|lit(?:re|er))s?$/i);
+    if (word) unit = word[1] + ((b || a) > 1 ? 's' : '');
+    return fmt(a) + (g.qb ? g.qs + fmt(b) : '') + (/^\s/.test(g.qu) ? ' ' : '') + unit;
+  }
+
+  function stepSection(raw) {
+    var m = raw.match(/^([^:.]{2,48}):\s+/);
+    if (!m || m[1].split(/\s+/).length > 6) return null;
+    return { label: m[1], key: normKey(m[1]), len: m[0].length };
+  }
+
+  function pickIngredient(key, section, introduced) {
+    var cands = termMap[key] || [];
+    var same = cands.filter(function (i) { return ING[i].section === section; });
+    var pool = same.length ? same : cands;
+    return pool.find(function (i) { return !(i in introduced); }) ?? pool[0];
+  }
+
+  function buildSteps() {
+    var introduced = {}, section = '';
+    steps = directionRaw.map(function (raw, si) {
+      var step = { label: '', html: '', uses: [], timers: 0 };
+      var sec = stepSection(raw), text = raw;
+      if (sec) {
+        step.label = sec.label;
+        text = raw.slice(sec.len);
+        var hit = sectionNames.find(function (n) { return n === sec.key || n.indexOf(sec.key) !== -1 || sec.key.indexOf(n) !== -1; });
+        if (hit) section = hit;
+      }
+      var out = '', last = 0, m;
+      TOKEN_RE.lastIndex = 0;
+      while ((m = TOKEN_RE.exec(text))) {
+        if (!m[0]) { TOKEN_RE.lastIndex++; continue; }
+        var g = m.groups, esc = C.escapeHtml(m[0]);
+        out += C.escapeHtml(text.slice(last, m.index));
+        last = m.index + m[0].length;
+        if (g.temp) {
+          out += '<span class="ck-temp">' + esc + '</span>';
+        } else if (g.dur) {
+          var secs = durSeconds(g);
+          if (secs > 0) {
+            step.timers++;
+            out += '<button type="button" class="ck-timer-btn" data-secs="' + secs + '" data-label="' + esc + '" ' +
+              'aria-label="Start a ' + esc + ' timer">' + esc + '</button>';
+          } else out += esc;
+        } else if (g.qty) {
+          out += factor === 1 ? '<span class="ck-amt">' + esc + '</span>'
+                              : '<span class="ck-amt scaled" title="Recipe says ' + esc + '">' + C.escapeHtml(scaleAmount(g)) + '</span>';
+        } else if (g.ing) {
+          var idx = pickIngredient(normKey(m[0]), section, introduced);
+          if (idx === undefined) { out += esc; continue; }
+          var orig = ING[idx].orig, badge = '';
+          if (!(idx in introduced)) {
+            introduced[idx] = si;
+            step.uses.push(idx);
+            // Skip the badge when the step already states an amount ("heat 4 tablespoons oil")
+            if (!LEAD_QTY_RE.test(text.slice(Math.max(0, m.index - 40), m.index))) {
+              var qty = scaleIngredient(orig, factor).qty;
+              var after = orig.slice((orig.match(QTY_RE) || [''])[0].length);
+              var unit = after.replace(/\([^)]*\)/g, ' ').trim().match(UNIT_RE);
+              if (qty) badge = '<span class="ck-badge">' + C.escapeHtml(qty + (unit ? (/^\s/.test(after) ? ' ' : '') + unit[0].trim() : '')) + '</span>';
+            }
+          }
+          var mark = '<mark class="ck-ing" title="' + C.escapeHtml(orig) + '">' + esc + '</mark>';
+          if (badge) {
+            // Keep word, badge and any trailing punctuation together so the badge never starts a line
+            var punct = (text.slice(last).match(/^[,.;:!?)]+/) || [''])[0];
+            last += punct.length;
+            out += '<span class="ck-nowrap">' + mark + badge + C.escapeHtml(punct) + '</span>';
+          } else out += mark;
         }
-        return '<mark class="cooking-ingredient" title="' + C.escapeHtml(orig) + '">' + match + '</mark>' + qty;
-      });
+      }
+      step.html = out + C.escapeHtml(text.slice(last));
+      return step;
     });
+
+    // Ingredients no step names (“2 tbsp oil” → “heat the pan”) go with their neighbours, since lists follow the order of use
+    var usedIn = function (j) { return j >= 0 && j < ING.length && !ING[j].header && (j in introduced) ? introduced[j] : -1; };
+    ING.forEach(function (ing) {
+      if (ing.header || ing.i in introduced || !steps.length) return;
+      var target = -1;
+      for (var d = 1; d < ING.length && target < 0; d++) {
+        target = usedIn(ing.i - d);
+        if (target < 0) target = usedIn(ing.i + d);
+      }
+      steps[Math.max(target, 0)].uses.push(ing.i);
+    });
+    steps.forEach(function (s) { s.uses.sort(function (a, b) { return a - b; }); });
   }
 
-  function restoreDirections() {
-    directionSpans.forEach(function (span) { span.textContent = span.dataset.orig; });
+  /* ---------- Rendering ---------- */
+  function plain(raw, n) {
+    var sec = stepSection(raw), t = sec ? raw.slice(sec.len) : raw;
+    return t.length > n ? t.slice(0, n).replace(/\s+\S*$/, '') + '…' : t;
+  }
+
+  function stepHtml(i) {
+    var s = steps[i], h = '<div class="ck-inner">';
+    if (s.label) h += '<div class="ck-section">' + C.escapeHtml(s.label) + '</div>';
+    h += '<div class="ck-stepnum" aria-hidden="true">' + (i + 1) + '</div>';
+    if (s.uses.length) {
+      h += '<div class="ck-gather"><span class="ck-label">You’ll need</span><ul>' + s.uses.map(function (idx) {
+        return '<li>' + scaleIngredient(ING[idx].orig, factor).html + '</li>';
+      }).join('') + '</ul></div>';
+    }
+    h += '<p class="ck-text">' + s.html + '</p>';
+    if (i + 1 < steps.length) {
+      h += '<div class="ck-upnext"><span class="ck-label">Up next</span>' + C.escapeHtml(plain(directionRaw[i + 1], 110)) + '</div>';
+    }
+    return h + '</div>';
+  }
+
+  function finishHtml() {
+    return '<div class="ck-inner ck-finish"><h2>Done!</h2><p>Every step is checked off. Enjoy it.</p>' +
+      '<button type="button" class="bauhaus-btn" data-act="made">✓ We Made This</button>' +
+      '<button type="button" class="bauhaus-btn ghost" data-act="restart">Start over</button></div>';
+  }
+
+  function listHtml() {
+    return '<div class="ck-inner"><ol class="ck-all">' + steps.map(function (s, i) {
+      return '<li data-jump="' + i + '" class="' + (i < cur ? 'done' : i === cur ? 'current' : '') + '">' +
+        '<span class="ck-n">' + (i + 1) + '</span><span>' + C.escapeHtml(plain(directionRaw[i], 160)) + '</span></li>';
+    }).join('') + '</ol></div>';
+  }
+
+  function render() {
+    var N = steps.length;
+    stopSpeaking();
+    ckProgress.innerHTML = steps.map(function (s, i) {
+      return '<button type="button" class="ck-seg' + (i < cur ? ' done' : i === cur ? ' current' : '') +
+        '" data-jump="' + i + '" aria-label="Go to step ' + (i + 1) + '"></button>';
+    }).join('');
+    ckBody.innerHTML = listView ? listHtml() : cur >= N ? finishHtml() : stepHtml(cur);
+    ckCount.textContent = listView ? N + ' steps' : cur >= N ? 'Finished' : 'Step ' + (cur + 1) + ' of ' + N;
+    ckList.setAttribute('aria-pressed', String(listView));
+    ckPrev.disabled = !listView && cur === 0;
+    ckPrev.textContent = listView ? 'Close list' : '← Back';
+    ckNext.textContent = listView ? 'Resume →' : cur >= N ? 'Close' : cur === N - 1 ? 'Finish ✓' : 'Next →';
+    ckBody.scrollTop = 0;
+    markRunningTimers();
+    updateCookBtn();
+  }
+
+  function setStep(k) {
+    cur = Math.max(0, Math.min(k, steps.length));
+    stepItems.forEach(function (li, i) { li.querySelector('input').checked = i < cur; });
+    syncState();
+    persist();
+    listView = false;
+    render();
+  }
+
+  function firstOpenStep() {
+    var i = stepItems.findIndex(function (li) { return !li.querySelector('input').checked; });
+    return i < 0 ? 0 : i;
+  }
+
+  function updateCookBtn() {
+    if (!cookBtn) return;
+    var at = cooking ? cur : stepItems.findIndex(function (li) { return !li.querySelector('input').checked; });
+    var started = stepItems.some(function (li) { return li.querySelector('input').checked; });
+    cookBtn.textContent = cooking ? 'Cooking…' : started && at > 0 ? 'Resume Cooking · Step ' + (at + 1) : 'Start Cooking';
+  }
+
+  /* ---------- Open / close ---------- */
+  function openCook() {
+    if (cooking) return;
+    cooking = true;
+    buildSteps();
+    cur = firstOpenStep();
+    if (cur === 0) stepItems.forEach(function (li) { li.querySelector('input').checked = false; });
+    listView = false;
+    cookView.hidden = false;
+    document.body.classList.add('cooking');
+    cookBtn.setAttribute('aria-pressed', 'true');
+    render();
+    requestWakeLock();
+    try { history.pushState({ cook: true }, ''); } catch (_) {}
+    ckNext.focus();
+  }
+
+  function closeCook(fromHistory) {
+    if (!cooking) return;
+    cooking = false;
+    stopSpeaking();
+    cookView.hidden = true;
+    document.body.classList.remove('cooking');
+    cookBtn.setAttribute('aria-pressed', 'false');
+    if (wakeLock) { wakeLock.release().catch(function () {}); wakeLock = null; }
+    if (!fromHistory && history.state && history.state.cook) history.back();
+    syncState();
+    updateCookBtn();
+    cookBtn.focus();
   }
 
   async function requestWakeLock() {
@@ -927,24 +1322,187 @@ layout: default
 
   document.addEventListener('visibilitychange', function () {
     if (cooking && document.visibilityState === 'visible') requestWakeLock();
+    if (document.visibilityState === 'visible') tickTimers();
   });
+  window.addEventListener('popstate', function () { if (cooking) closeCook(true); });
 
-  if (cookBtn) {
-    cookBtn.addEventListener('click', function () {
-      cooking = !cooking;
-      document.body.classList.toggle('cooking', cooking);
-      cookBtn.setAttribute('aria-pressed', String(cooking));
-      cookBtn.textContent = cooking ? 'Exit Cooking Mode' : 'Start Cooking';
-      if (cooking) {
-        highlightDirections();
-        requestWakeLock();
-        C.toast('Cooking mode on' + ('wakeLock' in navigator ? ' — screen will stay awake' : ''), 'ok');
-      } else {
-        restoreDirections();
-        if (wakeLock) { wakeLock.release().catch(function () {}); wakeLock = null; }
-      }
+  function next() {
+    if (listView) { listView = false; render(); }
+    else if (cur >= steps.length) closeCook();
+    else setStep(cur + 1);
+  }
+  function prev() {
+    if (listView) { listView = false; render(); }
+    else if (cur > 0) setStep(cur - 1);
+  }
+
+  if (cookBtn && cookView) {
+    cookBtn.addEventListener('click', function () { cooking ? closeCook() : openCook(); });
+    document.getElementById('ck-close').addEventListener('click', function () { closeCook(); });
+    ckNext.addEventListener('click', next);
+    ckPrev.addEventListener('click', prev);
+    ckList.addEventListener('click', function () { listView = !listView; render(); });
+
+    cookView.addEventListener('click', function (e) {
+      var jump = e.target.closest('[data-jump]');
+      if (jump) return setStep(parseInt(jump.dataset.jump, 10));
+      var t = e.target.closest('.ck-timer-btn');
+      if (t) return startTimer(parseInt(t.dataset.secs, 10), 'Step ' + (cur + 1) + ' · ' + t.dataset.label, cur);
+      var act = e.target.closest('[data-act]');
+      if (act && act.dataset.act === 'made') { closeCook(); document.getElementById('made-btn').click(); }
+      if (act && act.dataset.act === 'restart') setStep(0);
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (!cooking || e.altKey || e.ctrlKey || e.metaKey) return;
+      if (e.target.closest && e.target.closest('button') && (e.key === ' ' || e.key === 'Enter')) return;
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); next(); }
+      else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); prev(); }
+      else if (e.key === 'Escape') { e.preventDefault(); closeCook(); }
+    });
+
+    // Swipe left/right to change steps — handy with messy hands
+    var touch = null;
+    ckBody.addEventListener('touchstart', function (e) {
+      touch = e.touches.length === 1 ? { x: e.touches[0].clientX, y: e.touches[0].clientY } : null;
+    }, { passive: true });
+    ckBody.addEventListener('touchend', function (e) {
+      if (!touch || listView) return;
+      var dx = e.changedTouches[0].clientX - touch.x, dy = e.changedTouches[0].clientY - touch.y;
+      touch = null;
+      if (Math.abs(dx) > 70 && Math.abs(dx) > 2 * Math.abs(dy)) (dx < 0 ? next : prev)();
+    }, { passive: true });
+  }
+
+  /* ---------- Read aloud ---------- */
+  var synth = window.speechSynthesis;
+  function stopSpeaking() {
+    if (synth && synth.speaking) synth.cancel();
+    if (ckSpeak) ckSpeak.setAttribute('aria-pressed', 'false');
+  }
+  if (synth && ckSpeak) {
+    ckSpeak.hidden = false;
+    ckSpeak.addEventListener('click', function () {
+      if (synth.speaking) return stopSpeaking();
+      var text = ckBody.querySelector('.ck-text');
+      if (!text) return;
+      var u = new SpeechSynthesisUtterance(text.textContent);
+      u.onend = u.onerror = function () { ckSpeak.setAttribute('aria-pressed', 'false'); };
+      ckSpeak.setAttribute('aria-pressed', 'true');
+      synth.speak(u);
     });
   }
+
+  /* ---------- Timers (survive refreshes; keep running if you leave cooking mode) ---------- */
+  var TIMER_KEY = 'cooktimers:' + SLUG;
+  var timers = (C.load(TIMER_KEY, []) || []).filter(function (t) { return t.end > Date.now() - 10 * 60000; });
+  var tickHandle = null, audioCtx = null;
+
+  function saveTimers() { C.save(TIMER_KEY, timers); }
+
+  function ensureAudio() {
+    try {
+      audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+    } catch (_) { audioCtx = null; }
+  }
+
+  function beep() {
+    if (!audioCtx) return;
+    var t0 = audioCtx.currentTime;
+    [0, 0.22, 0.44].forEach(function (o) {
+      var osc = audioCtx.createOscillator(), g = audioCtx.createGain();
+      osc.frequency.value = 880;
+      osc.connect(g); g.connect(audioCtx.destination);
+      g.gain.setValueAtTime(0.0001, t0 + o);
+      g.gain.exponentialRampToValueAtTime(0.35, t0 + o + 0.02);
+      g.gain.exponentialRampToValueAtTime(0.0001, t0 + o + 0.18);
+      osc.start(t0 + o); osc.stop(t0 + o + 0.2);
+    });
+  }
+
+  function notify(t) {
+    if (navigator.vibrate) navigator.vibrate([300, 150, 300, 150, 300]);
+    var title = '⏱ Timer done';
+    if (!cooking || document.hidden) C.toast(title + ' — ' + C.escapeHtml(t.label), 'ok', 8000);
+    if (!document.hidden || !('Notification' in window) || Notification.permission !== 'granted') return;
+    var opts = { body: t.label + ' — ' + document.title, tag: 'cook-' + t.id, icon: C.BASE + '/icons/icon-192.png' };
+    if (navigator.serviceWorker && navigator.serviceWorker.controller) {
+      navigator.serviceWorker.ready.then(function (r) { r.showNotification(title, opts); }).catch(function () {});
+    } else {
+      try { new Notification(title, opts); } catch (_) {}
+    }
+  }
+
+  function startTimer(secs, label, step) {
+    ensureAudio();
+    if ('Notification' in window && Notification.permission === 'default') Notification.requestPermission().catch(function () {});
+    var existing = timers.find(function (t) { return t.label === label && !t.done; });
+    if (existing) return C.toast('That timer is already running', '', 2500);
+    timers.push({ id: Date.now(), label: label, step: step, end: Date.now() + secs * 1000, done: false });
+    saveTimers();
+    renderTimers();
+  }
+
+  function fmtLeft(ms) {
+    var s = Math.max(0, Math.ceil(ms / 1000)), h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60);
+    s = s % 60;
+    return (h ? h + ':' + String(m).padStart(2, '0') : m) + ':' + String(s).padStart(2, '0');
+  }
+
+  function renderTimers() {
+    if (!ckTimersEl) return;
+    ckTimersEl.innerHTML = timers.map(function (t) {
+      return '<div class="ck-tmr' + (t.done ? ' done' : '') + '" data-id="' + t.id + '">' +
+        '<div class="ck-tmr-txt"><span class="ck-tmr-time">' + (t.done ? 'Done!' : fmtLeft(t.end - Date.now())) + '</span>' +
+        '<span class="ck-tmr-label">' + C.escapeHtml(t.label) + '</span></div>' +
+        (t.done ? '' : '<button type="button" data-tact="add" aria-label="Add one minute">+1m</button>') +
+        '<button type="button" data-tact="del" aria-label="' + (t.done ? 'Dismiss' : 'Cancel') + ' timer">✕</button></div>';
+    }).join('');
+    markRunningTimers();
+    if (timers.length && !tickHandle) tickHandle = setInterval(tickTimers, 500);
+    if (!timers.length && tickHandle) { clearInterval(tickHandle); tickHandle = null; }
+  }
+
+  function markRunningTimers() {
+    ckBody.querySelectorAll('.ck-timer-btn').forEach(function (b) {
+      var label = 'Step ' + (cur + 1) + ' · ' + b.dataset.label;
+      b.classList.toggle('running', timers.some(function (t) { return t.label === label && !t.done; }));
+    });
+  }
+
+  var lastBeep = 0;
+  function tickTimers() {
+    var now = Date.now(), changed = false;
+    timers.forEach(function (t) {
+      if (!t.done && t.end <= now) { t.done = true; changed = true; notify(t); }
+    });
+    if (changed) { saveTimers(); renderTimers(); }
+    else {
+      ckTimersEl.querySelectorAll('.ck-tmr').forEach(function (el) {
+        var t = timers.find(function (x) { return String(x.id) === el.dataset.id; });
+        if (t && !t.done) el.querySelector('.ck-tmr-time').textContent = fmtLeft(t.end - now);
+      });
+    }
+    // Keep chiming for up to two minutes until someone dismisses it
+    var ringing = timers.some(function (t) { return t.done && now - t.end < 120000; });
+    if (ringing && now - lastBeep > 2000) { lastBeep = now; beep(); }
+  }
+
+  if (ckTimersEl) ckTimersEl.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-tact]'), row = e.target.closest('.ck-tmr');
+    if (!row) return;
+    var id = row.dataset.id;
+    var t = timers.find(function (x) { return String(x.id) === id; });
+    if (!t) return;
+    if (b && b.dataset.tact === 'add') t.end += 60000;
+    else if (b || t.done) timers = timers.filter(function (x) { return x !== t; });
+    saveTimers();
+    renderTimers();
+  });
+
+  renderTimers();
+  updateCookBtn();
 
   renderIngredients();
   syncState();
