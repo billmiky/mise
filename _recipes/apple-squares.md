@@ -28,7 +28,7 @@ directions:
 date_added: 2026-10-17
 season:
 - all
-last_made: null
+last_made: 2026-11-20
 rating: null
 difficulty: easy
 kid_friendly: false
